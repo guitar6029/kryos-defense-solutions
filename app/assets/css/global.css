@@ -1,0 +1,24 @@
+/* Tailwind + Animations */
+@import "tailwindcss";
+
+html {
+  background: #000;
+  color: #fff;
+}
+
+body {
+    font-family: "Exo 2", sans-serif;
+}
+
+
+.font-tech {
+  font-family: "Rajdhani", sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.font-body {
+  font-family: "Exo 2", sans-serif;
+  font-weight: 400;
+  color: #d1d5db; /* optional light gray text */
+}
