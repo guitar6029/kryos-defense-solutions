@@ -84,7 +84,7 @@
   }
   .section-title {
     font-family: "Orbitron", sans-serif;
-    @apply text-[8rem];
+    @apply lg:text-[8rem] sm:text-[4rem] text-center;
   }
   .link {
     color: var(--kryos-text-high);

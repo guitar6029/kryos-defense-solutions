@@ -3,21 +3,6 @@ import Absolute from "@/components/Wrapper/Absolute.vue";
 import KryosPanel from "~/components/Panels/KryosPanel.vue";
 import MKI from "@/assets/img/mk-i-no-bg.png";
 import KryosCard from "@/components/Cards/KryosCard.vue";
-/**
- * 
- * <main>
-  [1] Corporate Hero
-  [2] Core Capabilities Strip
-  [3] Kryos MK-I Spotlight
-  [4] Sectors & Deployments
-  [5] R&D Division Teaser
-  [6] News / Press Highlights
-  [7] Footer Summary
-</main>
-
- * 
- * 
- */
 </script>
 
 <template>
@@ -83,7 +68,9 @@ import KryosCard from "@/components/Cards/KryosCard.vue";
     <!-- END HERO -->
 
     <!-- Core Capabilities -->
-    <div class="min-h-screen relative flex flex-col items-center justify-center gap-4">
+    <div
+      class="min-h-screen relative flex flex-col items-center justify-center gap-4"
+    >
       <Absolute
         extra-class="top-50 left-1/2 -translate-x-1/2 w-400 opacity-50 rotate-180"
       >
@@ -190,51 +177,78 @@ import KryosCard from "@/components/Cards/KryosCard.vue";
     <div
       class="flex flex-col min-h-screen items-center justify-center gap-2 relative"
     >
-     
       <Absolute
-        extra-class="top-60 -left-20 sm:w-100 lg:w-400 rotate-180 opacity-50 -z-1"
+        extra-class="bottom-10 -right-20 sm:w-100 lg:w-400  opacity-50 -z-1"
       >
         <KryosPanel :option="7" :stroke-width="1" />
-      </Absolute>
-      
-      <Absolute
-        extra-class="bottom-10 right-0 sm:w-100 lg:w-400 rotate-180 opacity-50 -z-1"
-      >
-        <KryosPanel :option="3" :stroke-width="1" />
       </Absolute>
 
       <h2 class="section-title">Deployed Across Critical Sectors</h2>
       <div class="flex flex-wrap items-center justify-center gap-6">
-        <KryosCard title="Goverment & Defense" text="Perimeter defense, border control, urban operations support." />
-        <KryosCard title="Corporate Security" text="High-value campus protection, data center security, logistics hubs." />
-        <KryosCard title="Industrial & Energy" text="Refineries, mining facilities, off-shore platforms, and hazardous
-        environments." />
-        <KryosCard title="Research & Black-Site Operations" text="Compartmentalized deployments under classified directives." />
+        <KryosCard
+          title="Goverment & Defense"
+          text="Perimeter defense, border control, urban operations support."
+        />
+        <KryosCard
+          title="Corporate Security"
+          text="High-value campus protection, data center security, logistics hubs."
+        />
+        <KryosCard
+          title="Industrial & Energy"
+          text="Refineries, mining facilities, off-shore platforms, and hazardous
+        environments."
+        />
+        <KryosCard
+          title="Research & Black-Site Operations"
+          text="Compartmentalized deployments under classified directives."
+        />
       </div>
-     
     </div>
     <!-- End Sectors and Deplyments -->
 
     <!-- R&D Division Teaser -->
-    <div class="flex flex-col gap-2">
-      <h2>Kryos Advanced Systems Division</h2>
-      <p>
+    <div class="flex flex-col items-center gap-6 relative min-h-screen">
+      <Absolute extra-class="top-50 left-0 w-200 rotate-180 opacity-50 -z-1">
+        <KryosPanel :stroke-width="3" :option="5" />
+      </Absolute>
+
+      <Absolute extra-class="bottom-10 right-0 w-200 rotate-180 opacity-50 -z-1">
+        <KryosPanel :stroke-width="3" :option="6" />
+      </Absolute>
+
+      <h2 class="section-title">Kryos Advanced</h2>
+      <h2 class="section-title">Systems Division</h2>
+      <p class="text-4xl max-w-4xl">
         Our Advanced Systems Division leads research into autonomous
         coordination, adaptive armor, and next-generation sensor architectures.
-        Most of our work is never disclosed. What follows is only what’s cleared
+        Most of our work is never disclosed. What follows is only what's cleared
         for public release.
       </p>
-      <div class="flex flex-col gap-2">
-        <div>Swarm coordination frameworks</div>
-        <div>Adaptive mobility systems</div>
-        <div>Hardened AI decision pipelines</div>
+      <div class="flex flex-wrap items-center justify-center gap-6">
+        <KryosCard
+          title="Swarm Coordination Frameworks"
+          text="Multi-unit orchestration protocols enabling synchronized behavior, distributed targeting, and adaptive formation control across autonomous ground platforms."
+          :option="2"
+        />
+
+        <KryosCard
+          title="Adaptive Mobility Systems"
+          text="Real-time terrain analysis, traction optimization, and chassis morphing algorithms designed to maintain stability and maneuverability in hostile or unpredictable environments."
+          :option="2"
+        />
+
+        <KryosCard
+          title="Hardened AI Decision Pipelines"
+          text="Compartmentalized inference layers engineered to maintain reliability under signal denial, environmental interference, and electronic warfare conditions."
+          :option="2"
+        />
       </div>
-      <NuxtLink to="rdivision">Inside the R&D Division</NuxtLink>
+      <NuxtLink to="rdivision" class="link">Inside the R&D Division</NuxtLink>
     </div>
     <!-- End R&D Division Teaser -->
 
     <!-- News / Press Highlights -->
-    <div class="flex flex-col gap-2">
+    <!-- <div class="flex flex-col gap-2">
       <h2>Recent Announcements</h2>
       <ul>
         <li>
@@ -248,7 +262,7 @@ import KryosCard from "@/components/Cards/KryosCard.vue";
           Joint research initiative launched with undisclosed government entity.
         </li>
       </ul>
-    </div>
+    </div> -->
     <!-- End News / Press Highlights -->
   </div>
 </template>
