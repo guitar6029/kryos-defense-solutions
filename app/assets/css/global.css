@@ -1,15 +1,92 @@
 /* Tailwind + Animations */
 @import "tailwindcss";
 
+:root {
+  /* ==========================================================================
+     BASE BACKGROUND LAYERS
+     These define the overall atmosphere: dark, cold, industrial.
+     ========================================================================== */
+
+  /* Primary page background (black steel) */
+  --kryos-bg: #0c0d0e;
+
+  /* Secondary background (graphite panels, nav, cards) */
+  --kryos-bg-alt: #131416;
+
+  /* ==========================================================================
+     PRIMARY ACCENTS (Cold Industrial Blue)
+     Used for UI outlines, section dividers, hover states, small highlights.
+     ========================================================================== */
+
+  /* Core accent blue (muted, metallic) */
+  --kryos-accent: #4c5d6c;
+
+  /* Brightest blue highlight (use sparingly) */
+  --kryos-accent-bright: #79a1c8;
+
+  /* Low-contrast line color (grids, borders) */
+  --kryos-line: #20262d;
+
+  /* ==========================================================================
+     WARNING PALETTE (Hazard Amber)
+     Inspired by Militech’s caution markings.
+     ========================================================================== */
+
+  /* High visibility “Caution / Warning” amber */
+  --kryos-warn: #d7a429;
+
+  /* Subtle amber (low-emphasis hazard stripes, muted labels) */
+  --kryos-warn-faint: #9a7b32;
+
+  /* ==========================================================================
+     DANGER PALETTE (Red / Critical)
+     Very sparingly used — alerts, redacted text, kill-switch iconography.
+     ========================================================================== */
+
+  /* Primary danger red */
+  --kryos-danger: #c24c42;
+
+  /* Darker red for shadows / muted indicators */
+  --kryos-danger-faint: #5a2a27;
+
+  /* ==========================================================================
+     METALLIC NEUTRALS (Panel surfaces, structural UI elements)
+     These tones come directly from the mech/robot plating in your reference.
+     ========================================================================== */
+
+  /* Matte gunmetal */
+  --kryos-metal-light: #2b2f33;
+
+  /* Steel midtone (good for surfaces, cards) */
+  --kryos-metal-mid: #1f2326;
+
+  /* Blackened alloy (deep structural elements) */
+  --kryos-metal-dark: #181a1c;
+
+  /* ==========================================================================
+     TEXT SYSTEM (Cold military corp typography)
+     High = titles, Mid = body, Low = labels and metadata.
+     ========================================================================== */
+
+  /* Crisp cool white */
+  --kryos-text-high: #e5e8ea;
+
+  /* Main readable gray */
+  --kryos-text-mid: #adb4b9;
+
+  /* Low-emphasis UI labels, secondary info */
+  --kryos-text-low: #6d7479;
+}
+
 html {
-  background: #000;
-  color: #fff;
+  background: var(--kryos-bg);
+  overflow-x: hidden;
 }
 
 body {
-    font-family: "Exo 2", sans-serif;
+  font-family: "Exo 2", sans-serif;
+  color: var(--kryos-text-mid);
 }
-
 
 .font-tech {
   font-family: "Rajdhani", sans-serif;
@@ -17,8 +94,11 @@ body {
   text-transform: uppercase;
 }
 
+.font-orbitron {
+  font-family: "Orbitron", sans-serif;
+}
+
 .font-body {
   font-family: "Exo 2", sans-serif;
   font-weight: 400;
-  color: #d1d5db; /* optional light gray text */
 }
