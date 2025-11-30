@@ -79,12 +79,21 @@
 }
 
 @layer utility {
+  .trns {
+    @apply transition ease-in duration-300;
+  }
   .section-title {
     font-family: "Orbitron", sans-serif;
     @apply text-[8rem];
   }
   .link {
     color: var(--kryos-text-high);
+    @apply text-4xl;
+  }
+  .card-title {
+    @apply text-6xl font-bold;
+  }
+  .card-text {
     @apply text-4xl;
   }
 }

@@ -2,6 +2,7 @@
 import Absolute from "@/components/Wrapper/Absolute.vue";
 import KryosPanel from "~/components/Panels/KryosPanel.vue";
 import MKI from "@/assets/img/mk-i-no-bg.png";
+import KryosCard from "@/components/Cards/KryosCard.vue";
 /**
  * 
  * <main>
@@ -20,10 +21,10 @@ import MKI from "@/assets/img/mk-i-no-bg.png";
 </script>
 
 <template>
-  <div class="flex flex-col gap-2">
+  <div class="flex flex-col gap-2 min-h-screen">
     <!-- HERO -->
     <div
-      class="relative flex h-screen flex-col items-center justify-center gap-4"
+      class="relative flex min-h-screen flex-col items-center justify-center gap-4"
     >
       <Absolute
         extra-class="top-10 -left-20 sm:w-100 md:w-100 lg:w-200 -z-1 opacity-50"
@@ -44,16 +45,6 @@ import MKI from "@/assets/img/mk-i-no-bg.png";
       >
         <KryosPanel :option="3" :stroke-width="2" />
       </Absolute>
-
-      <!-- <Absolute
-        extra-class="top-20 left-1/2 -translate-x-1/2 z-[-10] pointer-events-none"
-      >
-        <span
-          class="text-[50rem] font-orbitron text-(--kryos-metal-light) opacity-5 select-none"
-        >
-          K
-        </span>
-      </Absolute> -->
 
       <div class="z-10 flex flex-col gap-10 items-center justify-center">
         <h1 class="sm:text-2xl md:text-[6rem] lg:text-[8rem] font-orbitron">
@@ -92,9 +83,7 @@ import MKI from "@/assets/img/mk-i-no-bg.png";
     <!-- END HERO -->
 
     <!-- Core Capabilities -->
-    <div
-      class="relative flex min-h-screen flex-col items-center justify-center gap-4"
-    >
+    <div class="min-h-screen relative flex flex-col items-center justify-center gap-4">
       <Absolute
         extra-class="top-50 left-1/2 -translate-x-1/2 w-400 opacity-50 rotate-180"
       >
@@ -132,7 +121,7 @@ import MKI from "@/assets/img/mk-i-no-bg.png";
     <!-- End Capabilities -->
 
     <!-- Kryos Mk-I Spotlight -->
-    <div class="flex flex-col items-center gap-4 relative">
+    <div class="min-h-screen flex flex-col items-center gap-12 relative">
       <Absolute extra-class="top-50 w-full opacity-50 ">
         <KryosPanel :option="5" />
       </Absolute>
@@ -154,25 +143,18 @@ import MKI from "@/assets/img/mk-i-no-bg.png";
       >
         <KryosPanel :option="6" :stroke-width="2" />
       </Absolute>
-      
-      <Absolute
-        extra-class="top-150 left-0 opacity-20 -z-1"
-      >
-          <div class="w-125 h-25 border-2 flex flex-col items-center justify-center">
-            <span class="font-orbitron font-extrabold text-6xl">KRYOS MK-I</span>
-          </div>
-          <div class="w-110 h-2 border-2">
 
-          </div>
+      <Absolute extra-class="top-150 left-0 opacity-20 -z-1">
+        <div
+          class="w-125 h-25 border-2 flex flex-col items-center justify-center"
+        >
+          <span class="font-orbitron font-extrabold text-6xl">KRYOS MK-I</span>
+        </div>
+        <div class="w-110 h-2 border-2"></div>
       </Absolute>
-      
-      <Absolute
-        extra-class="top-1/2 left-1/2 -translate-x-1/2 opacity-5 -z-1"
-      >
-          <div class="w-325 h-325 flex flex-col items-center justify-center">
-            <span class="font-orbitron font-extrabold text-[10rem]">KRYOS</span>
-          </div>
-          
+
+      <Absolute extra-class="top-1/2 left-1/2 -translate-x-1/2 opacity-5 -z-1">
+        <KryosSignature />
       </Absolute>
 
       <h2 class="section-title">Flagship Platform</h2>
@@ -205,32 +187,31 @@ import MKI from "@/assets/img/mk-i-no-bg.png";
     <!-- End Kryos Mk-I Spotlight -->
 
     <!-- Sectors and Deplyments -->
-    <div class="flex flex-col gap-2">
-      <h2>Deployed Across Critical Sectors</h2>
-      <div class="flex flex-col gap-2">
-        <h4>Goverment & Defense</h4>
-        <span
-          >Perimeter defense, border control, urban operations support.</span
-        >
+    <div
+      class="flex flex-col min-h-screen items-center justify-center gap-2 relative"
+    >
+     
+      <Absolute
+        extra-class="top-60 -left-20 sm:w-100 lg:w-400 rotate-180 opacity-50 -z-1"
+      >
+        <KryosPanel :option="7" :stroke-width="1" />
+      </Absolute>
+      
+      <Absolute
+        extra-class="bottom-10 right-0 sm:w-100 lg:w-400 rotate-180 opacity-50 -z-1"
+      >
+        <KryosPanel :option="3" :stroke-width="1" />
+      </Absolute>
+
+      <h2 class="section-title">Deployed Across Critical Sectors</h2>
+      <div class="flex flex-wrap items-center justify-center gap-6">
+        <KryosCard title="Goverment & Defense" text="Perimeter defense, border control, urban operations support." />
+        <KryosCard title="Corporate Security" text="High-value campus protection, data center security, logistics hubs." />
+        <KryosCard title="Industrial & Energy" text="Refineries, mining facilities, off-shore platforms, and hazardous
+        environments." />
+        <KryosCard title="Research & Black-Site Operations" text="Compartmentalized deployments under classified directives." />
       </div>
-      <div class="flex flex-col gap-2">
-        <h4>Corporate Security</h4>
-        <span
-          >High-value campus protection, data center security, logistics
-          hubs.</span
-        >
-      </div>
-      <div class="flex flex-col gap-2">
-        <h4>Industrial & Energy</h4>
-        <span
-          >Refineries, mining facilities, off-shore platforms, and hazardous
-          environments.</span
-        >
-      </div>
-      <div class="flex flex-col gap-2">
-        <h4>Research & Black-Site Operations</h4>
-        <span>Compartmentalized deployments under classified directives.</span>
-      </div>
+     
     </div>
     <!-- End Sectors and Deplyments -->
 
