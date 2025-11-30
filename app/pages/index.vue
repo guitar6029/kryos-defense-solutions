@@ -212,7 +212,9 @@ import KryosCard from "@/components/Cards/KryosCard.vue";
         <KryosPanel :stroke-width="3" :option="5" />
       </Absolute>
 
-      <Absolute extra-class="bottom-10 right-0 w-200 rotate-180 opacity-50 -z-1">
+      <Absolute
+        extra-class="bottom-10 right-0 w-200 rotate-180 opacity-50 -z-1"
+      >
         <KryosPanel :stroke-width="3" :option="6" />
       </Absolute>
 
@@ -248,9 +250,9 @@ import KryosCard from "@/components/Cards/KryosCard.vue";
     <!-- End R&D Division Teaser -->
 
     <!-- News / Press Highlights -->
-    <!-- <div class="flex flex-col gap-2">
-      <h2>Recent Announcements</h2>
-      <ul>
+    <div class="flex flex-col items-center justify-center gap-2 h-screen">
+      <h2 class="section-title">Recent Announcements</h2>
+      <ul class="text-4xl list-disc font-bold flex flex-col gap-4">
         <li>
           Kryos MK-I enters limited deployment with Tier-1 security partners.
         </li>
@@ -262,7 +264,7 @@ import KryosCard from "@/components/Cards/KryosCard.vue";
           Joint research initiative launched with undisclosed government entity.
         </li>
       </ul>
-    </div> -->
+    </div>
     <!-- End News / Press Highlights -->
   </div>
 </template>
