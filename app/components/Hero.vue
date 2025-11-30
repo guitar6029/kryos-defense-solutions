@@ -12,13 +12,13 @@ import KryosPanel from "./Panels/KryosPanel.vue";
       <KryosPanel :stroke-width="2" />
     </Absolute>
 
-    <Absolute extra-class="top-120 right-0 sm:w-100 lg:w-200 opacity-50">
-      <KryosPanel :option="2" />
+    <Absolute extra-class="top-50 -right-20 sm:w-100 lg:w-100 opacity-50">
+      <KryosPanel :option="10" />
     </Absolute>
 
-    <Absolute extra-class="top-0 right-0 sm:w-100 lg:w-200 opacity-50">
+    <!-- <Absolute extra-class="top-0 right-0 sm:w-100 lg:w-200 opacity-50">
       <KryosPanel :option="3" :stroke-width="2" />
-    </Absolute>
+    </Absolute> -->
 
     <Absolute
       extra-class="-bottom-50 left-0 sm:w-100 lg:w-200 rotate-180 opacity-50"

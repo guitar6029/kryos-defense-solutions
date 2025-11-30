@@ -5,12 +5,12 @@ import KryosCard from "./Cards/KryosCard.vue";
 </script>
 <template>
   <div class="flex flex-col items-center gap-6 relative min-h-screen">
-    <Absolute extra-class="top-50 left-0 w-200 rotate-180 opacity-50 -z-1">
+    <Absolute extra-class="top-0 left-0 w-full rotate-180 opacity-50 -z-1">
       <KryosPanel :stroke-width="3" :option="5" />
     </Absolute>
 
     <Absolute extra-class="bottom-10 right-0 w-200 rotate-180 opacity-50 -z-1">
-      <KryosPanel :stroke-width="3" :option="6" />
+      <KryosPanel :stroke-width="1" :option="6" />
     </Absolute>
 
     <h2 class="section-title">Kryos Advanced</h2>
