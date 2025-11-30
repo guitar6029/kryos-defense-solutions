@@ -140,9 +140,9 @@ import KryosCard from "@/components/Cards/KryosCard.vue";
         <div class="w-110 h-2 border-2"></div>
       </Absolute>
 
-      <Absolute extra-class="top-1/2 left-1/2 -translate-x-1/2 opacity-5 -z-1">
+      <!-- <Absolute extra-class="top-1/2 left-1/2 -translate-x-1/2 opacity-5 -z-1">
         <KryosSignature />
-      </Absolute>
+      </Absolute> -->
 
       <h2 class="section-title">Flagship Platform</h2>
       <div class="flex gap-2">
@@ -250,9 +250,25 @@ import KryosCard from "@/components/Cards/KryosCard.vue";
     <!-- End R&D Division Teaser -->
 
     <!-- News / Press Highlights -->
-    <div class="flex flex-col items-center justify-center gap-2 h-screen">
+    <div
+      class="flex flex-col items-center justify-center gap-2 h-screen relative"
+    >
+      <Absolute
+        extra-class="bottom-10 left-0 w-200  opacity-50 -z-1"
+      >
+        <KryosPanel :stroke-width="1" :option="6" />
+      </Absolute>
+      
+      <Absolute
+        extra-class="top-50 right-0 w-150 opacity-50 -z-1"
+      >
+        <KryosPanel :stroke-width="2" :option="3" />
+      </Absolute>
+
       <h2 class="section-title">Recent Announcements</h2>
-      <ul class="text-4xl list-disc font-bold flex flex-col gap-4">
+      <ul
+        class="text-4xl font-bold flex flex-col items-center gap-4 text-(--kryos-text-high)"
+      >
         <li>
           Kryos MK-I enters limited deployment with Tier-1 security partners.
         </li>
