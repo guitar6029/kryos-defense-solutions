@@ -78,6 +78,17 @@
   --kryos-text-low: #6d7479;
 }
 
+@layer utility {
+  .section-title {
+    font-family: "Orbitron", sans-serif;
+    @apply text-[8rem];
+  }
+  .link {
+    color: var(--kryos-text-high);
+    @apply text-4xl;
+  }
+}
+
 html {
   background: var(--kryos-bg);
   overflow-x: hidden;

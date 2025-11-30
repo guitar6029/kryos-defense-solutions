@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import Absolute from "@/components/Wrapper/Absolute.vue";
 import KryosPanel from "~/components/Panels/KryosPanel.vue";
+import MKI from "@/assets/img/mk-i-no-bg.png";
 /**
  * 
  * <main>
@@ -22,22 +23,26 @@ import KryosPanel from "~/components/Panels/KryosPanel.vue";
   <div class="flex flex-col gap-2">
     <!-- HERO -->
     <div
-      class="relative flex h-screen flex-col items-center justify-center gap-6"
+      class="relative flex h-screen flex-col items-center justify-center gap-4"
     >
-      <Absolute extra-class="top-20 -left-20 sm:w-100 md:w-100 lg:w-200 -z-1">
-        <KryosPanel :stroke-width="4" />
+      <Absolute
+        extra-class="top-10 -left-20 sm:w-100 md:w-100 lg:w-200 -z-1 opacity-50"
+      >
+        <KryosPanel :stroke-width="2" />
       </Absolute>
 
-      <Absolute extra-class="-top-20 right-0 sm:w-100 lg:w-200">
+      <Absolute extra-class="top-120 right-0 sm:w-100 lg:w-200 opacity-50">
         <KryosPanel :option="2" />
       </Absolute>
 
-      <Absolute extra-class="bottom-0 right-0 sm:w-100 lg:w-200">
+      <Absolute extra-class="top-0 right-0 sm:w-100 lg:w-200 opacity-50">
         <KryosPanel :option="3" :stroke-width="2" />
       </Absolute>
 
-      <Absolute extra-class="bottom-0 left-0 sm:w-100 lg:w-200 rotate-180">
-        <KryosPanel :option="3" :stroke-width="4" />
+      <Absolute
+        extra-class="-bottom-50 left-0 sm:w-100 lg:w-200 rotate-180 opacity-50"
+      >
+        <KryosPanel :option="3" :stroke-width="2" />
       </Absolute>
 
       <!-- <Absolute
@@ -51,7 +56,9 @@ import KryosPanel from "~/components/Panels/KryosPanel.vue";
       </Absolute> -->
 
       <div class="z-10 flex flex-col gap-10 items-center justify-center">
-        <h1 class="text-8xl font-orbitron">Kryos Defense Solutions</h1>
+        <h1 class="sm:text-2xl md:text-[6rem] lg:text-[8rem] font-orbitron">
+          Kryos Defense Solutions
+        </h1>
         <span class="text-4xl"
           >Autonomous Tactical Robotics for High-Risk Environments.</span
         >
@@ -62,13 +69,10 @@ import KryosPanel from "~/components/Panels/KryosPanel.vue";
           costly—or too dangerous.
         </p>
 
-        <NuxtLink
-          to="/products#kryos-mk-i"
-          class="text-4xl text-(--kryos-text-high)"
-        >
+        <NuxtLink to="/products#kryos-mk-i" class="link">
           Explore Kryos MK-I
         </NuxtLink>
-        <NuxtLink to="/rdivision" class="text-4xl text-(--kryos-text-high)">
+        <NuxtLink to="/rdivision" class="link">
           Learn about our R&D Division</NuxtLink
         >
 
@@ -86,27 +90,39 @@ import KryosPanel from "~/components/Panels/KryosPanel.vue";
       </div>
     </div>
     <!-- END HERO -->
+
     <!-- Core Capabilities -->
-    <div class="flex flex-col gap-2">
-      <h2>What We Build</h2>
-      <div class="grid grid-cols-3">
-        <div class="flex flex-col gap-2">
-          <h1>Autonomous Ground Platforms</h1>
-          <p>
+    <div
+      class="relative flex min-h-screen flex-col items-center justify-center gap-4"
+    >
+      <Absolute
+        extra-class="top-50 left-1/2 -translate-x-1/2 w-400 opacity-50 rotate-180"
+      >
+        <KryosPanel :option="4" />
+      </Absolute>
+
+      <div class="flex flex-col items-center justify-center">
+        <h2 class="section-title">What We Build</h2>
+      </div>
+
+      <div class="flex flex-col items-center justify-center gap-12">
+        <div class="flex flex-col items-center justify-center gap-2">
+          <h1 class="text-6xl">Autonomous Ground Platforms</h1>
+          <p class="text-4xl max-w-2xl">
             Multi-terrain drones engineered for patrol, interdiction, and
             perimeter security.
           </p>
         </div>
-        <div class="flex flex-col gap-2">
-          <h1>Intelligent Target Acquisition</h1>
-          <p>
+        <div class="flex flex-col items-center justify-center gap-2">
+          <h1 class="text-6xl">Intelligent Target Acquisition</h1>
+          <p class="text-4xl max-w-2xl">
             Sensor fusion, threat classification, and precision response under
             strict rules of engagement.
           </p>
         </div>
-        <div class="flex flex-col gap-2">
-          <h1>Secure Systems Integration</h1>
-          <p>
+        <div class="flex flex-col items-center justify-center gap-2">
+          <h1 class="text-6xl">Secure Systems Integration</h1>
+          <p class="text-4xl max-w-2xl">
             Seamless integration with existing command, surveillance, and
             infrastructure networks.
           </p>
@@ -116,24 +132,75 @@ import KryosPanel from "~/components/Panels/KryosPanel.vue";
     <!-- End Capabilities -->
 
     <!-- Kryos Mk-I Spotlight -->
-    <div class="flex flex-col gap-2">
-      <h2>Flagship Platform: Kryos MK-I</h2>
-      <p>
-        The Kryos MK-I is a multi-terrain autonomous drone designed for
-        high-density urban, industrial, and subterranean environments. With
-        six-degrees-of-freedom mobility and a hardened sensor array, MK-I units
-        maintain operational integrity where conventional systems fail.
-      </p>
-      <ul>
-        <li>Multi-surface traversal (floor, wall, overhead structures)</li>
-        <li>Redundant sensor clusters (thermal, LIDAR, acoustic mapping)</li>
-        <li>Modular payload hardpoints</li>
-        <li>Encrypted command and control channel</li>
-      </ul>
-      <NuxtLink to="/products">View full technical specification</NuxtLink>
-      <div>
-        <span>PRODUCT RENDER / SCHEMATIC HERE</span>
+    <div class="flex flex-col items-center gap-4 relative">
+      <Absolute extra-class="top-50 w-full opacity-50 ">
+        <KryosPanel :option="5" />
+      </Absolute>
+
+      <Absolute
+        extra-class="-bottom-50 left-0 sm:w-100 lg:w-200 rotate-180 opacity-50"
+      >
+        <KryosPanel :option="3" :stroke-width="2" />
+      </Absolute>
+
+      <Absolute
+        extra-class="bottom-50 right-0 sm:w-100 lg:w-200 rotate-180 opacity-50"
+      >
+        <KryosPanel :option="3" :stroke-width="2" />
+      </Absolute>
+
+      <Absolute
+        extra-class="bottom-50 left-0 sm:w-100 lg:w-100  opacity-50 -z-1"
+      >
+        <KryosPanel :option="6" :stroke-width="2" />
+      </Absolute>
+      
+      <Absolute
+        extra-class="top-150 left-0 opacity-20 -z-1"
+      >
+          <div class="w-125 h-25 border-2 flex flex-col items-center justify-center">
+            <span class="font-orbitron font-extrabold text-6xl">KRYOS MK-I</span>
+          </div>
+          <div class="w-110 h-2 border-2">
+
+          </div>
+      </Absolute>
+      
+      <Absolute
+        extra-class="top-1/2 left-1/2 -translate-x-1/2 opacity-5 -z-1"
+      >
+          <div class="w-325 h-325 flex flex-col items-center justify-center">
+            <span class="font-orbitron font-extrabold text-[10rem]">KRYOS</span>
+          </div>
+          
+      </Absolute>
+
+      <h2 class="section-title">Flagship Platform</h2>
+      <div class="flex gap-2">
+        <div class="flex flex-col items-center gap-2">
+          <img :src="MKI" alt="Kryos MK-I Prototype" class="w-200" />
+          <h3 class="text-6xl text-(--kryos-text-high) font-orbitron uppercase">
+            Kryos MK-I
+          </h3>
+        </div>
       </div>
+      <div class="flex flex-col gap-6 max-w-4xl">
+        <p class="text-4xl">
+          The Kryos MK-I is a multi-terrain autonomous drone designed for
+          high-density urban, industrial, and subterranean environments. With
+          six-degrees-of-freedom mobility and a hardened sensor array, MK-I
+          units maintain operational integrity where conventional systems fail.
+        </p>
+        <ul class="text-4xl list-disc font-bold flex flex-col gap-4">
+          <li>Multi-surface traversal (floor, wall, overhead structures)</li>
+          <li>Redundant sensor clusters (thermal, LIDAR, acoustic mapping)</li>
+          <li>Modular payload hardpoints</li>
+          <li>Encrypted command and control channel</li>
+        </ul>
+      </div>
+      <NuxtLink to="/products" class="link"
+        >View full technical specification</NuxtLink
+      >
     </div>
     <!-- End Kryos Mk-I Spotlight -->
 
