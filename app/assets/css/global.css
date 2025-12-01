@@ -76,6 +76,9 @@
 
   /* Low-emphasis UI labels, secondary info */
   --kryos-text-low: #6d7479;
+
+
+  --kryos-mk-bg: #536573;
 }
 
 @layer utility {
