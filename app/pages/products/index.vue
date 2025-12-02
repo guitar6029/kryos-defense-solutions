@@ -1,14 +1,15 @@
 <script lang="ts" setup>
 import Absolute from "~/components/Wrapper/Absolute.vue";
-import KryosPanel from "~/components/Panels/KryosPanel.vue";
-import KryosCard from "~/components/Cards/KryosCard.vue";
-import ProcurementIntegration from "~/components/Products/ProcurementIntegration.vue";
-import Roadmap from "~/components/Products/Roadmap.vue";
-import DeploymentProfiles from "~/components/Products/DeploymentProfiles.vue";
 import CapabilitiesOperationNodes from "~/components/Products/CapabilitiesOperationNodes.vue";
+import DeploymentProfiles from "~/components/Products/DeploymentProfiles.vue";
 import FullViewProduct from "~/components/Products/FullViewProduct.vue";
-import SummaryProduct from "~/components/Products/SummaryProduct.vue";
+import KryosPanel from "~/components/Panels/KryosPanel.vue";
+import ProcurementIntegration from "~/components/Products/ProcurementIntegration.vue";
 import ProductCTA from "~/components/Products/ProductCTA.vue";
+import ProductFamiliesOverview from "~/components/Products/ProductFamiliesOverview.vue";
+import ProductHero from "~/components/Products/ProductHero.vue";
+import Roadmap from "~/components/Products/Roadmap.vue";
+import SummaryProduct from "~/components/Products/SummaryProduct.vue";
 </script>
 
 <template>
@@ -17,56 +18,9 @@ import ProductCTA from "~/components/Products/ProductCTA.vue";
       <KryosPanel :option="11" />
     </Absolute>
 
-    <section
-      class="flex flex-col relative items-center justify-center gap-4 min-h-[50vh]"
-    >
-      <h1 class="section-title">Kryos Platform Catalog</h1>
-      <p class="text-2xl max-w-2xl">
-        Kryos Defense Solutions develops autonomous platforms engineered for
-        long-duration deployment in high-risk, high-value environments. Each
-        system is built on a shared core architecture, with configurations
-        tailored to specific operational demands.
-      </p>
-      <p class="text-2xl max-w-2xl">
-        This catalog summarizes the platforms currently available for
-        procurement, starting with our flagship ground unit.
-      </p>
-    </section>
+    <ProductHero />
     <!-- Product Families Overview -->
-    <section class="flex flex-col items-center min-h-screen gap-6 mb-50">
-      <h2 class="section-title">Platform Families</h2>
-      <div class="flex flex-wrap items-center justify-center gap-6">
-        <KryosCard
-          title="Ground Platforms (Active)"
-          text="Autonomous, multi-terrain units for patrol, interdiction, and close
-        asset protection."
-        />
-
-        <KryosCard
-          title="Aerial Recon Platforms (In Development)"
-          text="Lightweight, persistent-surveillance drones designed for layered
-        situational awareness."
-        />
-
-        <KryosCard
-          title="Infrastructure Integration Systems (In Development)"
-          text="Embedded systems for transit networks, industrial facilities, and
-        critical infrastructure nodes."
-        />
-
-        <KryosCard
-          title="Ground Platforms (Active)"
-          text="Autonomous, multi-terrain units for patrol, interdiction, and close
-        asset protection."
-        />
-      </div>
-      <p
-        class="relative bottom-0 text-(--kryos-warn) text-4xl max-w-2xl text-center mt-10"
-      >
-        Note: Certain platform configurations are restricted and available only
-        under classified procurement channels.
-      </p>
-    </section>
+    <ProductFamiliesOverview />
     <!-- END Product Families Overview -->
 
     <!-- Kryos MK-I Flagship Spotlight -->
