@@ -10,6 +10,7 @@ import EX1VideoB from "~/assets/video/ex-1-360-b.mp4";
 import ProcurementIntegration from "~/components/Products/ProcurementIntegration.vue";
 import Roadmap from "~/components/Products/Roadmap.vue";
 import DeploymentProfiles from "~/components/Products/DeploymentProfiles.vue";
+import CapabilitiesOperationNodes from "~/components/Products/CapabilitiesOperationNodes.vue";
 </script>
 
 <!-- <main>
@@ -307,74 +308,7 @@ import DeploymentProfiles from "~/components/Products/DeploymentProfiles.vue";
     <!-- END Kryos EX-1 Tactical ExoFrame Spotlight -->
 
     <!-- Capabilities & Operating Modes -->
-    <section class="flex flex-col items-center gap-2">
-      <h2 class="section-title">Capabilities & Operating Modes</h2>
-      <div class="flex flex-col gap-2">
-        <h3>Platform Capabilities</h3>
-        <ul>
-          <li>
-            <span>Autonomous Patrol</span>
-            <p>
-              - Configurable patrol routes with adaptive pathfinding around new
-              obstacles and environmental changes.
-            </p>
-          </li>
-          <li>
-            <span>Threat Detection & Classification</span>
-            <p>
-              - Real-time analysis of motion, thermal signatures, and anomalous
-              patterns within defined perimeters.
-            </p>
-          </li>
-          <li>
-            <span>Zone Enforcement</span>
-            <p>
-              - Configurable soft and hard boundaries, with escalating response
-              ladders based on client policy.
-            </p>
-          </li>
-          <li>
-            <span>Data Capture & Forensics</span>
-            <p>
-              - Continuous logging of visual, positional, and environmental data
-              for post-incident review.
-            </p>
-          </li>
-        </ul>
-      </div>
-      <div class="flex flex-col gap-2">
-        <h3>Operating Modes</h3>
-        <div class="flex flex-col gap-2">
-          <h3>Recon Modes</h3>
-          <p>
-            Low-profile traversal with reduced visible signature and emphasis on
-            mapping, observation, and silent tracking.
-          </p>
-        </div>
-        <div class="flex flex-col gap-2">
-          <h3>Interdiction Mode</h3>
-          <p>
-            Aggressive posture with priority on deterrence, boundary
-            enforcement, and response escalation under operator-defined rules of
-            engagement.
-          </p>
-        </div>
-        <div class="flex flex-col gap-2">
-          <h3>Guard Mode</h3>
-          <p>
-            Fixed or bounded operation around a constrained perimeter, ideal for
-            static high-value assets and chokepoints.
-          </p>
-        </div>
-        <div class="flex flex-col gap-2">
-          <h3>Transit Mode</h3>
-          <p>
-            Optimized for movement between sectors, with reduced sensor
-            footprint and energy-efficient path planning.
-          </p>
-        </div>
-      </div>
-    </section>
+    <CapabilitiesOperationNodes />
     <!-- END Capabilities & Operating Modes -->
 
     <!-- Deployment Profiles-->
