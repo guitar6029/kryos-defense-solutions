@@ -1,11 +1,28 @@
 <script lang="ts" setup>
+import { onMounted, ref } from "vue";
 import Absolute from "~/components/Wrapper/Absolute.vue";
 import KryosPanel from "~/components/Panels/KryosPanel.vue";
 import FullViewProduct from "~/components/Products/FullViewProduct.vue";
 import SummaryProduct from "~/components/Products/SummaryProduct.vue";
 import VideoFullPanel from "~/components/Products/VideoFullPanel.vue";
 import ImageGallery from "~/components/Products/ImageGallery.vue";
+
 const route = useRoute();
+let timeoutId: number | null = null;
+
+onMounted(() => {
+  timeoutId = window.setTimeout(() => {
+    isLoading.value = false;
+  }, 4000);
+});
+
+onUnmounted(() => {
+  if (timeoutId !== null) {
+    clearTimeout(timeoutId);
+  }
+});
+
+const isLoading = ref(true);
 
 type KryosSlug = "mk-1" | "ex-1";
 type KryosModel = "mk1" | "ex1";
@@ -120,7 +137,19 @@ const currentProduct = computed(() => products[productKey.value]);
 </script>
 
 <template>
-  <div class="flex flex-col gap-16 relative min-h-screen">
+  <div
+    v-if="isLoading"
+    class="relative flex flex-col items-center justify-center gap-2 min-h-screen"
+  >
+    <Absolute extra-class="top-0 left-0 w-200 -z-1">
+      <KryosPanel :option="3" :stroke-width="0.5" />
+    </Absolute>
+    <Absolute extra-class="bottom-10 right-0 w-200 -z-1">
+      <KryosPanel :option="3" :stroke-width="0.5" />
+    </Absolute>
+    <div class="text-8xl font-orbitron">LOADING...</div>
+  </div>
+  <div v-else class="flex flex-col gap-16 relative min-h-screen">
     <!-- Title / intro -->
     <section
       class="flex flex-col items-center justify-center gap-4 mt-20 min-h-[50vh] relative p-4"
