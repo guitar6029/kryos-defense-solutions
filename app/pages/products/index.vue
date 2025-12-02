@@ -2,26 +2,14 @@
 import Absolute from "~/components/Wrapper/Absolute.vue";
 import KryosPanel from "~/components/Panels/KryosPanel.vue";
 import KryosCard from "~/components/Cards/KryosCard.vue";
-import MKIVideo from "~/assets/video/mki.mp4";
-import MKIModel from "~/assets/img/mk-i-no-bg.png";
-import EX1Model from "~/assets/img/ex-1-no-ng.png";
-import EX1Video from "~/assets/video/ex-1-360.mp4";
-import EX1VideoB from "~/assets/video/ex-1-360-b.mp4";
 import ProcurementIntegration from "~/components/Products/ProcurementIntegration.vue";
 import Roadmap from "~/components/Products/Roadmap.vue";
 import DeploymentProfiles from "~/components/Products/DeploymentProfiles.vue";
 import CapabilitiesOperationNodes from "~/components/Products/CapabilitiesOperationNodes.vue";
+import FullViewProduct from "~/components/Products/FullViewProduct.vue";
+import SummaryProduct from "~/components/Products/SummaryProduct.vue";
+import VideoFullPanel from "~/components/Products/VideoFullPanel.vue";
 </script>
-
-<!-- <main>
-  [1] Page Title + Intro
-  [2] Product Families Overview
-  [3] Kryos MK-I – Flagship Spotlight
-  [4] Capabilities & Operating Modes
-  [5] Deployment Profiles
-  [6] Roadmap / Future Platforms
-  [7] Procurement & Integration CTA
-</main> -->
 
 <template>
   <div class="flex flex-col relative gap-4 min-h-screen">
@@ -83,51 +71,11 @@ import CapabilitiesOperationNodes from "~/components/Products/CapabilitiesOperat
 
     <!-- Kryos MK-I Flagship Spotlight -->
     <section class="flex flex-col items-center gap-10 relative">
-      <div class="w-full h-screen bg-(--kryos-mk-bg) relative pb-60">
-        <h2
-          class="absolute top-10 left-1/2 -translate-x-1/2 font-orbitron font-extrabold text-[10rem] z-10"
-        >
-          KRYOS MK-I
-        </h2>
-        <img
-          :src="MKIModel"
-          alt="MKI Model with background"
-          class="w-500 absolute left-1/2 -translate-x-1/2 -bottom-24 lg:-bottom-32"
-        />
-        <Absolute
-          extra-class="absolute bottom-10 left-25 -rotate-90 origin-bottom-left"
-        >
-          <div class="border-4 p-2">
-            <span class="font-orbitron font-extrabold text-8xl"
-              >KRYOS MK-I</span
-            >
-          </div>
-        </Absolute>
-      </div>
+      <FullViewProduct model="mk1" />
 
-      <div class="relative flex gap-10 border h-125">
-        <div
-          class="absolute bottom-0 left-0 -rotate-90 origin-bottom-left w-125 h-25 border translate-x-px flex flex-col items-center justify-center"
-        >
-          <span class="font-orbitron font-extrabold text-6xl">KRYOS MK-I</span>
-        </div>
+      <SummaryProduct model="mk1" />
 
-        <div
-          class="flex flex-col items-center justify-center gap-2 p-2 max-w-4xl"
-        >
-          <h2 class="text-6xl">Kryos MK-I Autonomous Tactical Drone</h2>
-          <p class="text-2xl">
-            The Kryos MK-I is a multi-terrain ground platform designed for dense
-            urban, industrial, and subterranean environments. Six-degree
-            mobility, redundant sensor arrays, and modular payload interfaces
-            allow MK-I units to operate continuously under adverse conditions.
-          </p>
-        </div>
-      </div>
-
-      <video muted autoplay loop class="w-full">
-        <source :src="MKIVideo" type="video/webm" />
-      </video>
+      <VideoFullPanel model="mk1" />
 
       <!-- blocks -->
       <div
@@ -202,54 +150,13 @@ import CapabilitiesOperationNodes from "~/components/Products/CapabilitiesOperat
     <!-- Kryos EX-1 Tactical ExoFrame Spotlight  -->
     <section class="flex flex-col items-center gap-10 relative">
       <!-- hero -->
-      <div class="w-full h-screen bg-(--kryos-mk-bg) relative pb-60">
-        <h2
-          class="absolute top-10 left-1/2 -translate-x-1/2 font-orbitron font-extrabold text-[10rem] z-10"
-        >
-          KRYOS EX-1
-        </h2>
-        <img
-          :src="EX1Model"
-          alt="Kryos EX-1 Tactical ExoFrame"
-          class="w-500 md:w-450 lg:w-500 absolute left-1/2 -translate-x-1/2 -bottom-24 lg:-bottom-32"
-        />
-        <Absolute
-          extra-class="absolute bottom-10 left-25 -rotate-90 origin-bottom-left"
-        >
-          <div class="border-4 p-2">
-            <span class="font-orbitron font-extrabold text-8xl"
-              >KRYOS EX-1</span
-            >
-          </div>
-        </Absolute>
-      </div>
+      <FullViewProduct model="ex1" />
 
       <!-- summary block -->
-      <div class="relative flex gap-10 border h-125">
-        <div
-          class="absolute bottom-0 left-0 -rotate-90 origin-bottom-left w-125 h-25 border translate-x-px flex flex-col items-center justify-center"
-        >
-          <span class="font-orbitron font-extrabold text-6xl">KRYOS EX-1</span>
-        </div>
-
-        <div
-          class="flex flex-col items-center justify-center gap-2 p-2 max-w-4xl"
-        >
-          <h2 class="text-6xl">Kryos EX-1 Tactical ExoFrame</h2>
-          <p class="text-2xl">
-            The Kryos EX-1 is a powered exoskeleton platform designed for
-            high-load, high-risk operations. Humanoid articulation, assisted
-            lift systems, and a hardened sensor spine allow a single operator to
-            move, stabilize, and handle mass that would normally require a full
-            team and heavy equipment.
-          </p>
-        </div>
-      </div>
+      <SummaryProduct model="ex1" />
 
       <!-- teaser video -->
-      <video muted autoplay loop class="w-full">
-        <source :src="EX1VideoB" type="video/webm" />
-      </video>
+      <VideoFullPanel model="ex1" />
 
       <!-- preview specs -->
       <div
