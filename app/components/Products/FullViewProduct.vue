@@ -1,12 +1,20 @@
 <script lang="ts" setup>
-import MKIModel from "~/assets/img/mk-i-no-bg.png";
-import EX1Model from "~/assets/img/ex-1-no-ng.png";
 import Absolute from "../Wrapper/Absolute.vue";
+import EX1Model from "~/assets/img/ex-1-no-ng.png";
+import MKIModel from "~/assets/img/mk-i-no-bg.png";
 import type { KryosModel } from "~/types/KryosModel";
+import KryosPanel from "../Panels/KryosPanel.vue";
 
-defineProps<{
-  model: KryosModel;
-}>();
+withDefaults(
+  defineProps<{
+    model: KryosModel;
+    hasTitle?: boolean;
+  }>(),
+  {
+    model: "mk1",
+    hasTitle: true,
+  }
+);
 
 const selectedModel: Record<KryosModel, { title: string; imageSrc: string }> = {
   mk1: {
@@ -21,55 +29,52 @@ const selectedModel: Record<KryosModel, { title: string; imageSrc: string }> = {
 </script>
 
 <template>
-  <div class="w-full h-screen bg-(--kryos-mk-bg) relative pb-60">
-    <h2
-      class="absolute top-10 left-1/2 -translate-x-1/2 font-orbitron font-extrabold sm:text-6xl md:text-8xl xl:text-[10rem] lg:text-nowrap z-10"
-    >
-      {{ selectedModel[model].title }}
-    </h2>
-    <h2
-      class="absolute top-12 left-1/2 -translate-x-1/2 font-orbitron text-black font-extrabold sm:text-6xl md:text-8xl xl:text-[10rem] lg:text-nowrap z-11 opacity-90"
-    >
-      {{ selectedModel[model].title }}
-    </h2>
+  <div
+    class="w-full h-[50vh] xl:h-screen flex flex-col items-center bg-(--kryos-mk-bg) relative pb-60"
+  >
+    <div class="relative" v-if="hasTitle">
+      <h2
+        class="absolute top-10 left-1/2 -translate-x-1/2 font-orbitron font-extrabold text-6xl md:text-8xl xl:text-[10rem] text-nowrap z-10"
+      >
+        {{ selectedModel[model].title }}
+      </h2>
+      <h2
+        class="absolute top-12 left-1/2 -translate-x-1/2 font-orbitron text-black font-extrabold text-6xl md:text-8xl xl:text-[10rem] text-nowrap z-11 opacity-90"
+      >
+        {{ selectedModel[model].title }}
+      </h2>
+    </div>
     <img
       :src="selectedModel[model].imageSrc"
       alt="MKI Model with background"
-      class="w-500 absolute left-1/2 -translate-x-1/2 -bottom-24 lg:-bottom-32"
+      class="absolute left-1/2 -translate-x-1/2 w-full max-w-200 xl:max-w-400 -bottom-24 lg:-bottom-32 z-15"
     />
-    <Absolute
-      extra-class="absolute bottom-50 left-30 -rotate-90 origin-bottom-left"
-    >
-      <div class="p-2 border-b-12 border-b-(--kryos-warn)">
-        <span class="font-orbitron font-extrabold text-8xl">{{
-          selectedModel[model].title
-        }}</span>
-      </div>
+
+    <Absolute extra-class="absolute bottom-0 w-125 h-20 right-0 ">
+      <div class="bg-(--kryos-bg) w-full h-full"></div>
     </Absolute>
 
-    <!-- <Absolute
-          extra-class="absolute top-10 left-20 inline-flex gap-4 opacity-40 "
+    <Absolute extra-class="absolute top-0 w-125 h-20 left-0">
+      <div class="bg-(--kryos-bg) w-full h-full"></div>
+    </Absolute>
+
+    <Absolute extra-class="absolute top-0 w-75 xl:w-225 right-0 rotate-180">
+      <KryosPanel stroke="var(--kryos-accent)" :option="6" />
+    </Absolute>
+    
+    <Absolute extra-class="absolute top-0 w-50 xl:w-125 left-0">
+      <KryosPanel stroke="var(--kryos-accent)" :option="6" />
+    </Absolute>
+
+    <Absolute
+      extra-class="absolute bottom-0 left-20 xl:bottom-50 xl:left-30 -rotate-90 origin-bottom-left"
+    >
+      <div class="p-2 border-b-12 border-b-(--kryos-warn)">
+        <span
+          class="font-orbitron font-extrabold text-4xl xl:text-8xl text-nowrap"
+          >{{ selectedModel[model].title }}</span
         >
-          <KryosPanel
-            option="right"
-            fill="var(--kryos-warn)"
-            extra-class="w-20"
-          />
-          <KryosPanel
-            option="right"
-            fill="var(--kryos-warn)"
-            extra-class="w-8"
-          />
-          <KryosPanel
-            option="right"
-            fill="var(--kryos-warn)"
-            extra-class="w-4"
-          />
-          <KryosPanel
-            option="right"
-            fill="var(--kryos-warn)"
-            extra-class="w-2"
-          />
-        </Absolute> -->
+      </div>
+    </Absolute>
   </div>
 </template>

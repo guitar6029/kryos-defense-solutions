@@ -59,7 +59,7 @@ const products: Record<KryosModel, ProductConfig> = {
       },
       {
         label: "Endurance",
-        value: "18–26 hours continuous operation (environment dependent)",
+        value: "18-26 hours continuous operation (environment dependent)",
       },
       {
         label: "Sensor Suite",
@@ -122,23 +122,42 @@ const currentProduct = computed(() => products[productKey.value]);
 <template>
   <div class="flex flex-col gap-16 relative min-h-screen">
     <!-- Title / intro -->
-    <section class="flex flex-col items-center gap-4 mt-20">
+    <section
+      class="flex flex-col items-center justify-center gap-4 mt-20 min-h-[50vh] relative p-4"
+    >
+      <Absolute extra-class="top-0 left-0 w-full -z-1">
+        <KryosPanel :option="13" :stroke-width="0.5" />
+      </Absolute>
+      <Absolute extra-class="top-0 right-0 w-200 -z-2 rotate-90">
+        <KryosPanel :option="3" :stroke-width="1" />
+      </Absolute>
+      <Absolute extra-class="top-0 -left-100 w-200 -z-2 rotate-90">
+        <KryosPanel :option="3" :stroke-width="1" />
+      </Absolute>
       <h1 class="section-title">
         {{ currentProduct.title }}
       </h1>
-      <p class="text-2xl max-w-3xl text-center">
+      <p class="text-4xl max-w-4xl text-center">
         {{ currentProduct.subtitle }}
       </p>
     </section>
 
     <!-- Hero + summary -->
     <section class="flex flex-col items-center gap-10 relative">
-      <FullViewProduct :model="productKey" />
+      <FullViewProduct :model="productKey" :has-title="false" />
       <SummaryProduct :model="productKey" />
     </section>
 
     <!-- System Architecture -->
-    <section class="flex flex-col items-center gap-4">
+    <section class="flex flex-col items-center gap-4 relative">
+      <Absolute extra-class="bottom-50 -left-100 w-200 -z-2 rotate-90">
+        <KryosPanel :option="4" :stroke-width="1" />
+      </Absolute>
+
+      <Absolute extra-class="bottom-50 -right-100 w-200 -z-2 rotate-90">
+        <KryosPanel :option="4" :stroke-width="1" />
+      </Absolute>
+
       <h3 class="text-6xl">
         {{ currentProduct.systemArchitecture.heading }}
       </h3>
