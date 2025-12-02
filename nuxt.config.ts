@@ -17,5 +17,5 @@ export default defineNuxtConfig({
       { name: "Orbitron", weights: [400, 500, 700] },
     ],
   },
-  modules: ["@nuxt/fonts"],
+  modules: ["@nuxt/fonts", "@nuxt/icon"],
 });

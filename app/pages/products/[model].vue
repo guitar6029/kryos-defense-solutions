@@ -30,6 +30,7 @@ type KryosModel = "mk1" | "ex1";
 type SpecItem = {
   label: string;
   value: string;
+  icon: string;
 };
 
 type ProductConfig = {
@@ -69,26 +70,32 @@ const products: Record<KryosModel, ProductConfig> = {
       {
         label: "Configuration",
         value: "Six-legged autonomous ground platform",
+        icon: "lucide:bot", // mech / robot
       },
       {
         label: "Mobility Envelope",
         value: "Floor, wall, and overhead structural traversal",
+        icon: "lucide:move-3d", // multi-axis movement
       },
       {
         label: "Endurance",
         value: "18-26 hours continuous operation (environment dependent)",
+        icon: "lucide:battery-full", // long runtime
       },
       {
         label: "Sensor Suite",
         value: "Thermal, LIDAR, acoustic, and inertial mapping",
+        icon: "lucide:radar", // scanning / detection
       },
       {
         label: "Communications",
         value: "Encrypted, multi-channel command and telemetry link",
+        icon: "lucide:radio", // tactical comms
       },
       {
         label: "Payload",
         value: "Two modular hardpoints, configurable per deployment",
+        icon: "lucide:boxes", // modular loadout
       },
     ],
   },
@@ -108,26 +115,31 @@ const products: Record<KryosModel, ProductConfig> = {
       {
         label: "Configuration",
         value: "Humanoid powered exoskeleton platform",
+        icon: "lucide:accessibility", // human / body form
       },
       {
         label: "Primary Role",
         value:
           "Assisted lift, hazardous-material handling, and tactical support in constrained environments",
+        icon: "lucide:shield-plus", // protection / tactical support
       },
       {
         label: "Augmentation Channel",
         value:
           "Full-body mechanical linkage with spine, shoulder, and leg actuation",
+        icon: "lucide:cable", // physical linkage / actuation
       },
       {
         label: "Control Model",
         value:
           "Operator-in-the-loop with motion amplification and safety constraint layers",
+        icon: "lucide:brain", // human-in-the-loop / control logic
       },
       {
         label: "Compatibility",
         value:
           "Shares compute, power, and telemetry stack with Kryos MK-series ground platforms",
+        icon: "lucide:link-2", // shared stack / interoperability
       },
     ],
   },
@@ -205,6 +217,10 @@ const currentProduct = computed(() => products[productKey.value]);
     <section
       class="flex flex-col justify-center gap-4 mb-50 relative w-full min-h-[70vh]"
     >
+      <div
+        class="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03),transparent_70%)]"
+      ></div>
+
       <Absolute extra-class="absolute bottom-0 left-0 w-100 -z-1">
         <KryosPanel :option="6" />
       </Absolute>
@@ -222,10 +238,13 @@ const currentProduct = computed(() => products[productKey.value]);
         {{ currentProduct.specsHeading }}
       </h3>
 
-      <ul class="flex flex-col items-center gap-4 text-4xl">
+      <ul class="flex flex-col items-center gap-6 text-4xl">
         <li v-for="spec in currentProduct.specs" :key="spec.label">
-          <span class="font-bold">{{ spec.label }}:</span>
-          {{ " " + spec.value }}
+          <div class="flex items-center gap-2">
+            <Icon :name="spec.icon" class="text-(--kryos-mk-bg)" />
+            <span class="font-bold">{{ spec.label }}:</span>
+            {{ " " + spec.value }}
+          </div>
         </li>
       </ul>
     </section>
