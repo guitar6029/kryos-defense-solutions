@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import Absolute from "../Wrapper/Absolute.vue";
-import EX1Model from "~/assets/img/ex-1-no-ng.png";
+import EX1Model from "~/assets/img/ex-1-no-bg.png";
 import MKIModel from "~/assets/img/mk-i-no-bg.png";
 import type { KryosModel } from "~/types/KryosModel";
 import KryosPanel from "../Panels/KryosPanel.vue";

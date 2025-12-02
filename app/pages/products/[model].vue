@@ -4,7 +4,7 @@ import KryosPanel from "~/components/Panels/KryosPanel.vue";
 import FullViewProduct from "~/components/Products/FullViewProduct.vue";
 import SummaryProduct from "~/components/Products/SummaryProduct.vue";
 import VideoFullPanel from "~/components/Products/VideoFullPanel.vue";
-
+import ImageGallery from "~/components/Products/ImageGallery.vue";
 const route = useRoute();
 
 type KryosSlug = "mk-1" | "ex-1";
@@ -146,6 +146,7 @@ const currentProduct = computed(() => products[productKey.value]);
     <section class="flex flex-col items-center gap-10 relative">
       <FullViewProduct :model="productKey" :has-title="false" />
       <SummaryProduct :model="productKey" />
+      <ImageGallery :model="productKey" />
     </section>
 
     <!-- System Architecture -->
