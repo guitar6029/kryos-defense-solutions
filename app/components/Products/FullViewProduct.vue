@@ -27,13 +27,18 @@ const selectedModel: Record<KryosModel, { title: string; imageSrc: string }> = {
     >
       {{ selectedModel[model].title }}
     </h2>
+    <h2
+      class="absolute top-12 left-1/2 -translate-x-1/2 font-orbitron text-black font-extrabold sm:text-6xl md:text-8xl xl:text-[10rem] lg:text-nowrap z-11 opacity-90"
+    >
+      {{ selectedModel[model].title }}
+    </h2>
     <img
       :src="selectedModel[model].imageSrc"
       alt="MKI Model with background"
       class="w-500 absolute left-1/2 -translate-x-1/2 -bottom-24 lg:-bottom-32"
     />
     <Absolute
-      extra-class="absolute bottom-10 left-30 -rotate-90 origin-bottom-left"
+      extra-class="absolute bottom-50 left-30 -rotate-90 origin-bottom-left"
     >
       <div class="p-2 border-b-12 border-b-(--kryos-warn)">
         <span class="font-orbitron font-extrabold text-8xl">{{
