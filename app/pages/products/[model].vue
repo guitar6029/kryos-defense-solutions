@@ -13,7 +13,7 @@ let timeoutId: number | null = null;
 onMounted(() => {
   timeoutId = window.setTimeout(() => {
     isLoading.value = false;
-  }, 4000);
+  }, 2000);
 });
 
 onUnmounted(() => {
@@ -177,8 +177,6 @@ const currentProduct = computed(() => products[productKey.value]);
       <FullViewProduct :model="productKey" :has-title="false" />
       <SummaryProduct :model="productKey" />
       <ImageGallery :model="productKey" hasSignature />
-     
-
     </section>
 
     <!-- System Architecture -->

@@ -30,7 +30,7 @@ const selectedModel: Record<KryosModel, { title: string; imageSrc: string }> = {
 
 <template>
   <div
-    class="w-full h-[50vh] xl:h-screen flex flex-col items-center bg-(--kryos-mk-bg) relative pb-60"
+    class="w-full h-[50vh] xl:h-screen flex flex-col items-center bg-[radial-gradient(circle_at_center,var(--kryos-mk-bg),transparent)] relative pb-60"
   >
     <div class="relative" v-if="hasTitle">
       <h2

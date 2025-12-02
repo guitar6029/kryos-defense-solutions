@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import type { KryosModel } from "~/types/KryosModel";
-
+import Absolute from "../Wrapper/Absolute.vue";
+import KryosPanel from "../Panels/KryosPanel.vue";
 defineProps<{
   model: KryosModel;
 }>();
@@ -27,6 +28,10 @@ const selectedModel: Record<
 
 <template>
   <div class="relative flex border h-125">
+    <Absolute extra-class="absolute top-0 -left-4/4 w-75 xl:w-225 right-0">
+      <KryosPanel stroke="var(--kryos-accent)" :option="8" />
+    </Absolute>
+
     <div
       class="absolute bottom-0 left-0 -rotate-90 origin-bottom-left w-125 h-25 border translate-x-px flex flex-col items-center justify-center"
     >
