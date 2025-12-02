@@ -163,6 +163,7 @@ const currentProduct = computed(() => products[productKey.value]);
       <Absolute extra-class="top-0 -left-100 w-200 -z-2 rotate-90">
         <KryosPanel :option="3" :stroke-width="1" />
       </Absolute>
+
       <h1 class="section-title">
         {{ currentProduct.title }}
       </h1>
@@ -175,7 +176,9 @@ const currentProduct = computed(() => products[productKey.value]);
     <section class="flex flex-col items-center gap-10 relative">
       <FullViewProduct :model="productKey" :has-title="false" />
       <SummaryProduct :model="productKey" />
-      <ImageGallery :model="productKey" />
+      <ImageGallery :model="productKey" hasSignature />
+     
+
     </section>
 
     <!-- System Architecture -->

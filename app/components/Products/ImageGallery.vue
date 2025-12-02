@@ -1,5 +1,7 @@
 <script lang="ts" setup>
 import { onMounted, ref } from "vue";
+import Absolute from "../Wrapper/Absolute.vue";
+import KryosSignature from "../KryosSignature.vue";
 import MK1Model from "~/assets/img/mk-i-no-bg.png";
 import MK1Model_side from "~/assets/img/mk-i-side-a-trns.png";
 
@@ -11,6 +13,7 @@ let interval: number | null = null;
 
 const props = defineProps<{
   model: KryosModel;
+  hasSignature?: boolean
 }>();
 
 const currentImg = ref(0);
@@ -53,7 +56,10 @@ onUnmounted(() => {
       alt=""
       class="w-200 h-200 object-contain"
     />
-    <div class="flex items-center justify-center gap-2">
+    <div class="relative flex items-center justify-center gap-2">
+       <Absolute extra-class="bottom-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 opacity-2 -z-1">
+        <KryosSignature />
+      </Absolute>
       <div
         v-for="(imgSrc, idx) in selectedModel[model].img.length"
         :key="idx"

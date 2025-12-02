@@ -35,7 +35,7 @@ import KryosPanel from "./Panels/KryosPanel.vue";
       <div class="w-110 h-2 border-2"></div>
     </Absolute>
 
-    <Absolute extra-class="top-1/2 left-1/2 -translate-x-1/2 opacity-5 -z-1">
+    <Absolute extra-class="top-1/2 left-1/2 -translate-x-1/2 opacity-2 -z-1">
       <KryosSignature />
     </Absolute>
 
