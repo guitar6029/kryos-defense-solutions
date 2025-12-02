@@ -25,7 +25,6 @@ const selectedModel: Record<KryosModel, { img: string[] }> = {
 };
 
 function changeImg() {
-  console.log("change img");
   interval = setInterval(() => {
     if (currentImg.value === selectedModel[props.model].img.length - 1) {
       // set it to zero again
