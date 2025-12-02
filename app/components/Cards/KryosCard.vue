@@ -6,11 +6,13 @@ const props = withDefaults(
     title?: string;
     text?: string;
     option?: CardOption;
+    extraClass?: string;
   }>(),
   {
     title: "",
     text: "",
     option: 1,
+    extraClass: ""
   }
 );
 
@@ -44,6 +46,7 @@ const currentCard = computed(() => cardOptions[props.option!]);
       class="absolute inset-0 translate-x-3 translate-y-4 rounded-xl border-2 -z-10 bg-(--kryos-metal-light) opacity-40"
     ></div>
     <div
+    :class="[extraClass]"
       class="flex flex-col trns hover:bg-(--kryos-bg) items-center justify-between gap-2 border-2 rounded-xl p-4 bg-(--kryos-bg-alt) w-full h-full"
     >
       <h4

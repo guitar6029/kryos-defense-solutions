@@ -77,7 +77,6 @@
   /* Low-emphasis UI labels, secondary info */
   --kryos-text-low: #6d7479;
 
-
   --kryos-mk-bg: #536573;
 }
 
@@ -91,7 +90,7 @@
   }
   .link {
     color: var(--kryos-text-high);
-    @apply text-4xl;
+    @apply text-4xl border-2 p-4 hover:text-(--kryos-text-mid) hover:bg-(--kryos-bg-alt) transition ease-in duration-300;
   }
   .card-title {
     @apply text-6xl font-bold;

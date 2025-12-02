@@ -4,9 +4,12 @@ import KryosPanel from "~/components/Panels/KryosPanel.vue";
 import KryosCard from "~/components/Cards/KryosCard.vue";
 import MKIVideo from "~/assets/video/mki.mp4";
 import MKIModel from "~/assets/img/mk-i-no-bg.png";
-import EX1Model from '~/assets/img/ex-1-no-ng.png'
-import EX1Video from '~/assets/video/ex-1-360.mp4'
-
+import EX1Model from "~/assets/img/ex-1-no-ng.png";
+import EX1Video from "~/assets/video/ex-1-360.mp4";
+import EX1VideoB from "~/assets/video/ex-1-360-b.mp4";
+import ProcurementIntegration from "~/components/Products/ProcurementIntegration.vue";
+import Roadmap from "~/components/Products/Roadmap.vue";
+import DeploymentProfiles from "~/components/Products/DeploymentProfiles.vue";
 </script>
 
 <!-- <main>
@@ -121,47 +124,53 @@ import EX1Video from '~/assets/video/ex-1-360.mp4'
         </div>
       </div>
 
-      <video controls muted class="w-full">
+      <video muted autoplay loop class="w-full">
         <source :src="MKIVideo" type="video/webm" />
       </video>
 
       <!-- blocks -->
-      <div class="flex flex-col justify-center gap-4 mb-50 relative w-full min-h-screen">
-        <Absolute
-          extra-class="absolute bottom-0 left-0 w-100 -z-1 "
-        >
-          <KryosPanel :option="6"/>
+      <div
+        class="flex flex-col justify-center gap-4 mb-50 relative w-full min-h-screen"
+      >
+        <Absolute extra-class="absolute bottom-0 left-0 w-100 -z-1 ">
+          <KryosPanel :option="6" />
         </Absolute>
-        <Absolute
-          extra-class="absolute bottom-0 right-0 w-100 -z-1 rotate-45"
-        >
-          <KryosPanel :option="6"/>
+        <Absolute extra-class="absolute bottom-0 right-0 w-100 -z-1 rotate-45">
+          <KryosPanel :option="6" />
         </Absolute>
-        <Absolute
-          extra-class="absolute top-20 -right-10 w-150 -z-1 rotate-45"
-        >
-          <KryosPanel :option="8"/>
+        <Absolute extra-class="absolute top-20 -right-10 w-150 -z-1 rotate-45">
+          <KryosPanel :option="8" />
         </Absolute>
-        
-        <Absolute
-          extra-class="absolute top-0 left-0 w-200 -z-1"
-        >
-          <KryosPanel :option="8"/>
+
+        <Absolute extra-class="absolute top-0 left-0 w-200 -z-1">
+          <KryosPanel :option="8" />
         </Absolute>
         <h3 class="text-6xl text-center">Core Specifications</h3>
         <ul class="flex flex-col items-center gap-4 text-4xl">
-          <li><span class="font-bold">Configuration:</span> Six-legged autonomous ground platform</li>
           <li>
-            <span class="font-bold">Mobility Envelope:</span> Floor, wall, and overhead structural traversal
+            <span class="font-bold">Configuration:</span> Six-legged autonomous
+            ground platform
           </li>
           <li>
-            <span class="font-bold">Endurance:</span> 18-26 hours continuous operation (environment dependent)
+            <span class="font-bold">Mobility Envelope:</span> Floor, wall, and
+            overhead structural traversal
           </li>
-          <li><span class="font-bold">Sensor Suite:</span> Thermal, LIDAR, acoustic, and inertial mapping</li>
           <li>
-            <span class="font-bold">Communications:</span> Encrypted, multi-channel command and telemetry link
+            <span class="font-bold">Endurance:</span> 18-26 hours continuous
+            operation (environment dependent)
           </li>
-          <li><span class="font-bold">Payload:</span> Two modular hardpoints, configurable per deployment</li>
+          <li>
+            <span class="font-bold">Sensor Suite:</span> Thermal, LIDAR,
+            acoustic, and inertial mapping
+          </li>
+          <li>
+            <span class="font-bold">Communications:</span> Encrypted,
+            multi-channel command and telemetry link
+          </li>
+          <li>
+            <span class="font-bold">Payload:</span> Two modular hardpoints,
+            configurable per deployment
+          </li>
         </ul>
       </div>
       <div class="flex flex-col items-center gap-2">
@@ -181,7 +190,6 @@ import EX1Video from '~/assets/video/ex-1-360.mp4'
       </div>
 
       <div class="flex flex-col text-center gap-2 mb-50">
-      
         <p class="text-center text-4xl">View deployment modes and profiles</p>
         <NuxtLink to="/contact" class="link"
           >Request detailed technical brief</NuxtLink
@@ -230,16 +238,16 @@ import EX1Video from '~/assets/video/ex-1-360.mp4'
           <p class="text-2xl">
             The Kryos EX-1 is a powered exoskeleton platform designed for
             high-load, high-risk operations. Humanoid articulation, assisted
-            lift systems, and a hardened sensor spine allow a single operator
-            to move, stabilize, and handle mass that would normally require a
-            full team and heavy equipment.
+            lift systems, and a hardened sensor spine allow a single operator to
+            move, stabilize, and handle mass that would normally require a full
+            team and heavy equipment.
           </p>
         </div>
       </div>
 
       <!-- teaser video -->
-      <video controls muted class="w-100">
-        <source :src="EX1Video" type="video/webm" />
+      <video muted autoplay loop class="w-full">
+        <source :src="EX1VideoB" type="video/webm" />
       </video>
 
       <!-- preview specs -->
@@ -249,14 +257,10 @@ import EX1Video from '~/assets/video/ex-1-360.mp4'
         <Absolute extra-class="absolute bottom-0 left-0 w-100 -z-1">
           <KryosPanel :option="6" />
         </Absolute>
-        <Absolute
-          extra-class="absolute bottom-0 right-0 w-100 -z-1 rotate-45"
-        >
+        <Absolute extra-class="absolute bottom-0 right-0 w-100 -z-1 rotate-45">
           <KryosPanel :option="6" />
         </Absolute>
-        <Absolute
-          extra-class="absolute top-10 -right-10 w-150 -z-1 rotate-45"
-        >
+        <Absolute extra-class="absolute top-10 -right-10 w-150 -z-1 rotate-45">
           <KryosPanel :option="8" />
         </Absolute>
         <Absolute extra-class="absolute top-0 left-0 w-200 -z-1">
@@ -271,18 +275,17 @@ import EX1Video from '~/assets/video/ex-1-360.mp4'
           </li>
           <li>
             <span class="font-bold">Primary Role:</span>
-            Assisted lift, hazardous-material handling, and tactical support
-            in constrained environments
+            Assisted lift, hazardous-material handling, and tactical support in
+            constrained environments
           </li>
           <li>
             <span class="font-bold">Augmentation Channel:</span>
-            Full-body mechanical linkage with spine, shoulder, and leg
-            actuation
+            Full-body mechanical linkage with spine, shoulder, and leg actuation
           </li>
           <li>
             <span class="font-bold">Control Model:</span>
-            Operator-in-the-loop with motion amplification and safety
-            constraint layers
+            Operator-in-the-loop with motion amplification and safety constraint
+            layers
           </li>
           <li>
             <span class="font-bold">Compatibility:</span>
@@ -304,7 +307,7 @@ import EX1Video from '~/assets/video/ex-1-360.mp4'
     <!-- END Kryos EX-1 Tactical ExoFrame Spotlight -->
 
     <!-- Capabilities & Operating Modes -->
-    <section class="flex flex-col gap-2">
+    <section class="flex flex-col items-center gap-2">
       <h2 class="section-title">Capabilities & Operating Modes</h2>
       <div class="flex flex-col gap-2">
         <h3>Platform Capabilities</h3>
@@ -375,89 +378,15 @@ import EX1Video from '~/assets/video/ex-1-360.mp4'
     <!-- END Capabilities & Operating Modes -->
 
     <!-- Deployment Profiles-->
-    <section class="flex flex-col gap-2">
-      <h2 class="section-title">Deployment Profiles</h2>
-      <div class="grid grid-cols-3 gap-4">
-        <div class="flex flex-col gap-2">
-          <h3>Tier-1 Corporate Campus Security</h3>
-          <p>
-            MK-I units dynamically patrol access corridors, loading bays, and
-            server infrastructure while coordinating with fixed surveillance
-            assets.
-          </p>
-        </div>
-        <div class="flex flex-col gap-2">
-          <h3>Transit & Subterranean Infrastructure</h3>
-          <p>
-            Deployed within tunnels, service passages, and maintenance corridors
-            to monitor structural integrity and detect unauthorized presence.
-          </p>
-        </div>
-        <div class="flex flex-col gap-2">
-          <h3>Energy & Industrial Facilities</h3>
-          <p>
-            Equipped with specialized payloads for gas detection, heat mapping,
-            and operational anomaly detection in refineries and
-            heavy-manufacturing plants.
-          </p>
-        </div>
-        <div class="flex flex-col gap-2">
-          <h3>Restricted Black-Site Operations</h3>
-          <p>
-            Certain deployments operate under full classification, with modified
-            firmware and non-disclosed payload configurations.
-          </p>
-        </div>
-      </div>
-    </section>
+    <DeploymentProfiles />
     <!-- END Deployment Profiles -->
 
     <!-- Roadmap / Future Platforms -->
-    <section class="flex flex-col gap-2">
-      <h2 class="section-title">Upcoming Platforms</h2>
-      <div class="flex flex-col gap-2">
-        <h3>Kryos MK-II (Concept Stage)</h3>
-        <p>
-          A heavier, armor-enhanced variant designed for contested environments
-          and direct interface with mechanized units.
-        </p>
-      </div>
-      <div class="flex flex-col gap-2">
-        <h3>Kryos Aerial Recon Node (ARN-Series)</h3>
-        <p>
-          Lightweight aerial platforms focused on persistent overhead
-          surveillance and integrated targeting support.
-        </p>
-      </div>
-      <div class="flex flex-col gap-2">
-        <h3>Kryos Swarm Coordination Package</h3>
-        <p>
-          Software layer enabling multi-unit coordination for coverage,
-          redundancy, and complex perimeter management.
-        </p>
-      </div>
-    </section>
+    <Roadmap />
     <!-- END Roadmap / Future Platforms -->
 
     <!-- Procurement & Integration CTA -->
-    <section
-      class="flex flex-col items-center justify-center gap-2 min-h-screen"
-    >
-      <h2 class="section-title">Procurement & Systems Integration</h2>
-      <p class="text-4xl max-w-2xl">
-        Kryos platforms are available under controlled procurement channels for
-        qualified defense, security, and critical infrastructure clients. Each
-        deployment is preceded by a joint assessment phase to align platform
-        capabilities with operational requirements and regulatory frameworks.
-      </p>
-      <p class="text-2xl max-w-2xl">
-        For procurement inquiries, integration planning, or technical briefings,
-        contact the Kryos deployment team.
-      </p>
-      <NuxtLink to="/contact" class="link"
-        >Contact Kryos Deployment Team</NuxtLink
-      >
-    </section>
+    <ProcurementIntegration />
     <!-- end Procurement & Integration CTA -->
   </div>
 </template>
