@@ -62,7 +62,7 @@ import KryosPanel from "./Panels/KryosPanel.vue";
         <li>Encrypted command and control channel</li>
       </ul>
     </div>
-    <NuxtLink to="/products" class="link"
+    <NuxtLink to="/products/mk-1" class="link"
       >View full technical specification</NuxtLink
     >
   </div>
