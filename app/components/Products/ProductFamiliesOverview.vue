@@ -1,25 +1,23 @@
 <script lang="ts" setup>
-import KryosCard from "../Cards/KryosCard.vue";
 import KryosArerial from "~/assets/img/kryos-aerial.jpg";
 import KryosGround from "~/assets/img/kryos-ground.jpg";
-import KryosSystems from "~/assets/img/kryos-integration-systems.jpg";
 import KryosLab from "~/assets/img/kryos-system-lab.jpg";
-import KryosTerrain from "~/assets/img/kryos-terrain.jpg";
 import Absolute from "../Wrapper/Absolute.vue";
+import KryosPanel from "../Panels/KryosPanel.vue";
+import Text3D from "../Text/Text3D.vue";
 </script>
 
 <template>
   <section class="flex flex-col items-center min-h-screen gap-12 mb-50">
     <h2 class="section-title">Platform Families</h2>
 
-    <div class="flex flex-col gap-12">
-      <div class="flex flex-row gap-2">
-        <div class="w-300 relative">
-          <Absolute extra-class="bottom-1/4 left-1/2 -translate-x-1/2">
-            <h2 class="font-orbitron text-8xl font-bold text-nowrap">
-              Ground Platforms
-            </h2>
+    <div class="flex flex-col gap-12 relative">
+      <div class="flex flex-col items-center xl:flex-row gap-2">
+        <div class="sm:w-200 md:250 xl:w-300 relative trns hover:scale-102">
+          <Absolute extra-class="bottom-50 left-1/2 -translate-x-1/2">
+            <Text3D text="Ground Platforms" />
           </Absolute>
+
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 422 269"
@@ -54,26 +52,24 @@ import Absolute from "../Wrapper/Absolute.vue";
         </div>
 
         <div class="flex items-center justify-center p-4">
-          <p class="max-w-4xl text-6xl">
+          <p class="max-w-4xl text-4xl xl:text-6xl italic">
             Autonomous, multi-terrain units for patrol, interdiction, and close
             asset protection.
           </p>
         </div>
       </div>
 
-      <div class="flex flex-row gap-2">
+      <div class="flex items-center xl:flex-row flex-col-reverse gap-2">
         <div class="flex items-center justify-center p-4">
-          <p class="max-w-4xl text-6xl">
+          <p class="max-w-4xl text-4xl xl:text-6xl italic">
             Lightweight, persistent-surveillance drones designed for layered
             situational awareness.
           </p>
         </div>
 
-        <div class="w-300 relative">
-          <Absolute extra-class="bottom-3/4 left-1/2 -translate-x-1/2">
-            <h2 class="font-orbitron text-8xl font-bold text-nowrap">
-              Aerial Recon Platforms
-            </h2>
+        <div class="sm:w-200 md:250 xl:w-300 relative trns hover:scale-102">
+          <Absolute extra-class="top-40 left-1/2 -translate-x-1/2 z-10">
+            <Text3D text="Aerial Recon Platforms" />
           </Absolute>
 
           <svg
@@ -109,18 +105,14 @@ import Absolute from "../Wrapper/Absolute.vue";
         </div>
       </div>
 
-      <div class="flex flex-row gap-2">
-        <div class="w-300 relative">
+      <div class="flex flex-col items-center xl:flex-row gap-2">
+        <div class="sm:w-200 md:250 xl:w-300 relative trns hover:scale-102">
           <Absolute
             extra-class="bottom-1/4 left-1/2 -translate-x-1/2 flex flex-col gap-2"
           >
-            <h2 class="font-orbitron text-8xl font-bold text-nowrap">
-              Infrastructure
-            </h2>
-            <h2 class="font-orbitron text-8xl font-bold text-nowrap">
-              Integration Systems
-            </h2>
+            <Text3D text="Integration Systems" />
           </Absolute>
+
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="w-full h-auto"
@@ -152,46 +144,21 @@ import Absolute from "../Wrapper/Absolute.vue";
         </div>
 
         <div class="flex items-center justify-center p-4">
-          <p class="max-w-4xl text-6xl">
+          <p class="max-w-4xl text-4xl xl:text-6xl italic">
             Embedded systems for transit networks, industrial facilities, and
             critical infrastructure nodes.
           </p>
         </div>
       </div>
+
+      <div class="flex flex-row items-center justify-center gap-2">
+        <p
+          class="relative bottom-0 text-(--kryos-warn) text-4xl max-w-2xl text-center mt-10"
+        >
+          Note: Certain platform configurations are restricted and available
+          only under classified procurement channels.
+        </p>
+      </div>
     </div>
   </section>
 </template>
-
-<style scoped></style>
-
-<!-- <div class="flex flex-wrap items-center justify-center gap-6">
-      <KryosCard
-        title="Ground Platforms (Active)"
-        text="Autonomous, multi-terrain units for patrol, interdiction, and close
-        asset protection."
-      />
-
-      <KryosCard
-        title="Aerial Recon Platforms (In Development)"
-        text="Lightweight, persistent-surveillance drones designed for layered
-        situational awareness."
-      />
-
-      <KryosCard
-        title="Infrastructure Integration Systems (In Development)"
-        text="Embedded systems for transit networks, industrial facilities, and
-        critical infrastructure nodes."
-      />
-
-      <KryosCard
-        title="Ground Platforms (Active)"
-        text="Autonomous, multi-terrain units for patrol, interdiction, and close
-        asset protection."
-      />
-    </div>
-    <p
-      class="relative bottom-0 text-(--kryos-warn) text-4xl max-w-2xl text-center mt-10"
-    >
-      Note: Certain platform configurations are restricted and available only
-      under classified procurement channels.
-    </p> -->
