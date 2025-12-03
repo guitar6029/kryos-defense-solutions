@@ -8,10 +8,30 @@ import Text3D from "../Text/Text3D.vue";
 </script>
 
 <template>
-  <section class="flex flex-col items-center min-h-screen gap-12 mb-50">
+  <section class="flex flex-col min-h-screen gap-12 mb-50">
     <h2 class="section-title">Platform Families</h2>
 
-    <div class="flex flex-col gap-12 relative">
+    <div class="flex flex-col items-center gap-12 relative">
+      <Absolute extra-class="top-20 -left-20 w-200 -z-1">
+        <KryosPanel />
+      </Absolute>
+
+      <Absolute extra-class="top-0 -right-50 w-200 -z-1 opacity-50">
+        <KryosPanel :option="7" />
+      </Absolute>
+
+      <Absolute extra-class="top-300 left-20 w-200 -z-1 opacity-50">
+        <KryosPanel :option="14" />
+      </Absolute>
+
+      <Absolute extra-class="top-500 -left-20 w-200 -z-1">
+        <KryosPanel />
+      </Absolute>
+
+      <Absolute extra-class="top-500 -right-50 w-200 -z-1 opacity-50">
+        <KryosPanel :option="7" />
+      </Absolute>
+
       <div class="flex flex-col items-center xl:flex-row gap-2">
         <div class="sm:w-200 md:250 xl:w-300 relative trns hover:scale-102">
           <Absolute extra-class="bottom-50 left-1/2 -translate-x-1/2">
