@@ -21,6 +21,15 @@
   /* Core accent blue (muted, metallic) */
   --kryos-accent: #4c5d6c;
 
+  /* Darker variations */
+  --kryos-accent-dark-1: #3b4a58; /* darker steel blue — subtle, industrial */
+  --kryos-accent-dark-2: #2e3944; /* graphite blue-black — tactical, stealth */
+  --kryos-accent-dark-3: #343a40; /* neutral gunmetal — armor plating feel */
+  --kryos-accent-dark-4: #1f2429; /* obsidian tactical — deep shadow accent */
+
+  /* Recommended for background panel strokes */
+  --kryos-accent-shadow: #2e3944; /* pairs with primary for depth layering */
+
   /* Brightest blue highlight (use sparingly) */
   --kryos-accent-bright: #79a1c8;
 
