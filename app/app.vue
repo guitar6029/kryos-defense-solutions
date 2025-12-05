@@ -1,8 +1,17 @@
 <template>
   <NuxtLayout>
     <Nav />
-    <main class="flex flex-col gap-2 overflow-x-hidden min-h-screen">
-      <NuxtPage />
+    <main class="flex justify-center min-h-screen overflow-x-hidden">
+      <div class="w-full max-w-[3000px] flex flex-col gap-2">
+        <NuxtPage />
+      </div>
     </main>
+
+    <!-- <main
+      class="flex flex-col gap-2 overflow-x-hidden min-h-screen max-w-[3000px]"
+    >
+      <NuxtPage />
+    </main> -->
+    <KryosFooter />
   </NuxtLayout>
 </template>
