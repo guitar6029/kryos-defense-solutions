@@ -3,19 +3,37 @@ import Absolute from "./Wrapper/Absolute.vue";
 import KryosPanel from "./Panels/KryosPanel.vue";
 </script>
 <template>
-  <div class="flex flex-col min-h-screen relative bg-(--kryos-bg-alt) z-1">
-    <Absolute
-      extra-class="bottom-1/2 translate-y-1/2 left-1/2 -translate-x-1/2 sm:w-100 lg:w-400 -z-1 opacity-20"
-    >
-      <KryosPanel :option="14" :stroke-width="1" stroke="gray" />
+  <div class="flex flex-col min-h-screen relative bg-(--kryos-bg-alt)">
+    <Absolute extra-class="top-20 -right-20 w-200">
+      <KryosPanel :option="8" />
     </Absolute>
-    <Splitter right-text="SECTOR // DEPLOYMENTS" />
-    <div class="flex flex-col items-center text-[4rem]">
-      <DeploymentPanel deployment="air" />
-      <DeploymentPanel deployment="land" />
-      <DeploymentPanel deployment="sea" />
-      <DeploymentPanel deployment="digital" />
-    </div>
+    <Absolute extra-class="top-150 -left-20 w-200 -z-1">
+      <KryosPanel :option="8" />
+    </Absolute>
+    <Absolute extra-class="top-150 -right-20 w-100 -z-0">
+      <KryosPanel :option="10" />
+    </Absolute>
+    <Absolute extra-class="top-20 -left-20 w-50 -z-0 -rotate-180">
+      <KryosPanel :option="10" />
+    </Absolute>
+
+    <Absolute extra-class="bottom-100 -left-20 w-50 -z-0 -rotate-180">
+      <KryosPanel :option="10" />
+    </Absolute>
+
+    <Absolute extra-class="bottom-250 left-0 w-150 -z-0 -rotate-180">
+      <KryosPanel :option="3" :stroke-width="2" />
+    </Absolute>
+
+    <Absolute extra-class="top-150 left-0 w-150 -z-0 -rotate-180">
+      <KryosPanel :option="3" :stroke-width="4" />
+    </Absolute>
+
+    <Splitter right-text="SECTOR // DEPLOYMENTS" extraClass="bg-(--kryos-bg)" />
+    <DeploymentPanel deployment="air" />
+    <DeploymentPanel deployment="land" />
+    <DeploymentPanel deployment="sea" />
+    <DeploymentPanel deployment="digital" />
   </div>
 </template>
 
