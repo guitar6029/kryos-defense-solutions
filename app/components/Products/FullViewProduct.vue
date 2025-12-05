@@ -61,7 +61,7 @@ const selectedModel: Record<KryosModel, { title: string; imageSrc: string }> = {
     <Absolute extra-class="absolute top-0 w-75 xl:w-225 right-0 rotate-180">
       <KryosPanel stroke="var(--kryos-accent)" :option="6" />
     </Absolute>
-    
+
     <Absolute extra-class="absolute top-0 w-50 xl:w-125 left-0">
       <KryosPanel stroke="var(--kryos-accent)" :option="6" />
     </Absolute>
@@ -69,7 +69,7 @@ const selectedModel: Record<KryosModel, { title: string; imageSrc: string }> = {
     <Absolute
       extra-class="absolute bottom-0 left-20 xl:bottom-50 xl:left-30 -rotate-90 origin-bottom-left"
     >
-      <div class="p-2 border-b-12 border-b-(--kryos-warn)">
+      <div class="p-2 border-b-6 border-b-(--kryos-warn)">
         <span
           class="font-orbitron font-extrabold text-4xl xl:text-8xl text-nowrap"
           >{{ selectedModel[model].title }}</span
