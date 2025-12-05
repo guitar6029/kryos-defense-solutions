@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import Absolute from "./Wrapper/Absolute.vue";
 import KryosPanel from "./Panels/KryosPanel.vue";
-import SwarmDrones from "~/assets/img/swarm_drones.jpg";
 </script>
 <template>
   <div class="flex flex-col min-h-screen relative bg-(--kryos-bg-alt) z-1">
@@ -10,10 +9,8 @@ import SwarmDrones from "~/assets/img/swarm_drones.jpg";
     >
       <KryosPanel :option="14" :stroke-width="1" stroke="gray" />
     </Absolute>
-
     <Splitter right-text="SECTOR // DEPLOYMENTS" />
-
-    <div class="flex flex-col items-center text-[4rem] mt-20">
+    <div class="flex flex-col items-center text-[4rem]">
       <DeploymentPanel deployment="air" />
       <DeploymentPanel deployment="land" />
       <DeploymentPanel deployment="sea" />
