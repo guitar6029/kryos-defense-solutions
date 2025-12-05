@@ -32,8 +32,6 @@ import Text3D from "../Text/Text3D.vue";
         <KryosPanel :option="7" />
       </Absolute>
 
-      div
-
       <div class="flex flex-col items-center xl:flex-row gap-2">
         <div class="sm:w-200 md:w-250 xl:w-300 relative trns hover:scale-102">
           <Absolute extra-class="bottom-50 left-1/2 -translate-x-1/2">
