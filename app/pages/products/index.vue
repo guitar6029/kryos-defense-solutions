@@ -1,9 +1,7 @@
 <script lang="ts" setup>
-import Absolute from "~/components/Wrapper/Absolute.vue";
 import CapabilitiesOperationNodes from "~/components/Products/CapabilitiesOperationNodes.vue";
 import DeploymentProfiles from "~/components/Products/DeploymentProfiles.vue";
 import FullViewProduct from "~/components/Products/FullViewProduct.vue";
-import KryosPanel from "~/components/Panels/KryosPanel.vue";
 import ProcurementIntegration from "~/components/Products/ProcurementIntegration.vue";
 import ProductCTA from "~/components/Products/ProductCTA.vue";
 import ProductFamiliesOverview from "~/components/Products/ProductFamiliesOverview.vue";
@@ -22,6 +20,14 @@ import SummaryProduct from "~/components/Products/SummaryProduct.vue";
     <!-- Product Families Overview -->
     <ProductFamiliesOverview />
     <!-- END Product Families Overview -->
+
+    <!-- Deployment Profiles-->
+    <DeploymentProfiles />
+    <!-- END Deployment Profiles -->
+
+    <!-- Capabilities & Operating Modes -->
+    <CapabilitiesOperationNodes />
+    <!-- END Capabilities & Operating Modes -->
 
     <!-- Kryos MK-I Flagship Spotlight -->
     <section class="flex flex-col items-center gap-8 relative">
@@ -60,14 +66,6 @@ import SummaryProduct from "~/components/Products/SummaryProduct.vue";
       </div>
     </section>
     <!-- END Kryos EX-1 Tactical ExoFrame Spotlight -->
-
-    <!-- Capabilities & Operating Modes -->
-    <CapabilitiesOperationNodes />
-    <!-- END Capabilities & Operating Modes -->
-
-    <!-- Deployment Profiles-->
-    <DeploymentProfiles />
-    <!-- END Deployment Profiles -->
 
     <!-- Roadmap / Future Platforms -->
     <Roadmap />

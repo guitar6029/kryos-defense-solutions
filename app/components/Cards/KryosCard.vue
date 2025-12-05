@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-type CardOption = 1 | 2;
+export type CardOption = 1 | 2;
 
 const props = withDefaults(
   defineProps<{

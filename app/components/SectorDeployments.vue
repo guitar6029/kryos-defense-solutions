@@ -1,36 +1,65 @@
 <script lang="ts" setup>
-import Absolute from './Wrapper/Absolute.vue';
-import KryosCard from './Cards/KryosCard.vue';
+import Absolute from "./Wrapper/Absolute.vue";
+import KryosPanel from "./Panels/KryosPanel.vue";
 </script>
 <template>
-     <div
-      class="flex flex-col min-h-screen items-center justify-center gap-2 relative"
+  <div
+    class="flex flex-col min-h-screen gap-2 relative bg-(--kryos-bg-alt) z-1"
+  >
+    <Absolute
+      extra-class="bottom-1/2 translate-y-1/2 left-1/2 -translate-x-1/2 sm:w-100 lg:w-400 -z-1 opacity-20"
     >
-      <Absolute
-        extra-class="bottom-10 -right-20 sm:w-100 lg:w-400  opacity-50 -z-1"
-      >
-        <KryosPanel :option="7" :stroke-width="1" />
-      </Absolute>
+      <KryosPanel :option="14" :stroke-width="1" stroke="gray" />
+    </Absolute>
 
-      <h2 class="section-title">Deployed Across Critical Sectors</h2>
-      <div class="flex flex-wrap items-center justify-center gap-6">
-        <KryosCard
-          title="Goverment & Defense"
-          text="Perimeter defense, border control, urban operations support."
-        />
-        <KryosCard
-          title="Corporate Security"
-          text="High-value campus protection, data center security, logistics hubs."
-        />
-        <KryosCard
-          title="Industrial & Energy"
-          text="Refineries, mining facilities, off-shore platforms, and hazardous
-        environments."
-        />
-        <KryosCard
-          title="Research & Black-Site Operations"
-          text="Compartmentalized deployments under classified directives."
-        />
+    <Splitter right-text="SECTOR // DEPLOYMENTS" />
+
+    <div class="flex flex-col items-center gap-12 text-[4rem] mt-20">
+      <div class="flex flex-row items-center gap-8">
+        <span class="font-bold text-(--kryos-warn) font-orbitron">[AIR]</span>
+        <span class="text-[3.5rem]"
+          >High-altitude ISR / interception / overwatch</span
+        >
+      </div>
+      <div class="flex flex-row items-center gap-8">
+        <span class="font-bold text-(--kryos-warn) font-orbitron">[LAND]</span>
+        <span class="text-[3.5rem]"
+          >High-altitude ISR / interception / overwatch</span
+        >
+      </div>
+      <div class="flex flex-row items-center gap-8">
+        <span class="font-bold text-(--kryos-warn) font-orbitron">[SEA]</span>
+        <span class="text-[3.5rem]"
+          >High-altitude ISR / interception / overwatch</span
+        >
+      </div>
+      <div class="flex flex-row items-center gap-8">
+        <span class="font-bold text-(--kryos-warn) font-orbitron"
+          >[DIGITAL]</span
+        >
+        <span class="text-[3.5rem]"
+          >High-altitude ISR / interception / overwatch</span
+        >
       </div>
     </div>
+  </div>
 </template>
+
+<style scoped>
+@keyframes kryosHover {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.hovering-anim {
+  display: inline-block;
+  animation: kryosHover 2.5s ease-in-out infinite;
+}
+</style>
