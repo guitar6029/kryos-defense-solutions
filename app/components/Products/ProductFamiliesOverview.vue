@@ -8,7 +8,7 @@ import Text3D from "../Text/Text3D.vue";
 </script>
 
 <template>
-  <section class="flex flex-col min-h-screen gap-12 mb-50">
+  <section class="flex flex-col min-h-screen gap-12">
     <h2 class="section-title">Platform Families</h2>
 
     <div class="flex flex-col items-center gap-12 relative">
