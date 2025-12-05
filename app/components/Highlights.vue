@@ -3,9 +3,7 @@ import Absolute from "./Wrapper/Absolute.vue";
 import KryosPanel from "./Panels/KryosPanel.vue";
 </script>
 <template>
-  <div
-    class="flex flex-col items-center justify-center gap-2 h-screen relative"
-  >
+  <div class="flex flex-col justify-center gap-2 h-screen relative">
     <Absolute extra-class="bottom-10 left-0 w-200  opacity-50 -z-1">
       <KryosPanel :stroke-width="1" :option="6" />
     </Absolute>
@@ -16,9 +14,11 @@ import KryosPanel from "./Panels/KryosPanel.vue";
       <KryosPanel :stroke-width="2" :option="3" />
     </Absolute>
 
+    <Splitter right-text="SECTOR // ANNOUNCEMENTS" />
+
     <h2 class="section-title">Recent Announcements</h2>
     <ul
-      class="text-4xl font-bold flex flex-col items-center gap-4 text-(--kryos-text-high)"
+      class="text-4xl font-bold flex flex-col items-center gap-10 text-(--kryos-text-high) max-w-4xl mx-auto"
     >
       <li>
         Kryos MK-I enters limited deployment with Tier-1 security partners.
