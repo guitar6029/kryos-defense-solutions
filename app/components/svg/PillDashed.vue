@@ -1,0 +1,72 @@
+<template>
+  <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <!-- Set the color with CSS: color: #fdfade; -->
+    <g transform="translate(60 60)" fill="currentColor">
+      <!-- one dash, then rotated 8 times -->
+      <rect x="-9" y="-52" width="18" height="8" rx="4" ry="4" />
+      <rect
+        x="-9"
+        y="-52"
+        width="18"
+        height="8"
+        rx="4"
+        ry="4"
+        transform="rotate(45)"
+      />
+      <rect
+        x="-9"
+        y="-52"
+        width="18"
+        height="8"
+        rx="4"
+        ry="4"
+        transform="rotate(90)"
+      />
+      <rect
+        x="-9"
+        y="-52"
+        width="18"
+        height="8"
+        rx="4"
+        ry="4"
+        transform="rotate(135)"
+      />
+      <rect
+        x="-9"
+        y="-52"
+        width="18"
+        height="8"
+        rx="4"
+        ry="4"
+        transform="rotate(180)"
+      />
+      <rect
+        x="-9"
+        y="-52"
+        width="18"
+        height="8"
+        rx="4"
+        ry="4"
+        transform="rotate(225)"
+      />
+      <rect
+        x="-9"
+        y="-52"
+        width="18"
+        height="8"
+        rx="4"
+        ry="4"
+        transform="rotate(270)"
+      />
+      <rect
+        x="-9"
+        y="-52"
+        width="18"
+        height="8"
+        rx="4"
+        ry="4"
+        transform="rotate(315)"
+      />
+    </g>
+  </svg>
+</template>

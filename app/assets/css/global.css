@@ -95,6 +95,7 @@
   }
   .section-title {
     font-family: "Orbitron", sans-serif;
+    color: var(--kryos-text-high);
     @apply lg:text-[8rem] sm:text-[4rem] text-center;
   }
   .link {
@@ -139,5 +140,5 @@ body {
 }
 
 .footer-section-title {
-  font-size: 25px;;
+  font-size: 25px;
 }
