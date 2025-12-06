@@ -63,7 +63,7 @@ const selectedDeployment: Record<
 
     <!-- PANEL WRAPPER -->
     <Absolute
-      class="w-full xl:w-250 h-150 left-1/2 -translate-x-1/2 flex items-center justify-center z-1 trns hover:opacity-100 opacity-50"
+      class="w-full xl:w-250 h-150 left-1/2 -translate-x-1/2 flex items-center justify-center z-1 trns hover:opacity-70 opacity-50"
     >
       <svg
         class="w-full h-auto"
