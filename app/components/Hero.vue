@@ -50,11 +50,12 @@ import PillDashed from "./svg/PillDashed.vue";
 
     <div class="z-10 flex flex-col gap-10 items-center justify-center">
       <h1
-        class="sm:text-2xl md:text-[6rem] lg:text-[8rem] font-orbitron font-bold text-(--kryos-text-high)"
+        class="sm:text-2xl md:text-[6rem] lg:text-[8rem] font-orbitron font-bold text-(--kryos-text-high) text-center"
       >
         Kryos Defense Solutions
       </h1>
-      <span class="text-4xl text-(--kryos-warn) font-bold tracking-[0.03em]"
+      <span
+        class="text-4xl text-(--kryos-warn) font-bold tracking-[0.03em] text-center"
         >[Autonomous Tactical Robotics for High-Risk Environments]</span
       >
       <div class="w-full max-w-4xl h-px bg-white/10 my-4"></div>
@@ -73,7 +74,7 @@ import PillDashed from "./svg/PillDashed.vue";
         Learn about our R&D Division</NuxtLink
       >
 
-      <div class="grid grid-cols-3 gap-4">
+      <div class="grid grid-cols-1 xl:grid-cols-3 gap-4">
         <div
           class="p-2 h-25 border-2 flex items-center justify-center bg-(--kryos-bg-alt)"
         >
