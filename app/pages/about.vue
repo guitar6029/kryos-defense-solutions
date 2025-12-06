@@ -3,15 +3,11 @@ import Absolute from "~/components/Wrapper/Absolute.vue";
 import KryosPanel from "~/components/Panels/KryosPanel.vue";
 import KryosBld from "~/assets/img/kryos-building.jpg";
 
-// leadership img
-import ColMarcusHale from "~/assets/img/leadership/col_marcus_hale.png";
-import DrRowan from "~/assets/img/leadership/dr_rowan_ilyan.png";
-import YaraChen from "~/assets/img/leadership/yara_chen.png";
-import HelenaVoss from "~/assets/img/leadership/helena_voss.png";
-
 import Splitter from "~/components/Splitter.vue";
 import DotDashed from "~/components/svg/DotDashed.vue";
 import PillDashed from "~/components/svg/PillDashed.vue";
+
+import LeadershipPanel from "~/components/About/LeadershipPanel.vue";
 </script>
 
 <template>
@@ -99,101 +95,20 @@ import PillDashed from "~/components/svg/PillDashed.vue";
       <h2 class="text-6xl font-bold text-center">Executive Leadership</h2>
 
       <!-- CEO -->
-      <div class="flex flex-row items-center gap-6">
-        <div class="shrink-0 w-100 flex-col gap-2">
-          <img
-            :src="HelenaVoss"
-            alt="Helena Voss - CEO"
-            class="w-100 rounded-xl"
-          />
-          <div class="flex flex-col">
-            <span class="font-bold text-(--kryos-warn)">Helena Voss</span>
-            <span class="italic">Chief Executive Officer</span>
-          </div>
-        </div>
-
-        <div class="flex flex-col gap-2 max-w-2xl p-2">
-          <p>
-            Oversees global strategy, corporate partnerships, and high-level
-            procurement initiatives, with a background in defense logistics and
-            predictive risk modeling.
-          </p>
-        </div>
-      </div>
+      <LeadershipPanel job-title="ceo" />
 
       <div class="h-5 w-full border-b-8 border-(--kryos-bg-alt)"></div>
 
       <!-- CTO -->
-      <div class="flex flex-row items-center gap-6 mt-12">
-        <div class="shrink-0 w-100 flex flex-col gap-2">
-          <img
-            :src="DrRowan"
-            alt="Dr. Rowan Ilyan - CTO"
-            class="w-100 rounded-xl"
-          />
-          <div class="flex flex-col">
-            <span class="font-bold text-(--kryos-warn)">Dr. Rowan Ilyan</span>
-            <span class="italic">Chief Technology Officer</span>
-          </div>
-        </div>
-
-        <div class="flex flex-col gap-2 max-w-2xl p-2">
-          <p>
-            Leads platform architecture, AI decision frameworks, and
-            long-horizon research programs within the Advanced Systems Division.
-          </p>
-        </div>
-      </div>
-
+      <LeadershipPanel job-title="cto" />
       <div class="h-5 w-full border-b-8 border-(--kryos-bg-alt)"></div>
 
       <!-- CSOO -->
-      <div class="flex flex-row items-center gap-6 mt-12">
-        <div class="shrink-0 w-100 flex flex-col gap-2">
-          <img
-            :src="ColMarcusHale"
-            alt="Col. Marcus Hale - CSOO"
-            class="w-100 rounded-xl"
-          />
-          <div class="flex flex-col">
-            <span class="font-bold text-(--kryos-warn)"
-              >Col. Marcus Hale (Ret.)</span
-            >
-            <span class="italic">Chief Security Operations Officer</span>
-          </div>
-        </div>
-
-        <div class="flex flex-col gap-2 max-w-2xl p-2">
-          <p>
-            Coordinates deployment doctrine, field testing, and operational
-            integration with defense and security entities worldwide.
-          </p>
-        </div>
-      </div>
-
+      <LeadershipPanel job-title="csoo" />
       <div class="h-5 w-full border-b-8 border-(--kryos-bg-alt)"></div>
 
       <!-- Director of Infrastructure -->
-      <div class="flex flex-row items-center gap-6 mt-12">
-        <div class="shrink-0 w-100 flex flex-col gap-2">
-          <img
-            :src="YaraChen"
-            alt="Yara Chen - Director of Infrastructure & Compliance"
-            class="w-100 rounded-xl"
-          />
-          <div class="flex flex-col">
-            <span class="font-bold text-(--kryos-warn)">Yara Chen</span>
-            <span class="italic">Director of Infrastructure & Compliance</span>
-          </div>
-        </div>
-
-        <div class="flex flex-col gap-2 max-w-2xl p-2">
-          <p>
-            Manages regulatory alignment, export controls, and infrastructure
-            security standards across all Kryos facilities.
-          </p>
-        </div>
-      </div>
+      <LeadershipPanel job-title="director" />
     </section>
 
     <!-- End Leadership Team -->
