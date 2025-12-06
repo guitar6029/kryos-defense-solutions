@@ -46,7 +46,7 @@ const selectedDeployment: Record<
       class="absolute flex flex-col xl:flex-row items-center gap-4 left-1/2 -translate-x-1/2 animate-brief z-10"
     >
       <span
-        class="font-bold text-(--kryos-warn) font-orbitron text-[4rem] xl:text-[6rem]"
+        class="font-bold text-(--kryos-warn) font-orbitron text-[4rem] xl:text-[6rem] text-nowrap"
         >[{{ selectedDeployment[deployment].title }}]</span
       >
 
