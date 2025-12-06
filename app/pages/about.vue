@@ -10,6 +10,8 @@ import YaraChen from "~/assets/img/leadership/yara_chen.png";
 import HelenaVoss from "~/assets/img/leadership/helena_voss.png";
 
 import Splitter from "~/components/Splitter.vue";
+import DotDashed from "~/components/svg/DotDashed.vue";
+import PillDashed from "~/components/svg/PillDashed.vue";
 </script>
 
 <template>
@@ -64,6 +66,10 @@ import Splitter from "~/components/Splitter.vue";
         <KryosPanel :option="8" />
       </Absolute>
 
+      <Absolute extra-class="bottom-150 -right-10 w-100 -z-1 rotate-45 ">
+        <KryosPanel :option="8" />
+      </Absolute>
+
       <Absolute extra-class="top-50 -left-10 w-100 -z-1 ">
         <KryosPanel :option="8" />
       </Absolute>
@@ -74,6 +80,18 @@ import Splitter from "~/components/Splitter.vue";
 
       <Absolute extra-class="top-10 -right-10 w-50 -z-1">
         <KryosPanel :option="10" />
+      </Absolute>
+
+      <Absolute extra-class="top-400 -left-10 w-50 -z-1 -rotate-180">
+        <KryosPanel :option="10" />
+      </Absolute>
+
+      <Absolute extra-class="top-400 -right-150 w-300 -z-1 opacity-50">
+        <DotDashed />
+      </Absolute>
+
+      <Absolute extra-class="top-250 -left-10 w-100 -z-1 opacity-50 ">
+        <PillDashed />
       </Absolute>
 
       <Splitter rightText="// LEADERSHIP" />
