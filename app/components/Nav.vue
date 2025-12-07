@@ -35,5 +35,10 @@ const route = useRoute();
         About
       </NuxtLink>
     </nav>
+    <div class="w-full h-0.5 bg-linear-to-r 
+     from-(--kryos-warn)/0
+     via-(--kryos-warn)/40
+     to-(--kryos-warn)/0">
+</div>
   </header>
 </template>
