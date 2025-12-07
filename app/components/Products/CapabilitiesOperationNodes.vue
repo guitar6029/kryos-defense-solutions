@@ -1,51 +1,86 @@
+<script lang="ts" setup>
+import Absolute from "../Wrapper/Absolute.vue";
+import KryosPanel from "../Panels/KryosPanel.vue";
+import Splitter from "../Splitter.vue";
+import PatrolRouteIcon from "~/components/svg/PatrolRouteIcon.vue";
+import TargetIcon from "../svg/TargetIcon.vue";
+import ZoneEnforcement from "../svg/ZoneEnforcement.vue";
+import DataCapture from "../svg/DataCapture.vue";
+</script>
 <template>
-  <section
-    class="flex flex-col items-center gap-2 bg-(--kryos-bg-alt) p-4 relative min-h-screen"
-  >
-    <Absolute
-      extra-class="z-0 top-1/2 left-1/2 -translate-x-1/2 w-200 rotate-90"
-    >
+  <section class="flex flex-col gap-2 relative min-h-screen">
+    <Splitter right-text="OPERATING MODES" />
+
+    <Absolute extra-class="-z-1 top-100 -right-30 w-300 ">
+      <KryosPanel :option="7" />
+    </Absolute>
+
+    <Absolute extra-class="-z-1 bottom-20 left-0  w-400 ">
       <KryosPanel :option="13" />
     </Absolute>
 
-    <h2 class="section-title">Capabilities & Operating Modes</h2>
-    <div class="flex flex-col gap-4">
-      <h3 class="text-6xl">Platform Capabilities</h3>
+    <h2 class="section-title">Systems Capabilities</h2>
+    <div class="flex flex-col items-center gap-4 p-12">
       <ul class="flex flex-col gap-6">
-        <li>
-          <span class="font-bold text-5xl">Autonomous Patrol</span>
-          <p class="max-w-4xl text-4xl">
-            - Configurable patrol routes with adaptive pathfinding around new
-            obstacles and environmental changes.
-          </p>
-        </li>
-        <li>
-          <span class="font-bold text-5xl"
-            >Threat Detection & Classification</span
+        <li class="flex flex-col gap-6">
+          <span class="font-bold text-5xl text-(--kryos-warn)"
+            >[Autonomous Patrol]</span
           >
-          <p class="max-w-4xl text-4xl">
-            - Real-time analysis of motion, thermal signatures, and anomalous
-            patterns within defined perimeters.
-          </p>
+          <div class="flex items-center gap-2">
+            <div class="w-40">
+              <PatrolRouteIcon />
+            </div>
+            <p class="max-w-4xl text-4xl">
+              Configurable patrol routes with adaptive pathfinding around new
+              obstacles and environmental changes.
+            </p>
+          </div>
         </li>
-        <li>
-          <span class="font-bold text-5xl">Zone Enforcement</span>
-          <p class="max-w-4xl text-4xl">
-            - Configurable soft and hard boundaries, with escalating response
-            ladders based on client policy.
-          </p>
+        <li class="flex flex-col gap-6">
+          <span class="font-bold text-5xl text-(--kryos-warn)"
+            >[Threat Detection & Classification]</span
+          >
+          <div class="flex items-center gap-2">
+            <div class="w-40">
+              <TargetIcon />
+            </div>
+            <p class="max-w-4xl text-4xl">
+              Real-time analysis of motion, thermal signatures, and anomalous
+              patterns within defined perimeters.
+            </p>
+          </div>
         </li>
-        <li>
-          <span class="font-bold text-5xl">Data Capture & Forensics</span>
-          <p class="max-w-4xl text-4xl">
-            - Continuous logging of visual, positional, and environmental data
-            for post-incident review.
-          </p>
+        <li class="flex flex-col gap-6">
+          <span class="font-bold text-5xl text-(--kryos-warn)"
+            >[Zone Enforcement]</span
+          >
+          <div class="flex items-center gap-2">
+            <div class="w-40">
+              <ZoneEnforcement />
+            </div>
+            <p class="max-w-4xl text-4xl">
+              Configurable soft and hard boundaries, with escalating response
+              ladders based on client policy.
+            </p>
+          </div>
+        </li>
+        <li class="flex flex-col gap-6">
+          <span class="font-bold text-5xl text-(--kryos-warn)"
+            >[Data Capture & Forensics]</span
+          >
+          <div class="flex items-center gap-2">
+            <div class="w-40">
+              <DataCapture />
+            </div>
+            <p class="max-w-4xl text-4xl">
+              Continuous logging of visual, positional, and environmental data
+              for post-incident review.
+            </p>
+          </div>
         </li>
       </ul>
     </div>
-    <div class="flex flex-col gap-2">
-      <h3 class="text-6xl">Operating Modes</h3>
+    <!-- <div class="flex flex-col items-end gap-2">
       <div class="flex flex-col gap-2">
         <h3 class="text-5xl">Recon Modes</h3>
         <p class="max-w-4xl text-4xl">
@@ -74,6 +109,6 @@
           and energy-efficient path planning.
         </p>
       </div>
-    </div>
+    </div> -->
   </section>
 </template>
