@@ -39,7 +39,7 @@ import KRYOS_HERO from "~/assets/img/KRYOS.png";
         Kryos Defense Solutions
       </h1>
       <span
-        class="text-4xl text-(--kryos-warn) font-bold tracking-[0.03em] text-center"
+        class="text-xl xl:text-4xl text-(--kryos-warn) font-bold tracking-[0.03em] text-center"
         >[Autonomous Tactical Robotics for High-Risk Environments]</span
       >
       <div class="w-full max-w-4xl h-px bg-white/10 my-4"></div>
