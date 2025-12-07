@@ -1,5 +1,6 @@
 <template>
   <section class="flex flex-col items-center justify-center gap-2 min-h-screen">
+    <Divider right-text="DEPLOYMENT" />
     <h2 class="section-title">Deployment Profiles</h2>
     <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
       <div class="flex flex-col gap-2 p-4 border border-r-24">

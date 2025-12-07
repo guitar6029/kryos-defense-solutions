@@ -14,7 +14,7 @@ import KryosPanel from "./Panels/KryosPanel.vue";
       <KryosPanel :stroke-width="2" :option="3" />
     </Absolute>
 
-    <Splitter right-text="SECTOR // ANNOUNCEMENTS" />
+    <Divider right-text="SECTOR // ANNOUNCEMENTS" />
 
     <h2 class="section-title">Recent Announcements</h2>
     <ul

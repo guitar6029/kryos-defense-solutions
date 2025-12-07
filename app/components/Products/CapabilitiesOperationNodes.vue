@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import Absolute from "../Wrapper/Absolute.vue";
 import KryosPanel from "../Panels/KryosPanel.vue";
-import Splitter from "../Splitter.vue";
+import Divider from "../Divider.vue";
 import PatrolRouteIcon from "~/components/svg/PatrolRouteIcon.vue";
 import TargetIcon from "../svg/TargetIcon.vue";
 import ZoneEnforcement from "../svg/ZoneEnforcement.vue";
@@ -9,7 +9,7 @@ import DataCapture from "../svg/DataCapture.vue";
 </script>
 <template>
   <section class="flex flex-col gap-2 relative min-h-screen">
-    <Splitter right-text="OPERATING MODES" />
+    <Divider right-text="OPERATING MODES" />
 
     <Absolute extra-class="-z-1 top-100 -right-30 w-300 ">
       <KryosPanel :option="7" />

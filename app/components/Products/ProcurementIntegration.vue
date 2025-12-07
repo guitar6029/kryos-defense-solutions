@@ -11,7 +11,7 @@ import KryosPanel from "../Panels/KryosPanel.vue";
       <KryosPanel :option="13" />
     </Absolute>
 
-    <h2 class="section-title">Procurement & Systems Integration</h2>
+    <h2 class="section-title">Systems Integration</h2>
     <p class="text-4xl max-w-2xl text-center">
       Kryos platforms are available under controlled procurement channels for
       qualified defense, security, and critical infrastructure clients. Each
@@ -22,8 +22,6 @@ import KryosPanel from "../Panels/KryosPanel.vue";
       For procurement inquiries, integration planning, or technical briefings,
       contact the Kryos deployment team.
     </p>
-    <NuxtLink to="#" class="link"
-      >Contact Kryos Deployment Team</NuxtLink
-    >
+    <NuxtLink to="#" class="link">Contact Kryos Deployment Team</NuxtLink>
   </section>
 </template>

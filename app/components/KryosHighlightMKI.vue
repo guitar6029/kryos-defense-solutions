@@ -39,7 +39,7 @@ import KryosPanel from "./Panels/KryosPanel.vue";
       <KryosSignature />
     </Absolute>
 
-    <Splitter right-text="SECTOR // PLATFORM" />
+    <Divider right-text="SECTOR // PLATFORM" />
 
     <h2 class="section-title">Flagship Platform</h2>
     <div class="flex flex-col xl:flex-row items-center gap-2">

@@ -12,7 +12,7 @@ import KryosPanel from "./Panels/KryosPanel.vue";
       <KryosPanel :option="4" />
     </Absolute>
 
-    <Splitter right-text="SECTOR // OPERATIONAL BRIEFING" />
+    <Divider right-text="SECTOR // OPERATIONAL BRIEFING" />
 
     <div class="flex flex-col items-center justify-center">
       <h2 class="section-title">What We Build</h2>

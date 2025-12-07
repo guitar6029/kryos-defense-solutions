@@ -29,7 +29,7 @@ import KryosPanel from "./Panels/KryosPanel.vue";
       <KryosPanel :option="3" :stroke-width="4" />
     </Absolute>
 
-    <Splitter right-text="SECTOR // DEPLOYMENTS" extraClass="bg-(--kryos-bg)" />
+    <Divider right-text="SECTOR // DEPLOYMENTS" extraClass="bg-(--kryos-bg)" />
     <DeploymentPanel deployment="air" />
     <DeploymentPanel deployment="land" />
     <DeploymentPanel deployment="sea" />

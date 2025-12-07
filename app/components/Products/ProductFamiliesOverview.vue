@@ -5,10 +5,12 @@ import KryosLab from "~/assets/img/kryos-system-lab.jpg";
 import Absolute from "../Wrapper/Absolute.vue";
 import KryosPanel from "../Panels/KryosPanel.vue";
 import Text3D from "../Text/Text3D.vue";
+import Divider from "../Divider.vue";
 </script>
 
 <template>
   <section class="flex flex-col min-h-screen gap-12">
+    <Divider right-text="PLATFORM FAMILIES" />
     <h2 class="section-title">Platform Families</h2>
 
     <div class="flex flex-col items-center gap-12 relative">

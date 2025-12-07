@@ -55,7 +55,7 @@ onBeforeUnmount(() => {
       <KryosPanel :stroke-width="1" :option="6" />
     </Absolute>
 
-    <Splitter right-text="SECTOR // SYSTEM DIVISION" />
+    <Divider right-text="SECTOR // SYSTEM DIVISION" />
 
     <h2 class="section-title">Kryos Advanced</h2>
     <h2 class="section-title">Systems Division</h2>
