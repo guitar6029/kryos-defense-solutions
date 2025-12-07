@@ -93,18 +93,43 @@
   .trns {
     @apply transition ease-in duration-300;
   }
+}
+
+@layer components {
   .section-title {
     font-family: "Orbitron", sans-serif;
     color: var(--kryos-text-high);
     @apply lg:text-[5rem] sm:text-[4rem] text-center;
   }
-  .link {
-    color: var(--kryos-text-high);
-    @apply text-4xl border-2 p-4 hover:text-(--kryos-text-mid) hover:bg-(--kryos-bg-alt) transition ease-in duration-300;
+
+  .nav-link:hover {
+    color: var(--kryos-warn);
   }
+
+  .nav-link {
+    @apply relative px-2 transition-all duration-200 text-xl;
+
+    /* Left bracket */
+    @apply before:content-['['] before:absolute before:left-0 before:opacity-0
+           before:-translate-x-2 before:transition-all before:duration-200;
+
+    /* Right bracket */
+    @apply after:content-[']'] after:absolute after:right-0 after:opacity-0
+           after:translate-x-2 after:transition-all after:duration-200;
+
+    /* Hover animations */
+    @apply hover:before:opacity-100 hover:before:translate-x-0
+           hover:after:opacity-100 hover:after:translate-x-0;
+  }
+  .link {
+    @apply text-4xl border-2 p-4 transition ease-in duration-300;
+    color: var(--kryos-text-high);
+  }
+
   .card-title {
     @apply text-6xl font-bold;
   }
+
   .card-text {
     @apply text-4xl;
   }
