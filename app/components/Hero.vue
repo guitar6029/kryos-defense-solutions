@@ -69,31 +69,69 @@ import PillDashed from "./svg/PillDashed.vue";
       <NuxtLink to="/products#kryos-mk-i" class="link">
         Explore Kryos MK-I
       </NuxtLink>
-      <NuxtLink to="#" class="link">
-        Learn about our R&D Division</NuxtLink
-      >
+      <NuxtLink to="#" class="link"> Learn about our R&D Division</NuxtLink>
 
       <div class="grid grid-cols-1 xl:grid-cols-3 gap-4">
-        <div
-          class="p-2 h-25 border-2 flex items-center justify-center bg-(--kryos-bg-alt)"
-        >
-          <span class="text-2xl font-bold text-(--kryos-text-high)"
-            >24+ Global Facilities</span
-          >
+        <div class="relative p-2 h-25 flex items-center justify-center">
+          <div class="absolute inset-0">
+            <svg
+              class="w-full h-full"
+              viewBox="0 0 552 337"
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="none"
+            >
+              <path
+                d="M0.5 43.5L29.5 16.5H152L176 0.5H418L455 16.5H551L535 64.5V165.5L551 192V243L489.5 314.5H274L247.5 336H29.5L3 290.5L29.5 277.5V243L0.5 224V43.5Z"
+                stroke="var(--kryos-text-high)"
+                fill="var(--kryos-bg-alt)"
+              />
+            </svg>
+          </div>
+          <div class="text-2xl font-bold text-(--kryos-text-high) relative z-1">
+            24+ Global Facilities
+          </div>
         </div>
-        <div
-          class="p-2 h-25 border-2 flex items-center justify-center bg-(--kryos-bg-alt)"
-        >
-          <span class="text-2xl font-bold text-(--kryos-text-high)"
-            >72 Active Deployment Zones</span
-          >
+
+        <div class="relative p-2 h-25 flex items-center justify-center">
+          <div class="absolute inset-0">
+            <svg
+              class="w-full h-full"
+              viewBox="0 0 552 337"
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="none"
+            >
+              <path
+                d="M0.5 43.5L29.5 16.5H152L176 0.5H418L455 16.5H551L535 64.5V165.5L551 192V243L489.5 314.5H274L247.5 336H29.5L3 290.5L29.5 277.5V243L0.5 224V43.5Z"
+                stroke="var(--kryos-text-high)"
+                fill="var(--kryos-bg-alt)"
+              />
+            </svg>
+          </div>
+
+          <div class="text-2xl font-bold text-(--kryos-text-high) relative z-1">
+            72 Active Deployment Zones
+          </div>
         </div>
-        <div
-          class="p-2 h-25 border-2 flex items-center justify-center bg-(--kryos-bg-alt)"
-        >
-          <span class="text-2xl font-bold text-(--kryos-text-high)"
-            >Tier-1 Defense Contractor</span
-          >
+
+        <div class="relative p-2 h-25 flex items-center justify-center">
+          <div class="absolute inset-0">
+            <svg
+              class="w-full h-full"
+              viewBox="0 0 552 337"
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="none"
+            >
+              <path
+                d="M0.5 43.5L29.5 16.5H152L176 0.5H418L455 16.5H551L535 64.5V165.5L551 192V243L489.5 314.5H274L247.5 336H29.5L3 290.5L29.5 277.5V243L0.5 224V43.5Z"
+                stroke="var(--kryos-text-high)"
+                fill="var(--kryos-bg-alt)"
+              />
+            </svg>
+          </div>
+
+          <div class="text-2xl font-bold text-(--kryos-text-high) relative z-1">
+            Tier-1 Defense Contractor
+          </div>
         </div>
       </div>
     </div>
