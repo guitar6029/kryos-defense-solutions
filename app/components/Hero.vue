@@ -1,50 +1,35 @@
 <script lang="ts" setup>
 import Absolute from "./Wrapper/Absolute.vue";
-import DotDashed from "./svg/DotDashed.vue";
-import PillDashed from "./svg/PillDashed.vue";
+import KRYOS_HERO from "~/assets/img/KRYOS.png";
 </script>
 <template>
   <div
     class="relative flex min-h-screen flex-col items-center justify-center gap-4"
   >
-    <Absolute extra-class="top-10 left-10 w-250 -z-1 opacity-20">
-      <PillDashed />
-    </Absolute>
+    <img
+      :src="KRYOS_HERO"
+      alt="KRYOS protects the entire world"
+      class="absolute ineset-0 w-full h-full object-cover -z-10 opacity-70"
+    />
 
-    <Absolute extra-class="top-10 left-10 w-250 -z-2 opacity-20">
-      <DotDashed />
-    </Absolute>
+    <Absolute extra-class="top-10 left-10 w-250 -z-1 opacity-50">
+      <svg
+        width="64"
+        height="64"
+        viewBox="0 0 64 64"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle cx="8" cy="8" r="4" />
+        <circle cx="24" cy="8" r="4" />
+        <circle cx="40" cy="8" r="4" />
+        <circle cx="56" cy="8" r="4" />
 
-    <Absolute extra-class="bottom-10 -right-40 w-100 -z-1 opacity-20">
-      <PillDashed />
-    </Absolute>
-
-    <Absolute extra-class="bottom-10 -right-40 w-100 -z-2 opacity-20">
-      <DotDashed />
-    </Absolute>
-
-    <Absolute extra-class="bottom-10 -left-20 w-50 -z-1 opacity-20">
-      <PillDashed />
-    </Absolute>
-
-    <Absolute extra-class="bottom-10 -left-20 w-50 -z-2 opacity-20">
-      <DotDashed />
-    </Absolute>
-
-    <Absolute extra-class="top-10 -left-20 w-50 -z-1 opacity-20">
-      <PillDashed />
-    </Absolute>
-
-    <Absolute extra-class="top-10 -left-20 w-50 -z-2 opacity-20">
-      <DotDashed />
-    </Absolute>
-
-    <Absolute extra-class="top-10 -right-20 w-50 -z-1 opacity-20">
-      <PillDashed />
-    </Absolute>
-
-    <Absolute extra-class="top-10 -right-20 w-50 -z-2 opacity-20">
-      <DotDashed />
+        <circle cx="8" cy="24" r="4" />
+        <circle cx="24" cy="24" r="4" />
+        <circle cx="40" cy="24" r="4" />
+        <circle cx="56" cy="24" r="4" />
+      </svg>
     </Absolute>
 
     <div class="z-10 flex flex-col gap-10 items-center justify-center">
