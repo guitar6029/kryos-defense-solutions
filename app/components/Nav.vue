@@ -24,24 +24,6 @@ const route = useRoute();
       </NuxtLink>
 
       <NuxtLink
-        to="/rdivision"
-        :class="
-          route.path.startsWith('/rdivision') ? 'text-(--kryos-text-high)' : ''
-        "
-      >
-        R&D Division
-      </NuxtLink>
-
-      <NuxtLink
-        to="/contact"
-        :class="
-          route.path.startsWith('/contact') ? 'text-(--kryos-text-high)' : ''
-        "
-      >
-        Contact
-      </NuxtLink>
-
-      <NuxtLink
         to="/about"
         :class="
           route.path.startsWith('/about') ? 'text-(--kryos-text-high)' : ''

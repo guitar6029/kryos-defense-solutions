@@ -8,6 +8,34 @@ import ProductFamiliesOverview from "~/components/Products/ProductFamiliesOvervi
 import ProductHero from "~/components/Products/ProductHero.vue";
 import Roadmap from "~/components/Products/Roadmap.vue";
 import SummaryProduct from "~/components/Products/SummaryProduct.vue";
+useHead({
+  title: "KRYOS | PRODUCTS",
+  meta: [
+    {
+      name: "description",
+      content:
+        "Explore the full suite of Kryos Defense Solutions platforms, including autonomous ground units, tactical aerial systems, and next-generation exoskeletal technologies engineered for precision operations.",
+    },
+    {
+      name: "keywords",
+      content:
+        "Kryos products, Kryos Defense Solutions, autonomous platforms, tactical robotics, defense systems, exoskeleton, MK-I, EX-1, military robotics, autonomous vehicles",
+    },
+    {
+      property: "og:title",
+      content: "KRYOS | PRODUCTS",
+    },
+    {
+      property: "og:description",
+      content:
+        "Discover the advanced robotics and tactical systems developed by Kryos Defense Solutions, from autonomous platforms to adaptive exoskeletal units.",
+    },
+    {
+      property: "og:type",
+      content: "website",
+    },
+  ],
+});
 </script>
 
 <template>
@@ -41,7 +69,7 @@ import SummaryProduct from "~/components/Products/SummaryProduct.vue";
         />
         <ProductCTA
           text="View operational modes and deployment profiles"
-          to="/contact"
+          to="#"
           linkLabel="Request MK-I technical dossier"
         />
       </div>
@@ -60,7 +88,7 @@ import SummaryProduct from "~/components/Products/SummaryProduct.vue";
         />
         <ProductCTA
           text="View deployment modes and profiles"
-          to="/contact"
+          to="#"
           linkLabel="Request detailed technical brief"
         />
       </div>

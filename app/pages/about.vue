@@ -8,6 +8,35 @@ import DotDashed from "~/components/svg/DotDashed.vue";
 import PillDashed from "~/components/svg/PillDashed.vue";
 
 import LeadershipPanel from "~/components/About/LeadershipPanel.vue";
+
+useHead({
+  title: "KRYOS | ABOUT",
+  meta: [
+    {
+      name: "description",
+      content:
+        "Kryos Defense Solutions is an engineering-driven organization specializing in autonomous robotics, advanced mobility systems, and mission-critical defense technologies. Learn about our vision, leadership, and commitment to next-generation innovation.",
+    },
+    {
+      name: "keywords",
+      content:
+        "Kryos Defense Solutions, about Kryos, defense technology company, autonomous robotics, tactical systems, leadership, advanced systems division",
+    },
+    {
+      property: "og:title",
+      content: "KRYOS | ABOUT",
+    },
+    {
+      property: "og:description",
+      content:
+        "Discover the mission, vision, and leadership behind Kryos Defense Solutions — a developer of advanced autonomous platforms and next-generation defense technologies.",
+    },
+    {
+      property: "og:type",
+      content: "website",
+    },
+  ],
+});
 </script>
 
 <template>

@@ -69,7 +69,7 @@ onBeforeUnmount(() => {
         next-generation sensor architectures. Most of our work is never
         disclosed. What follows is only what's cleared for public release.
       </p>
-      <NuxtLink to="rdivision" class="link">Inside the R&D Division</NuxtLink>
+      <NuxtLink to="#" class="link">Inside the R&D Division</NuxtLink>
     </div>
 
     <div class="flex flex-wrap items-center justify-center gap-6">

@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import Absolute from "./Wrapper/Absolute.vue";
-import KryosPanel from "./Panels/KryosPanel.vue";
 import DotDashed from "./svg/DotDashed.vue";
 import PillDashed from "./svg/PillDashed.vue";
 </script>
@@ -70,7 +69,7 @@ import PillDashed from "./svg/PillDashed.vue";
       <NuxtLink to="/products#kryos-mk-i" class="link">
         Explore Kryos MK-I
       </NuxtLink>
-      <NuxtLink to="/rdivision" class="link">
+      <NuxtLink to="#" class="link">
         Learn about our R&D Division</NuxtLink
       >
 

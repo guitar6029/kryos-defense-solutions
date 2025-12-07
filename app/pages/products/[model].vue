@@ -20,6 +20,28 @@ onUnmounted(() => {
   if (timeoutId !== null) {
     clearTimeout(timeoutId);
   }
+
+  useHead(() => ({
+    title: currentProduct.value.title,
+    meta: [
+      {
+        name: "description",
+        content: `${currentProduct.value.title} by Kryos Defense Solutions. ${currentProduct.value.subtitle}`,
+      },
+      {
+        property: "og:title",
+        content: currentProduct.value.title,
+      },
+      {
+        property: "og:description",
+        content: currentProduct.value.subtitle,
+      },
+      {
+        property: "og:type",
+        content: "product",
+      },
+    ],
+  }));
 });
 
 const isLoading = ref(true);

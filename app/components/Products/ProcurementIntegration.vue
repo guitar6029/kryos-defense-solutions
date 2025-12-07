@@ -22,7 +22,7 @@ import KryosPanel from "../Panels/KryosPanel.vue";
       For procurement inquiries, integration planning, or technical briefings,
       contact the Kryos deployment team.
     </p>
-    <NuxtLink to="/contact" class="link"
+    <NuxtLink to="#" class="link"
       >Contact Kryos Deployment Team</NuxtLink
     >
   </section>

@@ -16,12 +16,10 @@ import Wall from "~/assets/img/wall-panel.jpg";
 
     <!-- Content -->
     <div class="relative z-10 flex flex-col items-center gap-6 px-4">
-      <h1 class="section-title bg-(--kryos-bg) px-8 py-4">
-        Kryos Platform Catalog
-      </h1>
+      <h1 class="section-title px-8 py-4">Kryos Platform Catalog</h1>
 
       <div
-        class="relative text-4xl flex flex-col gap-4 border bg-black/60 px-6 py-4 max-w-3xl"
+        class="relative text-4xl flex flex-col gap-10 bg-black/30 px-6 py-4 max-w-4xl"
       >
         <p>
           Kryos Defense Solutions develops autonomous platforms engineered for

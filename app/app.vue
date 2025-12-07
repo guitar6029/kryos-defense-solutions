@@ -6,12 +6,6 @@
         <NuxtPage />
       </div>
     </main>
-
-    <!-- <main
-      class="flex flex-col gap-2 overflow-x-hidden min-h-screen max-w-[3000px]"
-    >
-      <NuxtPage />
-    </main> -->
     <KryosFooter />
   </NuxtLayout>
 </template>
