@@ -12,9 +12,9 @@ interface Props {
 }
 
 withDefaults(defineProps<Props>(), {
-  mainClass: "font-orbitron font-bold text-4xl xl:text-8xl text-nowrap",
+  mainClass: "font-orbitron font-bold text-2xl xl:text-4xl text-nowrap",
   shadowClass:
-    "font-orbitron font-bold text-4xl xl:text-8xl text-nowrap text-black",
+    "font-orbitron font-bold text-2xl xl:text-4xl text-nowrap text-black",
   shadowOffsetClass: "translate-x-[2px] translate-y-[2px]",
 });
 </script>
