@@ -2,11 +2,7 @@
 import Absolute from "~/components/Wrapper/Absolute.vue";
 import KryosPanel from "~/components/Panels/KryosPanel.vue";
 import KryosBld from "~/assets/img/kryos-building.jpg";
-
 import Divider from "~/components/Divider.vue";
-import DotDashed from "~/components/svg/DotDashed.vue";
-import PillDashed from "~/components/svg/PillDashed.vue";
-
 import LeadershipPanel from "~/components/About/LeadershipPanel.vue";
 
 useHead({
@@ -112,11 +108,15 @@ useHead({
       </Absolute>
 
       <Absolute extra-class="top-400 -right-150 w-300 -z-1 opacity-50">
-        <DotDashed />
+        <KryosPanel />
       </Absolute>
 
       <Absolute extra-class="top-250 -left-10 w-100 -z-1 opacity-50 ">
-        <PillDashed />
+        <KryosPanel />
+      </Absolute>
+
+      <Absolute extra-class="top-350 -right-10 w-50 -z-1 opacity-50 ">
+        <KryosPanel />
       </Absolute>
 
       <Divider rightText="// LEADERSHIP" />

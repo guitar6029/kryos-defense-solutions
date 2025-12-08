@@ -51,8 +51,8 @@ const selectedJobPanel: Record<
 
 <template>
   <!-- CEO -->
-  <div class="flex flex-row items-center gap-6">
-    <div class="relative shrink-0 w-100 flex-col gap-2">
+  <div class="flex flex-col xl:flex-row items-center gap-6">
+    <div class="relative shrink-0 max-w-75 xl:w-100 flex-col gap-2">
       <svg
         class="w-full h-auto"
         viewBox="0 0 337 488"
@@ -91,7 +91,7 @@ const selectedJobPanel: Record<
       </div>
     </div>
 
-    <div class="flex flex-col gap-2 max-w-2xl p-2">
+    <div class="flex flex-col gap-2 w-full max-w-xl xl:max-w-2xl p-4 xl:p-2">
       <p>
         {{ selectedJobPanel[jobTitle].summary }}
       </p>
