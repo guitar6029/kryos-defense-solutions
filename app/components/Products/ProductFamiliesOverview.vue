@@ -90,7 +90,7 @@ import Divider from "../Divider.vue";
         </div>
 
         <div class="flex items-center justify-center p-4 z-12">
-          <p class="max-w-4xl text-4xl xl:text-6xl italic">
+          <p class="max-w-4xl text-2xl xl:text-4xl italic">
             Autonomous, multi-terrain units for patrol, interdiction, and close
             asset protection.
           </p>
@@ -115,7 +115,7 @@ import Divider from "../Divider.vue";
 
       <div class="flex items-center xl:flex-row flex-col-reverse gap-2">
         <div class="flex items-center justify-center p-4 z-12">
-          <p class="max-w-4xl text-4xl xl:text-6xl italic">
+          <p class="max-w-4xl text-2xl xl:text-4xl italic">
             Lightweight, persistent-surveillance drones designed for layered
             situational awareness.
           </p>
@@ -255,7 +255,7 @@ import Divider from "../Divider.vue";
         </div>
 
         <div class="flex items-center w-fit justify-center p-4 z-15">
-          <p class="max-w-4xl text-4xl xl:text-6xl italic">
+          <p class="max-w-4xl text-2xl xl:text-4xl italic">
             Embedded systems for transit networks, industrial facilities, and
             critical infrastructure nodes.
           </p>
