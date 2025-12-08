@@ -46,15 +46,15 @@ const selectedProfile: Record<
 </script>
 
 <template>
-  <div class="w-full xl:min-w-2xl flex flex-col gap-2 p-4 border border-r-24">
+  <div class="w-full xl:max-w-4xl flex flex-col gap-2 p-4 border">
     <span class="font-bold"
       >PROFILE // {{ selectedProfile[productPanel].id }}</span
     >
-    <h3 class="text-6xl text-(--kryos-warn) font-bold">
+    <h3 class="text-4xl text-(--kryos-warn) font-bold">
       [ {{ selectedProfile[productPanel].title }} ]
     </h3>
     <div class="flex items-start gap-2">
-      <div class="w-25 text-(--kryos-accent)">
+      <div class="min-w-25 max-w-25 text-(--kryos-accent)">
         <component :is="selectedProfile[productPanel].svgIcon" />
       </div>
       <p class="text-4xl max-w-3xl">
