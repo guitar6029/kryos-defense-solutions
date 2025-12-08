@@ -27,7 +27,7 @@ import DataCapture from "../svg/DataCapture.vue";
             >[Autonomous Patrol]</span
           >
           <div class="flex items-center gap-2">
-            <div class="w-40">
+            <div class="w-25 text-(--kryos-accent)">
               <PatrolRouteIcon />
             </div>
             <p class="max-w-4xl text-4xl">
@@ -41,7 +41,7 @@ import DataCapture from "../svg/DataCapture.vue";
             >[Threat Detection & Classification]</span
           >
           <div class="flex items-center gap-2">
-            <div class="w-40">
+            <div class="w-25 text-(--kryos-accent)">
               <TargetIcon />
             </div>
             <p class="max-w-4xl text-4xl">
@@ -55,7 +55,7 @@ import DataCapture from "../svg/DataCapture.vue";
             >[Zone Enforcement]</span
           >
           <div class="flex items-center gap-2">
-            <div class="w-40">
+            <div class="w-25 text-(--kryos-accent)">
               <ZoneEnforcement />
             </div>
             <p class="max-w-4xl text-4xl">
@@ -69,7 +69,7 @@ import DataCapture from "../svg/DataCapture.vue";
             >[Data Capture & Forensics]</span
           >
           <div class="flex items-center gap-2">
-            <div class="w-40">
+            <div class="w-25 text-(--kryos-accent)">
               <DataCapture />
             </div>
             <p class="max-w-4xl text-4xl">

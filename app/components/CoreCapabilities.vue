@@ -20,7 +20,7 @@ import EXOLINE from "~/assets/img/EXO_LINE_1.png"
     </Absolute>
 
     <div class="flex flex-col items-center justify-center gap-12 p-12 z-10 relative">
-      <div class="flex flex-col justify-center gap-2 rounded-2xl bg-(--kryos-bg)/40 trns hover:scale-105 hover:bg-(--kryos-bg)/80 p-4">
+      <div class="w-full xl:min-w-250 flex flex-col justify-center gap-2 rounded-2xl bg-(--kryos-bg)/40 trns hover:scale-105 hover:bg-(--kryos-bg)/80 p-4">
         <h1 class="text-6xl text-(--kryos-warn) font-bold">
           [Autonomous Ground Platforms]
         </h1>
@@ -62,7 +62,7 @@ import EXOLINE from "~/assets/img/EXO_LINE_1.png"
           </p>
         </div>
       </div>
-      <div class="flex flex-col justify-center gap-2 rounded-2xl bg-(--kryos-bg)/40 trns hover:scale-105 hover:bg-(--kryos-bg)/80 p-4">
+      <div class="w-full xl:min-w-250 flex flex-col justify-center gap-2 rounded-2xl bg-(--kryos-bg)/40 trns hover:scale-105 hover:bg-(--kryos-bg)/80 p-4">
         <h1 class="text-6xl text-(--kryos-warn) font-bold">
           [Intelligent Target Acquisition]
         </h1>
@@ -96,7 +96,7 @@ import EXOLINE from "~/assets/img/EXO_LINE_1.png"
           </p>
         </div>
       </div>
-      <div class="flex flex-col  justify-center gap-2 rounded-2xl bg-(--kryos-bg)/40 trns hover:scale-105 hover:bg-(--kryos-bg)/80 p-4">
+      <div class="w-full xl:min-w-250 flex flex-col  justify-center gap-2 rounded-2xl bg-(--kryos-bg)/40 trns hover:scale-105 hover:bg-(--kryos-bg)/80 p-4">
         <h1 class="text-6xl text-(--kryos-warn) font-bold">
           [Secure Systems Integration]
         </h1>
