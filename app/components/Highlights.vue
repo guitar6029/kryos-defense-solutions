@@ -1,20 +1,16 @@
 <script lang="ts" setup>
-import Absolute from "./Wrapper/Absolute.vue";
-import KryosPanel from "./Panels/KryosPanel.vue";
+import GeoShapes from "~/assets/img/shapes/3d_shapes.png";
 </script>
 <template>
-  <div class="flex flex-col justify-center gap-2 h-screen relative">
-    <Absolute extra-class="bottom-10 left-0 w-200  opacity-50 -z-1">
-      <KryosPanel :stroke-width="1" :option="6" />
-    </Absolute>
-
-    <Absolute
-      extra-class="bottom-120 -right-40 w-250 opacity-50 -z-1 rotate-270"
-    >
-      <KryosPanel :stroke-width="2" :option="3" />
-    </Absolute>
-
-    <Divider right-text="SECTOR // ANNOUNCEMENTS" />
+  <Divider right-text="SECTOR // ANNOUNCEMENTS" />
+  <div
+    class="flex flex-col justify-center h-screen relative overflow-hidden -mt-2"
+  >
+    <img
+      :src="GeoShapes"
+      alt="KRYOS geometric shapes"
+      class="absolute ineset-0 w-full h-full object-cover -z-10 opacity-70"
+    />
 
     <h2 class="section-title">Recent Announcements</h2>
     <ul
