@@ -53,7 +53,7 @@ import KryosPanel from "./Panels/KryosPanel.vue";
       </div>
       <div class="flex flex-col gap-6 max-w-4xl">
         <p class="text-4xl">
-          The Kryos MK-I is a multi-terrain autonomous drone designed for
+          The <span class="font-bold text-(--kryos-warn)">[Kryos MK-I]</span> is a multi-terrain autonomous drone designed for
           high-density urban, industrial, and subterranean environments. With
           six-degrees-of-freedom mobility and a hardened sensor array, MK-I
           units maintain operational integrity where conventional systems fail.
