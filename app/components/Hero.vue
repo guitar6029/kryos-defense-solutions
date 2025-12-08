@@ -61,13 +61,12 @@ import KRYOS_HERO from "~/assets/img/KRYOS.png";
           <div class="absolute inset-0">
             <svg
               class="w-full h-full"
-              viewBox="0 0 552 337"
+              viewBox="0 0 743 407"
               xmlns="http://www.w3.org/2000/svg"
               preserveAspectRatio="none"
             >
               <path
-                d="M0.5 43.5L29.5 16.5H152L176 0.5H418L455 16.5H551L535 64.5V165.5L551 192V243L489.5 314.5H274L247.5 336H29.5L3 290.5L29.5 277.5V243L0.5 224V43.5Z"
-                stroke="var(--kryos-text-high)"
+                d="M0.5 95.5L70 0.5H742V330L640.5 406H0.5V95.5Z"
                 fill="var(--kryos-bg-alt)"
               />
             </svg>
@@ -81,13 +80,12 @@ import KRYOS_HERO from "~/assets/img/KRYOS.png";
           <div class="absolute inset-0">
             <svg
               class="w-full h-full"
-              viewBox="0 0 552 337"
+              viewBox="0 0 743 407"
               xmlns="http://www.w3.org/2000/svg"
               preserveAspectRatio="none"
             >
               <path
-                d="M0.5 43.5L29.5 16.5H152L176 0.5H418L455 16.5H551L535 64.5V165.5L551 192V243L489.5 314.5H274L247.5 336H29.5L3 290.5L29.5 277.5V243L0.5 224V43.5Z"
-                stroke="var(--kryos-text-high)"
+                d="M0.5 95.5L70 0.5H742V330L640.5 406H0.5V95.5Z"
                 fill="var(--kryos-bg-alt)"
               />
             </svg>
@@ -102,13 +100,12 @@ import KRYOS_HERO from "~/assets/img/KRYOS.png";
           <div class="absolute inset-0">
             <svg
               class="w-full h-full"
-              viewBox="0 0 552 337"
+              viewBox="0 0 743 407"
               xmlns="http://www.w3.org/2000/svg"
               preserveAspectRatio="none"
             >
               <path
-                d="M0.5 43.5L29.5 16.5H152L176 0.5H418L455 16.5H551L535 64.5V165.5L551 192V243L489.5 314.5H274L247.5 336H29.5L3 290.5L29.5 277.5V243L0.5 224V43.5Z"
-                stroke="var(--kryos-text-high)"
+                d="M0.5 95.5L70 0.5H742V330L640.5 406H0.5V95.5Z"
                 fill="var(--kryos-bg-alt)"
               />
             </svg>
