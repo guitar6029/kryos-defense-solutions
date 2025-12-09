@@ -23,7 +23,7 @@ const systemsCards: { title: string; text: string; option: CardOption }[] = [
 </script>
 <template>
   <Divider right-text="SECTOR // Hardened AI Decision Pipelines" />
-  <div class="flex flex-row relative min-h-screen">
+  <div class="flex flex-row relative min-h-[50vh]">
     <div class="w-275">
       <img
         src="~/assets/img/protocol_01.jpg"
@@ -41,7 +41,7 @@ const systemsCards: { title: string; text: string; option: CardOption }[] = [
     </div>
   </div>
 
-  <div class="flex flex-row relative min-h-screen">
+  <div class="flex flex-row relative min-h-[50vh]">
     <div
       class="text-6xl flex-1 flex flex-col gap-4 justify-center p-4 rounded-xl bg-(--kryos-bg)"
     >
@@ -60,7 +60,7 @@ const systemsCards: { title: string; text: string; option: CardOption }[] = [
     </div>
   </div>
 
-  <div class="flex flex-row relative min-h-screen">
+  <div class="flex flex-row relative min-h-[50vh]">
     <div class="w-275">
       <img
         src="~/assets/img/interference_layers_01.jpg"
