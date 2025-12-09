@@ -32,16 +32,24 @@ import KRYOS_HERO from "~/assets/img/KRYOS.png";
       </svg>
     </Absolute>
 
-    <div class="z-10 flex flex-col gap-10 items-center justify-center">
+    <div class="w-full bg-(--kryos-bg) p-8 text-center">
       <h1
         class="sm:text-2xl md:text-[6rem] lg:text-[8rem] font-orbitron font-bold text-(--kryos-text-high) text-center"
       >
         Kryos Defense Solutions
       </h1>
+
       <span
         class="text-xl xl:text-4xl text-(--kryos-warn) font-bold tracking-[0.03em] text-center"
         >[Autonomous Tactical Robotics for High-Risk Environments]</span
       >
+    </div>
+
+    <div class="z-10 flex flex-col gap-10 items-center justify-center">
+      <!-- <span
+        class="text-xl xl:text-4xl text-(--kryos-warn) font-bold tracking-[0.03em] text-center w-full bg-black p-4"
+        >[Autonomous Tactical Robotics for High-Risk Environments]</span
+      > -->
       <div class="w-full max-w-4xl h-px bg-white/10 my-4"></div>
 
       <p class="max-w-4xl text-3xl text-(--kryos-text-high)">
@@ -68,6 +76,8 @@ import KRYOS_HERO from "~/assets/img/KRYOS.png";
               <path
                 d="M0.5 95.5L70 0.5H742V330L640.5 406H0.5V95.5Z"
                 fill="var(--kryos-bg-alt)"
+                stroke="var(--kryos-accent)"
+                stroke-width="4"
               />
             </svg>
           </div>
@@ -87,6 +97,8 @@ import KRYOS_HERO from "~/assets/img/KRYOS.png";
               <path
                 d="M0.5 95.5L70 0.5H742V330L640.5 406H0.5V95.5Z"
                 fill="var(--kryos-bg-alt)"
+                stroke="var(--kryos-accent)"
+                stroke-width="4"
               />
             </svg>
           </div>
@@ -107,6 +119,8 @@ import KRYOS_HERO from "~/assets/img/KRYOS.png";
               <path
                 d="M0.5 95.5L70 0.5H742V330L640.5 406H0.5V95.5Z"
                 fill="var(--kryos-bg-alt)"
+                stroke="var(--kryos-accent)"
+                stroke-width="4"
               />
             </svg>
           </div>
