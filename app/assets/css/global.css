@@ -126,6 +126,10 @@
     color: var(--kryos-text-high);
   }
 
+  .link:hover {
+    @apply border-(--kryos-warn);
+  }
+
   .card-title {
     @apply text-6xl font-bold;
   }
