@@ -300,11 +300,10 @@ import Divider from "../Divider.vue";
       </Absolute>
 
       <div class="flex flex-row items-center justify-center gap-2">
-        <p
-          class="relative bottom-0 text-(--kryos-warn) text-4xl max-w-2xl text-center mt-10"
-        >
-          Note: Certain platform configurations are restricted and available
-          only under classified procurement channels.
+        <p class="relative bottom-10 text-4xl max-w-2xl text-center mt-10">
+          <span class="font-bold">Note:</span> Certain platform configurations
+          are restricted and available only under classified procurement
+          channels.
         </p>
       </div>
     </div>
