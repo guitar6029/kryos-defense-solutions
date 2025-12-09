@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import Absolute from "~/components/Wrapper/Absolute.vue";
 import KryosPanel from "~/components/Panels/KryosPanel.vue";
-import KryosBld from "~/assets/img/kryos-building.jpg";
 import Divider from "~/components/Divider.vue";
 import LeadershipPanel from "~/components/About/LeadershipPanel.vue";
+
 
 useHead({
   title: "KRYOS | ABOUT",
@@ -38,7 +38,7 @@ useHead({
 <template>
   <div class="flex flex-col min-h-screen justify-center gap-12 relative">
     <img
-      :src="KryosBld"
+      src="~/assets/img/kryos-building.jpg"
       alt="Kryos Defense Solution Tall Building"
       class="absolute top-0 right-0 w-250 h-auto -z-1 opacity-40"
     />

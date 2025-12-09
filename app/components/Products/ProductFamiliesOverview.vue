@@ -50,7 +50,7 @@ import Divider from "../Divider.vue";
               <path
                 d="M0.5 64.0562L74.8472 9.22875H286.159L306.551 0.5H369.349L421.5 39.9158V211.763L330.371 268.5H0.5V64.0562Z"
                 fill="none"
-                stroke="var(--kryos-accent-shadow)"
+                stroke="var(--kryos-warn)"
                 stroke-width="2"
               />
             </svg>
@@ -72,7 +72,7 @@ import Divider from "../Divider.vue";
 
             <!-- Image clipped by that shape -->
             <image
-              :href="KryosGround"
+              href="~/assets/img/kryos-ground.jpg"
               width="422"
               height="269"
               preserveAspectRatio="xMidYMid slice"
@@ -136,7 +136,7 @@ import Divider from "../Divider.vue";
               <path
                 d="M0.59082 199.026L47.0908 35.0257L343.591 0.525719L422.091 84.0257L556.591 187.026L498.091 334.026L422.091 370.526H196.591L115.591 260.526L0.59082 199.026Z"
                 fill="none"
-                stroke="var( --kryos-accent-shadow)"
+                stroke="var( --kryos-warn)"
                 stroke-width="2"
               />
             </svg>
@@ -158,7 +158,7 @@ import Divider from "../Divider.vue";
             </defs>
 
             <image
-              :href="KryosArerial"
+              href="assets/img/kryos-aerial.jpg"
               width="558"
               height="372"
               preserveAspectRatio="xMidYMid slice"
@@ -218,7 +218,7 @@ import Divider from "../Divider.vue";
               <path
                 d="M160.233 113.579L373.233 0.579285L490.733 76.5793L534.733 422.079L321.733 508.079L0.733398 466.079L160.233 113.579Z"
                 fill="none"
-                stroke="var(--kryos-accent-shadow)"
+                stroke="var(--kryos-warn)"
                 stroke-width="2"
               />
             </svg>
@@ -239,7 +239,7 @@ import Divider from "../Divider.vue";
             </defs>
 
             <image
-              :href="KryosLab"
+              href="~/assets/img/kryos-system-lab.jpg"
               width="536"
               height="509"
               preserveAspectRatio="xMidYMid slice"
