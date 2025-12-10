@@ -1,39 +1,52 @@
 <script lang="ts" setup>
+import { ref, onMounted, onBeforeUnmount } from "vue";
 import Absolute from "./Wrapper/Absolute.vue";
 import KryosPanel from "./Panels/KryosPanel.vue";
+import type { DeploymentType } from "./Deployment/DeploymentPanel.vue";
+let interval: number | null = null;
+
+const currentPanel = ref(0);
+
+const selectedPanel: DeploymentType[] = ["air", "land", "sea", "digital"];
+
+onMounted(() => {
+  interval = setInterval(() => {
+    currentPanel.value =
+      currentPanel.value === selectedPanel.length - 1
+        ? 0
+        : currentPanel.value + 1;
+  }, 5000);
+});
+
+onBeforeUnmount(() => {
+  if (interval) {
+    clearInterval(interval);
+  }
+});
+
+const selected = computed<DeploymentType>(() => {
+  return selectedPanel[currentPanel.value] ?? "air";
+});
 </script>
 <template>
-  <div class="flex flex-col min-h-screen relative bg-(--kryos-bg-alt)">
-    <Absolute extra-class="top-20 -right-20 w-200">
-      <KryosPanel :option="8" />
-    </Absolute>
-    <Absolute extra-class="top-150 -left-20 w-200 -z-1">
-      <KryosPanel :option="8" />
-    </Absolute>
-    <Absolute extra-class="top-150 -right-20 w-100 -z-0">
-      <KryosPanel :option="10" />
-    </Absolute>
-    <Absolute extra-class="top-20 -left-20 w-50 -z-0 -rotate-180">
-      <KryosPanel :option="10" />
-    </Absolute>
+  <Divider right-text="SECTOR // DEPLOYMENTS" extraClass="bg-(--kryos-bg)" />
+  <div
+    class="flex flex-col min-h-screen justify-center relative bg-(--kryos-bg-alt)"
+  >
+    <DeploymentPanel :deployment="selected" />
 
-    <Absolute extra-class="bottom-100 -left-20 w-50 -z-0 -rotate-180">
-      <KryosPanel :option="10" />
-    </Absolute>
-
-    <Absolute extra-class="bottom-250 left-0 w-150 -z-0 -rotate-180">
-      <KryosPanel :option="3" :stroke-width="2" />
-    </Absolute>
-
-    <Absolute extra-class="top-150 left-0 w-150 -z-0 -rotate-180">
-      <KryosPanel :option="3" :stroke-width="4" />
-    </Absolute>
-
-    <Divider right-text="SECTOR // DEPLOYMENTS" extraClass="bg-(--kryos-bg)" />
-    <DeploymentPanel deployment="air" />
-    <DeploymentPanel deployment="land" />
-    <DeploymentPanel deployment="sea" />
-    <DeploymentPanel deployment="digital" />
+    <div class="flex flex-row items-center justify-center gap-4">
+      <div
+        class="flex flex-row items-center justify-center"
+        v-for="idx in selectedPanel.length"
+        :key="idx"
+      >
+        <span
+          class="w-6 h-6 border"
+          :class="{ 'bg-(--kryos-accent)': idx - 1 === currentPanel }"
+        ></span>
+      </div>
+    </div>
   </div>
 </template>
 

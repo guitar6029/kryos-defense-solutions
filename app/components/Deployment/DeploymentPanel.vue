@@ -41,9 +41,9 @@ const selectedDeployment: Record<
 </script>
 
 <template>
-  <div class="flex w-full h-150 flex-row items-center gap-8 p-4 relative">
+  <div class="flex w-full h-170 flex-row items-center gap-8 p-4 relative">
     <div
-      class="absolute flex flex-col xl:flex-row items-center gap-4 left-1/2 -translate-x-1/2 animate-brief z-10"
+      class="absolute flex flex-col xl:flex-row items-center gap-4 left-1/2 -translate-x-1/2 animate-brief z-10 "
     >
       <span
         class="font-bold text-(--kryos-warn) font-orbitron text-[4rem] xl:text-[6rem] text-nowrap"
@@ -63,7 +63,7 @@ const selectedDeployment: Record<
 
     <!-- PANEL WRAPPER -->
     <Absolute
-      class="w-full xl:w-250 h-150 left-1/2 -translate-x-1/2 flex items-center justify-center z-1 trns hover:opacity-70 opacity-50"
+      class="w-full xl:w-350 h-150 left-1/2 -translate-x-1/2 flex items-center justify-center  trns hover:opacity-70 opacity-50"
     >
       <svg
         class="w-full h-auto"
