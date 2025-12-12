@@ -1,7 +1,5 @@
 <script lang="ts" setup>
-import KryosCard, { type CardOption } from "./Cards/KryosCard.vue";
-import Text3D from "./Text/Text3D.vue";
-let interval: number | null = null;
+import type { CardOption } from "./Cards/KryosCard.vue";
 
 const systemsCards: { title: string; text: string; option: CardOption }[] = [
   {
@@ -23,58 +21,58 @@ const systemsCards: { title: string; text: string; option: CardOption }[] = [
 </script>
 <template>
   <Divider right-text="SECTOR // Hardened AI Decision Pipelines" />
-  <div class="flex flex-row relative min-h-[50vh]">
-    <div class="w-275">
+  <div class="flex flex-col md:flex-row relative min-h-[50vh]">
+    <div class="w-full md:w-150 overflow-hidden">
       <img
         src="~/assets/img/protocol_01.jpg"
         alt="Advanced Systems"
-        class="w-full h-full object-cover"
+        class="w-full h-full object-cover trns hover:scale-160"
       />
     </div>
     <div
-      class="text-6xl flex-1 flex flex-col gap-4 justify-center p-4 rounded-xl bg-(--kryos-bg)"
+      class="text-5xl flex-1 flex flex-col gap-4 items-center justify-center p-4 rounded-xl trns bg-(--kryos-bg) hover:bg-(--kryos-bg-alt)/50"
     >
-      <h1 class="text-[5.5rem] font-bold text-(--kryos-warn)">
+      <h1 class="text-[4.5rem] font-bold text-(--kryos-warn)">
         [{{ systemsCards[0]?.title }}]
       </h1>
-      <p>{{ systemsCards[0]?.text }}</p>
+      <p class="w-full md:max-w-3xl">{{ systemsCards[0]?.text }}</p>
     </div>
   </div>
 
-  <div class="flex flex-row relative min-h-[50vh]">
+  <div class="flex flex-col-reverse md:flex-row relative min-h-[50vh]">
     <div
-      class="text-6xl flex-1 flex flex-col gap-4 justify-center p-4 rounded-xl bg-(--kryos-bg)"
+      class="text-5xl flex-1 flex flex-col gap-4 items-center justify-center p-4 rounded-xl trns bg-(--kryos-bg) hover:bg-(--kryos-bg-alt)/50"
     >
-      <h1 class="text-[5.5rem] font-bold text-(--kryos-warn)">
+      <h1 class="text-[4.5rem] font-bold text-(--kryos-warn)">
         [{{ systemsCards[1]?.title }}]
       </h1>
-      <p>{{ systemsCards[1]?.text }}</p>
+      <p class="w-full md:max-w-3xl">{{ systemsCards[1]?.text }}</p>
     </div>
 
-    <div class="w-275">
+    <div class="w-full md:w-150 overflow-hidden">
       <img
         src="~/assets/img/protocol_02.jpg"
         alt="Advanced Systems"
-        class="w-full h-full object-cover"
+        class="w-full h-full object-cover trns hover:scale-160"
       />
     </div>
   </div>
 
-  <div class="flex flex-row relative min-h-[50vh]">
-    <div class="w-275">
+  <div class="flex flex-col md:flex-row relative min-h-[50vh]">
+    <div class="w-full md:w-150 overflow-hidden">
       <img
         src="~/assets/img/interference_layers_01.jpg"
         alt="Advanced Systems"
-        class="w-full h-full object-cover"
+        class="w-full h-full object-cover trns hover:scale-160"
       />
     </div>
     <div
-      class="text-6xl flex-1 flex flex-col gap-4 justify-center p-4 rounded-xl bg-(--kryos-bg)"
+      class="text-5xl flex-1 flex flex-col gap-4 items-center justify-center p-4 rounded-xl trns bg-(--kryos-bg) hover:bg-(--kryos-bg-alt)/50"
     >
-      <h1 class="text-[5.5rem] font-bold text-(--kryos-warn)">
+      <h1 class="text-[4.5rem] font-bold text-(--kryos-warn)">
         [{{ systemsCards[2]?.title }}]
       </h1>
-      <p>{{ systemsCards[2]?.text }}</p>
+      <p class="w-full md:max-w-3xl">{{ systemsCards[2]?.text }}</p>
     </div>
   </div>
 </template>
