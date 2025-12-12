@@ -1,5 +1,6 @@
 /* Tailwind + Animations */
 @import "tailwindcss";
+@import "./animations.css";
 
 :root {
   /* ==========================================================================

@@ -1,0 +1,24 @@
+.animate-move-right-alt {
+  animation: move-right-alt 10s alternate-reverse infinite;
+}
+
+.animate-move-left-alt {
+  animation: move-left-alt 10s alternate-reverse infinite;
+}
+
+@keyframes move-right-alt {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(300px);
+  }
+}
+@keyframes move-left-alt {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-300px);
+  }
+}

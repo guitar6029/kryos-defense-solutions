@@ -1,7 +1,4 @@
 <script lang="ts" setup>
-import KryosArerial from "~/assets/img/kryos-aerial.jpg";
-import KryosGround from "~/assets/img/kryos-ground.jpg";
-import KryosLab from "~/assets/img/kryos-system-lab.jpg";
 import Absolute from "../Wrapper/Absolute.vue";
 import KryosPanel from "../Panels/KryosPanel.vue";
 import Text3D from "../Text/Text3D.vue";
@@ -34,7 +31,7 @@ import Divider from "../Divider.vue";
         <KryosPanel :option="7" />
       </Absolute>
 
-      <div class="flex flex-col items-center xl:flex-row gap-2">
+      <div class="flex flex-col items-center xl:flex-row gap-12">
         <div class="sm:w-100 md:w-150 xl:w-200 relative trns hover:scale-102">
           <Absolute extra-class="bottom-10 left-1/2 -translate-x-1/2">
             <Text3D text="Ground Platforms" />
@@ -96,24 +93,25 @@ import Divider from "../Divider.vue";
           </p>
         </div>
       </div>
+
       <div class="w-full h-25 relative">
-        <Absolute extra-class="bottom-10 left-20 -z-1 flex flex-row gap-2">
+        <Absolute extra-class="bottom-10 left-20 -z-1 flex flex-row gap-2 animate-move-right-alt">
           <div
-            class="w-6 h-6 bg-(--kryos-bg-alt) border-neutral-600 border"
+            class="w-6 h-6 bg-(--kryos-bg-alt) border-neutral-600 border delay-100"
           ></div>
           <div
-            class="w-6 h-6 bg-(--kryos-bg-alt) border-neutral-600 border"
+            class="w-6 h-6 bg-(--kryos-bg-alt) border-neutral-600 border delay-200"
           ></div>
           <div
-            class="w-6 h-6 bg-(--kryos-bg-alt) border-neutral-600 border"
+            class="w-6 h-6 bg-(--kryos-bg-alt) border-neutral-600 border delay-300"
           ></div>
           <div
-            class="w-6 h-6 bg-(--kryos-bg-alt) border-neutral-600 border"
+            class="w-6 h-6 bg-(--kryos-bg-alt) border-neutral-600 border delay-400"
           ></div>
         </Absolute>
       </div>
 
-      <div class="flex items-center xl:flex-row flex-col-reverse gap-2">
+      <div class="flex items-center xl:flex-row flex-col-reverse gap-12">
         <div class="flex items-center justify-center p-4 z-12">
           <p class="max-w-4xl text-2xl xl:text-4xl italic font-bold">
             Lightweight, persistent-surveillance drones designed for layered
@@ -176,23 +174,23 @@ import Divider from "../Divider.vue";
       </div>
 
       <div class="w-full h-25 relative">
-        <Absolute extra-class="bottom-10 right-20 -z-1 flex flex-row gap-2">
+        <Absolute extra-class="bottom-10 right-20 -z-1 flex flex-row gap-2 animate-move-left-alt">
           <div
-            class="w-6 h-6 bg-(--kryos-bg-alt) border-neutral-600 border"
+            class="w-6 h-6 bg-(--kryos-bg-alt) border-neutral-600 border delay-100"
           ></div>
           <div
-            class="w-6 h-6 bg-(--kryos-bg-alt) border-neutral-600 border"
+            class="w-6 h-6 bg-(--kryos-bg-alt) border-neutral-600 border delay-200"
           ></div>
           <div
-            class="w-6 h-6 bg-(--kryos-bg-alt) border-neutral-600 border"
+            class="w-6 h-6 bg-(--kryos-bg-alt) border-neutral-600 border delay-300"
           ></div>
           <div
-            class="w-6 h-6 bg-(--kryos-bg-alt) border-neutral-600 border"
+            class="w-6 h-6 bg-(--kryos-bg-alt) border-neutral-600 border delay-400"
           ></div>
         </Absolute>
       </div>
 
-      <div class="flex flex-col items-center xl:flex-row gap-2">
+      <div class="flex flex-col items-center xl:flex-row gap-12">
         <div class="sm:w-100 md:w-150 xl:w-200 relative trns hover:scale-102">
           <Absolute
             extra-class="bottom-1/4 left-1/2 -translate-x-1/2 flex flex-col gap-2"
@@ -261,19 +259,20 @@ import Divider from "../Divider.vue";
           </p>
         </div>
       </div>
+
       <div class="w-full h-25 relative">
-        <Absolute extra-class="bottom-10 left-20 -z-1 flex flex-row gap-2">
+        <Absolute extra-class="bottom-10 left-20 -z-1 flex flex-row gap-2 animate-move-right-alt">
           <div
-            class="w-6 h-6 bg-(--kryos-bg-alt) border-neutral-600 border"
+            class="w-6 h-6 bg-(--kryos-bg-alt) border-neutral-600 border delay-100"
           ></div>
           <div
-            class="w-6 h-6 bg-(--kryos-bg-alt) border-neutral-600 border"
+            class="w-6 h-6 bg-(--kryos-bg-alt) border-neutral-600 border delay-200"
           ></div>
           <div
-            class="w-6 h-6 bg-(--kryos-bg-alt) border-neutral-600 border"
+            class="w-6 h-6 bg-(--kryos-bg-alt) border-neutral-600 border delay-300"
           ></div>
           <div
-            class="w-6 h-6 bg-(--kryos-bg-alt) border-neutral-600 border"
+            class="w-6 h-6 bg-(--kryos-bg-alt) border-neutral-600 border delay-400"
           ></div>
         </Absolute>
 
