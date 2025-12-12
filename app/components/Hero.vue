@@ -32,7 +32,7 @@ import KRYOS_HERO from "~/assets/img/KRYOS.png";
       </svg>
     </Absolute>
 
-    <div class="w-full bg-(--kryos-bg) p-8 text-center">
+    <div class="w-full bg-(--kryos-bg)/80 p-8 text-center">
       <h1
         class="sm:text-2xl md:text-[6rem] lg:text-[8rem] font-orbitron font-bold text-(--kryos-text-high) text-center"
       >
