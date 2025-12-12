@@ -99,7 +99,7 @@
   .section-title {
     font-family: "Orbitron", sans-serif;
     color: var(--kryos-text-high);
-    @apply lg:text-[5rem] sm:text-[4rem] text-center font-bold;
+    @apply lg:text-[5rem] text-[2.5rem] text-center font-bold;
   }
 
   .nav-link:hover {

@@ -14,7 +14,7 @@ import GeoShapes from "~/assets/img/shapes/3d_shapes.png";
 
     <h2 class="section-title">Recent Announcements</h2>
     <ul
-      class="text-4xl font-bold flex flex-col items-center gap-10 text-(--kryos-text-high) max-w-4xl mx-auto"
+      class="text-4xl font-bold flex flex-col items-center gap-10 text-(--kryos-text-high) w-full p-4 md:max-w-4xl mx-auto"
     >
       <li>
         Kryos MK-I enters limited deployment with Tier-1 security partners.
