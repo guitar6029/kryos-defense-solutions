@@ -19,7 +19,78 @@ export type KryosNode = {
 };
 
 //initial fleeet data
-const initialFleet: KryosNode[] = [];
+const initialFleet: KryosNode[] = [
+  {
+    unitId: "MK-1A",
+    platform: "MK",
+    status: "ONLINE",
+    zone: "ALPHA",
+    powerPct: 82,
+    link: { status: "STABLE", signalQuality: 92 },
+    lastPingmsAgo: 120,
+    role: "SCOUT",
+  },
+  {
+    unitId: "MK-1B",
+    platform: "MK",
+    status: "ONLINE",
+    zone: "ALPHA",
+    powerPct: 67,
+    link: { status: "STABLE", signalQuality: 88 },
+    lastPingmsAgo: 240,
+    role: "GUARD",
+  },
+  {
+    unitId: "MK-1C",
+    platform: "MK",
+    status: "DEGRADED",
+    zone: "BRAVO",
+    powerPct: 41,
+    link: { status: "WEAK", signalQuality: 46 },
+    lastPingmsAgo: 980,
+    role: "SCOUT",
+  },
+  {
+    unitId: "EX-1A",
+    platform: "EX",
+    status: "ONLINE",
+    zone: "CHARLIE",
+    powerPct: 74,
+    link: { status: "STABLE", signalQuality: 90 },
+    lastPingmsAgo: 180,
+    role: "SUPPORT",
+  },
+  {
+    unitId: "EX-1B",
+    platform: "EX",
+    status: "MAINTENANCE",
+    zone: "DELTA",
+    powerPct: 100,
+    link: { status: "LOST", signalQuality: 0 },
+    lastPingmsAgo: 12_000,
+    role: "HAUL",
+  },
+  {
+    unitId: "MK-1D",
+    platform: "MK",
+    status: "OFFLINE",
+    zone: "BRAVO",
+    powerPct: 0,
+    link: { status: "LOST", signalQuality: 0 },
+    lastPingmsAgo: 45_000,
+    role: "GUARD",
+  },
+  {
+    unitId: "EX-1C",
+    platform: "EX",
+    status: "ONLINE",
+    zone: "ALPHA",
+    powerPct: 59,
+    link: { status: "WEAK", signalQuality: 55 },
+    lastPingmsAgo: 420,
+    role: "SUPPORT",
+  },
+];
 
 export const useKryosFleetStore = defineStore("kryosFleet", () => {
   const fleet = ref<KryosNode[]>(initialFleet);
