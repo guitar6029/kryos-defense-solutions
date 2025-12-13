@@ -1,8 +1,10 @@
 <script lang="ts" setup>
 import Modal from "./components/Modal.vue";
 import { useSystemModalStore } from "./stores/systemModal";
+import { useSystemStateStore } from "#imports";
 
 const systemsModalStore = useSystemModalStore();
+const systemStateStore = useSystemStateStore()
 
 function handleExit() {
   systemsModalStore.close();
@@ -11,6 +13,7 @@ function handleExit() {
 
 function handleEnter() {
   systemsModalStore.close();
+  systemStateStore.setToLoadingMode()
 }
 </script>
 
