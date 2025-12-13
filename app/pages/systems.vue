@@ -3,6 +3,7 @@ import { storeToRefs } from "#imports";
 import { onMounted, ref, onBeforeUnmount, watch, nextTick } from "vue";
 import { useSystemModalStore, type SystemMode } from "#imports";
 import { useSystemStateStore } from "#imports";
+import KryosSystemTerminal from "~/components/Systems/KryosSystemTerminal.vue";
 
 const intervalId = ref<ReturnType<typeof setInterval> | null>(null);
 
@@ -12,7 +13,7 @@ const systemStateStore = useSystemStateStore();
 const { currentSystemMode } = storeToRefs(systemStateStore);
 
 const FAST_STEP_PX = 75;
-const SLOW_STEP_PX = 25;
+const SLOW_STEP_PX = 35;
 const BASE_INTERVAL_TIME_MS = 500;
 
 const parentLoadingDiv = ref<HTMLElement | null>(null);
@@ -100,7 +101,5 @@ watch(currentSystemMode, async (mode: SystemMode) => {
     </div>
   </div>
 
-  <div v-else class="flex flex-col min-h-screen p-4">
-    <h1 class="section-title w-fit">KRYOS // SYSTEMS</h1>
-  </div>
+  <KryosSystemTerminal v-else />
 </template>
