@@ -38,6 +38,16 @@ const route = useRoute();
       >
         About
       </NuxtLink>
+      
+      <NuxtLink
+        to="/systems"
+        class="nav-link"
+        :class="
+          route.path.startsWith('/systems') ? 'text-(--kryos-text-high)' : ''
+        "
+      >
+        Systems
+      </NuxtLink>
 
       <!-- <svg viewBox="0 0 80 100" class="w-20 mx-auto" fill="none" stroke="black">
         <ellipse
