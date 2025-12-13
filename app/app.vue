@@ -26,8 +26,8 @@ function handleEnter() {
         <h1 class="font-bold text-5xl">KRYOS SYSTEMS INTERFACE</h1>
       </template>
 
-      <div class="flex flex-col gap-4 text-4xl">
-        <div class="flex flex-col gap-4 max-w-4xl">
+      <div class="flex flex-col text-4xl">
+        <div class="flex flex-col gap-12 max-w-4xl">
           <p>
             Accessing this interface initiates the Kryos internal systems layer.
           </p>
@@ -36,9 +36,20 @@ function handleEnter() {
             autonomous platforms and tactical infrastructure.
           </p>
 
-          <span>Module: Systems</span>
-          <span>Release Channel: Internal</span>
-          <span>Version: 2.4</span>
+          <div class="flex flex-row items-center gap-2 font-bold uppercase">
+            <span class="text-(--kryos-warn)">[Module]</span>
+            <span>Systems</span>
+          </div>
+
+          <div class="flex flex-row items-center gap-2 font-bold uppercase">
+            <span class="text-(--kryos-warn)">[Release Channel]</span>
+            <span>Internal</span>
+          </div>
+
+          <div class="flex flex-row items-center gap-2 font-bold uppercase">
+            <span class="text-(--kryos-warn)">[Version]</span>
+            <span>2.4.8</span>
+          </div>
         </div>
       </div>
     </Modal>
