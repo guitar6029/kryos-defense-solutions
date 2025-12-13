@@ -1,1 +1,1 @@
-export type Platform = 'MK-1' | 'EX-1';
+export type Platform = 'MK' | 'EX';

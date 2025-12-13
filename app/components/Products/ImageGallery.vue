@@ -7,22 +7,22 @@ import MK1Model_side from "~/assets/img/mk-i-side-a-trns.png";
 
 import EX1Model from "~/assets/img/ex-1-no-bg.png";
 import EX1Model_side from "~/assets/img/ex-1-side-b-trns.png";
-import type { KryosModel } from "~/types/KryosModel";
+import type { Platform } from "~/types/Platform";
 
 let interval: number | null = null;
 
 const props = defineProps<{
-  model: KryosModel;
-  hasSignature?: boolean
+  model: Platform;
+  hasSignature?: boolean;
 }>();
 
 const currentImg = ref(0);
 
-const selectedModel: Record<KryosModel, { img: string[] }> = {
-  mk1: {
+const selectedModel: Record<Platform, { img: string[] }> = {
+  MK: {
     img: [MK1Model, MK1Model_side],
   },
-  ex1: {
+  EX: {
     img: [EX1Model, EX1Model_side],
   },
 };
@@ -57,7 +57,9 @@ onUnmounted(() => {
       class="w-200 h-200 object-contain"
     />
     <div class="relative flex items-center justify-center gap-2">
-       <Absolute extra-class="bottom-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 opacity-2 -z-1">
+      <Absolute
+        extra-class="bottom-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 opacity-2 -z-1"
+      >
         <KryosSignature />
       </Absolute>
       <div

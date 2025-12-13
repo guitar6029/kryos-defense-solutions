@@ -6,7 +6,7 @@ import FullViewProduct from "~/components/Products/FullViewProduct.vue";
 import SummaryProduct from "~/components/Products/SummaryProduct.vue";
 import VideoFullPanel from "~/components/Products/VideoFullPanel.vue";
 import ImageGallery from "~/components/Products/ImageGallery.vue";
-
+import type { Platform } from "~/types/Platform";
 const route = useRoute();
 let timeoutId: number | null = null;
 
@@ -47,7 +47,6 @@ onUnmounted(() => {
 const isLoading = ref(true);
 
 type KryosSlug = "mk-1" | "ex-1";
-type KryosModel = "mk1" | "ex1";
 
 type SpecItem = {
   label: string;
@@ -68,15 +67,15 @@ type ProductConfig = {
 
 const model = computed(() => route.params.model as KryosSlug);
 
-const slugToKey: Record<KryosSlug, KryosModel> = {
-  "mk-1": "mk1",
-  "ex-1": "ex1",
+const slugToKey: Record<KryosSlug, Platform> = {
+  "mk-1": "MK",
+  "ex-1": "EX",
 };
 
 const productKey = computed(() => slugToKey[model.value]);
 
-const products: Record<KryosModel, ProductConfig> = {
-  mk1: {
+const products: Record<Platform, ProductConfig> = {
+  MK: {
     title: "KRYOS MK-I Tactical Platform",
     subtitle:
       "Autonomous six-legged ground platform engineered for dense urban, industrial, and subterranean environments.",
@@ -121,7 +120,7 @@ const products: Record<KryosModel, ProductConfig> = {
       },
     ],
   },
-  ex1: {
+  EX: {
     title: "KRYOS EX-1 Tactical ExoFrame",
     subtitle:
       "Humanoid powered exoskeleton platform for assisted lift, hazardous-material handling, and tactical support in constrained environments.",

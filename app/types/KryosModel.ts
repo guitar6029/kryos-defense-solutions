@@ -1,1 +1,0 @@
-export type KryosModel = "mk1" | "ex1";

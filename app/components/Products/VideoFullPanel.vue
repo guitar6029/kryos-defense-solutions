@@ -1,18 +1,18 @@
 <script lang="ts" setup>
-import type { KryosModel } from "~/types/KryosModel";
+import type { Platform } from "~/types/Platform";
 import MKIVideo from "~/assets/video/mki.mp4";
 import EX1VideoB from "~/assets/video/ex-1-360-b.mp4";
 
 withDefaults(
   defineProps<{
-    model: KryosModel;
+    model: Platform;
     autoPlay?: boolean;
     loop?: boolean;
     muted?: boolean;
     className?: string;
   }>(),
   {
-    model: "mk1",
+    model: "MK",
     autoPlay: true,
     loop: true,
     muted: true,
@@ -20,11 +20,11 @@ withDefaults(
   }
 );
 
-const selectedModel: Record<KryosModel, { videoSrc: string }> = {
-  mk1: {
+const selectedModel: Record<Platform, { videoSrc: string }> = {
+  MK: {
     videoSrc: MKIVideo,
   },
-  ex1: {
+  EX: {
     videoSrc: EX1VideoB,
   },
 };

@@ -1,21 +1,21 @@
 <script lang="ts" setup>
-import type { KryosModel } from "~/types/KryosModel";
+import type { Platform } from "~/types/Platform";
 import Absolute from "../Wrapper/Absolute.vue";
 import KryosPanel from "../Panels/KryosPanel.vue";
 defineProps<{
-  model: KryosModel;
+  model: Platform;
 }>();
 
 const selectedModel: Record<
-  KryosModel,
+  Platform,
   { title: string; fullTitle: string; summary: string }
 > = {
-  mk1: {
+  MK: {
     title: "KRYOS MK-1",
     fullTitle: "Kryos MK-I Autonomous Tactical Drone",
     summary: `The Kryos MK-I is a multi-terrain ground platform designed for dense urban, industrial, and subterranean environments. Six-degree mobility, redundant sensor arrays, and modular payload interfaces allow MK-I units to operate continuously under adverse conditions.`,
   },
-  ex1: {
+  EX: {
     title: "KRYOS EX-1",
     fullTitle: "Kryos EX-1 Tactical ExoFrame",
     summary: `The Kryos EX-1 is a powered exoskeleton platform designed for high-load,

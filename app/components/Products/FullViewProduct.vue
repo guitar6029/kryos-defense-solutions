@@ -2,26 +2,26 @@
 import Absolute from "../Wrapper/Absolute.vue";
 import EX1Model from "~/assets/img/ex-1-no-bg.png";
 import MKIModel from "~/assets/img/mk-i-no-bg.png";
-import type { KryosModel } from "~/types/KryosModel";
+import type { Platform } from "~/types/Platform";
 import KryosPanel from "../Panels/KryosPanel.vue";
 
 withDefaults(
   defineProps<{
-    model: KryosModel;
+    model: Platform;
     hasTitle?: boolean;
   }>(),
   {
-    model: "mk1",
+    model: "MK",
     hasTitle: true,
   }
 );
 
-const selectedModel: Record<KryosModel, { title: string; imageSrc: string }> = {
-  mk1: {
+const selectedModel: Record<Platform, { title: string; imageSrc: string }> = {
+  MK: {
     title: "KRYOS MK-I",
     imageSrc: MKIModel,
   },
-  ex1: {
+  EX: {
     title: "KRYOS EX-I",
     imageSrc: EX1Model,
   },
