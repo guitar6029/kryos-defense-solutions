@@ -4,6 +4,7 @@ import { storeToRefs } from "#imports";
 import { useSystemStateStore } from "#imports";
 import KryosLabel from "../Labels/KryosLabel.vue";
 import KryosPanelTitle from "../Labels/KryosPanelTitle.vue";
+import KryosSystemStats from "./KryosSystemStats.vue";
 const systemStateStore = useSystemStateStore();
 const { currentSystemMode } = storeToRefs(systemStateStore);
 export type SystemModule = "fleet_monitor" | "command";
@@ -43,6 +44,10 @@ const handleModule = (mode: SystemModule) => {
       />
     </div>
     <!-- end labels -->
+
+    <!-- kryos stats strip -->
+    <KryosSystemStats />
+    <!-- end kryos stats strip -->
 
     <!-- Fleet Monitor -->
     <div v-if="currentModule === 'fleet_monitor'" class="flex flex-col gap-2">
