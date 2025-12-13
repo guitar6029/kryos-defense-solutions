@@ -1,0 +1,1 @@
+export type Reason = 'outdated' | 'lost' | 'damaged'

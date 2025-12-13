@@ -1,0 +1,1 @@
+export type Role = 'SCOUT' | 'SUPPORT' | 'GUARD' | 'HAUL';
