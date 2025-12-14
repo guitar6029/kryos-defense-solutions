@@ -95,6 +95,10 @@
   .trns {
     @apply transition ease-in duration-300;
   }
+
+  .trns-color {
+    @apply transition-colors duration-150 ease-linear;
+  }
 }
 
 @layer components {

@@ -6,7 +6,7 @@ import { useSystemStateStore } from "#imports";
 import KryosLabel from "../Labels/KryosLabel.vue";
 import KryosPanelTitle from "../Labels/KryosPanelTitle.vue";
 import KryosSystemStats from "./KryosSystemStats.vue";
-import KryosTable from "../Table/KryosTable.vue";
+import KryosTable from "../Table/KryosFleetTable.vue";
 
 // fleet store
 const kryosFleetStore = useKryosFleetStore();
