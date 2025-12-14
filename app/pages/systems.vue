@@ -4,53 +4,45 @@ import { onMounted, ref, onBeforeUnmount, watch, nextTick } from "vue";
 import { useSystemModalStore, type SystemMode } from "#imports";
 import { useSystemStateStore } from "#imports";
 import KryosSystemTerminal from "~/components/Systems/KryosSystemTerminal.vue";
+import { BOOT_SEQUENCE_STEPS } from "~/assets/static_data/BootSequenceSteps";
+import KryosLoader from "~/components/Systems/KryosLoader.vue";
 
 definePageMeta({ layout: "systems" });
 
-const intervalId = ref<ReturnType<typeof setInterval> | null>(null);
+const bootSteps = BOOT_SEQUENCE_STEPS;
+// boot sequence steps
+const bootSequence = ref<string[]>([]);
+
+const sequenceIntervalId = ref<ReturnType<typeof setInterval> | null>(null);
+const bootScrollElement = ref<HTMLElement | null>(null);
 
 const systemModalStore = useSystemModalStore();
 
 const systemStateStore = useSystemStateStore();
 const { currentSystemMode } = storeToRefs(systemStateStore);
 
-const FAST_STEP_PX = 75;
-const SLOW_STEP_PX = 35;
-const BASE_INTERVAL_TIME_MS = 500;
-
-const parentLoadingDiv = ref<HTMLElement | null>(null);
-const loadingBarMax = ref(0);
-
-const loadingWidthPxs = ref(0);
 useHead({
   title: "KRYOS | SYSTEMS",
 });
 
-function loadingBar() {
-  let half_bar = loadingBarMax.value / 2;
-  intervalId.value = setInterval(() => {
-    if (loadingWidthPxs.value < half_bar) {
-      //first 50 % fast
-      loadingWidthPxs.value += FAST_STEP_PX;
-    } else {
-      //the other 50 % , slowed down += valuee
-      loadingWidthPxs.value += SLOW_STEP_PX;
-    }
-    if (loadingWidthPxs.value >= loadingBarMax.value) {
-      //clear the interval
-      loadingWidthPxs.value = Math.min(
-        loadingWidthPxs.value,
-        loadingBarMax.value
-      );
-      if (intervalId.value) {
-        clearInterval(intervalId.value);
+function bootSequenceStart() {
+  let i = 0;
+  sequenceIntervalId.value = setInterval(() => {
+    if (i >= bootSteps.length) {
+      if (sequenceIntervalId.value) {
+        clearInterval(sequenceIntervalId.value);
+        sequenceIntervalId.value = null;
         //set the mode to operational
         systemStateStore.setToOperationalMode();
       }
-
       return;
     }
-  }, BASE_INTERVAL_TIME_MS);
+
+    const step = bootSteps[i];
+    if (step === undefined) return;
+    bootSequence.value.push(step);
+    i++;
+  }, 150);
 }
 
 onMounted(() => {
@@ -65,19 +57,24 @@ onBeforeUnmount(() => {
 });
 
 // WATCHERS
-watch(currentSystemMode, async (mode: SystemMode) => {
+watch(currentSystemMode, (mode: SystemMode) => {
   if (mode !== "loading") return;
-
-  // ref becomes available after render
-  await nextTick();
-
-  if (!parentLoadingDiv.value) return;
-  loadingBarMax.value = parentLoadingDiv.value.clientWidth;
-
-  //reset loading bar value
-  loadingWidthPxs.value = 0;
-  loadingBar();
+  //reset sequence array
+  bootSequence.value = [];
+  bootSequenceStart();
 });
+
+watch(
+  () => bootSequence.value.length,
+  async () => {
+    await nextTick();
+    const divElement = bootScrollElement.value;
+    if (!divElement) {
+      return;
+    }
+    divElement.scrollTop = divElement.scrollHeight;
+  }
+);
 </script>
 
 <template>
@@ -86,13 +83,27 @@ watch(currentSystemMode, async (mode: SystemMode) => {
     class="flex flex-col h-screen items-center justify-center"
   >
     <div v-if="currentSystemMode === 'loading'" class="flex flex-col gap-2">
-      <h1>LOADING</h1>
-      <div ref="parentLoadingDiv" class="w-200 h-10 border-2">
-        <div
-          :style="{ width: `${loadingWidthPxs}px` }"
-          class="bg-neutral-400 h-9"
-        ></div>
+      <!-- LOADER -->
+      <KryosLoader :loading="currentSystemMode === 'loading'" />
+      <!-- END LOADER -->
+
+      <!-- BOOT SEQUENCE -->
+      <div
+        ref="bootScrollElement"
+        class="flex flex-col gap-2 mt-12 font-mono h-50 overflow-hidden"
+      >
+        <span>BOOT SEQUENCE INITIATED...</span>
+        <span
+          v-for="(sequence, idx) in bootSequence"
+          :key="idx"
+          :class="[
+            'text-[.8rem] uppercase',
+            `${idx === bootSteps.length - 1 ? 'text-(--kryos-ok)' : ''}`,
+          ]"
+          >{{ sequence }}</span
+        >
       </div>
+      <!-- END BOOT SEQUENCE -->
     </div>
 
     <div

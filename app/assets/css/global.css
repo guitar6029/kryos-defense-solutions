@@ -89,6 +89,10 @@
   --kryos-text-low: #6d7479;
 
   --kryos-mk-bg: #536573;
+
+
+  /* status */
+  --kryos-ok: #7bf1a8;
 }
 
 @layer utility {
