@@ -64,3 +64,15 @@ export const BOOT_SEQUENCE_STEPS: string[] = [
   "[handoff control] ........... OK",
   "[boot sequence complete] .... OK",
 ];
+
+
+export const FINALIZE_SEQUENCE_STEPS = [
+  "[handoff control] ............ VERIFIED",
+  "[subsystem sync] ............. COMPLETE",
+  "[integrity check] ............ PASSED",
+  "[security context] ........... SEALED",
+  "[command interface] .......... LINKED",
+  "[system readiness] ........... CONFIRMED",
+  "[operational state] .......... NOMINAL",
+  "[mode transition] ........... OPERATIONAL",
+];
