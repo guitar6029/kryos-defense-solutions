@@ -104,16 +104,16 @@ export const useKryosFleetStore = defineStore("kryosFleet", () => {
   function scheduleMaintenance(unitId: string) {}
 
   const totalDegraded = computed(() => {
-    return fleet.value.filter((fleet: KryosNode) => fleet.status === "DEGRADED")
+    return fleet.value.filter((node: KryosNode) => node.status === "DEGRADED")
       .length;
   });
 
   const totalOnline = computed(() => {
-    return fleet.value.filter((fleet: KryosNode) => fleet.status === "ONLINE")
+    return fleet.value.filter((node: KryosNode) => node.status === "ONLINE")
       .length;
   });
   const totalOffline = computed(() => {
-    return fleet.value.filter((fleet: KryosNode) => fleet.status === "OFFLINE")
+    return fleet.value.filter((node: KryosNode) => node.status === "OFFLINE")
       .length;
   });
   const totalMaintenance = computed(() => {
@@ -128,7 +128,7 @@ export const useKryosFleetStore = defineStore("kryosFleet", () => {
     if (totalFleet === 0) return 0;
 
     const totalFleetPower = fleet.value.reduce(
-      (accum, fleetItem) => accum + fleetItem.powerPct,
+      (accum, node) => accum + node.powerPct,
       0
     );
     return totalFleetPower / totalFleet;
@@ -136,18 +136,17 @@ export const useKryosFleetStore = defineStore("kryosFleet", () => {
 
   const avgPowerOnlineTotal = computed(() => {
     const onlineNodes = fleet.value.filter(
-      (fleetNode: KryosNode) => fleetNode.status === "ONLINE"
+      (node: KryosNode) => node.status === "ONLINE"
     );
 
     if (onlineNodes.length === 0) return 0;
 
-    const onlineNodesLength = onlineNodes.length;
     const totalPowerForOnlineNodes = onlineNodes.reduce(
-      (accum, fleetItem) => accum + fleetItem.powerPct,
+      (accum, node) => accum + node.powerPct,
       0
     );
 
-    return totalPowerForOnlineNodes / onlineNodesLength;
+    return totalPowerForOnlineNodes / onlineNodes.length;
   });
 
   return {
