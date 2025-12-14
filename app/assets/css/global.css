@@ -1,5 +1,6 @@
 /* Tailwind + Animations */
 @import "tailwindcss";
+@import "@nuxt/ui";
 @import "./animations.css";
 
 :root {
