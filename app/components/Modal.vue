@@ -1,4 +1,11 @@
 <script lang="ts" setup>
+const baseBtnClass =
+  "relative z-10 w-full h-full flex items-center justify-center uppercase text-[1rem] trns group-hover:text-(--kryos-text-high)";
+const basePath = "M0.5 188V26L83 0.5H619.5V165L528.5 241.5H51.5L0.5 188Z";
+const baseDivBtnContainer = "relative w-[150px] h-12 group cursor-default";
+const baseSVGClass =
+  "absolute inset-0 w-full trns h-full group-hover:fill-(--kryos-bg)";
+
 defineEmits<{
   (e: "cancel"): void;
   (e: "continue"): void;
@@ -28,48 +35,42 @@ defineProps<{
         class="flex flex-row justify-end gap-2 w-full"
       >
         <slot name="actions">
-          <div class="relative w-[260px] h-20 group">
+          <div :class="baseDivBtnContainer">
             <svg
-              class="absolute inset-0 w-full trns h-full group-hover:fill-(--kryos-warn) group-hover:opacity-90"
-              viewBox="0 0 691 243"
-              fill="var(--kryos-bg-alt)"
-              xmlns="http://www.w3.org/2000/svg"
-              preserveAspectRatio="none"
-            >
-              <path
-                d="M0.5 54.5244L71.5 0.524414L173.5 15.0244H347L381 0.524414H690.5V191.024L599.5 242.024H191L154 219.024H0.5V54.5244Z"
-                stroke="var(--kryos-accent)"
-                stroke-width="2"
-              />
-            </svg>
-
-            <button
-              class="relative z-10 w-full h-full flex items-center justify-center uppercase text-2xl trns group-hover:text-black"
-              @click="$emit('cancel')"
-            >
-              Cancel
-            </button>
-          </div>
-
-          <div class="group relative w-[260px] h-20 trns">
-            <svg
-              class="absolute inset-0 w-full trns h-full group-hover:fill-(--kryos-bg) group-hover:opacity-90"
+              :class="baseSVGClass"
               viewBox="0 0 620 242"
               fill="var(--kryos-bg-alt)"
               xmlns="http://www.w3.org/2000/svg"
               preserveAspectRatio="none"
             >
               <path
-                d="M0.5 188V26L83 0.5H619.5V165L528.5 241.5H51.5L0.5 188Z"
+                :d="basePath"
                 stroke="var(--kryos-accent)"
                 stroke-width="2"
               />
             </svg>
 
-            <button
-              class="relative z-10 w-full h-full flex items-center justify-center uppercase text-2xl"
-              @click="$emit('continue')"
+            <button :class="baseBtnClass" @click="$emit('cancel')">
+              Cancel
+            </button>
+          </div>
+
+          <div :class="baseDivBtnContainer">
+            <svg
+              :class="baseSVGClass"
+              viewBox="0 0 620 242"
+              fill="var(--kryos-bg-alt)"
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="none"
             >
+              <path
+                :d="basePath"
+                stroke="var(--kryos-accent)"
+                stroke-width="2"
+              />
+            </svg>
+
+            <button :class="baseBtnClass" @click="$emit('continue')">
               Continue
             </button>
           </div>
