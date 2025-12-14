@@ -5,6 +5,8 @@ import { useSystemModalStore, type SystemMode } from "#imports";
 import { useSystemStateStore } from "#imports";
 import KryosSystemTerminal from "~/components/Systems/KryosSystemTerminal.vue";
 
+definePageMeta({ layout: "systems" });
+
 const intervalId = ref<ReturnType<typeof setInterval> | null>(null);
 
 const systemModalStore = useSystemModalStore();
