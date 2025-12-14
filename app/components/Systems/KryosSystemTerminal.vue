@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import { storeToRefs } from "#imports";
+import { useKryosFleetStore } from "#imports";
 import { useSystemStateStore } from "#imports";
 import KryosLabel from "../Labels/KryosLabel.vue";
 import KryosPanelTitle from "../Labels/KryosPanelTitle.vue";
 import KryosSystemStats from "./KryosSystemStats.vue";
 import KryosTable from "../Table/KryosTable.vue";
-import { useKryosFleetStore } from "#imports";
 
 // fleet store
 const kryosFleetStore = useKryosFleetStore();
@@ -24,14 +24,24 @@ const handleModule = (mode: SystemModule) => {
 <template>
   <div class="flex flex-col min-h-screen p-4 gap-6">
     <!-- header -->
-    <div class="flex flex-row items-center gap-4 bg-(--kryos-bg-alt) p-4">
-      <h1 class="w-fit font-bold">SYSTEMS</h1>
-      <div>//</div>
-      <div class="flex items-center gap-2">
-        <p class="uppercase">
-          <span class="font-bold text-(--kryos-warn)">[STATUS] </span
-          >{{ currentSystemMode }}
-        </p>
+    <div
+      class="flex flex-row items-center justify-between bg-(--kryos-bg-alt) p-4"
+    >
+      <div class="flex flex-row items-center gap-4">
+        <h1 class="w-fit font-bold">SYSTEMS</h1>
+        <div>//</div>
+        <div class="flex items-center gap-2">
+          <p class="uppercase">
+            <span class="font-bold text-(--kryos-warn)">[STATUS] </span
+            >{{ currentSystemMode }}
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <NuxtLink to="/" class="trns hover:text-(--kryos-text-high)"
+          >EXIT SYSTEMS</NuxtLink
+        >
       </div>
     </div>
     <!-- end of header -->
