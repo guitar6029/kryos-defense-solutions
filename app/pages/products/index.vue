@@ -59,8 +59,8 @@ useHead({
 
     <!-- Kryos MK-I Flagship Spotlight -->
     <section class="flex flex-col items-center gap-8 relative">
-      <FullViewProduct model="mk1" />
-      <SummaryProduct model="mk1" />
+      <FullViewProduct model="MK" />
+      <SummaryProduct model="MK" />
       <div class="flex flex-col item-center justify-center gap-4">
         <ProductCTA
           text="Access full specifications, autonomous modes, and mission parameters"
@@ -78,8 +78,8 @@ useHead({
 
     <!-- Kryos EX-1 Tactical ExoFrame Spotlight  -->
     <section class="flex flex-col items-center gap-8 relative">
-      <FullViewProduct model="ex1" />
-      <SummaryProduct model="ex1" />
+      <FullViewProduct model="EX" />
+      <SummaryProduct model="EX" />
       <div class="flex flex-col item-center justify-center gap-4">
         <ProductCTA
           text="View full specifications, operating modes, and deployment profiles"

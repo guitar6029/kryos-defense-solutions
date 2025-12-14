@@ -144,11 +144,13 @@
 html {
   background: var(--kryos-bg);
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: "Exo 2", sans-serif;
   color: var(--kryos-text-mid);
+  background: var(--kryos-bg);
 }
 
 .font-tech {
