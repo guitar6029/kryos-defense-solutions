@@ -5,6 +5,12 @@ import { useSystemStateStore } from "#imports";
 import KryosLabel from "../Labels/KryosLabel.vue";
 import KryosPanelTitle from "../Labels/KryosPanelTitle.vue";
 import KryosSystemStats from "./KryosSystemStats.vue";
+import KryosTable from "../Table/KryosTable.vue";
+import { useKryosFleetStore } from "#imports";
+
+// fleet store
+const kryosFleetStore = useKryosFleetStore();
+
 const systemStateStore = useSystemStateStore();
 const { currentSystemMode } = storeToRefs(systemStateStore);
 export type SystemModule = "fleet_monitor" | "command";
@@ -52,6 +58,7 @@ const handleModule = (mode: SystemModule) => {
     <!-- Fleet Monitor -->
     <div v-if="currentModule === 'fleet_monitor'" class="flex flex-col gap-2">
       <KryosPanelTitle title="Active Units" />
+      <KryosTable :data="kryosFleetStore.fleet" />
 
       <!-- nuxt ui table component  -->
     </div>

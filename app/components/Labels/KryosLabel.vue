@@ -12,7 +12,7 @@ const emits = defineEmits<{
 <template>
   <div
     @click="emits('click')"
-    class="w-[250px] h-20 relative flex items-center justify-center group"
+    class="min-w-[150px] h-15 relative flex items-center justify-center group"
   >
     <div
       class="absolute inset-0 z-1 cursor-pointer trns group-hover:fill-(--kryos-metal-light)/50"
