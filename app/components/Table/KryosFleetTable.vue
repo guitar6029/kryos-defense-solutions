@@ -21,19 +21,21 @@ const statusClass = {
 
 function formatPingTime(pingTime: number): string {
   const secondsFormat = pingTime / DIVISOR_MSECONDS;
-  return `${secondsFormat}`;
+  return `${
+    secondsFormat < 10 ? secondsFormat.toFixed(2) : secondsFormat.toFixed(0)
+  }`;
 }
 
-function getPowerClass(power: number): string {
-  if (power <= 20) {
+function getValueClass(val: number): string {
+  if (val <= 20) {
     return "text-(--kryos-danger)";
   }
 
-  if (power <= 45) {
+  if (val <= 45) {
     return "text-(--kryos-warn)";
   }
 
-  if (power <= 70) {
+  if (val <= 70) {
     return "text-(--kryos-accent-bright)";
   }
 
@@ -56,7 +58,7 @@ const columns: TableColumn<KryosNode>[] = [
     accessorKey: "status",
     header: "STATUS",
     cell: ({ row }) => {
-      const status = row.original.status as Status;
+      const status = row.original.status;
       return h(UBadge, { class: [base, statusClass[status]] }, () => status);
     },
   },
@@ -66,11 +68,16 @@ const columns: TableColumn<KryosNode>[] = [
   },
   {
     accessorKey: "powerPct",
-    header: "POWER",
+    header: () => h("div", { class: " pr-2" }, "POWER"),
     cell: ({ row }) => {
       return h(
-        "span",
-        { class: [getPowerClass(row.getValue("powerPct"))] },
+        "div",
+        {
+          class: [
+            "w-12 text-right tabular-nums",
+            getValueClass(row.getValue("powerPct")),
+          ],
+        },
         String(row.getValue("powerPct"))
       );
     },
@@ -82,14 +89,14 @@ const columns: TableColumn<KryosNode>[] = [
       const { status, signalQuality } = row.original.link;
       return h(
         "span",
-        { class: [getPowerClass(signalQuality)] },
+        { class: [getValueClass(signalQuality)] },
         String(`${status} - ${signalQuality}`)
       );
     },
   },
   {
     accessorKey: "lastPingmsAgo",
-    header: "LAST PING (s)",
+    header: "LAST PING",
     cell: ({ row }) => {
       return h(
         "span",
