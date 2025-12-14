@@ -10,9 +10,10 @@ const kryosFleetStore = useKryosFleetStore();
 <template>
   <div class="flex flex-row items-center gap-2">
     <!-- status -->
-    <div class="flex flex-col gap-1 border border-(--kryos-accent) p-4">
-      <h2 class="text-(--kryos-accent-bright) text-[.6rem]">[status]</h2>
+    <div class="flex flex-col gap-1 border border-(--kryos-accent) p-6">
+      <h2 class="text-(--kryos-text-low) text-[.9rem]">[status]</h2>
       <div class="flex items-center gap-2">
+        <Icon name="pajamas:status-health" />
         <span
           :class="[
             'uppercase text-[.8rem]',
@@ -42,12 +43,12 @@ const kryosFleetStore = useKryosFleetStore();
     <!-- end status -->
 
     <!-- power -->
-    <div class="flex flex-col gap-1 border border-(--kryos-accent) p-4">
-      <h2 class="text-(--kryos-accent-bright) text-[.6rem]">[power]</h2>
+    <div class="flex flex-col gap-1 border border-(--kryos-accent) p-6">
+      <h2 class="text-(--kryos-text-low) text-[.9rem]">[power]</h2>
       <div class="flex items-center gap-2">
+        <Icon name="icomoon-free:power" />
         <span :class="[STATUS_BADGE_BASE]"
-          ><Icon name="icomoon-free:power" /> avg power -
-          {{ kryosFleetStore.stats.avgPower.toFixed(2) }}</span
+          >avg power - {{ kryosFleetStore.stats.avgPower.toFixed(2) }}</span
         >
         <span :class="[STATUS_BADGE_BASE]"
           >active power -
