@@ -118,7 +118,7 @@ export const useKryosFleetStore = defineStore("kryosFleet", () => {
   });
   const totalMaintenance = computed(() => {
     return fleet.value.filter(
-      (fleet: KryosNode) => fleet.status === "MAINTENANCE"
+      (node: KryosNode) => node.status === "MAINTENANCE"
     ).length;
   });
 
@@ -149,17 +149,21 @@ export const useKryosFleetStore = defineStore("kryosFleet", () => {
     return totalPowerForOnlineNodes / onlineNodes.length;
   });
 
+  const stats = computed(() => ({
+    totalOnline: totalOnline.value,
+    totalOffline: totalOffline.value,
+    totalDegraded: totalDegraded.value,
+    totalMaintenance: totalMaintenance.value,
+    avgPower: averagePowerTotal.value,
+    avgPowerOnline: avgPowerOnlineTotal.value,
+  }));
+
   return {
     assignZone,
-    averagePowerTotal,
-    avgPowerOnlineTotal,
     flagDegraded,
     fleet,
     ingestPing,
     scheduleMaintenance,
-    totalDegraded,
-    totalMaintenance,
-    totalOffline,
-    totalOnline,
+    stats,
   };
 });
