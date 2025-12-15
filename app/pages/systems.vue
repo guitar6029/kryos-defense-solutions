@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { storeToRefs } from "#imports";
-import { onMounted, onBeforeUnmount,} from "vue";
+import { onMounted, onBeforeUnmount } from "vue";
 import { useSystemModalStore, type SystemMode } from "#imports";
 import { useSystemStateStore } from "#imports";
 import KryosSystemTerminal from "~/components/Systems/KryosSystemTerminal.vue";
@@ -31,7 +31,7 @@ onBeforeUnmount(() => {
 
 function handleSystemBoot() {
   //set the mode to operational
-  //systemStateStore.setToOperationalMode();
+  systemStateStore.setToOperationalMode();
 }
 </script>
 
@@ -45,9 +45,7 @@ function handleSystemBoot() {
       <KryosLoader :loading="currentSystemMode === 'loading'" />
       <!-- END LOADER -->
       <!-- BOOT SEQUENCE -->
-      <KryosSystemBoot
-        @boot-completed="handleSystemBoot"
-      />
+      <KryosSystemBoot @boot-completed="handleSystemBoot" />
       <!-- END BOOT SEQUENCE -->
     </div>
 
