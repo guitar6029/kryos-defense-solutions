@@ -4,6 +4,86 @@ import KryosArcMultiple from "../svg/KryosArcMultiple.vue";
 </script>
 
 <template>
+  <Absolute
+    extra-class="-top-10 left-1/2 -translate-x-1/2 -z-1 w-300 opacity-90 rotate-180 "
+  >
+    <svg
+      class="w-full h-auto"
+      viewBox="0 0 3527 1411"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M0.5 0V544L1975.5 1410.5H3527M81 131V473.5L1975.5 1310H3365.5"
+        stroke="var(--kryos-accent)"
+        stroke-width="2"
+        preserve-aspect-ratio="none"
+        stroke-dasharray="8500"
+        stroke-dashoffset="8500"
+      >
+        <animate
+          attributeName="stroke-dashoffset"
+          values="8500; 0; 8500"
+          keyTimes="0; 0.6; 1"
+          dur="20s"
+          repeatCount="indefinite"
+        />
+      </path>
+    </svg>
+  </Absolute>
+
+  <Absolute extra-class="-top-10 left-0 -z-1 w-200 opacity-90">
+    <svg
+      class="w-full h-auto"
+      viewBox="0 0 3527 1411"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M0.5 0V544L1975.5 1410.5H3527M81 131V473.5L1975.5 1310H3365.5"
+        stroke="var(--kryos-accent)"
+        stroke-width="2"
+        preserve-aspect-ratio="none"
+        stroke-dasharray="8500"
+        stroke-dashoffset="8500"
+      >
+        <animate
+          attributeName="stroke-dashoffset"
+          values="8500; 0; 8500"
+          keyTimes="0; 0.6; 1"
+          dur="20s"
+          repeatCount="indefinite"
+        />
+      </path>
+    </svg>
+  </Absolute>
+
+  <Absolute extra-class="bottom-10 left-0 -z-1 w-200 opacity-90 rotate-90">
+    <svg
+      class="w-full h-auto"
+      viewBox="0 0 3527 1411"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M0.5 0V544L1975.5 1410.5H3527M81 131V473.5L1975.5 1310H3365.5"
+        stroke="var(--kryos-accent)"
+        stroke-width="2"
+        preserve-aspect-ratio="none"
+        stroke-dasharray="8500"
+        stroke-dashoffset="8500"
+      >
+        <animate
+          attributeName="stroke-dashoffset"
+          values="8500; 0; 8500"
+          keyTimes="0; 0.6; 1"
+          dur="20s"
+          repeatCount="indefinite"
+        />
+      </path>
+    </svg>
+  </Absolute>
+
   <Absolute extra-class="bottom-1/2 left-0 -z-1">
     <div class="w-screen h-[0.1rem] bg-(--kryos-accent)"></div>
   </Absolute>
