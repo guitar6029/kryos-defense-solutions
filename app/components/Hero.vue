@@ -64,7 +64,7 @@ import KRYOS_HERO from "~/assets/img/KRYOS.png";
       </NuxtLink>
       <NuxtLink to="#" class="link"> Learn about our R&D Division</NuxtLink>
 
-      <div class="grid grid-cols-1 xl:grid-cols-3 gap-4">
+      <div class="grid grid-cols-1 xl:grid-cols-3 gap-4 mb-10">
         <div class="relative p-2 h-25 flex items-center justify-center">
           <div class="absolute inset-0">
             <svg
