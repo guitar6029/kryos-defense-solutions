@@ -4,6 +4,7 @@ import {
   STATUS_BADGE_BASE,
   STATUS_BADGE_CLASS,
 } from "~/utils/kryosStatusClasses";
+import KryosLabel from "../Labels/KryosLabel.vue";
 const kryosFleetStore = useKryosFleetStore();
 </script>
 
@@ -11,12 +12,12 @@ const kryosFleetStore = useKryosFleetStore();
   <div class="flex flex-row items-center gap-2">
     <!-- status -->
     <div class="flex flex-col gap-1 border border-(--kryos-accent) p-6">
-      <h2 class="text-(--kryos-text-low) text-[.9rem]">[status]</h2>
+      <KryosLabel labelText="status" />
       <div class="flex items-center gap-2">
         <Icon name="pajamas:status-health" />
         <span
           :class="[
-            'uppercase text-[.8rem]',
+            'uppercase kryos-text',
             STATUS_BADGE_BASE,
             STATUS_BADGE_CLASS['ONLINE'],
           ]"
@@ -24,7 +25,7 @@ const kryosFleetStore = useKryosFleetStore();
         >
         <span
           :class="[
-            'uppercase text-[.8rem]',
+            'uppercase kryos-text',
             STATUS_BADGE_BASE,
             STATUS_BADGE_CLASS['OFFLINE'],
           ]"
@@ -32,7 +33,7 @@ const kryosFleetStore = useKryosFleetStore();
         >
         <span
           :class="[
-            'uppercase text-[.8rem]',
+            'uppercase kryos-text',
             STATUS_BADGE_BASE,
             STATUS_BADGE_CLASS['MAINTENANCE'],
           ]"
@@ -44,7 +45,7 @@ const kryosFleetStore = useKryosFleetStore();
 
     <!-- power -->
     <div class="flex flex-col gap-1 border border-(--kryos-accent) p-6">
-      <h2 class="text-(--kryos-text-low) text-[.9rem]">[power]</h2>
+      <KryosLabel labelText="power" />
       <div class="flex items-center gap-2">
         <Icon name="icomoon-free:power" />
         <span :class="[STATUS_BADGE_BASE]"

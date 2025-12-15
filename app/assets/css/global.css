@@ -90,7 +90,6 @@
 
   --kryos-mk-bg: #536573;
 
-
   /* status */
   --kryos-ok: #7bf1a8;
 }
@@ -103,8 +102,13 @@
   .trns-color {
     @apply transition-colors duration-150 ease-linear;
   }
-  .trns-slow{
+  .trns-slow {
     @apply transition ease-in duration-800;
+  }
+
+  .kryos-border {
+    border-color: var(--kryos-accent);
+    @apply border;
   }
 }
 
@@ -149,6 +153,10 @@
 
   .card-text {
     @apply text-4xl;
+  }
+
+  .kryos-text {
+    @apply text-[0.8rem];
   }
 }
 
