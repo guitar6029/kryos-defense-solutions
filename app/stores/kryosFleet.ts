@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { ref, computed } from "vue";
 import type { Platform } from "~/types/Platform";
-import type { Reason } from "~/types/Reason";
+import type { CommandFailReason } from "~/types/CommandFailReason";
 import type { Role } from "~/types/Role";
 import type { LinkState } from "~/types/LinkState";
 import type { Status } from "~/types/Status";
@@ -97,7 +97,7 @@ export const useKryosFleetStore = defineStore("kryosFleet", () => {
 
   function ingestPing(unitId: string, payload: unknown) {}
 
-  function flagDegraded(unitId: string, reason: Reason) {}
+  function flagDegraded(unitId: string, reason: CommandFailReason) {}
 
   function assignZone(unitId: string, zone: Zone) {}
 

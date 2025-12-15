@@ -1,3 +1,4 @@
+import type { CommandFailReason } from "./CommandFailReason";
 import type { CommandStatus } from "./CommandStatus";
 
 export type CommandType = "PING" | "RECALL" | "SET_MODE";
@@ -6,11 +7,13 @@ export type Command = {
   id: string;
   type: CommandType;
   targetUnitId: string;
-  paylaod?: Record<string, any>;
+  payload?: Record<string, any>;
   status: CommandStatus;
   createdAt: number;
-  sendAt?: number;
+  sentAt?: number;
   ackedAt?: number;
-  error?: string;
+  error?: CommandFailReason | string;
   attempts: number;
 };
+
+export type CommandDraft = Pick<Command, "type" | "targetUnitId" | "payload">;
