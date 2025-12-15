@@ -22,3 +22,16 @@
     transform: translateX(-300px);
   }
 }
+
+.rotate {
+  animation: rotate var(--duration, 120s) linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(var(--from-angle, 0deg));
+  }
+  to {
+    transform: rotate(var(--to-angle, 360deg));
+  }
+}

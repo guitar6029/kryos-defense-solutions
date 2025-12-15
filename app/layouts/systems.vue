@@ -2,6 +2,7 @@
 import Modal from "~/components/Modal.vue";
 import { useSystemModalStore } from "~/stores/systemModal";
 import { useSystemStateStore } from "~/stores/systemState";
+import SystemAccents from "~/components/Systems/SystemAccents.vue";
 
 const systemsModalStore = useSystemModalStore();
 const systemStateStore = useSystemStateStore();
@@ -18,13 +19,15 @@ function handleEnter() {
 </script>
 
 <template>
-  <div class="min-h-screen">
+  <div class="min-h-screen relative">
     <Modal
       v-if="systemsModalStore.isShowing"
       :show-btns="systemsModalStore.showBtns"
       @cancel="handleExit"
       @continue="handleEnter"
     >
+      <SystemAccents />
+
       <template #header>
         <h1 class="font-bold text-5xl">KRYOS SYSTEMS INTERFACE</h1>
       </template>

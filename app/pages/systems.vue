@@ -31,7 +31,7 @@ onBeforeUnmount(() => {
 
 function handleSystemBoot() {
   //set the mode to operational
-  systemStateStore.setToOperationalMode();
+  //systemStateStore.setToOperationalMode();
 }
 </script>
 
