@@ -1,11 +1,12 @@
 <script lang="ts" setup>
 import { storeToRefs } from "#imports";
 import { onMounted, onBeforeUnmount } from "vue";
-import { useSystemModalStore, type SystemMode } from "#imports";
+import { useSystemModalStore } from "#imports";
 import { useSystemStateStore } from "#imports";
 import KryosSystemTerminal from "~/components/Systems/KryosSystemTerminal.vue";
 import KryosSystemBoot from "~/components/Systems/KryosSystemBoot.vue";
 import KryosLoader from "~/components/Systems/KryosLoader.vue";
+import KryosTerminalCard from "~/components/svg/Systems/KryosTerminalCard.vue";
 
 definePageMeta({ layout: "systems" });
 
@@ -38,9 +39,18 @@ function handleSystemBoot() {
 <template>
   <div
     v-if="currentSystemMode === 'locked' || currentSystemMode === 'loading'"
-    class="flex flex-col h-screen items-center justify-center"
+    class="flex flex-col h-screen items-center justify-center overflow-hidden"
   >
-    <div v-if="currentSystemMode === 'loading'" class="flex flex-col gap-2">
+    <div
+      v-if="currentSystemMode === 'loading'"
+      class="flex flex-col gap-2 relative"
+    >
+      <!-- <div
+        class="absolute bottom-1/2 translate-y-1/2 left-1/2 -translate-x-1/2 w-300"
+      >
+        <KryosTerminalCard />
+      </div> -->
+
       <!-- LOADER -->
       <KryosLoader :loading="currentSystemMode === 'loading'" />
       <!-- END LOADER -->

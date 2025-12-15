@@ -75,7 +75,7 @@ function loadingBar() {
       <div class="text-[2rem] h-12">[</div>
       <div
         ref="parentLoadingDiv"
-        class="w-200 h-4 border-2 border-(--kryos-accent)/50"
+        class="w-100 xl:w-200 h-4 border-2 border-(--kryos-accent)/50"
       >
         <div
           :style="{ width: `${loadingWidthPxs}px` }"
