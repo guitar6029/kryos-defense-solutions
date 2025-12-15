@@ -26,7 +26,7 @@ const systemsCards: { title: string; text: string; option: CardOption }[] = [
       <img
         src="~/assets/img/protocol_01.jpg"
         alt="Advanced Systems"
-        class="w-full h-full object-cover trns hover:scale-160"
+        class="w-full h-full object-cover trns-slow hover:scale-160"
       />
     </div>
     <div
@@ -53,7 +53,7 @@ const systemsCards: { title: string; text: string; option: CardOption }[] = [
       <img
         src="~/assets/img/protocol_02.jpg"
         alt="Advanced Systems"
-        class="w-full h-full object-cover trns hover:scale-160"
+        class="w-full h-full object-cover trns-slow hover:scale-160"
       />
     </div>
   </div>
@@ -63,7 +63,7 @@ const systemsCards: { title: string; text: string; option: CardOption }[] = [
       <img
         src="~/assets/img/interference_layers_01.jpg"
         alt="Advanced Systems"
-        class="w-full h-full object-cover trns hover:scale-160"
+        class="w-full h-full object-cover trns-slow hover:scale-160"
       />
     </div>
     <div
