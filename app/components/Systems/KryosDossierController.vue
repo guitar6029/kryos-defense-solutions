@@ -40,11 +40,11 @@ const callouts: Callout[] = [
   {
     id: "sensor-suite",
     anchor: { left: "18%", bottom: "10%" },
-    wClass: "w-105",
+    wClass: "w-[min(22rem, 70vw)] md:w-[20rem] lg:w-[24rem]",
     hClass: "h-24",
     showLine: true,
     lineFrom: "tc",
-    lineLen: "10rem",
+    lineLen: "clamp(6rem, 12vw, 12rem)",
     title: "[Sensor Suite]",
     body: "Thermal, LIDAR, acoustic, inertial mapping",
   },
@@ -55,7 +55,7 @@ const callouts: Callout[] = [
     hClass: "h-24",
     showLine: true,
     lineFrom: "bl",
-    lineLen: "15rem",
+    lineLen: "clamp(8rem, 16vw, 18rem)",
     title: "[Communications]",
     body: "Encrypted multi-channel command + telemetry",
   },
@@ -74,7 +74,7 @@ const callouts: Callout[] = [
     hClass: "h-26",
     showLine: true,
     lineFrom: "lc",
-    lineLen: "15rem",
+    lineLen: "clamp(8rem, 18vw, 20rem)",
     title: "[Modular Payload]",
     body: "Two configurable mission hardpoints",
   },
@@ -102,6 +102,7 @@ const callouts: Callout[] = [
           :showLine="c.showLine"
           :line-from="c.lineFrom"
           :line-len="c.lineLen"
+          class="hidden md:block"
         >
           <div class="flex flex-col gap-1">
             <span class="kryos-text text-(--kryos-warn)">
@@ -116,13 +117,34 @@ const callouts: Callout[] = [
           alt="MK-1"
           class="w-full h-auto"
         />
+
+        <!-- mobile list callout -->
+        <div class="md:hidden flex flex-col gap-2">
+          <div class="flex flex-col gap-1 z-1 max-w-2xl">
+            <h2 class="model-title">KRYOS MK-I Tactical Platform</h2>
+            <p>
+              Autonomous six-legged ground platform engineered for dense urban,
+              industrial, and subterranean environments.
+            </p>
+          </div>
+
+          <div
+            v-for="c in callouts"
+            :key="`${c.id}-mobile`"
+            class="flex flex-col gap-1"
+          >
+            <span class="kryos-text text-(--kryos-warn)">
+              {{ c.title }}
+            </span>
+            <span>{{ c.body }}</span>
+          </div>
+        </div>
       </div>
     </Absolute>
 
     <Absolute
-      extra-class="top-20 left-[clamp(1rem,4vw,10rem)] flex flex-col gap-2 w-100 items-center justify-center"
+      extra-class="hidden md:block top-20 left-[clamp(1rem,4vw,10rem)] flex flex-col gap-2 w-100 items-center justify-center"
     >
-      <div class="absolute inset-0"></div>
       <div class="relative flex flex-col gap-1 z-1 max-w-2xl top-10">
         <h2 class="model-title">KRYOS MK-I Tactical Platform</h2>
         <p>
