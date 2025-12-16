@@ -2,6 +2,83 @@
 import Absolute from "../Wrapper/Absolute.vue";
 import KryosArcs from "../svg/Systems/KryosArcs.vue";
 import KryosCallout from "./KryosCallout.vue";
+
+type Callout = {
+  id: string;
+  anchor: {
+    top?: string;
+    left?: string;
+    right?: string;
+    bottom?: string;
+  };
+  wClass: string;
+  hClass: string;
+  showLine?: boolean;
+  lineFrom?: "tl" | "tc" | "tr" | "lc" | "rc" | "bl" | "bc" | "br";
+  lineLen?: string;
+  title: string;
+  body: string;
+};
+
+const callouts: Callout[] = [
+  {
+    id: "control-core",
+    anchor: { left: "-30rem", bottom: "5rem" },
+    wClass: "w-110",
+    hClass: "h-26",
+    title: "[Autonomous Control Core]",
+    body: "Low-latency adaptive decision pipelines",
+  },
+  {
+    id: "core-chassis",
+    anchor: { left: "-25rem", bottom: "20rem" },
+    wClass: "w-100",
+    hClass: "h-24",
+    title: "[Hardened Core Chassis]",
+    body: "Isolated compute, power, and mobility subsystems",
+  },
+  {
+    id: "sensor-suite",
+    anchor: { left: "10rem", bottom: "2rem" },
+    wClass: "w-105",
+    hClass: "h-24",
+    showLine: true,
+    lineFrom: "tc",
+    lineLen: "10rem",
+    title: "[Sensor Suite]",
+    body: "Thermal, LIDAR, acoustic, inertial mapping",
+  },
+  {
+    id: "communications",
+    anchor: { right: "-28rem", top: "1rem" },
+    wClass: "w-110",
+    hClass: "h-24",
+    showLine: true,
+    lineFrom: "bl",
+    lineLen: "15rem",
+    title: "[Communications]",
+    body: "Encrypted multi-channel command + telemetry",
+  },
+  {
+    id: "mobility",
+    anchor: { right: "-30rem", top: "15rem" },
+    wClass: "w-100",
+    hClass: "h-24",
+    title: "[Mobility Envelope]",
+    body: "Floor, wall, and overhead traversal",
+  },
+  {
+    id: "payload",
+    anchor: { right: "-26rem", bottom: "2rem" },
+    wClass: "w-110",
+    hClass: "h-26",
+    showLine: true,
+    lineFrom: "lc",
+    lineLen: "15rem",
+    title: "[Modular Payload]",
+    body: "Two configurable mission hardpoints",
+  },
+];
 </script>
 
 <template>
@@ -13,94 +90,31 @@ import KryosCallout from "./KryosCallout.vue";
     <Absolute
       extra-class="absolute top-20 left-1/2 -translate-x-1/2 flex flex-col items-center"
     >
-      <div class="flex flex-col items-center justify-center relative">
+      <div
+        class="flex flex-col items-center justify-center relative w-[min(60rem,92vw)]"
+      >
         <KryosCallout
-          :anchor="{ left: '-30rem', bottom: '5rem' }"
-          wClass="w-110"
-          hClass="h-26"
+          v-for="c in callouts"
+          :key="c.id"
+          :anchor="c.anchor"
+          :wClass="c.wClass"
+          :hClass="c.hClass"
+          :showLine="c.showLine"
+          :line-from="c.lineFrom"
+          :line-len="c.lineLen"
         >
           <div class="flex flex-col gap-1">
-            <span class="kryos-text text-(--kryos-warn)"
-              >[Autonomous Control Core]</span
-            >
-            <span>Low-latency adaptive decision pipelines</span>
-          </div>
-        </KryosCallout>
-
-        <KryosCallout
-          :anchor="{ left: '-25rem', bottom: '20rem' }"
-          wClass="w-100"
-          hClass="h-24"
-        >
-          <div class="flex flex-col gap-1">
-            <span class="kryos-text text-(--kryos-warn)"
-              >[Hardened Core Chassis]</span
-            >
-            <span>Isolated compute, power, and mobility subsystems</span>
-          </div>
-        </KryosCallout>
-
-        <KryosCallout
-          :anchor="{ left: '10rem', bottom: '2rem' }"
-          wClass="w-105"
-          hClass="h-24"
-          showLine
-          line-from="tc"
-          line-len="10rem"
-        >
-          <div class="flex flex-col gap-1">
-            <span class="kryos-text text-(--kryos-warn)">[Sensor Suite]</span>
-            <span>Thermal, LIDAR, acoustic, inertial mapping</span>
-          </div>
-        </KryosCallout>
-
-        <KryosCallout
-          :anchor="{ right: '-28rem', top: '1rem' }"
-          wClass="w-110"
-          hClass="h-24"
-          showLine
-          line-from="bl"
-          line-len="15rem"
-        >
-          <div class="flex flex-col gap-1">
-            <span class="kryos-text text-(--kryos-warn)">[Communications]</span>
-            <span>Encrypted multi-channel command + telemetry</span>
-          </div>
-        </KryosCallout>
-
-        <KryosCallout
-          :anchor="{ right: '-30rem', top: '15rem' }"
-          wClass="w-100"
-          hClass="h-24"
-        >
-          <div class="flex flex-col gap-1">
-            <span class="kryos-text text-(--kryos-warn)"
-              >[Mobility Envelope]</span
-            >
-            <span>Floor, wall, and overhead traversal</span>
-          </div>
-        </KryosCallout>
-
-        <KryosCallout
-          :anchor="{ right: '-26rem', bottom: '2rem' }"
-          wClass="w-110"
-          hClass="h-26"
-          showLine
-          line-from="lc"
-          line-len="15rem"
-        >
-          <div class="flex flex-col gap-1">
-            <span class="kryos-text text-(--kryos-warn)"
-              >[Modular Payload]</span
-            >
-            <span>Two configurable mission hardpoints</span>
+            <span class="kryos-text text-(--kryos-warn)">
+              {{ c.title }}
+            </span>
+            <span>{{ c.body }}</span>
           </div>
         </KryosCallout>
 
         <img
           src="~/assets/img/mk-i-side-a-trns.png"
           alt="MK-1"
-          class="w-[min(60rem,70vw)]"
+          class="w-full h-auto"
         />
       </div>
     </Absolute>
