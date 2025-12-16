@@ -12,12 +12,12 @@ import KryosArcMultiple from "../svg/KryosArcMultiple.vue";
       viewBox="0 0 3527 1411"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="none"
     >
       <path
         d="M0.5 0V544L1975.5 1410.5H3527M81 131V473.5L1975.5 1310H3365.5"
         stroke="var(--kryos-accent)"
         stroke-width="2"
-        preserveAspectRatio="none""
         stroke-dasharray="8500"
         stroke-dashoffset="8500"
       >
@@ -38,12 +38,12 @@ import KryosArcMultiple from "../svg/KryosArcMultiple.vue";
       viewBox="0 0 3527 1411"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="none"
     >
       <path
         d="M0.5 0V544L1975.5 1410.5H3527M81 131V473.5L1975.5 1310H3365.5"
         stroke="var(--kryos-accent)"
         stroke-width="2"
-        preserveAspectRatio="none""
         stroke-dasharray="8500"
         stroke-dashoffset="8500"
       >
@@ -64,12 +64,12 @@ import KryosArcMultiple from "../svg/KryosArcMultiple.vue";
       viewBox="0 0 3527 1411"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="none"
     >
       <path
         d="M0.5 0V544L1975.5 1410.5H3527M81 131V473.5L1975.5 1310H3365.5"
         stroke="var(--kryos-accent)"
         stroke-width="2"
-        preserveAspectRatio="none""
         stroke-dasharray="8500"
         stroke-dashoffset="8500"
       >

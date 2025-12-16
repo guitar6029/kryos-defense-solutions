@@ -10,7 +10,6 @@ import {
   STATUS_BADGE_CLASS,
 } from "~/utils/kryosStatusClasses";
 import { useSystemCommandStore } from "#imports";
-import type { Status } from "~/types/Status";
 import { formatMsAgo } from "~/utils/timeRelated";
 const kryosSystemCommandStore = useSystemCommandStore();
 const kryosFleetStore = useKryosFleetStore();
@@ -118,7 +117,7 @@ function handleCommandRequest() {
 </script>
 
 <template>
-  <div class="flex flex-col gap-6 p-4 kryos-bordre">
+  <div class="flex flex-col gap-6 p-4 kryos-border">
     <KryosPanelTitle title="COMMAND QUEUE" />
     <div
       v-if="
@@ -129,7 +128,7 @@ function handleCommandRequest() {
     >
       <span>NO QUEUED COMMANDS</span>
     </div>
-    <div v-else class="flex flex-row items-center gap-2">
+    <div v-else class="flex flex-row items-center gap-2 p-4">
       <span
         v-for="item in kryosSystemCommandStore.getQueued"
         :class="[
@@ -142,7 +141,7 @@ function handleCommandRequest() {
     </div>
   </div>
 
-  <div class="flex flex-col gap-6 p-4 kryos-bordre">
+  <div class="flex flex-col gap-6 p-4 kryos-border">
     <KryosPanelTitle title="HISTORY QUEUE" />
     <div
       v-if="
@@ -152,7 +151,7 @@ function handleCommandRequest() {
     >
       <span>NO HISTORY COMMANDS</span>
     </div>
-    <div v-else class="flex flex-row items-center gap-2">
+    <div v-else class="flex flex-row items-center gap-2 p-4">
       <div
         v-for="item in kryosSystemCommandStore.getHistory"
         :class="[

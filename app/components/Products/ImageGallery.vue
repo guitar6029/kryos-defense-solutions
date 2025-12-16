@@ -53,7 +53,7 @@ onUnmounted(() => {
   <div class="flex flex-col items-center gap-2">
     <img
       :src="selectedModel[model].img[currentImg]"
-      alt=""
+      :alt="`${selectedModel[model]}-model`"
       class="w-200 h-200 object-contain"
     />
     <div class="relative flex items-center justify-center gap-2">

@@ -9,7 +9,7 @@ const kryosFleetStore = useKryosFleetStore();
 </script>
 
 <template>
-  <div class="flex flex-row items-center gap-2">
+  <div class="flex flex-row items-center gap-2 p-4">
     <!-- status -->
     <div class="flex flex-col gap-1 border border-(--kryos-accent) p-6">
       <KryosLabel labelText="status" />
