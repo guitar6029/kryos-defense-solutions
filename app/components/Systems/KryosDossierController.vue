@@ -23,7 +23,7 @@ type Callout = {
 const callouts: Callout[] = [
   {
     id: "control-core",
-    anchor: { left: "-30rem", bottom: "5rem" },
+    anchor: { left: "-35%", bottom: "10%" },
     wClass: "w-110",
     hClass: "h-26",
     title: "[Autonomous Control Core]",
@@ -31,7 +31,7 @@ const callouts: Callout[] = [
   },
   {
     id: "core-chassis",
-    anchor: { left: "-25rem", bottom: "20rem" },
+    anchor: { left: "-35%", bottom: "40%" },
     wClass: "w-100",
     hClass: "h-24",
     title: "[Hardened Core Chassis]",
@@ -39,7 +39,7 @@ const callouts: Callout[] = [
   },
   {
     id: "sensor-suite",
-    anchor: { left: "10rem", bottom: "2rem" },
+    anchor: { left: "18%", bottom: "10%" },
     wClass: "w-105",
     hClass: "h-24",
     showLine: true,
@@ -50,7 +50,7 @@ const callouts: Callout[] = [
   },
   {
     id: "communications",
-    anchor: { right: "-28rem", top: "1rem" },
+    anchor: { right: "-40%", top: "1%" },
     wClass: "w-110",
     hClass: "h-24",
     showLine: true,
@@ -61,7 +61,7 @@ const callouts: Callout[] = [
   },
   {
     id: "mobility",
-    anchor: { right: "-30rem", top: "15rem" },
+    anchor: { right: "-40%", top: "30%" },
     wClass: "w-100",
     hClass: "h-24",
     title: "[Mobility Envelope]",
@@ -69,7 +69,7 @@ const callouts: Callout[] = [
   },
   {
     id: "payload",
-    anchor: { right: "-26rem", bottom: "2rem" },
+    anchor: { right: "-40%", bottom: "20%" },
     wClass: "w-110",
     hClass: "h-26",
     showLine: true,
@@ -83,7 +83,7 @@ const callouts: Callout[] = [
 
 <template>
   <div
-    class="flex flex-col gap-6 p-4 h-screen bg-linear-180 from-bg-(--kryos-bg) to-gray-700 relative"
+    class="flex flex-col gap-6 p-4 h-screen bg-linear-180 from-bg-(--kryos-bg) to-gray-700 relative overflow-hidden"
   >
     <KryosArcs />
 
