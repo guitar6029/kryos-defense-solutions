@@ -21,34 +21,45 @@ export const useSystemCommandStore = defineStore("systemCommand", () => {
   const activeId = ref<string | null>(null);
 
   const requestCommand = (draft: CommandDraft) => {
+    console.log("request command : ", draft);
     //create full Command from the draft
     const command: Command = {
       id: crypto.randomUUID(),
       createdAt: Date.now(),
-      status: "queued",
+      status: "QUEUED",
       attempts: 0,
       ...draft,
     };
 
     //push to the queue
     queue.value.push(command);
-
+    console.log("before kick");
     kick();
   };
 
   // decides whether something should be sent
   const kick = () => {
+    console.log("in kick");
     if (activeId.value) return;
 
+    console.log("finding next qued only");
+    console.log(
+      "queue snapshot",
+      queue.value.map((c) => ({ id: c.id, status: c.status }))
+    );
     const nextQueuedOnly = queue.value.find(
-      (c: Command) => c.status === "queued"
+      (c: Command) => c.status === "QUEUED"
     );
     if (nextQueuedOnly) {
+      console.log("sending queue with id");
       send(nextQueuedOnly.id);
+    } else {
+      console.log("not found ");
     }
   };
 
   const send = (id: string) => {
+    console.log("inside the send");
     //set the id as th active id
     activeId.value = id;
 
@@ -56,6 +67,7 @@ export const useSystemCommandStore = defineStore("systemCommand", () => {
     const activeCommand = queue.value.find((c: Command) => c.id === id);
 
     if (!activeCommand) {
+      console.log("before reset active id");
       resetActiveId();
       kick();
       return;
@@ -70,9 +82,11 @@ export const useSystemCommandStore = defineStore("systemCommand", () => {
       const connectionSuccess = Math.random() > 0.5;
       //good
       if (connectionSuccess) {
+        console.log("in time out, ack");
         ack(activeCommand);
       } else {
         //failed
+        console.log("in time out, it failed");
         const reason = randomFailReason();
         fail(activeCommand, reason);
       }
@@ -80,8 +94,9 @@ export const useSystemCommandStore = defineStore("systemCommand", () => {
   };
 
   const fail = (command: Command, reason: CommandFailReason = "unknown") => {
+    console.log("it failed");
     //mark the status to failed
-    command.status = "failed";
+    command.status = "FAILED";
     command.error = reason;
 
     // remove from queue
@@ -106,7 +121,7 @@ export const useSystemCommandStore = defineStore("systemCommand", () => {
 
   const ack = (command: Command) => {
     //set new status and time ackedAt
-    command.status = "acked";
+    command.status = "ACKED";
     command.ackedAt = Date.now();
 
     //clean up
@@ -117,6 +132,7 @@ export const useSystemCommandStore = defineStore("systemCommand", () => {
     // and then clear the active id
     resetActiveId();
 
+    console.log("before ack : ", command);
     // start the next queued
     kick();
   };
@@ -130,13 +146,13 @@ export const useSystemCommandStore = defineStore("systemCommand", () => {
   };
 
   const markSending = (activeCommand: Command) => {
-    activeCommand.status = "sending";
+    activeCommand.status = "SENDING";
     activeCommand.sentAt = Date.now();
     activeCommand.attempts++;
   };
 
   const getQueued = computed(() => {
-    return queue.value.filter((c: Command) => c.status === "queued");
+    return queue.value.filter((c: Command) => c.status === "QUEUED");
   });
 
   const getActive = computed(() => {
@@ -144,16 +160,20 @@ export const useSystemCommandStore = defineStore("systemCommand", () => {
   });
 
   const queuedCount = computed(() => {
-    return queue.value.filter((c: Command) => c.status === "queued").length;
+    return queue.value.filter((c: Command) => c.status === "QUEUED").length;
   });
 
   const failedCount = computed(() => {
-    return history.value.filter((c: Command) => c.status === "failed").length;
+    return history.value.filter((c: Command) => c.status === "FAILED").length;
+  });
+
+  const getHistory = computed(() => {
+    return history.value;
   });
 
   const lastAckMsAgo = computed(() => {
     const ackedOnly =
-      history.value.filter((c: Command) => c.status === "acked") ?? [];
+      history.value.filter((c: Command) => c.status === "ACKED") ?? [];
     if (ackedOnly.length === 0) {
       return 0;
     }
@@ -172,11 +192,12 @@ export const useSystemCommandStore = defineStore("systemCommand", () => {
   });
 
   return {
-    getQueued,
-    getActive,
     failedCount,
-    queuedCount,
+    getActive,
+    getHistory,
+    getQueued,
     lastAckMsAgo,
+    queuedCount,
     requestCommand,
   };
 });

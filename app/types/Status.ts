@@ -1,1 +1,13 @@
-export type Status = 'ONLINE' | 'OFFLINE' | 'MAINTENANCE' | 'DEGRADED'
+export type Status =
+  // ─── SYSTEM / NODE STATES ───
+  | "ONLINE"
+  | "OFFLINE"
+  | "MAINTENANCE"
+  | "DEGRADED"
+
+  // ─── COMMAND STATES ───
+  | "QUEUED"
+  | "SENDING"
+  | "ACKED"
+  | "FAILED"
+  | 'CANCELED';

@@ -4,8 +4,15 @@ import { useKryosFleetStore, type KryosNode } from "#imports";
 import KryosButton from "./Command/KryosButton.vue";
 import KryosLabel from "../Labels/KryosLabel.vue";
 import KryosPanelTitle from "../Labels/KryosPanelTitle.vue";
-import type { CommandType } from "~/types/Command";
-
+import type { CommandDraft, CommandType } from "~/types/Command";
+import {
+  STATUS_BADGE_BASE,
+  STATUS_BADGE_CLASS,
+} from "~/utils/kryosStatusClasses";
+import { useSystemCommandStore } from "#imports";
+import type { Status } from "~/types/Status";
+import { formatMsAgo } from "~/utils/timeRelated";
+const kryosSystemCommandStore = useSystemCommandStore();
 const kryosFleetStore = useKryosFleetStore();
 const selectedType = ref<CommandType | null>(null);
 const targetSearchRaw = ref<string | null>(null);
@@ -15,7 +22,7 @@ type ModeOptions = "HOLD" | "PATROL" | "RTB";
 
 const modeOptions: ModeOptions[] = ["HOLD", "PATROL", "RTB"];
 
-const setModeSelector = ref<ModeOptions | null>("HOLD");
+const selectedSetMode = ref<ModeOptions | null>("HOLD");
 
 const handleSelectedNode = (node: KryosNode) => {
   selectedNode.value = node;
@@ -83,7 +90,7 @@ const commandReadyToRequest = computed(() => {
   } else if (
     isSelectedCommandSetMode.value &&
     selectedNode.value &&
-    setModeSelector.value
+    selectedSetMode.value
   ) {
     return true;
   } else {
@@ -91,12 +98,77 @@ const commandReadyToRequest = computed(() => {
   }
 });
 
-function handleCommandRequest() {}
+function handleCommandRequest() {
+  // build the payload
+  if (!selectedNode.value || !selectedType.value) {
+    return;
+  }
+
+  const temp: CommandDraft = {
+    type: selectedType.value,
+    targetUnitId: selectedNode.value?.unitId,
+  };
+
+  if (selectedType.value === "SET_MODE") {
+    temp.payload = { mode: selectedSetMode.value };
+  }
+
+  kryosSystemCommandStore.requestCommand(temp);
+}
 </script>
 
 <template>
+  <div class="flex flex-col gap-6 p-4 kryos-bordre">
+    <KryosPanelTitle title="COMMAND QUEUE" />
+    <div
+      v-if="
+        kryosSystemCommandStore &&
+        kryosSystemCommandStore.getQueued.length === 0
+      "
+      class=""
+    >
+      <span>NO QUEUED COMMANDS</span>
+    </div>
+    <div v-else class="flex flex-row items-center gap-2">
+      <span
+        v-for="item in kryosSystemCommandStore.getQueued"
+        :class="[
+          'uppercase kryos-text',
+          STATUS_BADGE_BASE,
+          STATUS_BADGE_CLASS['ONLINE'],
+        ]"
+        >{{ item }}</span
+      >
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-6 p-4 kryos-bordre">
+    <KryosPanelTitle title="HISTORY QUEUE" />
+    <div
+      v-if="
+        kryosSystemCommandStore.getHistory &&
+        kryosSystemCommandStore.getHistory.length === 0
+      "
+    >
+      <span>NO HISTORY COMMANDS</span>
+    </div>
+    <div v-else class="flex flex-row items-center gap-2">
+      <div
+        v-for="item in kryosSystemCommandStore.getHistory"
+        :class="[
+          'uppercase kryos-text flex items-center gap-2',
+          STATUS_BADGE_BASE,
+          STATUS_BADGE_CLASS[item.status],
+        ]"
+      >
+        <span>{{ item.status }}</span>
+        <span>{{ formatMsAgo(Date.now() - item.createdAt) }}</span>
+      </div>
+    </div>
+  </div>
+
   <div class="flex flex-col gap-6 p-4 kryos-border">
-    <KryosPanelTitle title="Command queue" />
+    <KryosPanelTitle title="COMMAND INTERFACE" />
     <div class="flex flex-row items-center gap-2">
       <KryosButton
         :style="{
@@ -187,8 +259,8 @@ function handleCommandRequest() {}
     <div class="flex flex-col gap-1">
       <KryosLabel label-text="set mode" />
       <select
-        v-model="setModeSelector"
-        name="setModeSelector"
+        v-model="selectedSetMode"
+        name="selectedSetMode"
         class="w-50 bg-(--kryos-bg) text-(--kryos-text-mid) p-4 kryos-border"
       >
         <option
@@ -208,10 +280,6 @@ function handleCommandRequest() {}
     class="flex flex-col gap-6 p-4 kryos-border"
   >
     <KryosPanelTitle title="establish link" />
-    <KryosButton
-      class="w-25"
-      label="dispatch"
-      @click="handleCommandRequest"
-    />
+    <KryosButton class="w-25" label="dispatch" @click="handleCommandRequest" />
   </div>
 </template>

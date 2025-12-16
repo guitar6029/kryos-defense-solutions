@@ -1,6 +1,6 @@
 export type CommandStatus =
-  | "queued"
-  | "sending"
-  | "acked"
-  | "failed"
-  | "canceled";
+  | "QUEUED"
+  | "SENDING"
+  | "ACKED"
+  | "FAILED"
+  | "CANCELED";
