@@ -1,7 +1,5 @@
 <script lang="ts" setup>
 import { ref, onMounted, onBeforeUnmount } from "vue";
-import Absolute from "./Wrapper/Absolute.vue";
-import KryosPanel from "./Panels/KryosPanel.vue";
 import type { DeploymentType } from "./Deployment/DeploymentPanel.vue";
 let interval: number | null = null;
 
