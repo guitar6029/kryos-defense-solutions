@@ -8,48 +8,24 @@ import KryosCommandController from "./KryosCommandController.vue";
 import KryosDossierController from "./KryosDossierController.vue";
 import KryosSidePanel from "../Panels/KryosSidePanel.vue";
 import type { SystemModule } from "~/types/SystemModule";
-
-const DESKTOP_NAV_MIN_WIDTH = 750;
+import { DESKTOP_NAV_MIN_WIDTH } from "~/utils/DesktopResolutionValues";
 
 // fleet store
 const kryosFleetStore = useKryosFleetStore();
-const showMenuIcon = ref(false);
+
 const currentModule = ref<SystemModule>("fleet_monitor");
 const handleModule = (mode: SystemModule) => {
   sideMenuDisplaying.value = false;
   currentModule.value = mode;
 };
 
-const sideMenuDisplaying = ref(false);
-
-function toggleMenu() {
-  console.log("clicked on toggle menu");
-  sideMenuDisplaying.value = !sideMenuDisplaying.value;
-  console.log("sideMenuDisplaying.value : ", sideMenuDisplaying.value);
-}
-
-function handleResize() {
-  if (window.innerWidth > DESKTOP_NAV_MIN_WIDTH) {
-    sideMenuDisplaying.value = false;
-    showMenuIcon.value = false;
-  } else {
-    showMenuIcon.value = true;
-  }
-}
-
-onMounted(() => {
-  handleResize();
-  window.addEventListener("resize", handleResize);
-});
-
-onBeforeUnmount(() => {
-  window.removeEventListener("resize", handleResize);
-});
+const { isMobile, sideMenuDisplaying, toggleMenu, closeMenu } =
+  useKryosMobileMenu(DESKTOP_NAV_MIN_WIDTH);
 </script>
 
 <template>
   <div class="flex flex-col h-screen gap-6 cursor-default relative">
-    <KryosSidePanel v-if="sideMenuDisplaying" @click="toggleMenu">
+    <KryosSidePanel v-if="sideMenuDisplaying" @close="closeMenu">
       <template #main>
         <span
           :disabled="currentModule === 'fleet_monitor'"
@@ -108,14 +84,8 @@ onBeforeUnmount(() => {
     </div>
 
     <!-- header -->
-    <div class="w-full flex items-center justify-end p-4 z-100">
-      <button v-if="showMenuIcon" @click="toggleMenu">
-        <Icon
-          class="trns hover:text-(--kryos-text-high)"
-          name="tdesign:menu-filled"
-        />
-      </button>
-    </div>
+    <KryosToggleMenu :is-mobile="isMobile" @toggle-menu="toggleMenu" />
+
     <!-- md screens and up -->
     <div class="hidden md:block w-full relative mb-20 bottom-5">
       <div class="absolute inset-0">

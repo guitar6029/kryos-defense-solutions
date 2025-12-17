@@ -1,9 +1,16 @@
 <script lang="ts" setup>
+import { ref, onMounted, onBeforeUnmount } from "vue";
+import KryosSidePanel from "./Panels/KryosSidePanel.vue";
+import KryosToggleMenu from "./Buttons/KryosToggleMenu.vue";
+import { DESKTOP_NAV_MIN_WIDTH } from "#imports";
 const route = useRoute();
+
+const { isMobile, sideMenuDisplaying, toggleMenu, closeMenu } =
+  useKryosMobileMenu(DESKTOP_NAV_MIN_WIDTH);
 </script>
 
 <template>
-  <header class="sticky top-0 z-50">
+  <header v-if="!isMobile" class="sticky top-0 z-50">
     <nav
       class="flex items-center gap-4 h-35 bg-(--kryos-bg-alt) font-orbitron text-xl p-4 relative"
     >
@@ -53,4 +60,50 @@ const route = useRoute();
       class="w-full h-0.5 bg-linear-to-r from-(--kryos-warn)/0 via-(--kryos-warn)/40 to-(--kryos-warn)/0"
     ></div>
   </header>
+  <KryosToggleMenu :is-mobile="isMobile" @toggle-menu="toggleMenu" />
+  <KryosSidePanel v-if="sideMenuDisplaying" @close="closeMenu">
+    <template #main>
+      <NuxtLink
+        to="/"
+        @click="sideMenuDisplaying = false"
+        class="nav-link"
+        :class="route.path === '/' ? 'text-(--kryos-text-high)' : ''"
+      >
+        Home
+      </NuxtLink>
+
+      <NuxtLink
+        to="/products"
+        @click="sideMenuDisplaying = false"
+        class="nav-link"
+        :class="
+          route.path.startsWith('/products') ? 'text-(--kryos-text-high)' : ''
+        "
+      >
+        Products
+      </NuxtLink>
+
+      <NuxtLink
+        to="/about"
+        @click="sideMenuDisplaying = false"
+        class="nav-link"
+        :class="
+          route.path.startsWith('/about') ? 'text-(--kryos-text-high)' : ''
+        "
+      >
+        About
+      </NuxtLink>
+
+      <NuxtLink
+        to="/systems"
+        @click="sideMenuDisplaying = false"
+        class="nav-link"
+        :class="
+          route.path.startsWith('/systems') ? 'text-(--kryos-text-high)' : ''
+        "
+      >
+        Systems
+      </NuxtLink>
+    </template>
+  </KryosSidePanel>
 </template>
