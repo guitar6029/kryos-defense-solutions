@@ -2,7 +2,7 @@
 import Absolute from "../Wrapper/Absolute.vue";
 import KryosPanel from "../Panels/KryosPanel.vue";
 import Text3D from "../Text/Text3D.vue";
-import Divider from "../Divider.vue";
+import Divider from "../KryosSectionHeader.vue";
 </script>
 
 <template>
