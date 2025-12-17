@@ -9,9 +9,9 @@ const kryosFleetStore = useKryosFleetStore();
 </script>
 
 <template>
-  <div class="flex flex-row items-center gap-2 p-4">
+  <div class="flex flex-col md:flex-row items-center gap-2 p-4">
     <!-- status -->
-    <div class="flex flex-col gap-1 border border-(--kryos-accent) p-6">
+    <div class="flex flex-col gap-1 border border-(--kryos-accent) p-6 w-full md:max-w-100">
       <KryosLabel labelText="status" />
       <div class="flex items-center gap-2">
         <Icon name="pajamas:status-health" />
@@ -44,9 +44,9 @@ const kryosFleetStore = useKryosFleetStore();
     <!-- end status -->
 
     <!-- power -->
-    <div class="flex flex-col gap-1 border border-(--kryos-accent) p-6">
+    <div class="flex flex-col gap-1 border border-(--kryos-accent) p-6 w-full md:max-w-100">
       <KryosLabel labelText="power" />
-      <div class="flex items-center gap-2">
+      <div class="flex flex-col md:flex-row md:items-center gap-2">
         <Icon name="icomoon-free:power" />
         <span :class="[STATUS_BADGE_BASE]"
           >avg power - {{ kryosFleetStore.stats.avgPower.toFixed(2) }}</span
