@@ -1,9 +1,8 @@
 <script lang="ts" setup>
 import Absolute from "~/components/Wrapper/Absolute.vue";
 import KryosPanel from "~/components/Panels/KryosPanel.vue";
-import Divider from "~/components/Divider.vue";
+import Divider from "~/components/KryosSectionHeader.vue";
 import LeadershipPanel from "~/components/About/LeadershipPanel.vue";
-
 
 useHead({
   title: "KRYOS | ABOUT",
