@@ -1,7 +1,7 @@
 import type { Status } from "~/types/Status";
 
 export const STATUS_BADGE_BASE =
-  "uppercase tracking-wider text-[11px] px-3 py-1 rounded-md border bg-(--kryos-bg-alt) trns-color hover:bg-(--kryos-bg) cursor-default";
+  "uppercase tracking-wider text-[11px] px-3 py-1 rounded-md border bg-(--kryos-bg-alt) trns-color hover:bg-(--kryos-bg) cursor-default max-w-50";
 
 export const STATUS_BADGE_CLASS = {
   ONLINE:
