@@ -20,7 +20,7 @@ const { isMobile, sideMenuDisplaying, toggleMenu, closeMenu } =
 
       <NuxtLink
         to="/"
-        class="nav-link"
+        class="kryos-bracket nav-link"
         :class="route.path === '/' ? 'text-(--kryos-text-high)' : ''"
       >
         Home
@@ -28,7 +28,7 @@ const { isMobile, sideMenuDisplaying, toggleMenu, closeMenu } =
 
       <NuxtLink
         to="/products"
-        class="nav-link"
+        class="kryos-bracket nav-link"
         :class="
           route.path.startsWith('/products') ? 'text-(--kryos-text-high)' : ''
         "
@@ -38,7 +38,7 @@ const { isMobile, sideMenuDisplaying, toggleMenu, closeMenu } =
 
       <NuxtLink
         to="/about"
-        class="nav-link"
+        class="kryos-bracket nav-link"
         :class="
           route.path.startsWith('/about') ? 'text-(--kryos-text-high)' : ''
         "
@@ -48,7 +48,7 @@ const { isMobile, sideMenuDisplaying, toggleMenu, closeMenu } =
 
       <NuxtLink
         to="/systems"
-        class="nav-link"
+        class="kryos-bracket nav-link"
         :class="
           route.path.startsWith('/systems') ? 'text-(--kryos-text-high)' : ''
         "
@@ -66,7 +66,7 @@ const { isMobile, sideMenuDisplaying, toggleMenu, closeMenu } =
       <NuxtLink
         to="/"
         @click="sideMenuDisplaying = false"
-        class="nav-link"
+        class="kryos-bracket nav-link"
         :class="route.path === '/' ? 'text-(--kryos-text-high)' : ''"
       >
         Home
@@ -75,7 +75,7 @@ const { isMobile, sideMenuDisplaying, toggleMenu, closeMenu } =
       <NuxtLink
         to="/products"
         @click="sideMenuDisplaying = false"
-        class="nav-link"
+        class="kryos-bracket nav-link"
         :class="
           route.path.startsWith('/products') ? 'text-(--kryos-text-high)' : ''
         "
@@ -86,7 +86,7 @@ const { isMobile, sideMenuDisplaying, toggleMenu, closeMenu } =
       <NuxtLink
         to="/about"
         @click="sideMenuDisplaying = false"
-        class="nav-link"
+        class="kryos-bracket nav-link"
         :class="
           route.path.startsWith('/about') ? 'text-(--kryos-text-high)' : ''
         "
@@ -97,7 +97,7 @@ const { isMobile, sideMenuDisplaying, toggleMenu, closeMenu } =
       <NuxtLink
         to="/systems"
         @click="sideMenuDisplaying = false"
-        class="nav-link"
+        class="kryos-bracket nav-link"
         :class="
           route.path.startsWith('/systems') ? 'text-(--kryos-text-high)' : ''
         "
