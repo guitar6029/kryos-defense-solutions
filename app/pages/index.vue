@@ -47,7 +47,7 @@ useHead({
     <!-- End Kryos Mk-I Spotlight -->
 
     <!-- R&D Division Teaser -->
-    <RDivision />
+    <!-- <RDivision /> -->
     <!-- End R&D Division Teaser -->
 
     <!-- News / Press Highlights -->
