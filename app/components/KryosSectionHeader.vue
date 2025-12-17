@@ -15,10 +15,10 @@ withDefaults(
 
 <template>
   <div
-    class="min-h-10 w-full flex items-center justify-between p-4"
+    class="min-h-10 w-full flex items-center justify-between p-4 kryos-text"
     :class="[extraClass]"
   >
-    <span class="font-orbitron text-[1rem] uppercase">{{ leftText }}</span>
-    <span class="font-orbitron text-[1rem] uppercase">{{ rightText }}</span>
+    <span class="font-orbitron uppercase">{{ leftText }}</span>
+    <span class="font-orbitron uppercase">{{ rightText }}</span>
   </div>
 </template>
