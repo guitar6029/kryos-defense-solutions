@@ -29,7 +29,7 @@ const selected = computed<DeploymentType>(() => {
 <template>
   <Divider right-text="SECTOR // DEPLOYMENTS" extraClass="bg-(--kryos-bg)" />
   <div
-    class="flex flex-col min-h-screen justify-center relative bg-(--kryos-bg-alt)"
+    class="flex flex-col min-h-[50vh] justify-center relative bg-(--kryos-bg)"
   >
     <DeploymentPanel :deployment="selected" />
 
