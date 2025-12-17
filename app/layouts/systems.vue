@@ -19,7 +19,7 @@ function handleEnter() {
 </script>
 
 <template>
-  <div class="min-h-screen relative">
+  <div class="min-h-screen relative cursor-default">
     <Modal
       v-if="systemsModalStore.isShowing"
       :show-btns="systemsModalStore.showBtns"
