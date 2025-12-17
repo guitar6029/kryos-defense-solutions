@@ -31,33 +31,33 @@ const { isMobile, sideMenuDisplaying, toggleMenu, closeMenu } =
           :disabled="currentModule === 'fleet_monitor'"
           @click="handleModule('fleet_monitor')"
           :class="[
-            'uppercase nav-link',
+            'uppercase kryos-bracket',
             currentModule === 'fleet_monitor' ? 'text-(--kryos-warn)' : '',
           ]"
           >Fleet Monitor</span
         >
         <span
           :class="[
-            'uppercase nav-link',
+            'uppercase kryos-bracket',
             currentModule === 'command' ? 'text-(--kryos-warn)' : '',
           ]"
           :disabled="currentModule === 'command'"
           @click="handleModule('command')"
-          class="uppercase nav-link"
+          class="uppercase kryos-bracket"
           >Command Queue</span
         >
         <span
           :disabled="currentModule === 'dossier'"
           @click="handleModule('dossier')"
           :class="[
-            'uppercase nav-link',
+            'uppercase kryos-bracket',
             currentModule === 'dossier' ? 'text-(--kryos-warn)' : '',
           ]"
           >System Dossier</span
         >
         <NuxtLink
           to="/"
-          class="nav-link kryos-text uppercase relative trns hover:text-(--kryos-text-high) mt-12 cursor-default"
+          class="nav-link kryos-bracket kryos-text uppercase relative trns hover:text-(--kryos-text-high) mt-12 cursor-default"
           >Exit system</NuxtLink
         >
       </template>
@@ -131,26 +131,26 @@ const { isMobile, sideMenuDisplaying, toggleMenu, closeMenu } =
               :disabled="currentModule === 'fleet_monitor'"
               @click="handleModule('fleet_monitor')"
               :class="[
-                'uppercase nav-link',
+                'uppercase kryos-bracket',
                 currentModule === 'fleet_monitor' ? 'text-(--kryos-warn)' : '',
               ]"
               >Fleet Monitor</span
             >
             <span
               :class="[
-                'uppercase nav-link',
+                'uppercase kryos-bracket',
                 currentModule === 'command' ? 'text-(--kryos-warn)' : '',
               ]"
               :disabled="currentModule === 'command'"
               @click="handleModule('command')"
-              class="uppercase nav-link"
+              class="uppercase kryos-bracket"
               >Command Queue</span
             >
             <span
               :disabled="currentModule === 'dossier'"
               @click="handleModule('dossier')"
               :class="[
-                'uppercase nav-link',
+                'uppercase kryos-bracket',
                 currentModule === 'dossier' ? 'text-(--kryos-warn)' : '',
               ]"
               >System Dossier</span
