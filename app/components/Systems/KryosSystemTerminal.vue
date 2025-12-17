@@ -6,9 +6,10 @@ import KryosSystemStats from "./KryosSystemStats.vue";
 import KryosTable from "../Table/KryosFleetTable.vue";
 import KryosCommandController from "./KryosCommandController.vue";
 import KryosDossierController from "./KryosDossierController.vue";
+import KryosSidePanel from "../Panels/KryosSidePanel.vue";
 import type { SystemModule } from "~/types/SystemModule";
 
-const DESKTOP_NAV_MIN_WIDTH = 850;
+const DESKTOP_NAV_MIN_WIDTH = 750;
 
 // fleet store
 const kryosFleetStore = useKryosFleetStore();
@@ -22,7 +23,9 @@ const handleModule = (mode: SystemModule) => {
 const sideMenuDisplaying = ref(false);
 
 function toggleMenu() {
+  console.log("clicked on toggle menu");
   sideMenuDisplaying.value = !sideMenuDisplaying.value;
+  console.log("sideMenuDisplaying.value : ", sideMenuDisplaying.value);
 }
 
 function handleResize() {
@@ -46,23 +49,8 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="flex flex-col h-screen gap-6 cursor-default relative">
-    <aside
-      v-if="sideMenuDisplaying"
-      class="absolute flex flex-col items-center justify-center top-0 right-0 w-75 h-screen bg-linear-90 bg-(--kryos-bg) z-100 border-l-2 border-l-(--kryos-accent)"
-    >
-      <div
-        class="trns kryos-text hover:text-(--kryos-text-high) absolute top-5 left-5 flex flex-col gap-1"
-      >
-        <span>KRYOS</span>
-        <span class="text-(--kryos-warn)">[system]</span>
-      </div>
-      <button @click="toggleMenu">
-        <Icon
-          class="trns hover:text-(--kryos-text-high) absolute top-5 right-5"
-          name="material-symbols:close"
-        />
-      </button>
-      <div class="flex flex-col item-center gap-4 max-w-[200px]">
+    <KryosSidePanel v-if="sideMenuDisplaying" @click="toggleMenu">
+      <template #main>
         <span
           :disabled="currentModule === 'fleet_monitor'"
           @click="handleModule('fleet_monitor')"
@@ -96,8 +84,8 @@ onBeforeUnmount(() => {
           class="nav-link kryos-text uppercase relative trns hover:text-(--kryos-text-high) mt-12 cursor-default"
           >Exit system</NuxtLink
         >
-      </div>
-    </aside>
+      </template>
+    </KryosSidePanel>
 
     <div class="md:hidden absolute top-0 left-0 flex flex-col w-full gap-2 p-4">
       <svg
@@ -120,7 +108,7 @@ onBeforeUnmount(() => {
     </div>
 
     <!-- header -->
-    <div class="w-full flex items-center justify-end p-4">
+    <div class="w-full flex items-center justify-end p-4 z-100">
       <button v-if="showMenuIcon" @click="toggleMenu">
         <Icon
           class="trns hover:text-(--kryos-text-high)"
