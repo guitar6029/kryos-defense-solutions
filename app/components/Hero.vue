@@ -40,16 +40,12 @@ import KRYOS_HERO from "~/assets/img/KRYOS.png";
       </h1>
 
       <span
-        class="text-xl xl:text-4xl text-(--kryos-warn) font-bold tracking-[0.03em] text-center"
+        class="text-2xl text-(--kryos-warn) font-bold tracking-[0.03em] text-center"
         >[Autonomous Tactical Robotics for High-Risk Environments]</span
       >
     </div>
 
     <div class="z-10 flex flex-col gap-10 items-center justify-center">
-      <!-- <span
-        class="text-xl xl:text-4xl text-(--kryos-warn) font-bold tracking-[0.03em] text-center w-full bg-black p-4"
-        >[Autonomous Tactical Robotics for High-Risk Environments]</span
-      > -->
       <div class="w-full max-w-4xl h-px bg-white/10 my-4"></div>
 
       <p class="max-w-4xl text-3xl text-(--kryos-text-high)">
@@ -59,25 +55,42 @@ import KRYOS_HERO from "~/assets/img/KRYOS.png";
         costly—or too dangerous.
       </p>
 
-      <NuxtLink to="/products#kryos-mk-i" class="link">
-        Explore Kryos MK-I
-      </NuxtLink>
-      <NuxtLink to="#" class="link"> Learn about our R&D Division</NuxtLink>
+      <div class="flex flex-row items-center gap-6">
+        <NuxtLink to="/products#kryos-mk-i" class="nav-link">
+          <span class="kryos-bracket">Explore Kryos MK-I</span>
+        </NuxtLink>
+        <NuxtLink to="#" class="nav-link"
+          ><span class="kryos-bracket"
+            >Learn about our R&D Division</span
+          ></NuxtLink
+        >
+      </div>
 
       <div class="grid grid-cols-1 xl:grid-cols-3 gap-4 mb-10">
         <div class="relative p-2 h-25 flex items-center justify-center">
           <div class="absolute inset-0">
             <svg
               class="w-full h-full"
-              viewBox="0 0 743 407"
+              viewBox="0 0 560 200"
               xmlns="http://www.w3.org/2000/svg"
               preserveAspectRatio="none"
             >
               <path
-                d="M0.5 95.5L70 0.5H742V330L640.5 406H0.5V95.5Z"
+                d="
+      M20 0.5
+      H540
+      L559.5 18
+      V182
+      L540 199.5
+      H20
+      L0.5 182
+      V18
+      L20 0.5
+      Z
+    "
                 fill="var(--kryos-bg-alt)"
                 stroke="var(--kryos-accent)"
-                stroke-width="4"
+                stroke-width="3"
               />
             </svg>
           </div>
@@ -90,15 +103,26 @@ import KRYOS_HERO from "~/assets/img/KRYOS.png";
           <div class="absolute inset-0">
             <svg
               class="w-full h-full"
-              viewBox="0 0 743 407"
+              viewBox="0 0 560 200"
               xmlns="http://www.w3.org/2000/svg"
               preserveAspectRatio="none"
             >
               <path
-                d="M0.5 95.5L70 0.5H742V330L640.5 406H0.5V95.5Z"
+                d="
+      M20 0.5
+      H540
+      L559.5 18
+      V182
+      L540 199.5
+      H20
+      L0.5 182
+      V18
+      L20 0.5
+      Z
+    "
                 fill="var(--kryos-bg-alt)"
                 stroke="var(--kryos-accent)"
-                stroke-width="4"
+                stroke-width="3"
               />
             </svg>
           </div>
@@ -112,15 +136,26 @@ import KRYOS_HERO from "~/assets/img/KRYOS.png";
           <div class="absolute inset-0">
             <svg
               class="w-full h-full"
-              viewBox="0 0 743 407"
+              viewBox="0 0 560 200"
               xmlns="http://www.w3.org/2000/svg"
               preserveAspectRatio="none"
             >
               <path
-                d="M0.5 95.5L70 0.5H742V330L640.5 406H0.5V95.5Z"
+                d="
+      M20 0.5
+      H540
+      L559.5 18
+      V182
+      L540 199.5
+      H20
+      L0.5 182
+      V18
+      L20 0.5
+      Z
+    "
                 fill="var(--kryos-bg-alt)"
                 stroke="var(--kryos-accent)"
-                stroke-width="4"
+                stroke-width="3"
               />
             </svg>
           </div>
