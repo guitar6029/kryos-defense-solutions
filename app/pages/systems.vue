@@ -1,12 +1,11 @@
 <script lang="ts" setup>
-import { storeToRefs } from "#imports";
 import { onMounted, onBeforeUnmount } from "vue";
+import { storeToRefs } from "#imports";
 import { useSystemModalStore } from "#imports";
 import { useSystemStateStore } from "#imports";
-import KryosSystemTerminal from "~/components/Systems/KryosSystemTerminal.vue";
 import KryosSystemBoot from "~/components/Systems/KryosSystemBoot.vue";
+import KryosSystemTerminal from "~/components/Systems/KryosSystemTerminal.vue";
 import KryosLoader from "~/components/Systems/KryosLoader.vue";
-import KryosTerminalCard from "~/components/svg/Systems/KryosTerminalCard.vue";
 
 definePageMeta({ layout: "systems" });
 
@@ -45,12 +44,6 @@ function handleSystemBoot() {
       v-if="currentSystemMode === 'loading'"
       class="flex flex-col gap-2 relative"
     >
-      <div
-        class="absolute bottom-1/2 translate-y-1/2 left-1/2 -translate-x-1/2 w-300"
-      >
-        <KryosTerminalCard />
-      </div>
-
       <!-- LOADER -->
       <KryosLoader :loading="currentSystemMode === 'loading'" />
       <!-- END LOADER -->
@@ -63,7 +56,7 @@ function handleSystemBoot() {
       v-else
       class="flex flex-col items-center h-screen justify-center gap-2"
     >
-      <h1>LOCKED</h1>
+      <h1 class="kryos-text text-(--kryos-warn) uppercase">[LOCKED]</h1>
     </div>
   </div>
 
