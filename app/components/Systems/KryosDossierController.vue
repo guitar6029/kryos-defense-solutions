@@ -1,47 +1,31 @@
 <script lang="ts" setup>
+import type { Callout } from "~/types/Callout";
 import Absolute from "../Wrapper/Absolute.vue";
 import KryosArcs from "../svg/Systems/KryosArcs.vue";
 import KryosCallout from "./KryosCallout.vue";
 
-type Callout = {
-  id: string;
-  anchor: {
-    top?: string;
-    left?: string;
-    right?: string;
-    bottom?: string;
-  };
-  wClass: string;
-  hClass: string;
-  showLine?: boolean;
-  lineFrom?: "tl" | "tc" | "tr" | "lc" | "rc" | "bl" | "bc" | "br";
-  lineLen?: string;
-  title: string;
-  body: string;
-};
-
 const callouts: Callout[] = [
   {
     id: "control-core",
-    anchor: { left: "-35%", bottom: "10%" },
-    wClass: "w-110",
+    anchor: { left: "clamp(-18rem, -19rem, -20rem)", bottom: "10%" },
+    wClass: "w-fit md:95 xl:w-110",
     hClass: "h-26",
     title: "[Autonomous Control Core]",
     body: "Low-latency adaptive decision pipelines",
   },
   {
     id: "core-chassis",
-    anchor: { left: "-35%", bottom: "40%" },
-    wClass: "w-100",
-    hClass: "h-24",
+    anchor: { left: "clamp(-14rem,-15rem, -16rem)", bottom: "40%" },
+    wClass: "md:w-[10rem] lg:w-[24rem]",
+    hClass: "h-24 md:h-fit",
     title: "[Hardened Core Chassis]",
     body: "Isolated compute, power, and mobility subsystems",
   },
   {
     id: "sensor-suite",
-    anchor: { left: "18%", bottom: "10%" },
-    wClass: "w-[min(22rem, 70vw)] md:w-[20rem] lg:w-[24rem]",
-    hClass: "h-24",
+    anchor: { left: "clamp(-10rem,12rem, 15rem)", bottom: "10%" },
+    wClass: "w-[min(10rem, 70vw)] md:w-[10rem] lg:w-[24rem]",
+    hClass: "h-24 md:h-fit",
     showLine: true,
     lineFrom: "tc",
     lineLen: "clamp(6rem, 12vw, 12rem)",
@@ -50,9 +34,9 @@ const callouts: Callout[] = [
   },
   {
     id: "communications",
-    anchor: { right: "-40%", top: "1%" },
-    wClass: "w-110",
-    hClass: "h-24",
+    anchor: { right: "clamp(-19rem,-20rem, -22rem)", top: "1%" },
+    wClass: "md:w-[10rem] lg:w-[24rem]",
+    hClass: "h-24 md:h-fit",
     showLine: true,
     lineFrom: "bl",
     lineLen: "clamp(8rem, 16vw, 18rem)",
@@ -61,17 +45,17 @@ const callouts: Callout[] = [
   },
   {
     id: "mobility",
-    anchor: { right: "-40%", top: "30%" },
-    wClass: "w-100",
-    hClass: "h-24",
+    anchor: { right: "clamp(-20rem, -22rem, -24rem)", top: "30%" },
+    wClass: "md:w-[10rem] lg:w-[24rem]",
+    hClass: "h-24 md:h-fit",
     title: "[Mobility Envelope]",
     body: "Floor, wall, and overhead traversal",
   },
   {
     id: "payload",
-    anchor: { right: "-40%", bottom: "20%" },
-    wClass: "w-110",
-    hClass: "h-26",
+    anchor: { right: "clamp(-26rem, -25rem, -22rem)", bottom: "20%" },
+    wClass: "md:w-[10rem] lg:w-[24rem]",
+    hClass: "h-24 md:h-fit",
     showLine: true,
     lineFrom: "lc",
     lineLen: "clamp(8rem, 18vw, 20rem)",
@@ -83,12 +67,12 @@ const callouts: Callout[] = [
 
 <template>
   <div
-    class="flex flex-col gap-6 p-4 h-screen bg-linear-180 from-bg-(--kryos-bg) to-gray-700 relative overflow-hidden"
+    class="flex flex-col gap-6 p-4 h-screen bg-linear-180 from-bg-(--kryos-bg) to-gray-700 relative overflow-x-hidden overflow-y-auto"
   >
     <KryosArcs />
 
     <Absolute
-      extra-class="absolute top-20 left-1/2 -translate-x-1/2 flex flex-col items-center"
+      extra-class="absolute top-10 left-1/2 -translate-x-1/2 flex flex-col items-center"
     >
       <div
         class="flex flex-col items-center justify-center relative w-[min(60rem,92vw)]"
@@ -143,7 +127,7 @@ const callouts: Callout[] = [
     </Absolute>
 
     <Absolute
-      extra-class="hidden md:block top-20 left-[clamp(1rem,4vw,10rem)] flex flex-col gap-2 w-100 items-center justify-center"
+      extra-class="hidden md:block top-0 left-[clamp(1rem,4vw,10rem)] flex flex-col gap-2 w-100 items-center justify-center"
     >
       <div class="relative flex flex-col gap-1 z-1 max-w-2xl top-10">
         <h2 class="model-title">KRYOS MK-I Tactical Platform</h2>
