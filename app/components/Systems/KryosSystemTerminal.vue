@@ -9,6 +9,7 @@ import KryosDossierController from "./KryosDossierController.vue";
 import KryosSidePanel from "../Panels/KryosSidePanel.vue";
 import type { SystemModule } from "~/types/SystemModule";
 import { DESKTOP_NAV_MIN_WIDTH } from "~/utils/DesktopResolutionValues";
+import KryosToggleMenu from "../Buttons/KryosToggleMenu.vue";
 
 // fleet store
 const kryosFleetStore = useKryosFleetStore();
@@ -57,8 +58,9 @@ const { isMobile, sideMenuDisplaying, toggleMenu, closeMenu } =
         >
         <NuxtLink
           to="/"
-          class="nav-link kryos-bracket kryos-text uppercase relative trns hover:text-(--kryos-text-high) mt-12 cursor-default"
-          >Exit system</NuxtLink
+          class="nav-link kryos-text uppercase relative trns hover:text-(--kryos-text-high) mt-12 cursor-default"
+        >
+          <span class="kryos-bracket">Exit system</span></NuxtLink
         >
       </template>
     </KryosSidePanel>
@@ -158,8 +160,8 @@ const { isMobile, sideMenuDisplaying, toggleMenu, closeMenu } =
           </div>
           <NuxtLink
             to="/"
-            class="kryos-text uppercase relative -left-20 trns hover:text-(--kryos-text-high) cursor-default"
-            >Exit system</NuxtLink
+            class="kryos-text uppercase relative -left-20 trns cursor-default"
+            ><span class="kryos-bracket">Exit system</span></NuxtLink
           >
         </div>
       </div>
