@@ -123,7 +123,7 @@
     color: var(--kryos-warn);
   }
 
-  .nav-link {
+  .kryos-bracket {
     @apply relative px-2 transition-colors duration-200 text-xl;
     /* Left bracket */
     @apply before:content-['['] before:absolute before:left-0 before:opacity-0
