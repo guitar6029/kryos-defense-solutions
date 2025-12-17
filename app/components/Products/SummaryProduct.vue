@@ -35,14 +35,16 @@ const selectedModel: Record<
     <div
       class="absolute bottom-0 left-0 -rotate-90 origin-bottom-left w-125 h-25 border translate-x-px flex flex-col items-center justify-center"
     >
-      <span class="font-orbitron font-extrabold text-6xl">{{
+      <span class="font-orbitron font-extrabold text-4xl">{{
         selectedModel[model].title
       }}</span>
     </div>
 
     <div class="flex flex-col items-center justify-center gap-2 p-2 max-w-4xl">
-      <h2 class="text-6xl">{{ selectedModel[model].fullTitle }}</h2>
-      <p class="text-2xl">
+      <h2 class="text-4xl kryos-bracket">
+        {{ selectedModel[model].fullTitle }}
+      </h2>
+      <p class="text-2xl max-w-2xl">
         {{ selectedModel[model].summary }}
       </p>
     </div>
