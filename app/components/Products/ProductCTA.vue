@@ -7,10 +7,10 @@ defineProps<{
 </script>
 
 <template>
-  <div class="flex flex-col text-center gap-2">
-    <p class="text-center text-4xl">{{ text }}</p>
-    <NuxtLink :to="to" class="link">
-      {{ linkLabel }}
+  <div class="flex flex-col text-center gap-2 min-w-xl">
+    <p class="text-center text-xl">{{ text }}</p>
+    <NuxtLink :to="to" class="nav-link">
+      <span class="kryos-bracket">{{ linkLabel }}</span>
     </NuxtLink>
   </div>
 </template>
