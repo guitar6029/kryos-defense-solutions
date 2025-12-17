@@ -40,10 +40,6 @@ useHead({
 
 <template>
   <div class="flex flex-col relative gap-4 min-h-screen">
-    <!-- <Absolute extra-class="top-20 left-1/2 -translate-x-1/2 w-200">
-      <KryosPanel :option="11" />
-    </Absolute> -->
-
     <ProductHero />
     <!-- Product Families Overview -->
     <ProductFamiliesOverview />
