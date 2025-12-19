@@ -2,6 +2,7 @@
 import MKI from "~/assets/img/mk-i-no-bg.png";
 import Absolute from "./Wrapper/Absolute.vue";
 import KryosPanel from "./Panels/KryosPanel.vue";
+import KryosSectionHeader from "./KryosSectionHeader.vue";
 </script>
 
 <template>
@@ -39,12 +40,16 @@ import KryosPanel from "./Panels/KryosPanel.vue";
       <KryosSignature />
     </Absolute>
 
-    <Divider right-text="SECTOR // PLATFORM" />
+    <KryosSectionHeader right-text="SECTOR // PLATFORM" />
 
     <h2 class="section-title">Flagship Platform</h2>
     <div class="flex flex-col xl:flex-row items-center gap-2">
       <div class="flex flex-col items-center gap-2 flex-1">
-        <img :src="MKI" alt="Kryos MK-I Prototype" class="min-w-100 max-w-150" />
+        <img
+          :src="MKI"
+          alt="Kryos MK-I Prototype"
+          class="min-w-100 max-w-150"
+        />
         <h3
           class="text-6xl text-(--kryos-text-high) font-orbitron uppercase w-full text-center"
         >
@@ -53,10 +58,14 @@ import KryosPanel from "./Panels/KryosPanel.vue";
       </div>
       <div class="flex flex-col gap-6 w-full xl:max-w-6xl p-4">
         <p class="text-4xl">
-          The <span class="font-bold text-(--kryos-warn) uppercase">[Kryos MK-I]</span> is a multi-terrain autonomous drone designed for
-          high-density urban, industrial, and subterranean environments. With
-          six-degrees-of-freedom mobility and a hardened sensor array, MK-I
-          units maintain operational integrity where conventional systems fail.
+          The
+          <span class="font-bold text-(--kryos-warn) uppercase"
+            >[Kryos MK-I]</span
+          >
+          is a multi-terrain autonomous drone designed for high-density urban,
+          industrial, and subterranean environments. With six-degrees-of-freedom
+          mobility and a hardened sensor array, MK-I units maintain operational
+          integrity where conventional systems fail.
         </p>
         <ul class="text-4xl font-bold flex flex-col gap-4 max-w-4xl">
           <li>Multi-surface traversal (floor, wall, overhead structures)</li>

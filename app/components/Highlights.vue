@@ -1,8 +1,9 @@
 <script lang="ts" setup>
 import GeoShapes from "~/assets/img/shapes/3d_shapes.png";
+import KryosSectionHeader from "./KryosSectionHeader.vue";
 </script>
 <template>
-  <Divider right-text="SECTOR // ANNOUNCEMENTS" />
+  <KryosSectionHeader right-text="SECTOR // ANNOUNCEMENTS" />
   <div
     class="flex flex-col justify-center h-screen relative overflow-hidden -mt-2"
   >

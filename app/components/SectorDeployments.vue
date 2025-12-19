@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { ref, onMounted, onBeforeUnmount } from "vue";
 import type { DeploymentType } from "./Deployment/DeploymentPanel.vue";
+import KryosSectionHeader from "./KryosSectionHeader.vue";
 let interval: number | null = null;
 
 const currentPanel = ref(0);
@@ -27,7 +28,10 @@ const selected = computed<DeploymentType>(() => {
 });
 </script>
 <template>
-  <Divider right-text="SECTOR // DEPLOYMENTS" extraClass="bg-(--kryos-bg)" />
+  <KryosSectionHeader
+    right-text="SECTOR // DEPLOYMENTS"
+    extraClass="bg-(--kryos-bg)"
+  />
   <div
     class="flex flex-col min-h-[50vh] justify-center relative bg-(--kryos-bg)"
   >

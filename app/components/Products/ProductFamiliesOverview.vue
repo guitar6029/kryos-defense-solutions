@@ -2,12 +2,12 @@
 import Absolute from "../Wrapper/Absolute.vue";
 import KryosPanel from "../Panels/KryosPanel.vue";
 import Text3D from "../Text/Text3D.vue";
-import Divider from "../KryosSectionHeader.vue";
+import KryosSectionHeader from "../KryosSectionHeader.vue";
 </script>
 
 <template>
   <section class="flex flex-col min-h-screen gap-12">
-    <Divider right-text="PLATFORM FAMILIES" />
+    <KryosSectionHeader right-text="PLATFORM FAMILIES" />
     <h2 class="section-title">Platform Families</h2>
 
     <div class="flex flex-col items-center gap-12 relative">
@@ -95,7 +95,9 @@ import Divider from "../KryosSectionHeader.vue";
       </div>
 
       <div class="w-full h-25 relative">
-        <Absolute extra-class="bottom-10 left-20 -z-1 flex flex-row gap-2 animate-move-right-alt">
+        <Absolute
+          extra-class="bottom-10 left-20 -z-1 flex flex-row gap-2 animate-move-right-alt"
+        >
           <div
             class="w-6 h-6 bg-(--kryos-bg-alt) border-neutral-600 border delay-100"
           ></div>
@@ -174,7 +176,9 @@ import Divider from "../KryosSectionHeader.vue";
       </div>
 
       <div class="w-full h-25 relative">
-        <Absolute extra-class="bottom-10 right-20 -z-1 flex flex-row gap-2 animate-move-left-alt">
+        <Absolute
+          extra-class="bottom-10 right-20 -z-1 flex flex-row gap-2 animate-move-left-alt"
+        >
           <div
             class="w-6 h-6 bg-(--kryos-bg-alt) border-neutral-600 border delay-100"
           ></div>
@@ -261,7 +265,9 @@ import Divider from "../KryosSectionHeader.vue";
       </div>
 
       <div class="w-full h-25 relative">
-        <Absolute extra-class="bottom-10 left-20 -z-1 flex flex-row gap-2 animate-move-right-alt">
+        <Absolute
+          extra-class="bottom-10 left-20 -z-1 flex flex-row gap-2 animate-move-right-alt"
+        >
           <div
             class="w-6 h-6 bg-(--kryos-bg-alt) border-neutral-600 border delay-100"
           ></div>

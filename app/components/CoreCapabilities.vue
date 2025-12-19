@@ -5,6 +5,7 @@ import EXOLINE from "~/assets/img/EXO_LINE_1.png";
 import AutonomousPlatform from "./svg/AutonomousPlatform.vue";
 import Target from "./svg/Target.vue";
 import SecureConnection from "./svg/SecureConnection.vue";
+import KryosSectionHeader from "./KryosSectionHeader.vue";
 const operationSections = [
   {
     title: "Autonomous Ground Platforms",
@@ -24,7 +25,7 @@ const operationSections = [
 ];
 </script>
 <template>
-  <Divider right-text="SECTOR // OPERATIONAL BRIEFING" />
+  <KryosSectionHeader right-text="SECTOR // OPERATIONAL BRIEFING" />
   <div
     class="min-h-screen relative flex flex-col items-center justify-center gap-4 overflow-hidden"
   >

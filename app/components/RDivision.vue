@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { CardOption } from "./Cards/KryosCard.vue";
-
+import KryosSectionHeader from "./KryosSectionHeader.vue";
 const systemsCards: { title: string; text: string; option: CardOption }[] = [
   {
     title: "Swarm Coordination Frameworks",
@@ -20,7 +20,7 @@ const systemsCards: { title: string; text: string; option: CardOption }[] = [
 ];
 </script>
 <template>
-  <Divider right-text="SECTOR // Hardened AI Decision Pipelines" />
+  <KryosSectionHeader right-text="SECTOR // Hardened AI Decision Pipelines" />
   <div class="flex flex-col md:flex-row relative min-h-[50vh]">
     <div class="w-full md:w-150 overflow-hidden">
       <img

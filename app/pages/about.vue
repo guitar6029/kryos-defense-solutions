@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import Absolute from "~/components/Wrapper/Absolute.vue";
 import KryosPanel from "~/components/Panels/KryosPanel.vue";
-import Divider from "~/components/KryosSectionHeader.vue";
+import KryosSectionHeader from "~/components/KryosSectionHeader.vue";
 import LeadershipPanel from "~/components/About/LeadershipPanel.vue";
 
 useHead({
@@ -118,7 +118,7 @@ useHead({
         <KryosPanel />
       </Absolute>
 
-      <Divider rightText="// LEADERSHIP" />
+      <KryosSectionHeader rightText="// LEADERSHIP" />
 
       <h2 class="text-6xl font-bold text-center">Executive Leadership</h2>
 
