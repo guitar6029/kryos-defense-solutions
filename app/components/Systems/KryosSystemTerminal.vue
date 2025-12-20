@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, onMounted, onBeforeUnmount } from "vue";
+import { ref, watch, onMounted } from "vue";
 import { useKryosFleetStore } from "#imports";
 import KryosPanelTitle from "../Labels/KryosPanelTitle.vue";
 import KryosSystemStats from "./KryosSystemStats.vue";
@@ -10,9 +10,23 @@ import KryosSidePanel from "../Panels/KryosSidePanel.vue";
 import type { SystemModule } from "~/types/SystemModule";
 import { DESKTOP_NAV_MIN_WIDTH } from "~/utils/DesktopResolutionValues";
 import KryosToggleMenu from "../Buttons/KryosToggleMenu.vue";
+import { useKryosFleet } from "~/composables/useKryosFleet";
 
 // fleet store
 const kryosFleetStore = useKryosFleetStore();
+
+// fleet query
+const fleetQuery = useKryosFleet();
+
+watch(
+  () => fleetQuery.data.value,
+  (data) => {
+    if (data) {
+      kryosFleetStore.setFleet(data);
+    }
+  },
+  { immediate: true }
+);
 
 const currentModule = ref<SystemModule>("fleet_monitor");
 const handleModule = (mode: SystemModule) => {
