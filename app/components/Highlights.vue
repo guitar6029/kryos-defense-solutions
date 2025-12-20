@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import GeoShapes from "~/assets/img/shapes/3d_shapes.png";
+import GeoShapes from "~/assets/img/shapes/shape5.jpg";
 import KryosSectionHeader from "./KryosSectionHeader.vue";
 </script>
 <template>
@@ -10,7 +10,7 @@ import KryosSectionHeader from "./KryosSectionHeader.vue";
     <img
       :src="GeoShapes"
       alt="KRYOS geometric shapes"
-      class="absolute ineset-0 w-full h-full object-cover -z-10 opacity-70"
+      class="absolute inset-0 w-full h-full object-cover -z-10 opacity-50"
     />
 
     <h2 class="section-title">Recent Announcements</h2>

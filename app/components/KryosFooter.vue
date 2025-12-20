@@ -5,7 +5,7 @@ import KryosPanel from "./Panels/KryosPanel.vue";
 
 <template>
   <footer
-    class="min-h-150 bg-(--kryos-bg-alt) font-orbitron flex flex-col gap-4 p-12 relative z-1"
+    class="min-h-150 bg-(--kryos-bg-alt) flex flex-col gap-4 p-12 relative z-1"
   >
     <Absolute extra-class="top-50 right-20 w-100 -z-1">
       <KryosPanel :option="11" />
@@ -15,18 +15,20 @@ import KryosPanel from "./Panels/KryosPanel.vue";
       <KryosPanel :option="11" />
     </Absolute>
 
-    <Absolute extra-class="top-20 left-50 w-150 -z-2">
+    <Absolute extra-class="top-50 left-10 w-150 -z-2">
       <KryosPanel :option="13" />
     </Absolute>
 
     <Absolute
-      extra-class="bottom-10 -right-15 -z-3 origin-bottom-left -rotate-90"
+      extra-class="bottom-10 left-10 -z-3 origin-bottom-left -rotate-90"
     >
       <span class="border-b-2">KRYOS</span>
     </Absolute>
 
     <div class="text-4xl flex flex-col gap-2">
-      <span class="uppercase font-bold">Kryos Defense Solutions</span>
+      <span class="uppercase font-bold font-orbitron"
+        >Kryos Defense Solutions</span
+      >
       <span class="text-3xl italic border-b-2 w-fit"
         >Precision Beyond Human Limits.</span
       >

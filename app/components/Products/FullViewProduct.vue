@@ -2,7 +2,7 @@
 import EX1Model from "~/assets/img/ex-1-no-bg.png";
 import MKIModel from "~/assets/img/mk-i-no-bg.png";
 import type { Platform } from "~/types/Platform";
-import FullViewProductAccents from "./FullViewProductAccents.vue";
+import Absolute from "../Wrapper/Absolute.vue";
 
 withDefaults(
   defineProps<{
@@ -28,8 +28,9 @@ const selectedModel: Record<Platform, { title: string; imageSrc: string }> = {
 </script>
 
 <template>
+  <!-- bg-[radial-gradient(circle_at_center,var(--kryos-mk-bg),transparent)] -->
   <div
-    class="w-full h-[50vh] flex flex-col items-center bg-[radial-gradient(circle_at_center,var(--kryos-mk-bg),transparent)] relative pb-60"
+    class="min-w-4xl max-w-5xl h-[50vh] flex flex-col items-center relative pb-60"
   >
     <img
       :src="selectedModel[model].imageSrc"
@@ -37,9 +38,14 @@ const selectedModel: Record<Platform, { title: string; imageSrc: string }> = {
       class="absolute left-1/2 -translate-x-1/2 w-150 z-20"
     />
 
-    <FullViewProductAccents
-      v-if="hasTitle"
-      :text="selectedModel[model].title"
-    />
+    <Absolute
+      extra-class="absolute bottom-1/2 left-20  -rotate-90 origin-bottom-left"
+    >
+      <div class="p-2 border-b-6 border-b-(--kryos-warn)">
+        <span class="font-orbitron font-extrabold text-xl text-nowrap">
+          {{ selectedModel[model].title }}
+        </span>
+      </div>
+    </Absolute>
   </div>
 </template>

@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import Absolute from "./Wrapper/Absolute.vue";
 import DotDashed from "./svg/DotDashed.vue";
-import EXOLINE from "~/assets/img/EXO_LINE_1.png";
 import AutonomousPlatform from "./svg/AutonomousPlatform.vue";
 import Target from "./svg/Target.vue";
 import SecureConnection from "./svg/SecureConnection.vue";
@@ -30,9 +29,9 @@ const operationSections = [
     class="min-h-screen relative flex flex-col items-center justify-center gap-4 overflow-hidden"
   >
     <img
-      :src="EXOLINE"
-      alt="EXO LINE"
-      class="absolute ineset-0 w-full h-full object-cover -z-10 opacity-70"
+      src="../assets/img/shapes//shape3.jpg"
+      alt="Futuristic metallic structures with orange glow"
+      class="absolute inset-0 w-full h-full object-cover -z-10 opacity-70"
     />
 
     <Absolute

@@ -6,30 +6,12 @@ import KryosSectionHeader from "../KryosSectionHeader.vue";
 </script>
 
 <template>
-  <section class="flex flex-col min-h-screen gap-12">
+  <section class="flex flex-col min-h-screen gap-12 relative overflow-hidden">
     <KryosSectionHeader right-text="PLATFORM FAMILIES" />
     <h2 class="section-title">Platform Families</h2>
 
     <div class="flex flex-col items-center gap-12 relative">
-      <Absolute extra-class="top-20 -left-20 w-200 -z-1">
-        <KryosPanel />
-      </Absolute>
-
-      <Absolute extra-class="top-0 -right-50 w-200 -z-1 opacity-50">
-        <KryosPanel :option="7" />
-      </Absolute>
-
-      <Absolute extra-class="top-300 left-20 w-200 -z-1 opacity-50">
-        <KryosPanel :option="14" />
-      </Absolute>
-
-      <Absolute extra-class="top-500 -left-20 w-200 -z-1">
-        <KryosPanel />
-      </Absolute>
-
-      <Absolute extra-class="top-500 -right-50 w-200 -z-1 opacity-50">
-        <KryosPanel :option="7" />
-      </Absolute>
+      
 
       <div class="flex flex-col items-center xl:flex-row gap-12">
         <div class="sm:w-100 md:w-150 xl:w-200 relative trns hover:scale-102">

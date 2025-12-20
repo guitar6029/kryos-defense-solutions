@@ -44,6 +44,10 @@
      ========================================================================== */
 
   /* High visibility “Caution / Warning” amber */
+
+  --kryos-circuit-path: #f0b847;
+
+
   --kryos-warn: #d7a429;
 
   /* Subtle amber (low-emphasis hazard stripes, muted labels) */

@@ -1,8 +1,9 @@
 <script lang="ts" setup>
-import { ref, onMounted, onBeforeUnmount } from "vue";
+import { ref, computed, onMounted, onBeforeUnmount } from "vue";
 import type { DeploymentType } from "./Deployment/DeploymentPanel.vue";
 import KryosSectionHeader from "./KryosSectionHeader.vue";
-let interval: number | null = null;
+import base_img from "~/assets/img/shapes/shape4.jpg";
+let interval: ReturnType<typeof setInterval> | null = null;
 
 const currentPanel = ref(0);
 
@@ -18,7 +19,7 @@ onMounted(() => {
 });
 
 onBeforeUnmount(() => {
-  if (interval) {
+  if (interval !== null) {
     clearInterval(interval);
   }
 });
@@ -35,16 +36,22 @@ const selected = computed<DeploymentType>(() => {
   <div
     class="flex flex-col min-h-[50vh] justify-center relative bg-(--kryos-bg)"
   >
+    <img
+      :src="base_img"
+      alt="KRYOS protects the entire world"
+      class="absolute inset-0 w-full h-full object-cover opacity-50"
+    />
+
     <DeploymentPanel :deployment="selected" />
 
-    <div class="flex flex-row items-center justify-center gap-4">
+    <div class="flex flex-row items-center justify-center gap-2">
       <div
         class="flex flex-row items-center justify-center"
         v-for="idx in selectedPanel.length"
         :key="idx"
       >
         <span
-          class="w-6 h-6 border"
+          class="w-2 h-2 border"
           :class="{ 'bg-(--kryos-accent)': idx - 1 === currentPanel }"
         ></span>
       </div>

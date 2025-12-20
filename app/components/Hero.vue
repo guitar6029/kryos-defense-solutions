@@ -1,16 +1,29 @@
 <script lang="ts" setup>
 import Absolute from "./Wrapper/Absolute.vue";
-import KRYOS_HERO from "~/assets/img/KRYOS.png";
+import KRYOS_HERO from "~/assets/img/shapes/3d_shapes.png";
 </script>
 <template>
   <div
     class="relative flex min-h-screen flex-col items-center justify-center gap-4"
   >
-    <img
+    <!-- <img
       :src="KRYOS_HERO"
       alt="KRYOS protects the entire world"
-      class="absolute ineset-0 w-full h-full object-cover -z-10 opacity-70"
-    />
+      class="absolute inset-0 w-full h-full object-cover -z-10 opacity-70"
+    /> -->
+    <Absolute extra-class="top-10 left-10 w-screen  opacity-70">
+      <svg
+       class="absolute inset-0 w-full h-full"
+        viewBox="0 0 3406 2030"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M525.5 133.373L291 345.873V2029.37M0 1727.37H379M3405.5 1727.37H3276M379 1727.37V460.873L568 290.873M379 1727.37H3030.5M3276 1727.37V1986.87H2199.5M3276 1727.37H3117M3117 1727.37V188.873L2905.5 0.373047M3117 1727.37H3030.5M3030.5 1727.37V345.873L2849 188.873"
+          stroke="var(--kryos-accent)"
+        />
+      </svg>
+    </Absolute>
 
     <Absolute extra-class="top-10 left-10 w-250 -z-1 opacity-50">
       <svg
@@ -32,7 +45,7 @@ import KRYOS_HERO from "~/assets/img/KRYOS.png";
       </svg>
     </Absolute>
 
-    <div class="w-full bg-(--kryos-bg)/80 p-8 text-center">
+    <div class="w-full p-8 text-center">
       <h1
         class="sm:text-2xl md:text-[6rem] lg:text-[8rem] font-orbitron font-bold text-(--kryos-text-high) text-center"
       >

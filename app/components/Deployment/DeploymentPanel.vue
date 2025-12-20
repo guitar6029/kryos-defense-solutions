@@ -85,14 +85,14 @@ const selectedDeployment: Record<
           width="670"
           height="307"
           preserveAspectRatio="xMidYMid slice"
-          :clip-path="`url(#platform_${deployment})`"
+          :style="{ clipPath: `url(#platform_${deployment})` }"
         />
 
         <path
           d="M0.5 114.5V76L6.13576 57.5L23.5 0.5H66H188L205.5 8H483.5L504.5 0.5H539L581 42.5V76H565V114.5H581L603.229 163L650.208 265.5L669 306.5H647L616.5 295H551L524 306.5H407.5L381 295H216L195.5 306.5H155.5L137.336 284L117.5 265.5L129.5 258L59 163H39.6536L0.5 114.5Z"
           fill="none"
-          stroke="var(--kryos-accent)"
-          stroke-width="2"
+          stroke="var(--kryos-text-high)"
+          stroke-width="4"
         />
       </svg>
     </Absolute>

@@ -6,8 +6,8 @@ import KryosSectionHeader from "./KryosSectionHeader.vue";
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col gap-12 relative">
-    <Absolute extra-class="top-50 w-full opacity-50 -z-1">
+  <div class="min-h-screen flex flex-col gap-12 relative overflow-hidden">
+    <Absolute extra-class="top-10 w-full opacity-50 -z-1">
       <KryosPanel :option="5" />
     </Absolute>
 
@@ -27,7 +27,7 @@ import KryosSectionHeader from "./KryosSectionHeader.vue";
       <KryosPanel :option="6" :stroke-width="2" />
     </Absolute>
 
-    <Absolute extra-class="top-150 left-0 opacity-20 -z-1">
+    <Absolute extra-class="top-80 left-0 opacity-10 -z-1">
       <div
         class="w-125 h-25 border-2 flex flex-col items-center justify-center"
       >
@@ -51,12 +51,12 @@ import KryosSectionHeader from "./KryosSectionHeader.vue";
           class="min-w-100 max-w-150"
         />
         <h3
-          class="text-6xl text-(--kryos-text-high) font-orbitron uppercase w-full text-center"
+          class="text-4xl text-(--kryos-text-high) font-orbitron uppercase w-full text-center"
         >
           Kryos MK-I
         </h3>
       </div>
-      <div class="flex flex-col gap-6 w-full xl:max-w-6xl p-4">
+      <div class="flex flex-col gap-6 w-full xl:max-w-4xl p-4">
         <p class="text-4xl">
           The
           <span class="font-bold text-(--kryos-warn) uppercase"
@@ -67,13 +67,13 @@ import KryosSectionHeader from "./KryosSectionHeader.vue";
           mobility and a hardened sensor array, MK-I units maintain operational
           integrity where conventional systems fail.
         </p>
-        <ul class="text-4xl font-bold flex flex-col gap-4 max-w-4xl">
+        <ul class="text-2xl font-bold flex flex-col gap-4 max-w-4xl">
           <li>Multi-surface traversal (floor, wall, overhead structures)</li>
           <li>Redundant sensor clusters (thermal, LIDAR, acoustic mapping)</li>
           <li>Modular payload hardpoints</li>
           <li>Encrypted command and control channel</li>
         </ul>
-        <NuxtLink to="/products/mk-1" class="link w-fit"
+        <NuxtLink to="/products/mk-1" class="nav-link kryos-bracket w-fit"
           >View full technical specification</NuxtLink
         >
       </div>
