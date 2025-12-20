@@ -37,7 +37,7 @@ useHead({
 <template>
   <div class="flex flex-col min-h-screen justify-center gap-12 relative">
     <img
-      src="~/assets/img/kryos-building.jpg"
+      src="~/assets/img/kryos_building.jpg"
       alt="Kryos Defense Solution Tall Building"
       class="absolute top-0 right-0 w-250 h-auto -z-1 opacity-40"
     />

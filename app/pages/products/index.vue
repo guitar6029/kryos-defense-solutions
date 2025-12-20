@@ -39,7 +39,7 @@ useHead({
 </script>
 
 <template>
-  <div class="flex flex-col relative gap-4 min-h-screen">
+  <div class="flex flex-col relative min-h-screen">
     <ProductHero />
     <!-- Product Families Overview -->
     <ProductFamiliesOverview />

@@ -2,17 +2,152 @@
 import Absolute from "../Wrapper/Absolute.vue";
 import KryosPanel from "../Panels/KryosPanel.vue";
 import Text3D from "../Text/Text3D.vue";
+import baseCatalog from "~/assets/img/catalog_base.jpg";
 import KryosSectionHeader from "../KryosSectionHeader.vue";
 </script>
 
 <template>
-  <section class="flex flex-col min-h-screen gap-12 relative overflow-hidden">
+  <section class="flex flex-col min-h-screen relative overflow-hidden">
     <KryosSectionHeader right-text="PLATFORM FAMILIES" />
     <h2 class="section-title">Platform Families</h2>
 
-    <div class="flex flex-col items-center gap-12 relative">
-      
+    <!-- <Absolute extra-class="top-20 right-20 w-200 opacity-30 -z-1">
+      <svg
+        class="w-full h-auto"
+        viewBox="0 0 1967 3461"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <clipPath id="kryos_panel_1">
+            <path
+              d="M1816 191V502V953L1966.5 1284V2969L1595 3460.5H311.5L0.5 3169.5V502L392 0.5H1354.5L1816 191Z"
+            />
+          </clipPath>
+        </defs>
 
+        <image
+          :href="baseCatalog"
+          width="1967"
+          height="3461"
+          preserveAspectRatio="xMidYMid slice"
+          clip-path="url(#kryos_panel_1)"
+        />
+
+        <path
+          d="M1816 191V502V953L1966.5 1284V2969L1595 3460.5H311.5L0.5 3169.5V502L392 0.5H1354.5L1816 191Z"
+          stroke="var(--kryos-circuit-path)"
+          stroke-width="2"
+        />
+      </svg>
+    </Absolute> -->
+
+    <!-- <Absolute extra-class="top-20 left-20 w-200 opacity-50 -z-1">
+      <svg
+        class="w-full h-auto"
+        viewBox="0 0 1967 3461"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M1816 191V502V953L1966.5 1284V2969L1595 3460.5H311.5L0.5 3169.5V502L392 0.5H1354.5L1816 191Z"
+          stroke="var(--kryos-circuit-path)"
+          stroke-width="2"
+        />
+      </svg>
+    </Absolute> -->
+    <!-- <Absolute extra-class="top-1/2 left-20 w-200 opacity-50 -z-1">
+      <svg
+        class="w-full h-auto"
+        viewBox="0 0 1872 1476"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M28.5 384.5L201 295.5V134L323.5 0.5H590.5L724 106H1191.5L1247.5 61.5H1587L1765 162V496H1826.5L1871 752V1074.5L1720.5 1175V1397.5L1514.5 1475.5H1247.5L1086 1431H624L512.5 1475.5H100.5L0.5 1397.5V1113.5L100.5 1002.5V629.5V462.5H28.5V384.5Z"
+          stroke="black"
+        />
+      </svg>
+    </Absolute> -->
+    <!-- <Absolute extra-class="top-1/2 left-20 w-200 opacity-50 -z-1">
+      <svg
+        class="w-full h-auto"
+        viewBox="0 0 1354 2022"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M1058 0.5L1180.5 100.5V256.5H1280.5V813L1247.5 885.5V1397.5L1353 1509V1887.5L1247.5 1976.5H573.5L512.5 2021H167.5L45 1843V1586.5L0.5 1509V885.5L111.5 774V256.5L45 206.5V61.5H512.5L573.5 0.5H1058Z"
+          stroke="var(--kryos-circuit-path)"
+          stroke-width="2"
+        />
+      </svg>
+    </Absolute> -->
+
+    <!-- <Absolute
+      extra-class="bottom-0 left-10 -translate-x-1/2 w-150 opacity -z-1"
+    >
+      <svg
+        class="w-full h-auto"
+        viewBox="0 0 1872 1476"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M28.5 384.5L201 295.5V134L323.5 0.5H590.5L724 106H1191.5L1247.5 61.5H1587L1765 162V496H1826.5L1871 752V1074.5L1720.5 1175V1397.5L1514.5 1475.5H1247.5L1086 1431H624L512.5 1475.5H100.5L0.5 1397.5V1113.5L100.5 1002.5V629.5V462.5H28.5V384.5Z"
+          stroke="var(--kryos-circuit-path)"
+          stroke-width="2"
+        />
+      </svg>
+    </Absolute> -->
+
+    <!-- <Absolute extra-class="top-10 right-20 opacity-50 w-100 -z-1 rotate-180">
+      <svg
+        class="w-full h-auto"
+        viewBox="0 0 547 1722"
+        fill="var(--kryos-warn)"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M268 106.318L62 0.817871V289.818L0.5 340.318V835.318L62 874.318V1258.82H0.5V1353.32L234.5 1570.32V1653.82L312.5 1720.82H546L457 1509.32L234.5 1308.82V573.818L268 507.318V106.318Z"
+          stroke="var(--kryos-circuit-path)"
+          stroke-width="2"
+        />
+      </svg>
+    </Absolute> -->
+
+    <!-- <Absolute extra-class="top-1/2 left-20 opacity-20 w-100 -z-1">
+      <svg
+        class="w-full h-auto"
+        viewBox="0 0 547 1722"
+        fill="var(--kryos-warn)"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M268 106.318L62 0.817871V289.818L0.5 340.318V835.318L62 874.318V1258.82H0.5V1353.32L234.5 1570.32V1653.82L312.5 1720.82H546L457 1509.32L234.5 1308.82V573.818L268 507.318V106.318Z"
+          stroke="var(--kryos-circuit-path)"
+          stroke-width="2"
+        />
+      </svg>
+    </Absolute> -->
+
+    <!-- <Absolute extra-class="bottom-10 right-20 opacity-50 w-300 -z-1">
+      <svg
+        class="w-full h-auto"
+        viewBox="0 0 2011 2595"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRation="none"
+      >
+        <path
+          d="M1186 0.5H1458.5H1893V257L2010 435V947L1893 1119.5V1865.5L1948.5 1921V2594.5H1726L1559 2550H857.5L785 2594.5H601.5L429 2550L312 2316.5V2055H662.5L1158 1821V1459L1119 1348H479L429 1392.5H312L61.5 1181V557.5L0.5 468.5V301.5L195 56.5H1019L1186 0.5Z"
+          stroke="var(--kryos-circuit-path)"
+          stroke-width="2"
+        />
+      </svg>
+    </Absolute> -->
+
+    <div class="flex flex-col items-center gap-12 relative">
       <div class="flex flex-col items-center xl:flex-row gap-12">
         <div class="sm:w-100 md:w-150 xl:w-200 relative trns hover:scale-102">
           <Absolute extra-class="bottom-10 left-1/2 -translate-x-1/2">
@@ -51,7 +186,7 @@ import KryosSectionHeader from "../KryosSectionHeader.vue";
 
             <!-- Image clipped by that shape -->
             <image
-              href="~/assets/img/kryos-ground.jpg"
+              href="~/assets/img/kryos_ground.jpg"
               width="422"
               height="269"
               preserveAspectRatio="xMidYMid slice"
@@ -140,7 +275,7 @@ import KryosSectionHeader from "../KryosSectionHeader.vue";
             </defs>
 
             <image
-              href="assets/img/kryos-aerial.jpg"
+              href="assets/img/kryos_aerial.jpg"
               width="558"
               height="372"
               preserveAspectRatio="xMidYMid slice"
@@ -192,7 +327,7 @@ import KryosSectionHeader from "../KryosSectionHeader.vue";
               fill="none"
             >
               <defs>
-                <clipPath id="kryosLab">
+                <clipPath>
                   <path
                     d="M160.233 113.579L373.233 0.579285L490.733 76.5793L534.733 422.079L321.733 508.079L0.733398 466.079L160.233 113.579Z"
                   />
@@ -223,7 +358,7 @@ import KryosSectionHeader from "../KryosSectionHeader.vue";
             </defs>
 
             <image
-              href="~/assets/img/kryos-system-lab.jpg"
+              href="~/assets/img/kryos_system_lab.jpg"
               width="536"
               height="509"
               preserveAspectRatio="xMidYMid slice"
@@ -282,15 +417,12 @@ import KryosSectionHeader from "../KryosSectionHeader.vue";
         </Absolute> -->
       </div>
 
-      <Absolute extra-class="bottom-10 -right-50 w-200 -z-1 opacity-50">
-        <KryosPanel :option="7" />
-      </Absolute>
-
       <div class="flex flex-row items-center justify-center gap-2">
-        <p class="relative bottom-10 text-4xl max-w-2xl text-center mt-10">
-          <span class="font-bold">Note:</span> Certain platform configurations
-          are restricted and available only under classified procurement
-          channels.
+        <p
+          class="relative bottom-10 max-w-2xl text-center mt-10 kryos-text kryos-bracket"
+        >
+          Certain platform configurations are restricted and available only
+          under classified procurement channels.
         </p>
       </div>
     </div>
