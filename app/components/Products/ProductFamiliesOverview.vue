@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import Absolute from "../Wrapper/Absolute.vue";
-import KryosPanel from "../Panels/KryosPanel.vue";
 import Text3D from "../Text/Text3D.vue";
 import circuit1 from "~/assets/img/kryos_circuit_1.jpg";
 import circuit2 from "~/assets/img/kryos_circuit_2.jpg";
@@ -33,14 +32,15 @@ const kryosFrameSvgFrames = [
     <KryosSectionHeader right-text="PLATFORM FAMILIES" />
     <div class="flex flex-col items-center gap-12 relative">
       <h2 class="section-title">Platform Families</h2>
-      <div class="flex flex-col items-center xl:flex-row gap-12">
+      <div class="flex flex-col items-center xl:flex-row gap-12 h-screen">
         <div class="sm:w-100 md:w-150 xl:w-200 relative trns hover:scale-102">
           <Absolute extra-class="bottom-10 left-1/2 -translate-x-1/2">
             <Text3D text="Ground Platforms" />
           </Absolute>
 
           <KryosFrame
-            absolute-extra-class="-top-10 left-0 w-150 opacity-50 -z-1"
+            absolute-extra-class="-top-20 -left-10 opacity-50 -z-1"
+            :style="{ width: 'clamp(34rem, 35rem, 40rem)' }"
             :svg-view-box="kryosFrameSvgFrames[0]?.viewBox"
             :svg-path="kryosFrameSvgFrames[0].d"
             :img-src="circuit1"
@@ -67,7 +67,6 @@ const kryosFrameSvgFrames = [
             class="w-full h-auto"
           >
             <defs>
-              <!-- Your panel shape -->
               <clipPath id="kryosPanel">
                 <path
                   d="M0.5 64.0562L74.8472 9.22875H286.159L306.551 0.5H369.349L421.5 39.9158V211.763L330.371 268.5H0.5V64.0562Z"
@@ -94,8 +93,19 @@ const kryosFrameSvgFrames = [
           </svg>
         </div>
 
-        <div class="flex items-center justify-center p-4 z-12">
-          <p class="max-w-4xl text-2xl xl:text-4xl italic font-bold">
+        <div class="relative inline-block">
+          <p class="relative z-10 text-4xl font-bold max-w-2xl px-10 py-8">
+            <KryosFrame
+              absolute-extra-class="inset-0 pointer-events-none -z-1"
+              svg-path="M0.5 42.5L101.5 0.5H1640.5L1708 42.5V447.5L1640.5 506.5H1299L1265 481H337.5L295.5 506.5H101.5L0.5 447.5V42.5Z"
+              svg-view-box="0 0 1709 507"
+              svg-stroke-color="var(--kryos-accent)"
+              svg-fill-color="black"
+              :svg-stroke-width="4"
+              svg-class="w-full h-full"
+              preserve-aspect-ratio="none"
+            />
+
             Autonomous, multi-terrain units for patrol, interdiction, and close
             asset protection.
           </p>
@@ -122,8 +132,19 @@ const kryosFrameSvgFrames = [
       </div>
 
       <div class="flex items-center xl:flex-row flex-col-reverse gap-12">
-        <div class="flex items-center justify-center p-4 z-12">
-          <p class="max-w-4xl text-2xl xl:text-4xl italic font-bold">
+        <div class="relative inline-block">
+          <p class="relative z-10 text-4xl font-bold max-w-2xl px-10 py-8">
+            <KryosFrame
+              absolute-extra-class="inset-0 pointer-events-none -z-1"
+              svg-path="M0.5 42.5L101.5 0.5H1640.5L1708 42.5V447.5L1640.5 506.5H1299L1265 481H337.5L295.5 506.5H101.5L0.5 447.5V42.5Z"
+              svg-view-box="0 0 1709 507"
+              svg-stroke-color="var(--kryos-accent)"
+              svg-fill-color="black"
+              :svg-stroke-width="4"
+              svg-class="w-full h-full"
+              preserve-aspect-ratio="none"
+            />
+
             Lightweight, persistent-surveillance drones designed for layered
             situational awareness.
           </p>
@@ -135,7 +156,8 @@ const kryosFrameSvgFrames = [
           </Absolute>
 
           <KryosFrame
-            absolute-extra-class="-bottom-15 -right-40 w-250 opacity-50 -z-2"
+            absolute-extra-class="-bottom-15 -right-40 opacity-50 -z-2"
+            :style="{ width: 'clamp(34rem, 35rem, 40rem)' }"
             :svg-view-box="kryosFrameSvgFrames[1]?.viewBox"
             :svg-path="kryosFrameSvgFrames[1].d"
             :img-src="circuit2"
@@ -219,7 +241,8 @@ const kryosFrameSvgFrames = [
           </Absolute>
 
           <KryosFrame
-            absolute-extra-class="-bottom-10 -left-20 w-250 opacity-50 -z-3"
+            absolute-extra-class="-bottom-10 -left-20 opacity-50 -z-3"
+            :style="{ width: 'clamp(50rem, 52rem,55rem)' }"
             :svg-view-box="kryosFrameSvgFrames[2]?.viewBox"
             :svg-path="kryosFrameSvgFrames[2].d"
             :img-src="circuit3"
@@ -280,8 +303,19 @@ const kryosFrameSvgFrames = [
           </svg>
         </div>
 
-        <div class="flex items-center w-fit justify-center p-4 z-15">
-          <p class="max-w-4xl text-2xl xl:text-4xl italic font-bold">
+        <div class="relative inline-block">
+          <p class="relative z-10 text-4xl font-bold max-w-2xl px-10 py-8">
+            <KryosFrame
+              absolute-extra-class="inset-0 pointer-events-none -z-1"
+              svg-path="M0.5 42.5L101.5 0.5H1640.5L1708 42.5V447.5L1640.5 506.5H1299L1265 481H337.5L295.5 506.5H101.5L0.5 447.5V42.5Z"
+              svg-view-box="0 0 1709 507"
+              svg-stroke-color="var(--kryos-accent)"
+              svg-fill-color="black"
+              :svg-stroke-width="4"
+              svg-class="w-full h-full"
+              preserve-aspect-ratio="none"
+            />
+
             Embedded systems for transit networks, industrial facilities, and
             critical infrastructure nodes.
           </p>

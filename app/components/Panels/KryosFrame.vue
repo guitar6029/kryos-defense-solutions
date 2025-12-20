@@ -13,15 +13,19 @@ const props = withDefaults(
     absoluteExtraClass?: string;
     imgSrc?: string;
     svgPath: string;
-    svgFillColor?:string;
+    svgFillColor?: string;
     svgViewBox: string;
     svgStrokeColor?: string;
     svgStrokeWidth?: number;
+    svgClass?: string;
+    preserveAspectRatio?: string;
   }>(),
   {
     absoluteExtraClass: "top-0 left-0",
     svgStrokeColor: "var(--kryos-circuit-path)",
     svgStrokeWidth: 2,
+    svgClass: "w-full h-full",
+    preserveAspectRatio: "xMidYMid meet",
   }
 );
 </script>
@@ -29,10 +33,11 @@ const props = withDefaults(
 <template>
   <Absolute :extra-class="absoluteExtraClass">
     <svg
-      class="w-full h-auto"
+      :class="svgClass"
       :viewBox="svgViewBox"
       :fill="imgSrc ? 'none' : svgFillColor"
       xmlns="http://www.w3.org/2000/svg"
+      :preserveAspectRatio="preserveAspectRatio"
     >
       <defs v-if="clipId">
         <clipPath :id="`kryos_${clipId}`">
