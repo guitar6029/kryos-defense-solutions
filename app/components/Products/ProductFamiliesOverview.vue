@@ -164,7 +164,7 @@ const platformList: PlatformConfig[] = [
       <div
         v-for="p in platformList"
         :key="p.key"
-        class="w-full h-screen flex flex-col items-center justify-center"
+        class="w-full h-screen md:h-fit flex flex-col items-center justify-center"
       >
         <!-- main row -->
         <div
