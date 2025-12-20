@@ -30,12 +30,26 @@ const selectedModel: Record<Platform, { title: string; imageSrc: string }> = {
 <template>
   <!-- bg-[radial-gradient(circle_at_center,var(--kryos-mk-bg),transparent)] -->
   <div
-    class="min-w-4xl max-w-5xl h-[50vh] flex flex-col items-center relative pb-60"
+    class="min-w-4xl max-w-5xl h-[80vh] flex flex-col items-center relative pb-60"
   >
+    <svg
+      class="w-full inset-0"
+      viewBox="0 0 1354 2022"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="none"
+      stroke-width="4"
+    >
+      <path
+        d="M1058 0.5L1180.5 100.5V256.5H1280.5V813L1247.5 885.5V1397.5L1353 1509V1887.5L1247.5 1976.5H573.5L512.5 2021H167.5L45 1843V1586.5L0.5 1509V885.5L111.5 774V256.5L45 206.5V61.5H512.5L573.5 0.5H1058Z"
+        stroke="var(--kryos-accent)"
+      />
+    </svg>
+
     <img
       :src="selectedModel[model].imageSrc"
       alt="MKI Model with background"
-      class="absolute left-1/2 -translate-x-1/2 w-150 z-20"
+      class="absolute left-1/2 top-20 -translate-x-1/2 w-150 z-20"
     />
 
     <Absolute

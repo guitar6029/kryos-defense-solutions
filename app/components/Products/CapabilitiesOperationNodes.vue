@@ -38,8 +38,12 @@ const capabilities = [
       <KryosPanel :option="7" />
     </Absolute>
 
-    <Absolute extra-class="-z-1 bottom-20 left-0  w-100 ">
+    <Absolute extra-class="-z-1 top-20 left-0  w-200 ">
       <KryosPanel :option="13" />
+    </Absolute>
+
+    <Absolute extra-class="-z-1 bottom-20 left-0 opacity-50 w-200 ">
+      <KryosPanel :option="3" />
     </Absolute>
 
     <h2 class="section-title">Systems Capabilities</h2>

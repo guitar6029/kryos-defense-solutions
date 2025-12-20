@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import KryosPanel from "~/components/Panels/KryosPanel.vue";
 import CapabilitiesOperationNodes from "~/components/Products/CapabilitiesOperationNodes.vue";
 import DeploymentProfiles from "~/components/Products/DeploymentProfiles.vue";
 import FullViewProduct from "~/components/Products/FullViewProduct.vue";
@@ -8,6 +9,7 @@ import ProductFamiliesOverview from "~/components/Products/ProductFamiliesOvervi
 import ProductHero from "~/components/Products/ProductHero.vue";
 import Roadmap from "~/components/Products/Roadmap.vue";
 import SummaryProduct from "~/components/Products/SummaryProduct.vue";
+import Absolute from "~/components/Wrapper/Absolute.vue";
 useHead({
   title: "KRYOS | PRODUCTS",
   meta: [
@@ -54,9 +56,19 @@ useHead({
     <!-- END Capabilities & Operating Modes -->
 
     <!-- Kryos MK-I Flagship Spotlight -->
-    <section class="flex flex-col items-center gap-8 relative">
-      <FullViewProduct model="MK" />
-      <SummaryProduct model="MK" />
+    <section class="flex flex-col gap-8 relative p-4">
+      <Absolute extra-class="top-10 -left-120 opacity-50 w-200 -rotate-180">
+        <KryosPanel :option="7" />
+      </Absolute>
+      
+      <Absolute extra-class="top-100 right-0 opacity-30 w-200 ">
+        <KryosPanel :option="8" />
+      </Absolute>
+
+      <div class="mx-auto">
+        <FullViewProduct model="MK" />
+        <SummaryProduct model="MK" />
+      </div>
       <div class="flex flex-col item-center justify-center gap-4">
         <ProductCTA
           text="Access full specifications, autonomous modes, and mission parameters"
@@ -73,7 +85,7 @@ useHead({
     <!-- END Kryos MK-I Flagship Spotlight -->
 
     <!-- Kryos EX-1 Tactical ExoFrame Spotlight  -->
-    <section class="flex flex-col items-center gap-8 relative">
+    <section class="flex flex-col items-center gap-8 relative mt-24 p-4">
       <FullViewProduct model="EX" />
       <SummaryProduct model="EX" />
       <div class="flex flex-col item-center justify-center gap-4">
