@@ -87,7 +87,7 @@ const platformList: PlatformConfig[] = [
     captionFrame: {
       viewBox: "0 0 1709 507",
       path: "M0.5 42.5L101.5 0.5H1640.5L1708 42.5V447.5L1640.5 506.5H1299L1265 481H337.5L295.5 506.5H101.5L0.5 447.5V42.5Z",
-      strokeColor: "var(--kryos-accent)",
+       strokeColor: "var(--kryos-circuit-path)",
       fillColor: "black",
       strokeWidth: 4,
     },
@@ -145,7 +145,7 @@ const platformList: PlatformConfig[] = [
     captionFrame: {
       viewBox: "0 0 1709 507",
       path: "M0.5 42.5L101.5 0.5H1640.5L1708 42.5V447.5L1640.5 506.5H1299L1265 481H337.5L295.5 506.5H101.5L0.5 447.5V42.5Z",
-      strokeColor: "var(--kryos-accent)",
+      strokeColor: "var(--kryos-circuit-path)",
       fillColor: "black",
       strokeWidth: 4,
     },
