@@ -10,7 +10,7 @@ import KryosSectionHeader from "./KryosSectionHeader.vue";
     <img
       :src="GeoShapes"
       alt="KRYOS geometric shapes"
-      class="absolute inset-0 w-full h-full object-cover -z-10 opacity-50"
+      class="absolute inset-0 w-full h-full object-cover -z-10 mask-fade-bottom"
     />
 
     <h2 class="section-title">Recent Announcements</h2>

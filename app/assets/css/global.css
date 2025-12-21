@@ -47,7 +47,6 @@
 
   --kryos-circuit-path: #f0b847;
 
-
   --kryos-warn: #d7a429;
 
   /* Subtle amber (low-emphasis hazard stripes, muted labels) */
@@ -99,6 +98,21 @@
 }
 
 @layer utility {
+  .mask-fade-bottom {
+    mask-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 0.6) 45%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 0.6) 45%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+
   .trns {
     @apply transition ease-in duration-300;
   }
