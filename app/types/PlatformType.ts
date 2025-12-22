@@ -1,0 +1,1 @@
+export type PlatFormType = "GROUND" | "AERIAL" | "INTEGRATION";

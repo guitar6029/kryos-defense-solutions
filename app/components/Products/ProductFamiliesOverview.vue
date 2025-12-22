@@ -11,13 +11,12 @@ import circuit3 from "~/assets/img/kryos_circuit_3.jpg";
 import groundImg from "~/assets/img/kryos_ground.jpg";
 import aerialImg from "~/assets/img/kryos_aerial.jpg";
 import labImg from "~/assets/img/kryos_system_lab.jpg";
-
-type PlatFormType = "GROUND" | "AERIAL" | "INTEGRATION";
+import type { PlatformConfig } from "~/types/PlatformConfig";
 
 const kryosFrameSvgFrames = [
   {
-    viewBox: "0 0 1967 3461",
-    d: "M1816 191V502V953L1966.5 1284V2969L1595 3460.5H311.5L0.5 3169.5V502L392 0.5H1354.5L1816 191Z",
+    viewBox: "0 0 2909 2632",
+    d: "M2462.5 85L2555 185L2908.5 339V1046.5L2754.5 1154.5V1900.5L2862.5 1985V2385.5L2670 2524H1500.5L1331.5 2631.5H439.5L262.5 2524H0.5V2162.5L262.5 1939.5V1370L124 1270V631.5L216 531.5V277.5L439.5 0.5H1093L1370 185H1662.5L1801 85H2462.5Z",
   },
   {
     viewBox: "0 0 2078 2150",
@@ -28,40 +27,6 @@ const kryosFrameSvgFrames = [
     d: "M557 440L757.5 317.5L880 306.5L1002.5 145H1425.5L1525.5 0.5H1893V368L1987.5 468V674L1792.5 874.5V1369.5L1893 1481V1887.5L1570 2032H907.5L690.5 2143.5H267.5L0.5 2032V1614.5L111.5 1369.5L267.5 1236L323 1292L557 1102.5L507 1036L718.5 874.5L557 702V440Z",
   },
 ] as const;
-
-type PlatformConfig = {
-  key: PlatFormType;
-  title: string;
-  text: string;
-  startingPosition: "left" | "right";
-
-  panel: {
-    viewBox: string;
-    path: string;
-    width: number;
-    height: number;
-    imgSrc: any;
-    clipId: string;
-  };
-
-  circuit: {
-    imgSrc: any;
-    frameIndex: number;
-    absoluteClass: string;
-    styleWidth: string;
-    strokeWidth?: number;
-  };
-
-  captionFrame: {
-    viewBox: string;
-    path: string;
-    strokeColor: string;
-    fillColor: string;
-    strokeWidth: number;
-  };
-
-  dx: string;
-};
 
 const platformList: PlatformConfig[] = [
   {
@@ -87,7 +52,7 @@ const platformList: PlatformConfig[] = [
     captionFrame: {
       viewBox: "0 0 1709 507",
       path: "M0.5 42.5L101.5 0.5H1640.5L1708 42.5V447.5L1640.5 506.5H1299L1265 481H337.5L295.5 506.5H101.5L0.5 447.5V42.5Z",
-       strokeColor: "var(--kryos-circuit-path)",
+      strokeColor: "var(--kryos-circuit-path)",
       fillColor: "black",
       strokeWidth: 4,
     },
