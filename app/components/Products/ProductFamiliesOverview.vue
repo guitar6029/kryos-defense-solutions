@@ -3,6 +3,7 @@ import Absolute from "../Wrapper/Absolute.vue";
 import Text3D from "../Text/Text3D.vue";
 import KryosSectionHeader from "../KryosSectionHeader.vue";
 import KryosFrame from "../Panels/KryosFrame.vue";
+import KryosPanel from "../Panels/KryosPanel.vue";
 
 import circuit1 from "~/assets/img/kryos_circuit_1.jpg";
 import circuit2 from "~/assets/img/kryos_circuit_2.jpg";
@@ -125,6 +126,37 @@ const platformList: PlatformConfig[] = [
 
     <div class="flex flex-col items-center gap-12 relative">
       <h2 class="section-title">Platform Families</h2>
+      <Absolute extra-class="top-0 left-0 w-200 opacity-50 -z-1">
+        <KryosPanel :option="6" />
+      </Absolute>
+      <Absolute extra-class="top-20 right-0 w-200 opacity-50 -z-1 -rotate-180">
+        <KryosPanel :option="6" />
+      </Absolute>
+
+      <KryosFrame
+        absoluteExtraClass="bottom-0 -left-170 w-200 opacity-30 -z-3"
+        svg-path="M631 0.5H0.5V2547L1385 2508.5L1570 2393.5V1578L1431.5 1439.5V808.5L1516 593V177.5H831L631 0.5Z"
+        svg-view-box="0 0 1571 2548"
+        :img-src="circuit1"
+      />
+      
+      <KryosFrame
+        absoluteExtraClass="top-0 -right-170 w-200 opacity-30 -z-3 -rotate-180"
+        svg-path="M631 0.5H0.5V2547L1385 2508.5L1570 2393.5V1578L1431.5 1439.5V808.5L1516 593V177.5H831L631 0.5Z"
+        svg-view-box="0 0 1571 2548"
+        :img-src="circuit1"
+      />
+      
+      <KryosFrame
+        absoluteExtraClass="-bottom-150 -right-170 w-200 opacity-30 -z-3 -rotate-180"
+        svg-path="M631 0.5H0.5V2547L1385 2508.5L1570 2393.5V1578L1431.5 1439.5V808.5L1516 593V177.5H831L631 0.5Z"
+        svg-view-box="0 0 1571 2548"
+        :img-src="circuit1"
+      />
+
+      <Absolute extra-class="top-300 left-0 w-200 opacity-50 -z-1 ">
+        <KryosPanel :option="6" />
+      </Absolute>
 
       <div
         v-for="p in platformList"

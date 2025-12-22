@@ -2,7 +2,7 @@
 
 <template>
   <section
-    class="relative flex h-[75vh] items-center justify-center overflow-hidden"
+    class="relative flex h-[50vh] items-center justify-center overflow-hidden"
   >
     <img
       src="~/assets/img/kryos_catalog.jpg"
