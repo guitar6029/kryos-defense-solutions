@@ -194,7 +194,7 @@ const platformList: PlatformConfig[] = [
             />
 
             <!-- WARN OUTLINE BACKPLATE -->
-            <div class="absolute inset-0 -z-10 scale-105 translate-x-2">
+            <Absolute class="inset-0 -z-10 scale-105 translate-x-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 :viewBox="p.panel.viewBox"
@@ -207,7 +207,7 @@ const platformList: PlatformConfig[] = [
                   stroke-width="2"
                 />
               </svg>
-            </div>
+            </Absolute>
 
             <!-- CLIPPED IMAGE PANEL -->
             <svg
