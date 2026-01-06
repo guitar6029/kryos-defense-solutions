@@ -9,6 +9,7 @@ import KryosFrame from "../Panels/KryosFrame.vue";
 
 defineProps<{
   productPanel: ProductPanel;
+  showFrame?: boolean;
 }>();
 
 const selectedProfile: Record<
@@ -49,6 +50,7 @@ const selectedProfile: Record<
 <template>
   <div class="w-full xl:max-w-4xl min-h-65 flex flex-col relative">
     <KryosFrame
+      v-if="showFrame"
       svg-class="w-full h-auto"
       absolute-extra-class="inset-[-1.5rem]"
       svg-path="M230.5 0.5L126.5 67H23V423L0.5 449V708.5L86 808.5H575.5L709 883H1276L1354 834.5H1647L1754.5 668V423L1780.5 360V156L1680.5 67H1380L1250 41H746L671.5 0.5H230.5Z"

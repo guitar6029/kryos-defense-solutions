@@ -38,7 +38,7 @@ useHead({
 </script>
 
 <template>
-  <div class="flex flex-col relative min-h-screen">
+  <div class="flex flex-col relative">
     <ProductHero />
     <!-- Product Families Overview -->
     <ProductFamiliesOverview />
@@ -73,9 +73,6 @@ useHead({
       >
         <FullViewProduct model="EX" />
       </div>
-      <Absolute extra-class="top-100 right-0 opacity-30 w-200">
-        <KryosPanel :option="8" />
-      </Absolute>
     </section>
 
     <!-- END Kryos EX-1 Tactical ExoFrame Spotlight -->
