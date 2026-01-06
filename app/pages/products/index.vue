@@ -1,13 +1,10 @@
 <script lang="ts" setup>
 import KryosPanel from "~/components/Panels/KryosPanel.vue";
-import CapabilitiesOperationNodes from "~/components/Products/CapabilitiesOperationNodes.vue";
 import DeploymentProfiles from "~/components/Products/DeploymentProfiles.vue";
 import FullViewProduct from "~/components/Products/FullViewProduct.vue";
-import ProcurementIntegration from "~/components/Products/ProcurementIntegration.vue";
 import ProductCTA from "~/components/Products/ProductCTA.vue";
 import ProductFamiliesOverview from "~/components/Products/ProductFamiliesOverview.vue";
 import ProductHero from "~/components/Products/ProductHero.vue";
-import Roadmap from "~/components/Products/Roadmap.vue";
 import SummaryProduct from "~/components/Products/SummaryProduct.vue";
 import Absolute from "~/components/Wrapper/Absolute.vue";
 useHead({
@@ -60,7 +57,7 @@ useHead({
       <Absolute extra-class="top-10 -left-120 opacity-50 w-200 -rotate-180">
         <KryosPanel :option="7" />
       </Absolute>
-      
+
       <Absolute extra-class="top-100 right-0 opacity-30 w-200 ">
         <KryosPanel :option="8" />
       </Absolute>
@@ -102,13 +99,5 @@ useHead({
       </div>
     </section>
     <!-- END Kryos EX-1 Tactical ExoFrame Spotlight -->
-
-    <!-- Roadmap / Future Platforms -->
-    <Roadmap />
-    <!-- END Roadmap / Future Platforms -->
-
-    <!-- Procurement & Integration CTA -->
-    <ProcurementIntegration />
-    <!-- end Procurement & Integration CTA -->
   </div>
 </template>

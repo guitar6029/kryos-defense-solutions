@@ -5,6 +5,7 @@ import Transit from "../svg/Transit.vue";
 import CampusSecurity from "../svg/CampusSecurity.vue";
 import type { Component } from "vue";
 export type ProductPanel = 1 | 2 | 3 | 4;
+import KryosFrame from "../Panels/KryosFrame.vue";
 
 defineProps<{
   productPanel: ProductPanel;
@@ -46,20 +47,31 @@ const selectedProfile: Record<
 </script>
 
 <template>
-  <div class="w-full xl:max-w-4xl flex flex-col gap-2 p-4 border">
-    <span class="font-bold"
-      >PROFILE // {{ selectedProfile[productPanel].id }}</span
-    >
-    <h3 class="text-4xl text-(--kryos-warn) font-bold">
-      [ {{ selectedProfile[productPanel].title }} ]
-    </h3>
-    <div class="flex items-start gap-2">
-      <div class="min-w-25 max-w-25 text-(--kryos-accent)">
-        <component :is="selectedProfile[productPanel].svgIcon" />
+  <div class="w-full xl:max-w-4xl min-h-65 flex flex-col relative">
+    <KryosFrame
+      svg-class="w-full h-auto"
+      absolute-extra-class="inset-[-1.5rem]"
+      svg-path="M230.5 0.5L126.5 67H23V423L0.5 449V708.5L86 808.5H575.5L709 883H1276L1354 834.5H1647L1754.5 668V423L1780.5 360V156L1680.5 67H1380L1250 41H746L671.5 0.5H230.5Z"
+      svg-view-box="0 0 1781 884"
+      preserve-aspect-ratio="none"
+      :svg-stroke-width="4"
+    />
+
+    <div class="relative flex flex-col p-4 md:p-6 lg:p-7">
+      <span class="kryos-text mb-1"
+        >PROFILE // {{ selectedProfile[productPanel].id }}</span
+      >
+      <h3 class="text-2xl text-(--kryos-warn) font-bold mb-3">
+        [ {{ selectedProfile[productPanel].title }} ]
+      </h3>
+      <div class="flex items-start gap-4">
+        <div class="min-w-25 max-w-25 text-(--kryos-accent)">
+          <component :is="selectedProfile[productPanel].svgIcon" />
+        </div>
+        <p class="text-2xl max-w-xl">
+          {{ selectedProfile[productPanel].summary }}
+        </p>
       </div>
-      <p class="text-4xl max-w-3xl">
-        {{ selectedProfile[productPanel].summary }}
-      </p>
     </div>
   </div>
 </template>
