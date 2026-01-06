@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from "vue";
-import { useKryosFleetStore, type KryosNode } from "#imports";
+import { useKryosFleetStore } from "~/stores/kryosFleet";
 import KryosButton from "./Command/KryosButton.vue";
 import KryosLabel from "../Labels/KryosLabel.vue";
 import KryosPanelTitle from "../Labels/KryosPanelTitle.vue";
@@ -11,6 +11,7 @@ import {
 } from "~/utils/kryosStatusClasses";
 import { useSystemCommandStore } from "#imports";
 import { formatMsAgo } from "~/utils/timeRelated";
+import type { KryosNode } from "~/types/KryosNode";
 const kryosSystemCommandStore = useSystemCommandStore();
 const kryosFleetStore = useKryosFleetStore();
 const selectedType = ref<CommandType | null>(null);
@@ -128,7 +129,7 @@ function handleCommandRequest() {
     >
       <span>NO QUEUED COMMANDS</span>
     </div>
-    <div v-else class="flex flex-row items-center gap-2 p-4">
+    <div v-else class="flex flex-row flex-wrap items-center gap-2 p-4">
       <span
         v-for="item in kryosSystemCommandStore.getQueued"
         :class="[
@@ -151,7 +152,7 @@ function handleCommandRequest() {
     >
       <span>NO HISTORY COMMANDS</span>
     </div>
-    <div v-else class="flex flex-row items-center gap-2 p-4">
+    <div v-else class="flex flex-row flex-wrap items-center gap-2 p-4">
       <div
         v-for="item in kryosSystemCommandStore.getHistory"
         :class="[
