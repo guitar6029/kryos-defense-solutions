@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, watch, onMounted } from "vue";
+import { ref, watch } from "vue";
 import { useKryosFleetStore } from "#imports";
 import KryosPanelTitle from "../Labels/KryosPanelTitle.vue";
 import KryosSystemStats from "./KryosSystemStats.vue";
@@ -80,7 +80,7 @@ const { isMobile, sideMenuDisplaying, toggleMenu, closeMenu } =
     </KryosSidePanel>
 
     <div class="md:hidden absolute top-0 left-0 flex flex-col w-full gap-2 p-4">
-      <svg
+      <!-- <svg
         class="absolute w-full -z-1"
         viewBox="0 0 1657 84"
         fill="none"
@@ -92,7 +92,7 @@ const { isMobile, sideMenuDisplaying, toggleMenu, closeMenu } =
           stroke="var(--kryos-accent)"
           stroke-width="4"
         />
-      </svg>
+      </svg> -->
 
       <div class="relative z-10">
         <KryosPanelTitle :title="`kryos // ${currentModule}`" />
@@ -104,7 +104,7 @@ const { isMobile, sideMenuDisplaying, toggleMenu, closeMenu } =
 
     <!-- md screens and up -->
     <div class="hidden md:block w-full relative mb-20 bottom-5">
-      <div class="absolute inset-0">
+      <!-- <div class="absolute inset-0">
         <svg
           class="w-full h-40"
           viewBox="0 0 3944 852"
@@ -139,7 +139,7 @@ const { isMobile, sideMenuDisplaying, toggleMenu, closeMenu } =
             vector-effect="non-scaling-stroke"
           />
         </svg>
-      </div>
+      </div> -->
       <div class="flex flex-col gap-2 relative z-1 left-5 top-10">
         <div class="flex flex-row items-center justify-between w-screen gap-2">
           <div class="flex flex-row items-center gap-2">
