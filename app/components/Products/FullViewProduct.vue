@@ -2,6 +2,8 @@
 import EX1Model from "~/assets/img/ex-1-no-bg.png";
 import MKIModel from "~/assets/img/mk-i-no-bg.png";
 import type { Platform } from "~/types/Platform";
+import SummaryProduct from "./SummaryProduct.vue";
+import ProductCTA from "./ProductCTA.vue";
 import Absolute from "../Wrapper/Absolute.vue";
 
 withDefaults(
@@ -28,38 +30,33 @@ const selectedModel: Record<Platform, { title: string; imageSrc: string }> = {
 </script>
 
 <template>
-  <!-- bg-[radial-gradient(circle_at_center,var(--kryos-mk-bg),transparent)] -->
   <div
-    class="min-w-4xl max-w-5xl h-[80vh] flex flex-col items-center relative pb-60"
+    class="w-full min-h-[50vh] group flex flex-col gap-2 lg:flex-row items-center border-2 border-(--kryos-accent)/40 rounded-2xl trns justify-around relative hover:bg-(--kryos-bg-alt)"
   >
-    <svg
-      class="w-full inset-0"
-      viewBox="0 0 1354 2022"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      preserveAspectRatio="none"
-      stroke-width="4"
-    >
-      <path
-        d="M1058 0.5L1180.5 100.5V256.5H1280.5V813L1247.5 885.5V1397.5L1353 1509V1887.5L1247.5 1976.5H573.5L512.5 2021H167.5L45 1843V1586.5L0.5 1509V885.5L111.5 774V256.5L45 206.5V61.5H512.5L573.5 0.5H1058Z"
-        stroke="var(--kryos-accent)"
+    <div class="relative trns group min-w-100 max-w-150">
+      <img
+        :src="selectedModel[model].imageSrc"
+        alt="MKI Model with background"
+        class="w-full z-20 border rounded-2xl border-(--kryos-accent)/80 trns hover:border-(--kryos-warn)"
       />
-    </svg>
+      <Absolute
+        extra-class="relative bottom-20 left-0 -rotate-90 origin-bottom-left"
+      >
+        <div class="p-2 border-b-2 w-fit border-b-(--kryos-warn)">
+          <span class="font-orbitron font-extrabold text-xl text-nowrap">
+            {{ selectedModel[model].title }}
+          </span>
+        </div>
+      </Absolute>
+    </div>
 
-    <img
-      :src="selectedModel[model].imageSrc"
-      alt="MKI Model with background"
-      class="absolute left-1/2 top-20 -translate-x-1/2 w-150 z-20"
-    />
-
-    <Absolute
-      extra-class="absolute bottom-1/2 left-20  -rotate-90 origin-bottom-left"
-    >
-      <div class="p-2 border-b-6 border-b-(--kryos-warn)">
-        <span class="font-orbitron font-extrabold text-xl text-nowrap">
-          {{ selectedModel[model].title }}
-        </span>
-      </div>
-    </Absolute>
+    <div class="flex flex-col gap-4 relative">
+      <SummaryProduct :model="model" />
+      <ProductCTA
+        to="/products/mk-1"
+        linkLabel="Open MK-I Tactical Platform brief"
+      />
+      <ProductCTA to="#" linkLabel="Request MK-I technical dossier" />
+    </div>
   </div>
 </template>

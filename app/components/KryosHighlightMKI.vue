@@ -73,7 +73,7 @@ import KryosSectionHeader from "./KryosSectionHeader.vue";
           <li>Modular payload hardpoints</li>
           <li>Encrypted command and control channel</li>
         </ul>
-        <NuxtLink to="/products/mk-1" class="nav-link kryos-bracket w-fit"
+        <NuxtLink to="/products/mk-1" class="nav-link kryos-bracket w-fit -left-2"
           >View full technical specification</NuxtLink
         >
       </div>

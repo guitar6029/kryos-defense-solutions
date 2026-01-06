@@ -53,51 +53,31 @@ useHead({
     <!-- END Capabilities & Operating Modes -->
 
     <!-- Kryos MK-I Flagship Spotlight -->
-    <section class="flex flex-col gap-8 relative p-4">
-      <Absolute extra-class="top-10 -left-120 opacity-50 w-200 -rotate-180">
-        <KryosPanel :option="7" />
-      </Absolute>
+    <KryosSectionHeader right-text="MK-1" />
+    <section class="flex flex-col gap-8 relative mt-24 p-4">
+      <div class="flex flex-col items-center">
+        <FullViewProduct model="MK" />
+      </div>
 
       <Absolute extra-class="top-100 right-0 opacity-30 w-200 ">
         <KryosPanel :option="8" />
       </Absolute>
-
-      <div class="mx-auto">
-        <FullViewProduct model="MK" />
-        <SummaryProduct model="MK" />
-      </div>
-      <div class="flex flex-col item-center justify-center gap-4">
-        <ProductCTA
-          text="Access full specifications, autonomous modes, and mission parameters"
-          to="/products/mk-1"
-          linkLabel="Open MK-I Tactical Platform brief"
-        />
-        <ProductCTA
-          text="View operational modes and deployment profiles"
-          to="#"
-          linkLabel="Request MK-I technical dossier"
-        />
-      </div>
     </section>
     <!-- END Kryos MK-I Flagship Spotlight -->
 
     <!-- Kryos EX-1 Tactical ExoFrame Spotlight  -->
-    <section class="flex flex-col items-center gap-8 relative mt-24 p-4">
-      <FullViewProduct model="EX" />
-      <SummaryProduct model="EX" />
-      <div class="flex flex-col item-center justify-center gap-4">
-        <ProductCTA
-          text="View full specifications, operating modes, and deployment profiles"
-          to="/products/ex-1"
-          linkLabel="Open EX-1 Tactical ExoFrame brief"
-        />
-        <ProductCTA
-          text="View deployment modes and profiles"
-          to="#"
-          linkLabel="Request detailed technical brief"
-        />
+    <KryosSectionHeader right-text="EX-1" />
+    <section class="flex flex-col gap-8 relative mt-24 p-4">
+      <div
+        class="flex flex-col lg:flex-row items-stretch lg:items-center justify-around gap-8"
+      >
+        <FullViewProduct model="EX" />
       </div>
+      <Absolute extra-class="top-100 right-0 opacity-30 w-200">
+        <KryosPanel :option="8" />
+      </Absolute>
     </section>
+
     <!-- END Kryos EX-1 Tactical ExoFrame Spotlight -->
   </div>
 </template>

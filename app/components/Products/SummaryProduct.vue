@@ -1,7 +1,5 @@
 <script lang="ts" setup>
 import type { Platform } from "~/types/Platform";
-import Absolute from "../Wrapper/Absolute.vue";
-import KryosPanel from "../Panels/KryosPanel.vue";
 defineProps<{
   model: Platform;
 }>();
@@ -27,21 +25,9 @@ const selectedModel: Record<
 </script>
 
 <template>
-  <div class="relative flex border h-125">
-    <Absolute extra-class="absolute top-0 -left-4/4 w-75 xl:w-225 right-0">
-      <KryosPanel stroke="var(--kryos-accent)" :option="8" />
-    </Absolute>
-
-    <div
-      class="absolute bottom-0 left-0 -rotate-90 origin-bottom-left w-125 h-25 border translate-x-px flex flex-col items-center justify-center"
-    >
-      <span class="font-orbitron font-extrabold text-4xl">{{
-        selectedModel[model].title
-      }}</span>
-    </div>
-
-    <div class="flex flex-col items-center justify-center gap-2 p-2 max-w-4xl">
-      <h2 class="text-4xl kryos-bracket">
+  <div class="relative flex">
+    <div class="flex flex-col gap-2 pl-2 pt-4 min-w-2xl max-w-4xl">
+      <h2 class="text-4xl">
         {{ selectedModel[model].fullTitle }}
       </h2>
       <p class="text-2xl max-w-2xl">
