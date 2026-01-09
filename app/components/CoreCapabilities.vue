@@ -5,6 +5,7 @@ import AutonomousPlatform from "./svg/AutonomousPlatform.vue";
 import Target from "./svg/Target.vue";
 import SecureConnection from "./svg/SecureConnection.vue";
 import KryosSectionHeader from "./KryosSectionHeader.vue";
+
 const operationSections = [
   {
     title: "Autonomous Ground Platforms",
@@ -48,14 +49,14 @@ const operationSections = [
         :key="`operation-${idx}`"
         class="w-full lg:max-w-200 flex flex-col justify-center gap-2 rounded-2xl bg-(--kryos-bg)/40 trns hover:scale-105 hover:bg-(--kryos-bg)/80 p-4"
       >
-        <h1 class="text-4xl text-(--kryos-warn) font-bold">
+        <h1 class="text-2xl md:text-4xl text-(--kryos-warn) font-bold">
           [{{ operation.title }}]
         </h1>
-        <div class="flex items-start gap-2">
-          <div class="w-25 text-(--kryos-accent)">
+        <div class="flex flex-col md:flex-row items-start gap-2">
+          <div class="min-w-20 text-(--kryos-accent)">
             <component :is="operation.icon" class="w-full h-auto" />
           </div>
-          <p class="text-4xl max-w-2xl">
+          <p class="text-2xl md:text-4xl max-w-2xl">
             {{ operation.text }}
           </p>
         </div>
