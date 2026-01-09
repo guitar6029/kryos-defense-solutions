@@ -68,7 +68,7 @@ onUnmounted(() => {
       <div
         v-for="(_, idx) in selectedModel[model].img.length"
         :key="idx"
-        class="w-6 h-6 border"
+        class="w-2 h-2 border"
         :class="{ 'border-(--kryos-accent-bright)': currentImg === idx }"
       ></div>
     </div>
