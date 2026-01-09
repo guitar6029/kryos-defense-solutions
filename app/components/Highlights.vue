@@ -10,12 +10,12 @@ import KryosSectionHeader from "./KryosSectionHeader.vue";
     <img
       :src="GeoShapes"
       alt="KRYOS geometric shapes"
-      class="absolute inset-0 w-full h-full object-cover -z-10 mask-fade-bottom"
+      class="absolute inset-0 w-full h-full object-cover -z-10 mask-fade-bottom opacity-50"
     />
 
     <h2 class="section-title">Recent Announcements</h2>
     <ul
-      class="text-4xl font-bold flex flex-col items-center gap-10 text-(--kryos-text-high) w-full p-4 md:max-w-4xl mx-auto"
+      class="text-2xl font-bold flex flex-col items-center gap-10 text-(--kryos-text-high) w-full p-4 md:max-w-4xl mx-auto"
     >
       <li>
         Kryos MK-I enters limited deployment with Tier-1 security partners.
