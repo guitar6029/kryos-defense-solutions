@@ -9,7 +9,7 @@ import EX1Model from "~/assets/img/ex-1-no-bg.png";
 import EX1Model_side from "~/assets/img/ex-1-side-b-trns.png";
 import type { Platform } from "~/types/Platform";
 
-let interval: number | null = null;
+let interval = <ReturnType<typeof setTimeout> | null>null;
 
 const props = defineProps<{
   model: Platform;
@@ -51,11 +51,14 @@ onUnmounted(() => {
 
 <template>
   <div class="flex flex-col items-center gap-2">
-    <img
-      :src="selectedModel[model].img[currentImg]"
-      :alt="`${selectedModel[model]}-model`"
-      class="w-200 h-200 object-contain"
-    />
+    <Transition name="fade" mode="out-in">
+      <img
+        :key="`${model}-${currentImg}`"
+        :src="selectedModel[model].img[currentImg]"
+        :alt="`${model}-model`"
+        class="w-200 h-200 object-contain"
+      />
+    </Transition>
     <div class="relative flex items-center justify-center gap-2">
       <Absolute
         extra-class="bottom-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 opacity-2 -z-1"
@@ -63,7 +66,7 @@ onUnmounted(() => {
         <KryosSignature />
       </Absolute>
       <div
-        v-for="(imgSrc, idx) in selectedModel[model].img.length"
+        v-for="(_, idx) in selectedModel[model].img.length"
         :key="idx"
         class="w-6 h-6 border"
         :class="{ 'border-(--kryos-accent-bright)': currentImg === idx }"
@@ -71,3 +74,15 @@ onUnmounted(() => {
     </div>
   </div>
 </template>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 350ms ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
