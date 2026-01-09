@@ -35,11 +35,11 @@ useHead({
 </script>
 
 <template>
-  <div class="flex flex-col min-h-screen justify-center gap-12 relative">
+  <div class="flex flex-col min-h-screen justify-center relative">
     <img
       src="~/assets/img/kryos_building.jpg"
       alt="Kryos Defense Solution Tall Building"
-      class="absolute top-0 right-0 w-250 h-auto -z-1 opacity-40"
+      class="md:absolute md:top-0 md:right-0 w-250 h-fit lg:h-auto z-0 md:-z-1 opacity-100 md:opacity-40"
     />
 
     <section class="flex flex-col gap-6 p-12 relative pl-24">
@@ -50,8 +50,8 @@ useHead({
       </Absolute>
 
       <!-- <h1 class="section-title">Kryos Defense Solutions</h1> -->
-      <p class="max-w-4xl text-4xl">
-        <span class="font-bold text-6xl text-(--kryos-warn)"
+      <p class="max-w-4xl text-2xl">
+        <span class="font-bold text-2xl text-(--kryos-warn)"
           >[Kryos Defense Solutions]</span
         >
         is a privately held defense technology contractor specializing in
@@ -60,82 +60,28 @@ useHead({
         research, industrial engineering, and field-proven deployment.
       </p>
 
-      <p class="max-w-4xl text-4xl">
+      <p class="max-w-4xl text-2xl">
         To deliver autonomous systems that extend human reach into environments
         where presence is too costly, too complex, or too dangerous.
       </p>
-      <p class="max-w-4xl text-4xl">
+      <p class="max-w-4xl text-2xl">
         Every platform we build is designed to reduce risk, increase stability,
         and maintain operational continuity under pressure.
       </p>
     </section>
 
     <!-- Leadership Team -->
+    <KryosSectionHeader rightText="// LEADERSHIP" />
     <section
-      class="flex flex-col items-center justify-center gap-12 text-4xl bg-(--kryos-bg) relative z-10 mb-10"
+      class="flex flex-row flex-wrap items-center justify-center gap-12 text-4xl bg-(--kryos-bg) relative z-10 p-4"
     >
-      <Absolute extra-class="bottom-50 -left-15 w-100 -z-1 ">
-        <KryosPanel :option="8" />
-      </Absolute>
+      <h2 class="text-4xl w-full font-bold xl:text-center">
+        Executive Leadership
+      </h2>
 
-      <Absolute extra-class="bottom-50 -left-25 w-150 -z-1 ">
-        <KryosPanel :option="8" />
-      </Absolute>
-
-      <Absolute extra-class="bottom-20 -right-10 w-100 -z-1 ">
-        <KryosPanel :option="8" />
-      </Absolute>
-
-      <Absolute extra-class="bottom-150 -right-10 w-100 -z-1 rotate-45 ">
-        <KryosPanel :option="8" />
-      </Absolute>
-
-      <Absolute extra-class="top-50 -left-10 w-100 -z-1 ">
-        <KryosPanel :option="8" />
-      </Absolute>
-
-      <Absolute extra-class="top-20 -left-10 w-120 -z-1 ">
-        <KryosPanel :option="8" />
-      </Absolute>
-
-      <Absolute extra-class="top-10 -right-10 w-50 -z-1">
-        <KryosPanel :option="10" />
-      </Absolute>
-
-      <Absolute extra-class="top-400 -left-10 w-50 -z-1 -rotate-180">
-        <KryosPanel :option="10" />
-      </Absolute>
-
-      <Absolute extra-class="top-400 -right-150 w-300 -z-1 opacity-50">
-        <KryosPanel />
-      </Absolute>
-
-      <Absolute extra-class="top-250 -left-10 w-100 -z-1 opacity-50 ">
-        <KryosPanel />
-      </Absolute>
-
-      <Absolute extra-class="top-350 -right-10 w-50 -z-1 opacity-50 ">
-        <KryosPanel />
-      </Absolute>
-
-      <KryosSectionHeader rightText="// LEADERSHIP" />
-
-      <h2 class="text-6xl font-bold text-center">Executive Leadership</h2>
-
-      <!-- CEO -->
       <LeadershipPanel job-title="ceo" />
-
-      <div class="h-5 w-full border-b-8 border-(--kryos-bg-alt)"></div>
-
-      <!-- CTO -->
       <LeadershipPanel job-title="cto" />
-      <div class="h-5 w-full border-b-8 border-(--kryos-bg-alt)"></div>
-
-      <!-- CSOO -->
       <LeadershipPanel job-title="csoo" />
-      <div class="h-5 w-full border-b-8 border-(--kryos-bg-alt)"></div>
-
-      <!-- Director of Infrastructure -->
       <LeadershipPanel job-title="director" />
     </section>
 

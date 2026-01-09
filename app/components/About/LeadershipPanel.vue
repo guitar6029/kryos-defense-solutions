@@ -4,8 +4,7 @@ import ColMarcusHale from "~/assets/img/leadership/col_marcus_hale.png";
 import DrRowan from "~/assets/img/leadership/dr_rowan_ilyan.png";
 import YaraChen from "~/assets/img/leadership/yara_chen.png";
 import HelenaVoss from "~/assets/img/leadership/helena_voss.png";
-
-type JobTitle = "ceo" | "cto" | "csoo" | "director";
+import type { JobTitle } from "~/types/JobTitle";
 
 defineProps<{
   jobTitle: JobTitle;
@@ -50,8 +49,7 @@ const selectedJobPanel: Record<
 </script>
 
 <template>
-  <!-- CEO -->
-  <div class="flex flex-col xl:flex-row items-center gap-6">
+  <div class="flex flex-col gap-2 p-2">
     <div class="relative shrink-0 max-w-75 xl:w-100 flex-col gap-2">
       <svg
         class="w-full h-auto"
@@ -83,7 +81,7 @@ const selectedJobPanel: Record<
         />
       </svg>
 
-      <div class="flex flex-col">
+      <div class="flex flex-col text-2xl">
         <span class="font-bold text-(--kryos-warn)">{{
           selectedJobPanel[jobTitle].name
         }}</span>
@@ -91,8 +89,8 @@ const selectedJobPanel: Record<
       </div>
     </div>
 
-    <div class="flex flex-col gap-2 w-full max-w-xl xl:max-w-2xl p-4 xl:p-2">
-      <p>
+    <div class="flex flex-col gap-2 min-h-75">
+      <p class="text-2xl text-left w-full md:w-100">
         {{ selectedJobPanel[jobTitle].summary }}
       </p>
     </div>
