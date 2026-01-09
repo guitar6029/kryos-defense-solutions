@@ -54,7 +54,6 @@ const platformList: PlatformConfig[] = [
       viewBox: "0 0 1709 507",
       path: "M0.5 42.5L101.5 0.5H1640.5L1708 42.5V447.5L1640.5 506.5H1299L1265 481H337.5L295.5 506.5H101.5L0.5 447.5V42.5Z",
       strokeColor: "var(--kryos-circuit-path)",
-      fillColor: "black",
       strokeWidth: 4,
     },
     dx: "300px",
@@ -83,7 +82,6 @@ const platformList: PlatformConfig[] = [
       viewBox: "0 0 1709 507",
       path: "M0.5 42.5L101.5 0.5H1640.5L1708 42.5V447.5L1640.5 506.5H1299L1265 481H337.5L295.5 506.5H101.5L0.5 447.5V42.5Z",
       strokeColor: "var(--kryos-circuit-path)",
-      fillColor: "black",
       strokeWidth: 4,
     },
     dx: "-300px",
@@ -112,7 +110,6 @@ const platformList: PlatformConfig[] = [
       viewBox: "0 0 1709 507",
       path: "M0.5 42.5L101.5 0.5H1640.5L1708 42.5V447.5L1640.5 506.5H1299L1265 481H337.5L295.5 506.5H101.5L0.5 447.5V42.5Z",
       strokeColor: "var(--kryos-circuit-path)",
-      fillColor: "black",
       strokeWidth: 4,
     },
     dx: "300px",
@@ -121,7 +118,7 @@ const platformList: PlatformConfig[] = [
 </script>
 
 <template>
-  <section class="flex flex-col min-h-screen relative overflow-hidden">
+  <section class="flex flex-col min-h-screen relative overflow-hidden p-4">
     <KryosSectionHeader right-text="PLATFORM FAMILIES" />
 
     <div class="flex flex-col items-center gap-12 relative">
@@ -139,14 +136,14 @@ const platformList: PlatformConfig[] = [
         svg-view-box="0 0 1571 2548"
         :img-src="circuit1"
       />
-      
+
       <KryosFrame
         absoluteExtraClass="top-0 -right-170 w-200 opacity-30 -z-3 -rotate-180"
         svg-path="M631 0.5H0.5V2547L1385 2508.5L1570 2393.5V1578L1431.5 1439.5V808.5L1516 593V177.5H831L631 0.5Z"
         svg-view-box="0 0 1571 2548"
         :img-src="circuit1"
       />
-      
+
       <KryosFrame
         absoluteExtraClass="-bottom-150 -right-170 w-200 opacity-30 -z-3 -rotate-180"
         svg-path="M631 0.5H0.5V2547L1385 2508.5L1570 2393.5V1578L1431.5 1439.5V808.5L1516 593V177.5H831L631 0.5Z"
@@ -173,7 +170,7 @@ const platformList: PlatformConfig[] = [
           "
         >
           <!-- MEDIA CARD -->
-          <div class="sm:w-100 md:w-150 xl:w-200 relative trns hover:scale-102">
+          <div class="w-full md:w-150 xl:w-200 relative trns hover:scale-102">
             <Absolute
               :extra-class="
                 p.startingPosition === 'left'
@@ -246,7 +243,7 @@ const platformList: PlatformConfig[] = [
                 :svg-path="p.captionFrame.path"
                 :svg-view-box="p.captionFrame.viewBox"
                 :svg-stroke-color="p.captionFrame.strokeColor"
-                :svg-fill-color="p.captionFrame.fillColor"
+                :svg-fill-color="p.captionFrame.fillColor ?? 'transparent'"
                 :svg-stroke-width="p.captionFrame.strokeWidth"
                 svg-class="w-full h-full"
                 preserve-aspect-ratio="none"
