@@ -6,7 +6,7 @@ import KryosSectionHeader from "./KryosSectionHeader.vue";
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col gap-12 relative overflow-hidden">
+  <div class="min-h-screen flex flex-col gap-12 relative overflow-hidden p-4">
     <Absolute extra-class="top-10 w-full opacity-50 -z-1">
       <KryosPanel :option="5" />
     </Absolute>
@@ -48,16 +48,16 @@ import KryosSectionHeader from "./KryosSectionHeader.vue";
         <img
           :src="MKI"
           alt="Kryos MK-I Prototype"
-          class="min-w-100 max-w-150"
+          class="min-w-50 max-w-100 md:max-w-150 trns hover:scale-105"
         />
         <h3
-          class="text-4xl text-(--kryos-text-high) font-orbitron uppercase w-full text-center"
+          class="text-2xl text-(--kryos-text-high) font-orbitron uppercase w-full text-center"
         >
           Kryos MK-I
         </h3>
       </div>
       <div class="flex flex-col gap-6 w-full xl:max-w-4xl p-4">
-        <p class="text-4xl">
+        <p class="text-2xl">
           The
           <span class="font-bold text-(--kryos-warn) uppercase"
             >[Kryos MK-I]</span
@@ -68,12 +68,22 @@ import KryosSectionHeader from "./KryosSectionHeader.vue";
           integrity where conventional systems fail.
         </p>
         <ul class="text-2xl font-bold flex flex-col gap-4 max-w-4xl">
-          <li>Multi-surface traversal (floor, wall, overhead structures)</li>
-          <li>Redundant sensor clusters (thermal, LIDAR, acoustic mapping)</li>
-          <li>Modular payload hardpoints</li>
-          <li>Encrypted command and control channel</li>
+          <li class="trns hover:text-(--kryos-text-high)">
+            Multi-surface traversal (floor, wall, overhead structures)
+          </li>
+          <li class="trns hover:text-(--kryos-text-high)">
+            Redundant sensor clusters (thermal, LIDAR, acoustic mapping)
+          </li>
+          <li class="trns hover:text-(--kryos-text-high)">
+            Modular payload hardpoints
+          </li>
+          <li class="trns hover:text-(--kryos-text-high)">
+            Encrypted command and control channel
+          </li>
         </ul>
-        <NuxtLink to="/products/mk-1" class="nav-link kryos-bracket w-fit -left-2"
+        <NuxtLink
+          to="/products/mk-1"
+          class="nav-link kryos-bracket w-fit -left-2"
           >View full technical specification</NuxtLink
         >
       </div>
