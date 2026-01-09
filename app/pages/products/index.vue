@@ -2,10 +2,8 @@
 import KryosPanel from "~/components/Panels/KryosPanel.vue";
 import DeploymentProfiles from "~/components/Products/DeploymentProfiles.vue";
 import FullViewProduct from "~/components/Products/FullViewProduct.vue";
-import ProductCTA from "~/components/Products/ProductCTA.vue";
 import ProductFamiliesOverview from "~/components/Products/ProductFamiliesOverview.vue";
 import ProductHero from "~/components/Products/ProductHero.vue";
-import SummaryProduct from "~/components/Products/SummaryProduct.vue";
 import Absolute from "~/components/Wrapper/Absolute.vue";
 useHead({
   title: "KRYOS | PRODUCTS",
@@ -40,17 +38,9 @@ useHead({
 <template>
   <div class="flex flex-col relative">
     <ProductHero />
-    <!-- Product Families Overview -->
     <ProductFamiliesOverview />
-    <!-- END Product Families Overview -->
-
-    <!-- Deployment Profiles-->
     <DeploymentProfiles />
-    <!-- END Deployment Profiles -->
-
-    <!-- Capabilities & Operating Modes -->
     <CapabilitiesOperationNodes />
-    <!-- END Capabilities & Operating Modes -->
 
     <!-- Kryos MK-I Flagship Spotlight -->
     <KryosSectionHeader right-text="MK-1" />
