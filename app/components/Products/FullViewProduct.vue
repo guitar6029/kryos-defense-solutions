@@ -31,7 +31,7 @@ const selectedModel: Record<Platform, { title: string; imageSrc: string }> = {
 
 <template>
   <div
-    class="w-full min-h-[50vh] group flex flex-col gap-2 lg:flex-row items-center border-2 border-(--kryos-accent)/40 rounded-2xl trns justify-around relative hover:bg-(--kryos-bg-alt)"
+    class="w-full p-12 min-h-[50vh] group flex flex-col gap-2 md:flex-row items-center border-2 border-(--kryos-accent)/40 rounded-2xl trns justify-around relative hover:bg-(--kryos-bg-alt)"
   >
     <div class="relative trns group min-w-100 max-w-150">
       <img
@@ -43,14 +43,14 @@ const selectedModel: Record<Platform, { title: string; imageSrc: string }> = {
         extra-class="relative bottom-20 left-0 -rotate-90 origin-bottom-left"
       >
         <div class="p-2 border-b-2 w-fit border-b-(--kryos-warn)">
-          <span class="font-orbitron font-extrabold text-xl text-nowrap">
+          <span class="font-orbitron font-extrabold text-sm md:text-xl text-nowrap">
             {{ selectedModel[model].title }}
           </span>
         </div>
       </Absolute>
     </div>
 
-    <div class="flex flex-col gap-4 relative">
+    <div class="flex flex-col gap-4 w-87.5 md:max-w-4xl">
       <SummaryProduct :model="model" />
       <ProductCTA
         to="/products/mk-1"
