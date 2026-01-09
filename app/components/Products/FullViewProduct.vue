@@ -17,14 +17,21 @@ withDefaults(
   }
 );
 
-const selectedModel: Record<Platform, { title: string; imageSrc: string }> = {
+const selectedModel: Record<
+  Platform,
+  { title: string; imageSrc: string; linkTo: string; urlSlug: string }
+> = {
   MK: {
     title: "KRYOS MK-I",
     imageSrc: MKIModel,
+    linkTo: "/products/mk-1",
+    urlSlug: "mk-1",
   },
   EX: {
     title: "KRYOS EX-I",
     imageSrc: EX1Model,
+    linkTo: "/products/ex-1",
+    urlSlug: "ex-1",
   },
 };
 </script>
@@ -43,20 +50,22 @@ const selectedModel: Record<Platform, { title: string; imageSrc: string }> = {
         extra-class="relative bottom-20 left-0 -rotate-90 origin-bottom-left"
       >
         <div class="p-2 border-b-2 w-fit border-b-(--kryos-warn)">
-          <span class="font-orbitron font-extrabold text-sm md:text-xl text-nowrap">
+          <span
+            class="font-orbitron font-extrabold text-sm md:text-xl text-nowrap"
+          >
             {{ selectedModel[model].title }}
           </span>
         </div>
       </Absolute>
     </div>
 
-    <div class="flex flex-col gap-4 w-87.5 md:max-w-4xl">
+    <div class="flex flex-col gap-4 max-w-87.5 md:max-w-4xl">
       <SummaryProduct :model="model" />
       <ProductCTA
-        to="/products/mk-1"
-        linkLabel="Open MK-I Tactical Platform brief"
+        :to="`/products/${selectedModel[model].urlSlug}-1`"
+        :linkLabel="`Open ${model} Tactical Platform brief`"
       />
-      <ProductCTA to="#" linkLabel="Request MK-I technical dossier" />
+      <ProductCTA to="#" :linkLabel="`Request ${model} technical dossier`" />
     </div>
   </div>
 </template>

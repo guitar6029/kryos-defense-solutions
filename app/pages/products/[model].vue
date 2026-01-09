@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 import { onMounted, ref } from "vue";
 import Absolute from "~/components/Wrapper/Absolute.vue";
-import KryosPanel from "~/components/Panels/KryosPanel.vue";
 import FullViewProduct from "~/components/Products/FullViewProduct.vue";
-import SummaryProduct from "~/components/Products/SummaryProduct.vue";
-import VideoFullPanel from "~/components/Products/VideoFullPanel.vue";
 import ImageGallery from "~/components/Products/ImageGallery.vue";
+import KryosPanel from "~/components/Panels/KryosPanel.vue";
+import VideoFullPanel from "~/components/Products/VideoFullPanel.vue";
 import type { Platform } from "~/types/Platform";
+
 const route = useRoute();
 let timeoutId: number | null = null;
 
@@ -180,7 +180,7 @@ const currentProduct = computed(() => products[productKey.value]);
     <Absolute extra-class="bottom-10 right-0 w-200 -z-1">
       <KryosPanel :option="3" :stroke-width="0.5" />
     </Absolute>
-    <div class="text-8xl font-orbitron">LOADING...</div>
+    <div class="text-2xl font-orbitron">LOADING...</div>
   </div>
   <div v-else class="flex flex-col gap-16 relative min-h-screen">
     <!-- Title / intro -->
@@ -197,10 +197,12 @@ const currentProduct = computed(() => products[productKey.value]);
         <KryosPanel :option="3" :stroke-width="1" />
       </Absolute>
 
-      <h1 class="section-title">
+      <h1 class="text-4xl kryos-bracket text-(--kryos-warn)">
         {{ currentProduct.title }}
       </h1>
-      <p class="text-4xl max-w-4xl text-center">
+      <p
+        class="text-2xl max-w-4xl text-center trns hover:text-(--kryos-text-high)"
+      >
         {{ currentProduct.subtitle }}
       </p>
     </section>
@@ -208,12 +210,11 @@ const currentProduct = computed(() => products[productKey.value]);
     <!-- Hero + summary -->
     <section class="flex flex-col items-center gap-10 relative">
       <FullViewProduct :model="productKey" :has-title="false" />
-      <SummaryProduct :model="productKey" />
       <ImageGallery :model="productKey" hasSignature />
     </section>
 
     <!-- System Architecture -->
-    <section class="flex flex-col items-center gap-4 relative">
+    <section class="flex flex-col items-center gap-4 relative p-4">
       <Absolute extra-class="bottom-50 -left-100 w-200 -z-2 rotate-90">
         <KryosPanel :option="4" :stroke-width="1" />
       </Absolute>
@@ -222,7 +223,7 @@ const currentProduct = computed(() => products[productKey.value]);
         <KryosPanel :option="4" :stroke-width="1" />
       </Absolute>
 
-      <h3 class="text-6xl">
+      <h3 class="text-2xl">
         {{ currentProduct.systemArchitecture.heading }}
       </h3>
       <p
@@ -236,7 +237,7 @@ const currentProduct = computed(() => products[productKey.value]);
 
     <!-- Core Specs with panels -->
     <section
-      class="flex flex-col justify-center gap-4 mb-50 relative w-full min-h-[70vh]"
+      class="flex flex-col justify-center gap-4 relative w-full min-h-[70vh] p-4"
     >
       <div
         class="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03),transparent_70%)]"
@@ -255,13 +256,13 @@ const currentProduct = computed(() => products[productKey.value]);
         <KryosPanel :option="8" />
       </Absolute>
 
-      <h3 class="text-6xl text-center">
+      <h3 class="text-2xl text-center">
         {{ currentProduct.specsHeading }}
       </h3>
 
-      <ul class="flex flex-col items-center gap-6 text-4xl">
+      <ul class="flex flex-col items-center gap-6 text-xl">
         <li v-for="spec in currentProduct.specs" :key="spec.label">
-          <div class="flex items-center gap-2">
+          <div class="flex flex-col lg:flex-row items-center gap-2">
             <Icon :name="spec.icon" class="text-(--kryos-mk-bg)" />
             <span class="font-bold">{{ spec.label }}:</span>
             {{ " " + spec.value }}
@@ -271,7 +272,7 @@ const currentProduct = computed(() => products[productKey.value]);
     </section>
 
     <!-- Video teaser -->
-    <section class="flex flex-col items-center gap-10 mb-50">
+    <section class="flex flex-col items-center gap-10 relative">
       <VideoFullPanel :model="productKey" />
     </section>
   </div>
