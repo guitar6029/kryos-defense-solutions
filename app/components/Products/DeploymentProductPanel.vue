@@ -60,14 +60,14 @@ const selectedProfile: Record<
     />
 
     <div class="relative flex flex-col p-4 md:p-6 lg:p-7">
-      <span class="kryos-text mb-1"
+      <span class="text-[.8rem] mb-1"
         >PROFILE // {{ selectedProfile[productPanel].id }}</span
       >
       <h3 class="text-2xl text-(--kryos-warn) font-bold mb-3">
-        [ {{ selectedProfile[productPanel].title }} ]
+        {{ selectedProfile[productPanel].title }}
       </h3>
-      <div class="flex items-start gap-4">
-        <div class="min-w-25 max-w-25 text-(--kryos-accent)">
+      <div class="flex flex-col md:flex-row md:items-center items-start gap-4">
+        <div class="min-w-50 max-w-100 mx-auto text-(--kryos-accent)">
           <component :is="selectedProfile[productPanel].svgIcon" />
         </div>
         <p class="text-2xl max-w-xl">

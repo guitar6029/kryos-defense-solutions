@@ -1,9 +1,6 @@
 <script lang="ts" setup>
 import DeploymentProductPanel from "./DeploymentProductPanel.vue";
 import KryosSectionHeader from "../KryosSectionHeader.vue";
-
-import Absolute from "../Wrapper/Absolute.vue";
-import KryosPanel from "../Panels/KryosPanel.vue";
 import PatrolRouteIcon from "~/components/svg/PatrolRouteIcon.vue";
 import TargetIcon from "../svg/TargetIcon.vue";
 import ZoneEnforcement from "../svg/ZoneEnforcement.vue";
@@ -45,7 +42,7 @@ const capabilities = [
       <DeploymentProductPanel :product-panel="4" />
     </div>
 
-    <div class="flex flex-col items-center gap-4 p-12 mt-20">
+    <div class="flex flex-col items-center gap-4 p-12  bg-(--kryos-bg-alt)">
       <ul class="flex flex-col gap-6">
         <li
           v-for="(capability, idx) in capabilities"

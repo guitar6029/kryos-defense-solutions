@@ -5,6 +5,7 @@ import FullViewProduct from "~/components/Products/FullViewProduct.vue";
 import ProductFamiliesOverview from "~/components/Products/ProductFamiliesOverview.vue";
 import ProductHero from "~/components/Products/ProductHero.vue";
 import Absolute from "~/components/Wrapper/Absolute.vue";
+
 useHead({
   title: "KRYOS | PRODUCTS",
   meta: [
@@ -40,7 +41,6 @@ useHead({
     <ProductHero />
     <ProductFamiliesOverview />
     <DeploymentProfiles />
-    <CapabilitiesOperationNodes />
 
     <!-- Kryos MK-I Flagship Spotlight -->
     <KryosSectionHeader right-text="MK-1" />
