@@ -27,7 +27,7 @@ export type PlatformConfig = {
     viewBox: string;
     path: string;
     strokeColor: string;
-    fillColor: string;
+    fillColor?: string;
     strokeWidth: number;
   };
 
