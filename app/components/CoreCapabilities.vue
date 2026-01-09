@@ -52,8 +52,10 @@ const operationSections = [
         <h1 class="text-2xl md:text-4xl text-(--kryos-warn) font-bold">
           [{{ operation.title }}]
         </h1>
-        <div class="flex flex-col md:flex-row items-start gap-2">
-          <div class="min-w-20 text-(--kryos-accent)">
+        <div
+          class="flex flex-col md:flex-row md:items-center items-start gap-2"
+        >
+          <div class="min-w-20 mx-auto text-(--kryos-accent)">
             <component :is="operation.icon" class="w-full h-auto" />
           </div>
           <p class="text-2xl md:text-4xl max-w-2xl">
