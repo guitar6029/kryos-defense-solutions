@@ -29,7 +29,7 @@ function handleEnter() {
       <SystemAccents />
 
       <template #header>
-        <h1 class="font-bold text-5xl">KRYOS SYSTEMS INTERFACE</h1>
+        <h1 class="font-bold text-2xl md:text-5xl">KRYOS SYSTEMS INTERFACE</h1>
       </template>
 
       <div class="flex flex-col text-2xl">
