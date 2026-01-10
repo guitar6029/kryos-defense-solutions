@@ -61,49 +61,70 @@ const { isMobile, sideMenuDisplaying, toggleMenu, closeMenu } =
     ></div>
   </header>
   <KryosToggleMenu :is-mobile="isMobile" @toggle-menu="toggleMenu" />
-  <KryosSidePanel v-if="sideMenuDisplaying" @close="closeMenu">
-    <template #main>
-      <NuxtLink
-        to="/"
-        @click="sideMenuDisplaying = false"
-        class="kryos-bracket nav-link"
-        :class="route.path === '/' ? 'text-(--kryos-text-high)' : ''"
-      >
-        Home
-      </NuxtLink>
+  <Transition name="fade">
+    <KryosSidePanel v-if="sideMenuDisplaying" @close="closeMenu">
+      <template #main>
+        <NuxtLink
+          to="/"
+          @click="closeMenu"
+          class="kryos-bracket nav-link"
+          :class="route.path === '/' ? 'text-(--kryos-text-high)' : ''"
+        >
+          Home
+        </NuxtLink>
 
-      <NuxtLink
-        to="/products"
-        @click="sideMenuDisplaying = false"
-        class="kryos-bracket nav-link"
-        :class="
-          route.path.startsWith('/products') ? 'text-(--kryos-text-high)' : ''
-        "
-      >
-        Products
-      </NuxtLink>
+        <NuxtLink
+          to="/products"
+          @click="closeMenu"
+          class="kryos-bracket nav-link"
+          :class="
+            route.path.startsWith('/products') ? 'text-(--kryos-text-high)' : ''
+          "
+        >
+          Products
+        </NuxtLink>
 
-      <NuxtLink
-        to="/about"
-        @click="sideMenuDisplaying = false"
-        class="kryos-bracket nav-link"
-        :class="
-          route.path.startsWith('/about') ? 'text-(--kryos-text-high)' : ''
-        "
-      >
-        About
-      </NuxtLink>
+        <NuxtLink
+          to="/about"
+          @click="closeMenu"
+          class="kryos-bracket nav-link"
+          :class="
+            route.path.startsWith('/about') ? 'text-(--kryos-text-high)' : ''
+          "
+        >
+          About
+        </NuxtLink>
 
-      <NuxtLink
-        to="/systems"
-        @click="sideMenuDisplaying = false"
-        class="kryos-bracket nav-link"
-        :class="
-          route.path.startsWith('/systems') ? 'text-(--kryos-text-high)' : ''
-        "
-      >
-        Systems
-      </NuxtLink>
-    </template>
-  </KryosSidePanel>
+        <NuxtLink
+          to="/systems"
+          @click="closeMenu"
+          class="kryos-bracket nav-link"
+          :class="
+            route.path.startsWith('/systems') ? 'text-(--kryos-text-high)' : ''
+          "
+        >
+          Systems
+        </NuxtLink>
+      </template>
+    </KryosSidePanel>
+  </Transition>
 </template>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: transform 220ms ease, opacity 220ms ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.fade-enter-to,
+.fade-leave-from {
+  transform: translateX(0);
+  opacity: 1;
+}
+</style>
