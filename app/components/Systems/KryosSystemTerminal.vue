@@ -83,7 +83,7 @@ const { isMobile, sideMenuDisplaying, toggleMenu, closeMenu } =
       </template>
     </KryosSidePanel>
 
-    <div class="md:hidden absolute top-0 left-0 flex flex-col w-full gap-2 p-4">
+    <div class="md:hidden relative w-full p-4">
       <div class="relative z-10">
         <KryosPanelTitle :title="`kryos // ${currentModule}`" />
       </div>
