@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import Energy from "../svg/Energy.vue";
 import Restricted from "../svg/Restricted.vue";
-import Transit from "../svg/Transit.vue";
+import UndergroundLineMap from "../svg/UndergroundLineMap.vue";
 import CampusSecurity from "../svg/CampusSecurity.vue";
 import type { Component } from "vue";
 export type ProductPanel = 1 | 2 | 3 | 4;
@@ -26,7 +26,7 @@ const selectedProfile: Record<
   2: {
     id: "02",
     title: "Transit & Subterranean Infrastructure",
-    svgIcon: Transit,
+    svgIcon: UndergroundLineMap,
     summary:
       "MK-I units dynamically patrol access corridors, loading bays, and server infrastructure while coordinating with fixed surveillance assets.",
   },
@@ -67,7 +67,7 @@ const selectedProfile: Record<
         {{ selectedProfile[productPanel].title }}
       </h3>
       <div class="flex flex-col md:flex-row md:items-center items-start gap-4">
-        <div class="min-w-50 max-w-100 mx-auto text-(--kryos-accent)">
+        <div class="w-50 mx-auto text-(--kryos-accent)">
           <component :is="selectedProfile[productPanel].svgIcon" />
         </div>
         <p class="text-2xl max-w-xl">
