@@ -212,3 +212,20 @@ body {
 .footer-section-title {
   font-size: 25px;
 }
+
+.panel-fade-enter-active,
+.panel-fade-leave-active {
+  transition: transform 220ms ease, opacity 220ms ease;
+}
+
+.panel-fade-enter-from,
+.panel-fade-leave-to {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.panel-fade-enter-to,
+.panel-fade-leave-from {
+  transform: translateX(0);
+  opacity: 1;
+}

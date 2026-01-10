@@ -10,7 +10,7 @@ defineProps<{
 
 <template>
   <!-- header -->
-  <div v-if="isMobile" class="fixed top-5 right-5 z-100">
+  <div v-if="isMobile" class="fixed top-5 right-5 z-110">
     <button @click="emit('toggle-menu')">
       <Icon
         class="trns hover:text-(--kryos-text-high)"

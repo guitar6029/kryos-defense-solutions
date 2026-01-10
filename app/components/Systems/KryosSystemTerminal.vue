@@ -44,45 +44,46 @@ const { isMobile, sideMenuDisplaying, toggleMenu, closeMenu } =
 
 <template>
   <div class="flex flex-col h-screen gap-6 cursor-default relative">
-    <KryosSidePanel v-if="sideMenuDisplaying" @close="closeMenu">
-      <template #main>
-        <span
-          :disabled="currentModule === 'fleet_monitor'"
-          @click="handleModule('fleet_monitor')"
-          :class="[
-            'uppercase kryos-bracket',
-            currentModule === 'fleet_monitor' ? 'text-(--kryos-warn)' : '',
-          ]"
-          >Fleet Monitor</span
-        >
-        <span
-          :class="[
-            'uppercase kryos-bracket',
-            currentModule === 'command' ? 'text-(--kryos-warn)' : '',
-          ]"
-          :disabled="currentModule === 'command'"
-          @click="handleModule('command')"
-          class="uppercase kryos-bracket"
-          >Command Queue</span
-        >
-        <span
-          :disabled="currentModule === 'dossier'"
-          @click="handleModule('dossier')"
-          :class="[
-            'uppercase kryos-bracket',
-            currentModule === 'dossier' ? 'text-(--kryos-warn)' : '',
-          ]"
-          >System Dossier</span
-        >
-        <button
-          @click="handleSystemExit"
-          class="w-fit relative kryos-text uppercase trns cursor-default"
-        >
-          <span class="kryos-bracket">Exit system</span>
-        </button>
-      </template>
-    </KryosSidePanel>
-
+    <Transition name="panel-fade">
+      <KryosSidePanel v-if="sideMenuDisplaying" @close="closeMenu">
+        <template #main>
+          <span
+            :disabled="currentModule === 'fleet_monitor'"
+            @click="handleModule('fleet_monitor')"
+            :class="[
+              'uppercase kryos-bracket',
+              currentModule === 'fleet_monitor' ? 'text-(--kryos-warn)' : '',
+            ]"
+            >Fleet Monitor</span
+          >
+          <span
+            :class="[
+              'uppercase kryos-bracket',
+              currentModule === 'command' ? 'text-(--kryos-warn)' : '',
+            ]"
+            :disabled="currentModule === 'command'"
+            @click="handleModule('command')"
+            class="uppercase kryos-bracket"
+            >Command Queue</span
+          >
+          <span
+            :disabled="currentModule === 'dossier'"
+            @click="handleModule('dossier')"
+            :class="[
+              'uppercase kryos-bracket',
+              currentModule === 'dossier' ? 'text-(--kryos-warn)' : '',
+            ]"
+            >System Dossier</span
+          >
+          <button
+            @click="handleSystemExit"
+            class="w-fit relative kryos-text uppercase trns cursor-default"
+          >
+            <span class="kryos-bracket">Exit system</span>
+          </button>
+        </template>
+      </KryosSidePanel>
+    </Transition>
     <div class="md:hidden relative w-full p-4">
       <div class="relative z-10">
         <KryosPanelTitle :title="`kryos // ${currentModule}`" />

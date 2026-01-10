@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { ref, onMounted, onBeforeUnmount } from "vue";
 import KryosSidePanel from "./Panels/KryosSidePanel.vue";
 import KryosToggleMenu from "./Buttons/KryosToggleMenu.vue";
 import { DESKTOP_NAV_MIN_WIDTH } from "#imports";
@@ -61,7 +60,7 @@ const { isMobile, sideMenuDisplaying, toggleMenu, closeMenu } =
     ></div>
   </header>
   <KryosToggleMenu :is-mobile="isMobile" @toggle-menu="toggleMenu" />
-  <Transition name="fade">
+  <Transition name="panel-fade">
     <KryosSidePanel v-if="sideMenuDisplaying" @close="closeMenu">
       <template #main>
         <NuxtLink
@@ -109,22 +108,3 @@ const { isMobile, sideMenuDisplaying, toggleMenu, closeMenu } =
     </KryosSidePanel>
   </Transition>
 </template>
-
-<style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: transform 220ms ease, opacity 220ms ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  transform: translateX(100%);
-  opacity: 0;
-}
-
-.fade-enter-to,
-.fade-leave-from {
-  transform: translateX(0);
-  opacity: 1;
-}
-</style>
