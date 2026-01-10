@@ -62,7 +62,7 @@ const panels = [
       <div class="w-full max-w-4xl h-px bg-white/10 my-4"></div>
 
       <p
-        class="text-2xl md:text-4xl p-8 text-center md:p-0 text-(--kryos-text-high)"
+        class="text-2xl md:text-4xl w-full md:max-w-4xl p-8 text-center md:p-0 text-(--kryos-text-high)"
       >
         {{ KRYOS_SUMMARY }}
       </p>
