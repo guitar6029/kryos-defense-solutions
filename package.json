@@ -12,7 +12,7 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@nuxt/fonts": "^0.12.1",
+    "@nuxt/fonts": "^0.14.0",
     "@nuxt/icon": "^2.1.0",
     "@nuxt/ui": "^4.2.1",
     "@peterbud/nuxt-query": "^1.12.0",
