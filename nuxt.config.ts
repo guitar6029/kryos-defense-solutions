@@ -4,7 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   css: ["~/assets/css/global.css"],
-  devtools: { enabled: true },
+  devtools: { enabled: false },
 
   vite: {
     plugins: [tailwindcss()],
@@ -32,7 +32,7 @@ export default defineNuxtConfig({
     autoImports: ["useQuery", "useMutation"],
 
     // Enable/disable Nuxt DevTools integration (default: true)
-    devtools: true,
+    devtools: false,
 
     /**
      * These are the same options as the QueryClient
