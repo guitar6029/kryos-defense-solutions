@@ -1,5 +1,14 @@
 # KRYOS Agent Instructions
 
+## Role Instructions
+
+- For each task, identify the appropriate role instruction file under `agents/`.
+- Read the selected role file before beginning role-specific work.
+- Follow both this baseline file and the selected role instructions.
+- If a task spans multiple roles, identify the required roles and coordinate their responsibilities without duplicating work.
+- If no role clearly fits, explain the gap before proceeding with substantial changes.
+
+
 These instructions are the shared baseline for AI coding agents working in this repository. Follow them for every task, regardless of role.
 
 ## Instruction Precedence
