@@ -1,5 +1,16 @@
 # KRYOS Agent Instructions
 
+## Task Routing and Clarification
+
+- Before starting a task, analyze its objective, scope, acceptance criteria, and risks.
+- Select the most appropriate role instruction file under `agents/` based on the work required.
+- For tasks spanning multiple roles, identify the relevant roles, define their responsibilities, and coordinate their work without unnecessary duplication.
+- Read the selected role instructions before performing role-specific work.
+- If the task is materially ambiguous, lacks essential requirements, or contains conflicting instructions, stop and ask the user focused clarifying questions before making changes.
+- Do not interrupt work for minor ambiguities that can be resolved safely using existing project conventions. State material assumptions when proceeding.
+- Before implementation, communicate the proposed approach when the task is complex, cross-cutting, or carries significant risk.
+- Do not begin implementation until essential uncertainties are resolved and the task scope is sufficiently clear.
+
 ## Role Instructions
 
 - For each task, identify the appropriate role instruction file under `agents/`.
