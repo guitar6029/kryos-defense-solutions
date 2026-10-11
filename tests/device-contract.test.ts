@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import fixture from "../db.json";
+import { isKryosNode, isKryosNodeArray } from "../app/types/KryosNode";
 import { DEVICE_STATUSES, isStatus } from "../app/types/Status";
 
 describe("persisted device contract", () => {
@@ -36,5 +37,74 @@ describe("persisted device contract", () => {
       expect(device.link.signalQuality).toBeLessThanOrEqual(100);
       expect(device.lastPingmsAgo).toBeGreaterThanOrEqual(0);
     }
+    expect(fixture.fleet.every(isKryosNode)).toBe(true);
+    expect(isKryosNodeArray(fixture.fleet)).toBe(true);
+  });
+
+  it("rejects missing required device properties", () => {
+    const validNode = fixture.fleet[0]!;
+    const requiredProperties = [
+      "unitId",
+      "platform",
+      "status",
+      "zone",
+      "powerPct",
+      "link",
+      "lastPingmsAgo",
+      "role",
+    ] as const;
+
+    for (const property of requiredProperties) {
+      const node = { ...validNode };
+      delete (node as Record<string, unknown>)[property];
+      expect(isKryosNode(node)).toBe(false);
+    }
+  });
+
+  it("rejects invalid field types and enum-like values", () => {
+    const validNode = fixture.fleet[0]!;
+    const invalidNodes = [
+      { ...validNode, unitId: 42 },
+      { ...validNode, platform: "UNKNOWN" },
+      { ...validNode, status: "QUEUED" },
+      { ...validNode, zone: "UNKNOWN" },
+      { ...validNode, powerPct: "82" },
+      { ...validNode, powerPct: 82.5 },
+      { ...validNode, powerPct: Number.POSITIVE_INFINITY },
+      { ...validNode, powerPct: 101 },
+      { ...validNode, lastPingmsAgo: "120" },
+      { ...validNode, lastPingmsAgo: 120.5 },
+      { ...validNode, lastPingmsAgo: Number.NaN },
+      { ...validNode, lastPingmsAgo: -1 },
+      { ...validNode, role: "UNKNOWN" },
+    ];
+
+    for (const node of invalidNodes) expect(isKryosNode(node)).toBe(false);
+  });
+
+  it("rejects malformed nested link data", () => {
+    const validNode = fixture.fleet[0]!;
+    const invalidNodes = [
+      { ...validNode, link: null },
+      { ...validNode, link: {} },
+      { ...validNode, link: { status: "STABLE" } },
+      { ...validNode, link: { signalQuality: 92 } },
+      { ...validNode, link: { status: "UNKNOWN", signalQuality: 92 } },
+      { ...validNode, link: { status: "STABLE", signalQuality: "92" } },
+      { ...validNode, link: { status: "STABLE", signalQuality: 92.5 } },
+      {
+        ...validNode,
+        link: { status: "STABLE", signalQuality: Number.POSITIVE_INFINITY },
+      },
+      { ...validNode, link: { status: "STABLE", signalQuality: 101 } },
+    ];
+
+    for (const node of invalidNodes) expect(isKryosNode(node)).toBe(false);
+  });
+
+  it("rejects duplicate device identities in fleet responses", () => {
+    const [first] = fixture.fleet;
+    expect(isKryosNodeArray([first, first])).toBe(false);
+    expect(isKryosNodeArray({ fleet: fixture.fleet })).toBe(false);
   });
 });
