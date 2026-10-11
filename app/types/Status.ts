@@ -1,13 +1,16 @@
-export type Status =
-  // ─── SYSTEM / NODE STATES ───
-  | "ONLINE"
-  | "OFFLINE"
-  | "MAINTENANCE"
-  | "DEGRADED"
+/** Persisted operational status values allowed by the Prisma Device model. */
+export const DEVICE_STATUSES = [
+  "ONLINE",
+  "OFFLINE",
+  "MAINTENANCE",
+  "DEGRADED",
+] as const;
 
-  // ─── COMMAND STATES ───
-  | "QUEUED"
-  | "SENDING"
-  | "ACKED"
-  | "FAILED"
-  | 'CANCELED';
+export type Status = (typeof DEVICE_STATUSES)[number];
+
+export function isStatus(value: unknown): value is Status {
+  return (
+    typeof value === "string" &&
+    DEVICE_STATUSES.some((status) => status === value)
+  );
+}

@@ -6,8 +6,8 @@ import KryosLabel from "../Labels/KryosLabel.vue";
 import KryosPanelTitle from "../Labels/KryosPanelTitle.vue";
 import type { CommandDraft, CommandType } from "~/types/Command";
 import {
+  COMMAND_STATUS_BADGE_CLASS,
   STATUS_BADGE_BASE,
-  STATUS_BADGE_CLASS,
 } from "~/utils/kryosStatusClasses";
 import { useSystemCommandStore } from "#imports";
 import { formatMsAgo } from "~/utils/timeRelated";
@@ -135,7 +135,7 @@ function handleCommandRequest() {
         :class="[
           'uppercase kryos-text',
           STATUS_BADGE_BASE,
-          STATUS_BADGE_CLASS['ONLINE'],
+          COMMAND_STATUS_BADGE_CLASS['QUEUED'],
         ]"
         >{{ item }}</span
       >
@@ -158,7 +158,7 @@ function handleCommandRequest() {
         :class="[
           'uppercase kryos-text flex items-center gap-2',
           STATUS_BADGE_BASE,
-          STATUS_BADGE_CLASS[item.status],
+          COMMAND_STATUS_BADGE_CLASS[item.status],
         ]"
       >
         <span>{{ item.status }}</span>
