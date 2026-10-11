@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [main, master, "ci/**"]
+    branches: [main, "ci/**"]
   pull_request:
-    branches: [main, master]
+    branches: [main]
 
 permissions:
   contents: read
@@ -29,6 +29,15 @@ jobs:
           node --version
           npm --version
           npm ci
+
+      - name: Validate Prisma schema and generate client
+        run: |
+          npm exec -- prisma validate
+          npm exec -- prisma generate
+        env:
+          DB_ENV: dev
+          DATABASE_URL_DEV: postgresql://ci:ci@localhost:5432/kryos_ci
+          DIRECT_URL_DEV: postgresql://ci:ci@localhost:5432/kryos_ci
 
       - name: Run tests
         run: npm test
