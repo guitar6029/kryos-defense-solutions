@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Device {
+  unitId        String   @id @map("unit_id") @db.Text
+  platform      String   @db.Text
+  status        String   @db.Text
+  zone          String   @db.Text
+  powerPct      Int      @map("power_pct") @db.SmallInt
+  linkStatus    String   @map("link_status") @db.Text
+  signalQuality Int      @map("signal_quality") @db.SmallInt
+  lastPingAt    DateTime @map("last_ping_at") @db.Timestamptz(6)
+  role          String   @db.Text
+
+  @@map("devices")
+}

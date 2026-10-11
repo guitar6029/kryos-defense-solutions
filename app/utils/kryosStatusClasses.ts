@@ -1,4 +1,5 @@
 import type { Status } from "~/types/Status";
+import type { CommandStatus } from "~/types/CommandStatus";
 
 export const STATUS_BADGE_BASE =
   "uppercase tracking-wider text-[11px] px-3 py-1 rounded-md border bg-(--kryos-bg-alt) trns-color hover:bg-(--kryos-bg) cursor-default max-w-50";
@@ -12,7 +13,9 @@ export const STATUS_BADGE_CLASS = {
     "border-(--kryos-warn) hover:border-(--kryos-warn)/70 text-(--kryos-warn) shadow-[0_0_10px_rgba(215,164,41,0.15)]",
   OFFLINE:
     "border-(--kryos-danger) hover:border-(--kryos-danger)/70 text-(--kryos-danger) shadow-[0_0_10px_rgba(194,76,66,0.15)]",
-  // ───────── COMMAND STATES ─────────
+} satisfies Record<Status, string>;
+
+export const COMMAND_STATUS_BADGE_CLASS = {
   QUEUED:
     "border-sky-400/40 text-sky-300 shadow-[0_0_10px_rgba(56,189,248,0.12)] hover:border-sky-400/70",
 
@@ -26,4 +29,4 @@ export const STATUS_BADGE_CLASS = {
     "border-(--kryos-danger)/70 text-(--kryos-danger) shadow-[0_0_12px_rgba(194,76,66,0.2)]",
 
   CANCELED: "border-neutral-500/40 text-neutral-400 italic opacity-80",
-} satisfies Record<Status, string>;
+} satisfies Record<CommandStatus, string>;
