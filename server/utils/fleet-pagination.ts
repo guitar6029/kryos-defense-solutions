@@ -1,6 +1,7 @@
 export const FLEET_PAGE_SIZE_OPTIONS = [5, 25, 50, 100] as const;
 export const DEFAULT_FLEET_PAGE = 0;
 export const DEFAULT_FLEET_PAGE_SIZE = 25;
+export const MAX_FLEET_OFFSET = 10_000;
 
 export type FleetPageSize = (typeof FLEET_PAGE_SIZE_OPTIONS)[number];
 
@@ -19,11 +20,17 @@ export function parseFleetPagination(
     DEFAULT_FLEET_PAGE_SIZE,
   );
 
+  if (page === null || parsedPageSize === null) {
+    return null;
+  }
+
+  const offset = page * parsedPageSize;
+
+
   if (
-    page === null ||
-    parsedPageSize === null ||
     !isFleetPageSize(parsedPageSize) ||
-    page > Math.floor(Number.MAX_SAFE_INTEGER / parsedPageSize)
+    !Number.isSafeInteger(offset) ||
+    offset > MAX_FLEET_OFFSET
   ) {
     return null;
   }
