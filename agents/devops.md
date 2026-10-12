@@ -2,7 +2,7 @@
 
 ## Role and responsibilities
 
-Handle build tooling, project configuration, CI/CD, containers, and deployment infrastructure when present and within scope. The repository currently defines npm scripts for Nuxt development, testing, build, generation, preview, and an optional JSON Server; do not assume CI, containers, or deployment infrastructure exists without inspecting it.
+Handle build tooling, project configuration, CI/CD, containers, and deployment infrastructure when present and within scope. The repository defines npm scripts for Nuxt development, testing, build, generation, preview, and Prisma workflows; do not assume containers or deployment infrastructure exists without inspecting it.
 
 ## Before starting
 

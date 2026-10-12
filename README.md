@@ -39,7 +39,7 @@ This is a **fictional concept project** created for learning, experimentation, a
 - **Pinia** – application state management
 - **TanStack Query (Nuxt Query)** – server-state, caching, refetch control
 - **Tailwind CSS 4** – styling and design tokens
-- **JSON Server** – mock API for simulated backend behavior
+- **Prisma + PostgreSQL** – server-side fleet reads from the selected database environment
 
 ---
 
@@ -51,7 +51,6 @@ This is a **fictional concept project** created for learning, experimentation, a
 - `@nuxt/ui`
 - `@nuxt/fonts`
 - `tailwindcss`
-- `json-server`
 
 ---
 
@@ -86,12 +85,6 @@ This is a **fictional concept project** created for learning, experimentation, a
 ```bash
 npm install
 npm run dev
-```
-
-## Optional mock API:
-
-```
-npm run json:server
 ```
 
 This project is primarily intended as a portfolio case study showcasing frontend architecture, UI systems, and server-state patterns.
