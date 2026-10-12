@@ -8,10 +8,10 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "json:server": "json-server --watch db.json --port 3001",
     "db:generate": "prisma generate",
     "db:migrate:dev": "prisma migrate dev",
-    "db:seed": "prisma db seed",
+    "db:verify:dev": "tsx prisma/seed-dev.ts --verify-only",
+    "db:seed:dev": "tsx prisma/seed-dev.ts",
     "test": "vitest run"
   },
   "dependencies": {
@@ -35,7 +35,6 @@
     "@types/node": "^26.6.5",
     "@types/pg": "^8.23.1",
     "dotenv": "^18.0.7",
-    "json-server": "^1.0.0-beta.3",
     "prisma": "^7.10.0",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2",
