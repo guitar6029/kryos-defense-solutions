@@ -1,5 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import type { H3Event } from "h3";
+import { createEvent, getQuery } from "h3";
+import type { IncomingMessage, ServerResponse } from "node:http";
+import { MAX_FLEET_OFFSET } from "../server/utils/fleet-pagination";
 
 const { count, findMany } = vi.hoisted(() => ({
   count: vi.fn(),
@@ -25,7 +27,12 @@ const device = {
 };
 
 function request(path = "/api/fleet") {
-  return fleetHandler({ path } as H3Event);
+  return fleetHandler(
+    createEvent(
+      { url: path, method: "GET", headers: {} } as IncomingMessage,
+      { writableEnded: false, headersSent: false } as ServerResponse,
+    ),
+  );
 }
 
 describe("GET /api/fleet pagination", () => {
@@ -57,6 +64,57 @@ describe("GET /api/fleet pagination", () => {
       take: pageSize,
       orderBy: { unitId: "asc" },
     });
+  });
+
+  it("accepts leading zeros in non-negative integer values", async () => {
+    await request("/api/fleet?page=002&pageSize=005");
+    expect(findMany).toHaveBeenCalledWith({
+      skip: 10,
+      take: 5,
+      orderBy: { unitId: "asc" },
+    });
+  });
+
+  it("accepts the configured maximum offset", async () => {
+    await request("/api/fleet?page=100&pageSize=100");
+    expect(MAX_FLEET_OFFSET).toBe(10_000);
+    expect(findMany).toHaveBeenCalledWith({
+      skip: MAX_FLEET_OFFSET,
+      take: 100,
+      orderBy: { unitId: "asc" },
+    });
+  });
+
+  it("rejects an offset above the configured maximum before querying Prisma", async () => {
+    await expect(request("/api/fleet?page=101&pageSize=100")).rejects.toMatchObject({
+      statusCode: 400,
+    });
+    expect(findMany).not.toHaveBeenCalled();
+    expect(count).not.toHaveBeenCalled();
+  });
+
+  it.each(["?paeg=2", "?debug=true", "?page=2&debug=true"])(
+    "returns HTTP 400 for unknown query parameters: %s",
+    async (query) => {
+      await expect(request(`/api/fleet${query}`)).rejects.toMatchObject({
+        statusCode: 400,
+      });
+      expect(findMany).not.toHaveBeenCalled();
+      expect(count).not.toHaveBeenCalled();
+    },
+  );
+
+  it("parses repeated query keys as arrays with the installed H3 parser", () => {
+    const event = createEvent(
+      {
+        url: "/api/fleet?page=0&page=1",
+        method: "GET",
+        headers: {},
+      } as IncomingMessage,
+      { writableEnded: false, headersSent: false } as ServerResponse,
+    );
+
+    expect(getQuery(event)).toEqual({ page: ["0", "1"] });
   });
 
   it.each([

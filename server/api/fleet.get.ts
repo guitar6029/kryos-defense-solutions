@@ -1,10 +1,19 @@
 import { createError, defineEventHandler, getQuery } from "h3";
 import { getPrismaClient } from "../utils/prisma";
 import { parseFleetPagination } from "../utils/fleet-pagination";
+import { hasOnlyAllowedQueryParameters } from "../utils/query-parameters";
 import { toFleetResponse, type FleetPageResponse } from "../utils/fleet-response";
 
 export default defineEventHandler(async (event): Promise<FleetPageResponse> => {
-  const pagination = parseFleetPagination(getQuery(event));
+  const query = getQuery(event);
+  if (!hasOnlyAllowedQueryParameters(query, ["page", "pageSize"])) {
+    throw createError({
+      statusCode: 400,
+      statusMessage: "Invalid fleet pagination parameters.",
+    });
+  }
+
+  const pagination = parseFleetPagination(query);
   if (!pagination) {
     throw createError({
       statusCode: 400,
