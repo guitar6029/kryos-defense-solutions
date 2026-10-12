@@ -1,5 +1,6 @@
 import type { Device } from "../../generated/prisma/client.js";
 import { isKryosNode, type KryosNode } from "../../app/types/KryosNode";
+import type { FleetPageSize } from "./fleet-pagination";
 
 /** Explicit API mapping: Prisma fields are preserved; Date becomes ISO 8601. */
 export function toFleetResponse(device: Device): KryosNode {
@@ -21,3 +22,10 @@ export function toFleetResponse(device: Device): KryosNode {
 
   return response;
 }
+
+export type FleetPageResponse = {
+  devices: KryosNode[];
+  total: number;
+  page: number;
+  pageSize: FleetPageSize;
+};
