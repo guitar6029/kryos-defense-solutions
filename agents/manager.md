@@ -14,6 +14,7 @@ Manage each KRYOS task from request through verified handoff. Clarify the reques
 
 Select only the relevant role instructions and read them before role-specific work:
 
+- `agents/product-manager.md` for product intake, backlog and issue discovery, story definition, GitHub Issues/Project coordination, and progress tracking.
 - `agents/architect.md` for architecture, design decisions, tradeoffs, and task decomposition.
 - `agents/backend.md` for server-side logic, APIs, data access, and integrations.
 - `agents/frontend.md` for Nuxt, Vue, UI, and client-side behavior.
