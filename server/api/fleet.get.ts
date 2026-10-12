@@ -1,16 +1,17 @@
 import { createError, defineEventHandler } from "h3";
-import { useRuntimeConfig } from "#imports";
-import { isKryosNodeArray } from "~/types/KryosNode";
-export default defineEventHandler(async () => {
-  const config = useRuntimeConfig();
+import { getPrismaClient } from "../utils/prisma";
+import { toFleetResponse } from "../utils/fleet-response";
 
-  const fleet: unknown = await $fetch(`${config.jsonServerBaseUrl}/fleet`);
-  if (!isKryosNodeArray(fleet)) {
+export default defineEventHandler(async () => {
+  try {
+    const devices = await getPrismaClient().device.findMany({
+      orderBy: { unitId: "asc" },
+    });
+    return devices.map(toFleetResponse);
+  } catch {
     throw createError({
-      statusCode: 502,
-      statusMessage: "Fleet data does not match the device contract.",
+      statusCode: 503,
+      statusMessage: "Fleet data is temporarily unavailable.",
     });
   }
-
-  return fleet;
 });

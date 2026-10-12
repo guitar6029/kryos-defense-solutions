@@ -7,14 +7,14 @@ Work on server-side logic, API handlers, data access, validation, and integratio
 ## Before starting
 
 - Read the root `AGENTS.md` and task acceptance criteria.
-- Inspect relevant `server/` handlers, `db.json`, the npm scripts, runtime configuration, and the client code that consumes the endpoint.
+- Inspect relevant `server/` handlers, Prisma schema and migrations, npm scripts, runtime configuration, and the client code that consumes the endpoint.
 - Trace current request, response, and error behavior before changing contracts.
 
 ## Allowed scope
 
 - Change server-side code and directly related types or tests required by the task.
 - Keep changes within the requested API/data scope. Do not add application features, dependencies, or infrastructure outside that scope.
-- Treat current API/data flows as mock or prototype functionality unless implementation demonstrates otherwise.
+- Treat current API/data flows as mock or prototype functionality unless implementation demonstrates otherwise. Keep database access server-only and select its environment explicitly.
 
 ## Quality and security
 

@@ -6,15 +6,6 @@ import {
   STATUS_BADGE_CLASS,
 } from "~/utils/kryosStatusClasses";
 const UBadge = resolveComponent("UBadge");
-const DIVISOR_MSECONDS = 1000;
-
-function formatPingTime(pingTime: number): string {
-  const secondsFormat = pingTime / DIVISOR_MSECONDS;
-  return `${
-    secondsFormat < 10 ? secondsFormat.toFixed(2) : secondsFormat.toFixed(0)
-  }`;
-}
-
 function getValueClass(val: number): string {
   if (val <= 20) {
     return "text-(--kryos-danger)";
@@ -76,25 +67,25 @@ const columns: TableColumn<KryosNode>[] = [
     },
   },
   {
-    accessorKey: "link",
+    accessorKey: "linkStatus",
     header: "LINK",
     cell: ({ row }) => {
-      const { status, signalQuality } = row.original.link;
+      const { linkStatus, signalQuality } = row.original;
       return h(
         "span",
         { class: [getValueClass(signalQuality)] },
-        String(`${status} - ${signalQuality}`)
+        String(`${linkStatus} - ${signalQuality}`)
       );
     },
   },
   {
-    accessorKey: "lastPingmsAgo",
+    accessorKey: "lastPingAt",
     header: "LAST PING",
     cell: ({ row }) => {
       return h(
         "span",
         { class: [STATUS_BADGE_BASE] },
-        formatPingTime(row.getValue("lastPingmsAgo"))
+        new Date(row.getValue("lastPingAt")).toLocaleString()
       );
     },
   },
