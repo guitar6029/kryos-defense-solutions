@@ -16,6 +16,7 @@
 - For each task, identify the appropriate role instruction file under `agents/`.
 - Read the selected role file before beginning role-specific work.
 - Follow both this baseline file and the selected role instructions.
+- Use `agents/product-manager.md` when translating human-approved product decisions into proposed GitHub Issues or Project work, or when tracking that work through verified completion. It defines an invoked persona and workflow, not a continuously running agent or GitHub integration; its instructions grant no capabilities or permissions. The Product Manager role does not implement application changes.
 - If a task spans multiple roles, identify the required roles and coordinate their responsibilities without duplicating work.
 - If no role clearly fits, explain the gap before proceeding with substantial changes.
 
