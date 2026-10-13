@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { ref, watch } from "vue";
-import { useKryosFleetStore } from "#imports";
 import KryosPanelTitle from "../Labels/KryosPanelTitle.vue";
 import KryosSystemStats from "./KryosSystemStats.vue";
 import KryosTable from "../Table/KryosFleetTable.vue";
+import KryosFleetPagination from "../Table/KryosFleetPagination.vue";
 import KryosCommandController from "./KryosCommandController.vue";
 import KryosDossierController from "./KryosDossierController.vue";
 import KryosSidePanel from "../Panels/KryosSidePanel.vue";
@@ -12,25 +12,29 @@ import { DESKTOP_NAV_MIN_WIDTH } from "~/utils/DesktopResolutionValues";
 import KryosToggleMenu from "../Buttons/KryosToggleMenu.vue";
 import { useKryosFleet } from "~/composables/useKryosFleet";
 import { useSystemStateStore } from "#imports";
-// fleet store
-const kryosFleetStore = useKryosFleetStore();
+import type { FleetPageSize } from "~/types/FleetPage";
 const kryosSystemState = useSystemStateStore();
-// fleet query
-const fleetQuery = useKryosFleet();
-
-const handleSystemExit = () => {
-  kryosSystemState.setToExitingMode();
-};
+const page = ref(0);
+const pageSize = ref<FleetPageSize>(25);
+const fleetQuery = useKryosFleet(page, pageSize);
 
 watch(
   () => fleetQuery.data.value,
   (data) => {
-    if (data) {
-      kryosFleetStore.setFleet(data);
+    if (!data || data.page !== page.value || data.pageSize !== pageSize.value) {
+      return;
+    }
+
+    const totalPages = Math.ceil(data.total / data.pageSize);
+    if (page.value > 0 && page.value >= totalPages) {
+      page.value = 0;
     }
   },
-  { immediate: true }
 );
+
+const handleSystemExit = () => {
+  kryosSystemState.setToExitingMode();
+};
 
 const currentModule = ref<SystemModule>("fleet_monitor");
 const handleModule = (mode: SystemModule) => {
@@ -151,7 +155,17 @@ const { isMobile, sideMenuDisplaying, toggleMenu, closeMenu } =
       class="flex flex-col gap-2 p-4"
     >
       <KryosPanelTitle title="Active Units" />
-      <KryosTable :data="kryosFleetStore.fleet" />
+      <KryosTable :data="fleetQuery.data.value?.devices ?? []" />
+      <KryosFleetPagination
+        :page="page"
+        :page-size="pageSize"
+        :total="fleetQuery.data.value?.total ?? 0"
+        :is-loading="fleetQuery.isLoading.value"
+        :is-error="fleetQuery.isError.value"
+        :is-empty="(fleetQuery.data.value?.devices.length ?? 0) === 0"
+        @update:page="page = $event"
+        @update:page-size="pageSize = $event"
+      />
 
       <!-- nuxt ui table component  -->
     </div>
