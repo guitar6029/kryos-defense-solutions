@@ -50,16 +50,18 @@ describe("GET /api/fleet pagination", () => {
       pageSize: 25,
     });
     expect(findMany).toHaveBeenCalledWith({
+      where: {},
       skip: 0,
       take: 25,
       orderBy: { unitId: "asc" },
     });
-    expect(count).toHaveBeenCalledOnce();
+    expect(count).toHaveBeenCalledWith({ where: {} });
   });
 
   it.each([5, 25, 50, 100])("accepts page size %i", async (pageSize) => {
     await request(`/api/fleet?page=2&pageSize=${pageSize}`);
     expect(findMany).toHaveBeenCalledWith({
+      where: {},
       skip: 2 * pageSize,
       take: pageSize,
       orderBy: { unitId: "asc" },
@@ -69,6 +71,7 @@ describe("GET /api/fleet pagination", () => {
   it("accepts leading zeros in non-negative integer values", async () => {
     await request("/api/fleet?page=002&pageSize=005");
     expect(findMany).toHaveBeenCalledWith({
+      where: {},
       skip: 10,
       take: 5,
       orderBy: { unitId: "asc" },
@@ -79,6 +82,7 @@ describe("GET /api/fleet pagination", () => {
     await request("/api/fleet?page=100&pageSize=100");
     expect(MAX_FLEET_OFFSET).toBe(10_000);
     expect(findMany).toHaveBeenCalledWith({
+      where: {},
       skip: MAX_FLEET_OFFSET,
       take: 100,
       orderBy: { unitId: "asc" },
@@ -146,6 +150,21 @@ describe("GET /api/fleet pagination", () => {
     });
   });
 
+  it("keeps the filtered total for an out-of-range page", async () => {
+    findMany.mockResolvedValue([]);
+
+    await expect(
+      request("/api/fleet?page=3&pageSize=25&status=OFFLINE"),
+    ).resolves.toEqual({
+      devices: [],
+      total: 27,
+      page: 3,
+      pageSize: 25,
+    });
+    expect(findMany.mock.calls[0][0].where).toEqual({ status: "OFFLINE" });
+    expect(count.mock.calls[0][0].where).toBe(findMany.mock.calls[0][0].where);
+  });
+
   it("returns empty results and zero total for an empty fleet", async () => {
     findMany.mockResolvedValue([]);
     count.mockResolvedValue(0);
@@ -156,6 +175,73 @@ describe("GET /api/fleet pagination", () => {
       page: 0,
       pageSize: 25,
     });
+  });
+
+  it("combines search and exact categorical filters in one where for rows and count", async () => {
+    await request(
+      "/api/fleet?search=%20mk-1%20&status=ONLINE&platform=MK&zone=ALPHA&role=SCOUT&linkStatus=STABLE",
+    );
+
+    const where = {
+      unitId: { contains: "mk-1", mode: "insensitive" },
+      status: "ONLINE",
+      platform: "MK",
+      zone: "ALPHA",
+      role: "SCOUT",
+      linkStatus: "STABLE",
+    };
+    expect(findMany).toHaveBeenCalledWith({
+      where,
+      skip: 0,
+      take: 25,
+      orderBy: { unitId: "asc" },
+    });
+    expect(count).toHaveBeenCalledWith({ where });
+    expect(findMany.mock.calls[0][0].where).toBe(count.mock.calls[0][0].where);
+  });
+
+  it.each(["", "%20%20%20"])(
+    "treats empty or whitespace search as absent (%s)",
+    async (search) => {
+      await request(`/api/fleet?search=${search}`);
+      expect(findMany).toHaveBeenCalledWith({
+        where: {},
+        skip: 0,
+        take: 25,
+        orderBy: { unitId: "asc" },
+      });
+      expect(count).toHaveBeenCalledWith({ where: {} });
+    },
+  );
+
+  it.each([
+    "?search=MK-1&search=MK-2",
+    "?status=ONLINE&status=OFFLINE",
+    "?status=online",
+    "?platform=MK1",
+    "?zone=UNKNOWN",
+    "?role=UNKNOWN",
+    "?linkStatus=UNKNOWN",
+  ])("rejects invalid or repeated filter parameters: %s", async (query) => {
+    await expect(request(`/api/fleet${query}`)).rejects.toMatchObject({
+      statusCode: 400,
+    });
+    expect(findMany).not.toHaveBeenCalled();
+    expect(count).not.toHaveBeenCalled();
+  });
+
+  it("returns the accurate zero total when filters match no devices", async () => {
+    findMany.mockResolvedValue([]);
+    count.mockResolvedValue(0);
+
+    await expect(request("/api/fleet?status=OFFLINE")).resolves.toEqual({
+      devices: [],
+      total: 0,
+      page: 0,
+      pageSize: 25,
+    });
+    expect(findMany.mock.calls[0][0].where).toEqual({ status: "OFFLINE" });
+    expect(count.mock.calls[0][0].where).toBe(findMany.mock.calls[0][0].where);
   });
 
   it("preserves the existing 503 behavior when fleet data is unavailable", async () => {
