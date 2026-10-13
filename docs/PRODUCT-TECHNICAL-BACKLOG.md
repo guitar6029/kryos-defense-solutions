@@ -40,6 +40,20 @@ This is the living backlog for Kryos product ideas, engineering features, and te
 - [ ] Compare support for map markers, operational areas, geofences, and routes, including licensing, pricing, integration effort, and operational tradeoffs.
 - [ ] Do not select a provider or commit to an implementation before the spike.
 
+## Deferred follow-ups
+
+### Fleet search PostgreSQL integration tests
+
+**Status:** Deferred — isolated PostgreSQL test infrastructure was unavailable during the fleet search input-hardening review.
+
+Fleet search uses Prisma's structured query API and has unit coverage for input validation and escaping. Those mocked Prisma tests do not establish actual database matching behavior. When isolated PostgreSQL test infrastructure is available, add integration tests that verify search results for `%`, `_`, backslashes, apostrophes, SQL-looking input such as `' OR 1=1 --`, and combinations of special characters. Use a dedicated disposable test database; never use production or staging credentials.
+
+### Formalize the device ID and search-length contract
+
+**Status:** Provisional limit retained — the API currently limits search input to 64 characters.
+
+The Prisma schema and application types define `unitId` as an unrestricted string, and sample IDs do not establish a formal maximum. Treat 64 characters as a provisional request-size constraint, not a confirmed device ID limit. When the product/device identity contract is defined, establish the valid device ID format and maximum length, then confirm whether the search-input limit should match that contract or remain a separate request-size constraint.
+
 ## Future capabilities
 
 ### Device movement simulation
