@@ -1,9 +1,17 @@
-export const FLEET_PAGE_SIZE_OPTIONS = [5, 25, 50, 100] as const;
+import {
+  DEFAULT_FLEET_PAGE_SIZE,
+  FLEET_PAGE_SIZES,
+  type FleetPageSize,
+} from "../../app/constants/fleet";
+
 export const DEFAULT_FLEET_PAGE = 0;
-export const DEFAULT_FLEET_PAGE_SIZE = 25;
 export const MAX_FLEET_OFFSET = 10_000;
 
-export type FleetPageSize = (typeof FLEET_PAGE_SIZE_OPTIONS)[number];
+export type { FleetPageSize } from "../../app/constants/fleet";
+export {
+  DEFAULT_FLEET_PAGE_SIZE,
+  FLEET_PAGE_SIZES as FLEET_PAGE_SIZE_OPTIONS,
+};
 
 export type FleetPagination = {
   page: number;
@@ -42,7 +50,7 @@ export function parseFleetPagination(
 }
 
 function isFleetPageSize(value: number): value is FleetPageSize {
-  return FLEET_PAGE_SIZE_OPTIONS.some((pageSize) => pageSize === value);
+  return FLEET_PAGE_SIZES.some((pageSize) => pageSize === value);
 }
 
 function parseNonNegativeInteger(

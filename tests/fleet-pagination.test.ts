@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { createEvent, getQuery } from "h3";
 import type { IncomingMessage, ServerResponse } from "node:http";
+import { FLEET_PAGE_SIZES } from "../app/constants/fleet";
 import { MAX_FLEET_OFFSET } from "../server/utils/fleet-pagination";
 
 const { count, findMany } = vi.hoisted(() => ({
@@ -58,7 +59,7 @@ describe("GET /api/fleet pagination", () => {
     expect(count).toHaveBeenCalledWith({ where: {} });
   });
 
-  it.each([5, 25, 50, 100])("accepts page size %i", async (pageSize) => {
+  it.each(FLEET_PAGE_SIZES)("accepts page size %i", async (pageSize) => {
     await request(`/api/fleet?page=2&pageSize=${pageSize}`);
     expect(findMany).toHaveBeenCalledWith({
       where: {},

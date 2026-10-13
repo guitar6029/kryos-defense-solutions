@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { FleetPageSize } from "~/types/FleetPage";
+import { FLEET_PAGE_SIZES } from "~/constants/fleet";
 import {
-  FLEET_PAGE_SIZES,
   getFleetTotalPages,
   getPageSizeChange,
   shouldDisableNext,
