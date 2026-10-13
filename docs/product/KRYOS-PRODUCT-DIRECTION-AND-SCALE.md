@@ -74,13 +74,13 @@ Consequences:
 - Summary and lookup capabilities should be provided by appropriately scoped backend interfaces.
 - Keep data contracts explicit and test their semantics, not just their TypeScript shapes.
 
-### Current pagination stories
+### Pagination delivery status
 
-- **#12 — TanStack Query integration:** typed paginated request/response handling, reactive page and page-size inputs, query keys containing both values, metadata exposure, and correct table data wiring.
-- **#13 — Nuxt UI pagination controls:** navigation, supported page-size choices, boundaries, total/page display, size-change reset, and loading/error/empty presentation.
-- Integrate #12 before #13. Parallel implementation is reasonable after the shared interface is agreed.
-- A separate backend story is needed to investigate fleet-wide summary values and server-side command target lookup. Approve its detailed contract independently.
-- The reported “props.data is not iterable” error is consistent with a response object being passed to a table expecting an array; verify the code path and corrected behavior during acceptance.
+- **#12 — TanStack Query integration** and **#13 — Nuxt UI pagination controls** were delivered together in **PR #18**.
+- The fleet table uses a typed paginated response containing the current page's devices plus total, page, and page-size metadata. Supported page sizes are 5, 25, 50, and 100.
+- The API uses deterministic server-side pagination. The current page is not the complete fleet.
+- Keep fleet-wide summaries and command target lookup separate from the table's current-page data. A dedicated backend story should define their semantics, authorization scope, and tests before implementation.
+- The table's visual density and responsive column sizing remain candidates for a separate UI/UX review; do not bundle that refinement into backend pagination work.
 
 ## 4. Scale concerns and candidate approaches
 
@@ -159,15 +159,14 @@ Test coverage is a tool for confidence, not a target of 100% by itself. Prioriti
 
 ## 8. Incremental delivery and learning sequence
 
-1. Complete the paginated API integration and reusable table pagination with clear data boundaries.
-2. Add the separate backend capabilities for fleet-wide summaries and server-side command target lookup after the contract is approved.
-3. Create a dedicated fleet UI/UX review story based on realistic large counts and representative states.
+1. Define and implement fleet-wide summaries and server-side device lookup, including authorization and query scope.
+2. Create a dedicated fleet UI/UX review story based on realistic large counts, representative states, and responsive table behavior.
+3. Investigate device search, filtering, sorting, and refresh semantics as separate stories.
 4. Introduce Storybook after verifying Nuxt compatibility; expand Vitest and add a small E2E suite around critical workflows.
-5. Investigate filtering, sorting, and refresh semantics as separate stories.
-6. Run a live-update comparison using defined workload assumptions before choosing SSE or WebSockets.
-7. Investigate geospatial data, PostGIS, and mapping tools before selecting a provider.
-8. Prototype AI assistance separately, beginning with curated documentation and evaluation before adding live tools or model customization.
-9. Add load/performance experiments as query, ingestion, concurrency, and freshness requirements become measurable.
+5. Run a live-update comparison using defined workload assumptions before choosing SSE or WebSockets.
+6. Investigate geospatial data, PostGIS, and mapping tools before selecting a provider.
+7. Prototype AI assistance separately, beginning with curated documentation and evaluation before adding live tools or model customization.
+8. Add load/performance experiments as query, ingestion, concurrency, and freshness requirements become measurable.
 
 ## 9. Decision principles
 
