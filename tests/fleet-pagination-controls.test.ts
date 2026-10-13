@@ -1,6 +1,9 @@
 import { describe, expect, it } from "vitest";
 import {
+  DEFAULT_FLEET_PAGE_SIZE,
   FLEET_PAGE_SIZES,
+} from "../shared/fleet/pagination";
+import {
   getFleetTotalPages,
   getPageSizeChange,
   shouldDisableNext,
@@ -10,6 +13,7 @@ import {
 describe("fleet pagination controls", () => {
   it("offers only the supported fleet page sizes", () => {
     expect(FLEET_PAGE_SIZES).toEqual([5, 25, 50, 100]);
+    expect(DEFAULT_FLEET_PAGE_SIZE).toBe(25);
   });
 
   it("calculates pages from the total and selected page size", () => {

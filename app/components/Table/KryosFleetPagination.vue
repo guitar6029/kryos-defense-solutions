@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { FleetPageSize } from "~/types/FleetPage";
+import { FLEET_PAGE_SIZES } from "#shared/fleet/pagination";
 import {
-  FLEET_PAGE_SIZES,
   getFleetTotalPages,
   getPageSizeChange,
   shouldDisableNext,

@@ -1,7 +1,5 @@
 import type { FleetPageSize } from "~/types/FleetPage";
 
-export const FLEET_PAGE_SIZES: FleetPageSize[] = [5, 25, 50, 100];
-
 export function getFleetTotalPages(total: number, pageSize: FleetPageSize): number {
   return Math.ceil(total / pageSize);
 }
