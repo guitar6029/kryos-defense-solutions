@@ -16,6 +16,7 @@ import { useSystemStateStore } from "#imports";
 import { DEFAULT_FLEET_PAGE_SIZE } from "#shared/fleet/pagination";
 import type { FleetPageSize } from "~/types/FleetPage";
 import { getFleetFeedback } from "~/utils/fleetFeedback";
+import FleetFilters from "./FleetFilters.vue";
 const kryosSystemState = useSystemStateStore();
 const page = ref(0);
 const pageSize = ref<FleetPageSize>(DEFAULT_FLEET_PAGE_SIZE);
