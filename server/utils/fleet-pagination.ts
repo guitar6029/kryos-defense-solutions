@@ -2,12 +2,12 @@ import {
   DEFAULT_FLEET_PAGE_SIZE,
   FLEET_PAGE_SIZES,
   type FleetPageSize,
-} from "../../app/constants/fleet";
+} from "../../shared/fleet/pagination";
 
 export const DEFAULT_FLEET_PAGE = 0;
 export const MAX_FLEET_OFFSET = 10_000;
 
-export type { FleetPageSize } from "../../app/constants/fleet";
+export type { FleetPageSize } from "../../shared/fleet/pagination";
 export {
   DEFAULT_FLEET_PAGE_SIZE,
   FLEET_PAGE_SIZES as FLEET_PAGE_SIZE_OPTIONS,

@@ -13,7 +13,7 @@ import KryosToggleMenu from "../Buttons/KryosToggleMenu.vue";
 import { useKryosFleet } from "~/composables/useKryosFleet";
 import { useKryosFleetCriteria } from "~/composables/useKryosFleetCriteria";
 import { useSystemStateStore } from "#imports";
-import { DEFAULT_FLEET_PAGE_SIZE } from "~/constants/fleet";
+import { DEFAULT_FLEET_PAGE_SIZE } from "#shared/fleet/pagination";
 import type { FleetPageSize } from "~/types/FleetPage";
 import { getFleetFeedback } from "~/utils/fleetFeedback";
 const kryosSystemState = useSystemStateStore();

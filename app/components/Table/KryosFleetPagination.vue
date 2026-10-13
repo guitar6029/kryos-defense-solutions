@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { FleetPageSize } from "~/types/FleetPage";
-import { FLEET_PAGE_SIZES } from "~/constants/fleet";
+import { FLEET_PAGE_SIZES } from "#shared/fleet/pagination";
 import {
   getFleetTotalPages,
   getPageSizeChange,

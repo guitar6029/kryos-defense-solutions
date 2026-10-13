@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { createEvent, getQuery } from "h3";
 import type { IncomingMessage, ServerResponse } from "node:http";
-import { FLEET_PAGE_SIZES } from "../app/constants/fleet";
+import { FLEET_PAGE_SIZES } from "../shared/fleet/pagination";
 import { MAX_FLEET_OFFSET } from "../server/utils/fleet-pagination";
 
 const { count, findMany } = vi.hoisted(() => ({

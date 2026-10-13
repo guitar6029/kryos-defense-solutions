@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   DEFAULT_FLEET_PAGE_SIZE,
   FLEET_PAGE_SIZES,
-} from "../app/constants/fleet";
+} from "../shared/fleet/pagination";
 import {
   getFleetTotalPages,
   getPageSizeChange,
