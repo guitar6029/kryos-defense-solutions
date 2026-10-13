@@ -22,6 +22,31 @@ These areas introduce different technical concerns. Develop them incrementally, 
 
 A future scale target of hundreds of thousands or potentially millions of registered devices is a design scenario—not evidence that the current application supports that scale. Device count alone is insufficient to define workload; update rates, query patterns, concurrency, freshness requirements, and retention also matter.
 
+
+### Future ecosystem and independent integrations
+
+These are exploratory ideas inspired by the goal of making Kryos a platform that can cooperate with independently developed systems. They are possibilities for future learning and product evolution, not current implementation commitments. The immediate priority remains the core device page and its operational workflows.
+
+Potential integrations and services:
+
+- **Device ingestion service:** CSV import, bulk registration, validation and error reports; later explore scanning a device identifier to register or look up a device.
+- **Billing and payments:** subscriptions, invoices, payment-provider integration, signed webhooks, idempotency and reconciliation.
+- **Events and notifications:** device-health alerts, notification delivery, retries, deduplication and delivery history.
+- **Telemetry and geospatial capabilities:** live device state, location history, spatial queries, zones and geofence events.
+
+Where there is a real reason for independent ownership, a future integration could live in its own repository with its own CI pipeline, automated tests, versioning and deployment lifecycle. A separate repository or hosting provider is an implementation choice to evaluate, not a requirement for every feature.
+
+Independent systems still need explicit integration boundaries:
+
+- Define versioned API or event contracts and test compatibility.
+- Establish authentication, authorization and tenant/organization scope.
+- Make data ownership clear; avoid services casually writing to another service's tables.
+- Specify timeout, retry, idempotency, failure-reporting and observability behavior.
+- Choose synchronous APIs, queues or event delivery based on the workflow's reliability and latency requirements.
+- Prefer a simple deployment and managed infrastructure initially; add brokers, caches or orchestration only when justified by requirements or measured workload.
+
+A useful progression is to complete the relevant core workflow first, then extract or build one independently deployable integration when it creates a clear boundary and teaches a concrete engineering lesson. Do not create multiple services solely to claim a microservices architecture.
+
 ## 2. Fleet UI and information design
 
 The current dark operational-console aesthetic is a starting point, not a finished large-fleet design. The interface has been exercised with a small sample dataset, so information density, navigation, aggregate metrics, and table interactions need review before it is treated as suitable for large fleets.
