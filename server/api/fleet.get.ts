@@ -1,6 +1,10 @@
 import { createError, defineEventHandler, getQuery } from "h3";
 import { getPrismaClient } from "../utils/prisma";
 import { parseFleetPagination } from "../utils/fleet-pagination";
+import {
+  escapeFleetSearchPattern,
+  MAX_FLEET_SEARCH_LENGTH,
+} from "../utils/fleet-search";
 import { hasOnlyAllowedQueryParameters } from "../utils/query-parameters";
 import { toFleetResponse, type FleetPageResponse } from "../utils/fleet-response";
 import { isStatus } from "../../app/types/Status";
@@ -42,7 +46,12 @@ export default defineEventHandler(async (event): Promise<FleetPageResponse> => {
     const deviceModel = getPrismaClient().device;
     const where = {
       ...(filters.search
-        ? { unitId: { contains: filters.search, mode: "insensitive" as const } }
+        ? {
+            unitId: {
+              contains: escapeFleetSearchPattern(filters.search),
+              mode: "insensitive" as const,
+            },
+          }
         : {}),
       ...(filters.status ? { status: filters.status } : {}),
       ...(filters.platform ? { platform: filters.platform } : {}),
@@ -93,7 +102,8 @@ function parseFleetFilters(query: Record<string, unknown>): FleetFilters | null 
   const linkStatus = query.linkStatus;
 
   if (
-    (search !== undefined && typeof search !== "string") ||
+    (search !== undefined &&
+      (typeof search !== "string" || search.length > MAX_FLEET_SEARCH_LENGTH)) ||
     (status !== undefined && !isStatus(status)) ||
     (platform !== undefined && !isPlatform(platform)) ||
     (zone !== undefined && !isZone(zone)) ||

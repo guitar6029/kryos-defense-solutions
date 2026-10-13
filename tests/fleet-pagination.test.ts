@@ -3,6 +3,7 @@ import { createEvent, getQuery } from "h3";
 import type { IncomingMessage, ServerResponse } from "node:http";
 import { FLEET_PAGE_SIZES } from "../shared/fleet/pagination";
 import { MAX_FLEET_OFFSET } from "../server/utils/fleet-pagination";
+import { MAX_FLEET_SEARCH_LENGTH } from "../server/utils/fleet-search";
 
 const { count, findMany } = vi.hoisted(() => ({
   count: vi.fn(),
@@ -199,6 +200,42 @@ describe("GET /api/fleet pagination", () => {
     });
     expect(count).toHaveBeenCalledWith({ where });
     expect(findMany.mock.calls[0][0].where).toBe(count.mock.calls[0][0].where);
+  });
+
+  it("accepts a search at the maximum length", async () => {
+    const search = "x".repeat(MAX_FLEET_SEARCH_LENGTH);
+
+    await request(`/api/fleet?search=${encodeURIComponent(search)}`);
+
+    expect(findMany.mock.calls[0][0].where).toEqual({
+      unitId: { contains: search, mode: "insensitive" },
+    });
+  });
+
+  it("rejects search one character beyond the maximum before querying Prisma", async () => {
+    const search = "x".repeat(MAX_FLEET_SEARCH_LENGTH + 1);
+
+    await expect(
+      request(`/api/fleet?search=${encodeURIComponent(search)}`),
+    ).rejects.toMatchObject({ statusCode: 400 });
+    expect(findMany).not.toHaveBeenCalled();
+    expect(count).not.toHaveBeenCalled();
+  });
+
+  it.each([
+    ["%", "\\%"],
+    ["_", "\\_"],
+    ["\\", "\\\\"],
+    ["O'Reilly", "O'Reilly"],
+    ["[a-z]*?", "[a-z]*?"],
+    ["%' OR 1=1 --", "\\%' OR 1=1 --"],
+  ])("keeps LIKE metacharacters literal in search %j", async (search, pattern) => {
+    await request(`/api/fleet?search=${encodeURIComponent(search)}`);
+
+    expect(findMany.mock.calls[0][0].where).toEqual({
+      unitId: { contains: pattern, mode: "insensitive" },
+    });
+    expect(count.mock.calls[0][0].where).toBe(findMany.mock.calls[0][0].where);
   });
 
   it.each(["", "%20%20%20"])(
