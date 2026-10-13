@@ -4,16 +4,13 @@ This is the living backlog for Kryos product ideas, engineering features, and te
 
 ## Next stories
 
-### Fleet API pagination
+### Fleet-wide summary and device lookup
 
-- [ ] Add server-side pagination with initial page sizes of 5, 25, 50, and 100.
-- [ ] Return total count, current page, and page size; enforce a maximum page size and deterministic ordering.
-- [ ] Evaluate offset versus cursor pagination against expected dataset size and update patterns.
-
-### Reusable table pagination
-
-- [ ] Investigate pagination built into the existing Nuxt UI table and add navigation and page-size controls without unnecessary dependencies.
-- [ ] Keep the controls reusable for future device-data tables.
+- [ ] Define server-side fleet summary semantics: total devices and status breakdowns, including how unavailable, stale, or filtered data is represented.
+- [ ] Add a backend summary endpoint or equivalent scoped interface; do not calculate fleet-wide metrics from the current table page.
+- [ ] Add server-side device lookup by unit ID for command targeting and other workflows; do not search only the current page.
+- [ ] Define authorization and organization scope for summary and lookup before implementation.
+- [ ] Test summary and lookup behavior independently from paginated table queries.
 
 ## Subsequent stories
 
