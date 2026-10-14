@@ -3,15 +3,16 @@ const emit = defineEmits<{
   (e: "toggle-menu"): void;
 }>();
 
-defineProps<{
-  isMobile: boolean;
-}>();
 </script>
 
 <template>
   <!-- header -->
-  <div v-if="isMobile" class="fixed top-5 right-5 z-110">
-    <button @click="emit('toggle-menu')">
+  <div class="fixed top-5 right-5 z-110 min-[751px]:hidden">
+    <button
+      type="button"
+      aria-label="Toggle navigation menu"
+      @click="emit('toggle-menu')"
+    >
       <Icon
         class="trns hover:text-(--kryos-text-high)"
         name="tdesign:menu-filled"
