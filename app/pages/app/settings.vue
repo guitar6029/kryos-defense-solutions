@@ -1,0 +1,2 @@
+<script setup lang="ts">import PlatformPlaceholder from "~/components/Platform/PlatformPlaceholder.vue"; definePageMeta({ layout: "app" }); useHead({ title: "Kryos Platform | Settings" });</script>
+<template><PlatformPlaceholder eyebrow="Future authentication boundary" title="Workspace settings" description="Workspace settings, membership, and authorization are not implemented. Authentication is intentionally deferred for this milestone." /></template>

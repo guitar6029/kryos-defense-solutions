@@ -1,0 +1,2 @@
+<script setup lang="ts">import PlatformPlaceholder from "~/components/Platform/PlatformPlaceholder.vue"; definePageMeta({ layout: "app" }); useHead({ title: "Kryos Platform | Zones" });</script>
+<template><PlatformPlaceholder eyebrow="Planned workspace area" title="Zones" description="Zone summaries and future reporting will live here. Device records currently expose zone labels, but no zone overview or reporting workflow is implemented." /></template>
