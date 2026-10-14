@@ -70,6 +70,12 @@ Kryos is being developed incrementally, with an emphasis on explicit API contrac
 - Use unit/component tests, visual previews, integration checks, and end-to-end tests for different kinds of confidence. Storybook and broader E2E coverage are future workflow improvements, not assumed to be configured already.
 - Agents may implement bounded tasks, but their changes must be reviewed and verified before integration.
 
+### Fleet event stream prototype
+
+`GET /api/events/fleet` provides a process-local SSE stream. Server-side device update handlers can call `publishDeviceUpdated` from `server/utils/fleet-events.ts`; the current application has no runtime device-write handler, so no live device events are produced yet. Events use the `device.updated` name and include an ID, ISO timestamp, and one device payload. The stream sends keepalive comments and closes its subscription when the client disconnects. `Last-Event-ID` does not provide replay because there is no event store.
+
+The publisher is in memory: a restart loses events, and separate Nitro instances do not share them. The current schema and API have no authentication or organization scope, so this prototype must not be used to deliver sensitive fleet data. Production use requires verified authentication, organization-scoped authorization, and a shared durable or explicitly lossy event transport appropriate to deployment.
+
 ## Planning documents
 
 - [Product direction and scalability](docs/product/KRYOS-PRODUCT-DIRECTION-AND-SCALE.md) — fleet UI, large datasets, geospatial and telemetry directions, testing, delegation, and architecture tradeoffs.
