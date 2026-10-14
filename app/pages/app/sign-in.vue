@@ -1,0 +1,2 @@
+<script setup lang="ts">import PlatformPlaceholder from "~/components/Platform/PlatformPlaceholder.vue"; definePageMeta({ layout: "app" }); useHead({ title: "Kryos Platform | Sign in" });</script>
+<template><PlatformPlaceholder eyebrow="Future entry point" title="Sign in" description="Authentication is deferred. This placeholder makes the intended route boundary explicit without presenting a non-functional sign-in flow as real." /></template>

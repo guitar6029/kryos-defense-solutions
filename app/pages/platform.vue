@@ -133,8 +133,14 @@ const workflow = [
       </p>
       <div class="mt-6 flex flex-wrap gap-3">
         <NuxtLink
-          to="/products/kryos-multirotor"
+          to="/app"
           class="inline-flex min-h-12 items-center rounded-md border border-(--kryos-warn) px-5 py-3 font-semibold text-(--kryos-text-high) hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)"
+        >
+          Open platform workspace
+        </NuxtLink>
+        <NuxtLink
+          to="/products/kryos-multirotor"
+          class="inline-flex min-h-12 items-center rounded-md border border-(--kryos-accent) px-5 py-3 font-semibold text-(--kryos-text-high) hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)"
         >
           Explore Kryos Multirotor
         </NuxtLink>

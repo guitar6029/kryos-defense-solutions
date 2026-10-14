@@ -1,0 +1,2 @@
+<script setup lang="ts">import PlatformPlaceholder from "~/components/Platform/PlatformPlaceholder.vue"; definePageMeta({ layout: "app" }); useHead({ title: "Kryos Platform | Notifications" });</script>
+<template><PlatformPlaceholder eyebrow="Planned workspace area" title="Notifications" description="Notifications and event history are reserved for a future milestone. The current SSE prototype is process-local and does not provide a durable activity source." /></template>
