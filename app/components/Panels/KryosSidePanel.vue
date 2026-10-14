@@ -25,7 +25,7 @@ const emit = defineEmits<{
       <span>{{ headerTitle }}</span>
       <span class="text-(--kryos-warn)">{{ headerSubheader }}</span>
     </div>
-    <button @click="emit('close')">
+    <button type="button" aria-label="Close navigation menu" @click="emit('close')">
       <Icon
         class="trns hover:text-(--kryos-text-high) absolute top-5 right-5"
         name="material-symbols:close"

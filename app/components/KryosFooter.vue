@@ -1,123 +1,28 @@
-<script lang="ts" setup>
-import Absolute from "./Wrapper/Absolute.vue";
-import KryosPanel from "./Panels/KryosPanel.vue";
-</script>
-
 <template>
-  <footer
-    class="min-h-150 bg-(--kryos-bg-alt) flex flex-col gap-4 p-12 relative z-1 cursor-default"
-  >
-    <Absolute extra-class="top-50 right-20 w-100 -z-1">
-      <KryosPanel :option="11" />
-    </Absolute>
-
-    <Absolute extra-class="top-60 right-50 w-50 -z-2">
-      <KryosPanel :option="11" />
-    </Absolute>
-
-    <Absolute extra-class="top-50 left-10 w-150 -z-2">
-      <KryosPanel :option="13" />
-    </Absolute>
-
-    <Absolute
-      extra-class="bottom-10 left-10 -z-3 origin-bottom-left -rotate-90"
-    >
-      <span class="border-b-2">KRYOS</span>
-    </Absolute>
-
-    <div class="text-2xl flex flex-col gap-2">
-      <span class="uppercase font-bold font-orbitron"
-        >Kryos Defense Solutions</span
-      >
-      <span class="text-xl italic border-b-2 w-fit"
-        >Precision Beyond Human Limits.</span
-      >
-    </div>
-
-    <div class="grid grid-cols-4 gap-2">
-      <!-- COL 1 -->
-      <div class="flex flex-col gap-2 col-span-2 xl:col-span-1">
-        <h2 class="footer-section-title">Operational Partnerships</h2>
-        <div class="flex flex-col gap-4 trns">
-          <NuxtLink to="#" class="hv-text trns"
-            >Defense & Strategic Agencies</NuxtLink
-          >
-          <NuxtLink to="#" class="hv-text trns">Industrial Partners</NuxtLink>
-          <NuxtLink to="#" class="hv-text trns"
-            >Research Consortium Access</NuxtLink
-          >
-          <NuxtLink to="#" class="hv-text trns"
-            >Autonomous Systems Contractors</NuxtLink
-          >
-          <NuxtLink to="#" class="hv-text trns"
-            >Supply Chain Integrators</NuxtLink
-          >
-          <NuxtLink to="#" class="hv-text trns">KryosConnect Portal</NuxtLink>
-        </div>
+  <footer class="border-t border-white/10 bg-(--kryos-bg-alt)">
+    <div class="mx-auto flex w-full max-w-7xl flex-col gap-6 px-6 py-10 md:flex-row md:items-center md:justify-between md:px-10">
+      <div>
+        <p class="font-semibold tracking-[0.12em] text-(--kryos-text-high)">
+          KRYOS DEFENSE SOLUTIONS
+        </p>
+        <p class="mt-2 max-w-xl text-sm leading-relaxed">
+          Fictional engineering portfolio · software prototype uses sample data · hardware concepts are not fielded products.
+        </p>
       </div>
-
-      <!-- COL 2 -->
-      <div class="flex flex-col gap-2 col-span-2 xl:col-span-1">
-        <h2 class="footer-section-title">R&D Divisions</h2>
-        <div class="flex flex-col gap-4">
-          <NuxtLink to="#" class="hv-text trns"
-            >Ares Autonomous Platforms</NuxtLink
-          >
-          <NuxtLink to="#" class="hv-text trns"
-            >CryoCore Intelligence Lab</NuxtLink
-          >
-          <NuxtLink to="#" class="hv-text trns"
-            >Microsystem Blackcell Group</NuxtLink
-          >
-          <NuxtLink to="#" class="hv-text trns"
-            >Tactical Robotics Bureau</NuxtLink
-          >
-          <NuxtLink to="#" class="hv-text trns"
-            >Applied Combat Sciences</NuxtLink
-          >
-          <NuxtLink to="#" class="hv-text trns"
-            >Innovation Incubation Node</NuxtLink
-          >
-        </div>
-      </div>
-
-      <!-- COL 3 -->
-      <div class="flex flex-col gap-2 col-span-2 xl:col-span-1">
-        <h2 class="footer-section-title">Careers & Recruitment</h2>
-        <div class="flex flex-col gap-4">
-          <NuxtLink to="#" class="hv-text trns">Field Operator Track</NuxtLink>
-          <NuxtLink to="#" class="hv-text trns"
-            >Engineering & Fabrication</NuxtLink
-          >
-          <NuxtLink to="#" class="hv-text trns"
-            >AI & Systems Intelligence</NuxtLink
-          >
-          <NuxtLink to="#" class="hv-text trns"
-            >Contractor Opportunities</NuxtLink
-          >
-          <NuxtLink to="#" class="hv-text trns">Fellowship Programs</NuxtLink>
-          <NuxtLink to="#" class="hv-text trns">Life Inside KRYOS</NuxtLink>
-        </div>
-      </div>
-
-      <!-- COL 4 -->
-      <div class="flex flex-col gap-2 col-span-2 xl:col-span-1">
-        <h2 class="footer-section-title">Corporate Intelligence</h2>
-        <div class="flex flex-col gap-4">
-          <NuxtLink to="#" class="hv-text trns">Our Mission Charter</NuxtLink>
-          <NuxtLink to="#" class="hv-text trns">Founding & History</NuxtLink>
-          <NuxtLink to="#" class="hv-text trns">Leadership Cell</NuxtLink>
-          <NuxtLink to="#" class="hv-text trns"
-            >Compliance & Export Protocols</NuxtLink
-          >
-          <NuxtLink to="#" class="hv-text trns"
-            >Facilities & Secure Sites</NuxtLink
-          >
-          <NuxtLink to="#" class="hv-text trns"
-            >Public Disclosure Archive</NuxtLink
-          >
-        </div>
-      </div>
+      <nav aria-label="Footer navigation" class="flex flex-wrap gap-x-6 gap-y-3 text-sm">
+        <NuxtLink to="/" class="text-(--kryos-text-mid) underline-offset-4 hover:text-(--kryos-text-high) hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)">
+          Home
+        </NuxtLink>
+        <NuxtLink to="/platform" class="text-(--kryos-text-mid) underline-offset-4 hover:text-(--kryos-text-high) hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)">
+          Platform
+        </NuxtLink>
+        <NuxtLink to="/products" class="text-(--kryos-text-mid) underline-offset-4 hover:text-(--kryos-text-high) hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)">
+          Products
+        </NuxtLink>
+        <NuxtLink to="/about" class="text-(--kryos-text-mid) underline-offset-4 hover:text-(--kryos-text-high) hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)">
+          About
+        </NuxtLink>
+      </nav>
     </div>
   </footer>
 </template>

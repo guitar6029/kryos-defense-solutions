@@ -2,109 +2,74 @@
 import KryosSidePanel from "./Panels/KryosSidePanel.vue";
 import KryosToggleMenu from "./Buttons/KryosToggleMenu.vue";
 import { DESKTOP_NAV_MIN_WIDTH } from "#imports";
-const route = useRoute();
 
-const { isMobile, sideMenuDisplaying, toggleMenu, closeMenu } =
+const route = useRoute();
+const { sideMenuDisplaying, toggleMenu, closeMenu } =
   useKryosMobileMenu(DESKTOP_NAV_MIN_WIDTH);
+
+const marketingLinks = [
+  { label: "Home", to: "/", active: (path: string) => path === "/" },
+  { label: "Platform", to: "/platform", active: (path: string) => path === "/platform" },
+  { label: "Products", to: "/products", active: (path: string) => path.startsWith("/products") },
+  { label: "About", to: "/about", active: (path: string) => path.startsWith("/about") },
+];
 </script>
 
 <template>
-  <header v-if="!isMobile" class="sticky top-0 z-50">
+  <header class="sticky top-0 z-50 border-b border-white/10 bg-(--kryos-bg-alt)/95 backdrop-blur">
     <nav
-      class="flex items-center gap-4 h-35 bg-(--kryos-bg-alt) font-orbitron text-xl p-4 relative"
+      aria-label="Main navigation"
+      class="mx-auto flex min-h-18 w-full max-w-7xl items-center gap-8 px-6 md:px-10 max-[750px]:hidden"
     >
-      <div class="absolute top-0 right-0 -rotate-90 origin-bottom-right">
-        <span class="font-orbitron font-bold">KRYOS</span>
-      </div>
-
-      <NuxtLink
-        to="/"
-        class="kryos-bracket nav-link"
-        :class="route.path === '/' ? 'text-(--kryos-text-high)' : ''"
-      >
-        Home
+      <NuxtLink to="/" class="mr-auto text-lg font-semibold tracking-[0.12em] text-(--kryos-text-high) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)">
+        KRYOS
       </NuxtLink>
-
       <NuxtLink
-        to="/products"
-        class="kryos-bracket nav-link"
-        :class="
-          route.path.startsWith('/products') ? 'text-(--kryos-text-high)' : ''
-        "
+        v-for="link in marketingLinks"
+        :key="link.to"
+        :to="link.to"
+        class="rounded-sm py-2 text-sm font-medium text-(--kryos-text-mid) hover:text-(--kryos-text-high) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)"
+        :class="link.active(route.path) ? 'text-(--kryos-text-high)' : ''"
+        :aria-current="link.active(route.path) ? 'page' : undefined"
       >
-        Products
+        {{ link.label }}
       </NuxtLink>
-
-      <NuxtLink
-        to="/about"
-        class="kryos-bracket nav-link"
-        :class="
-          route.path.startsWith('/about') ? 'text-(--kryos-text-high)' : ''
-        "
-      >
-        About
-      </NuxtLink>
-
       <NuxtLink
         to="/systems"
-        class="kryos-bracket nav-link"
-        :class="
-          route.path.startsWith('/systems') ? 'text-(--kryos-text-high)' : ''
-        "
+        class="rounded-sm py-2 text-sm font-medium text-(--kryos-text-mid) hover:text-(--kryos-text-high) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)"
+        :class="route.path.startsWith('/systems') ? 'text-(--kryos-text-high)' : ''"
       >
         Systems
       </NuxtLink>
     </nav>
-    <div
-      class="w-full h-0.5 bg-linear-to-r from-(--kryos-warn)/0 via-(--kryos-warn)/40 to-(--kryos-warn)/0"
-    ></div>
+
+    <KryosToggleMenu @toggle-menu="toggleMenu" />
+    <Transition name="panel-fade">
+      <KryosSidePanel v-if="sideMenuDisplaying" @close="closeMenu">
+        <template #main>
+          <nav aria-label="Mobile main navigation" class="flex flex-col items-center gap-5">
+            <NuxtLink
+              v-for="link in marketingLinks"
+              :key="link.to"
+              :to="link.to"
+              @click="closeMenu"
+              class="text-lg text-(--kryos-text-mid) hover:text-(--kryos-text-high) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)"
+              :class="link.active(route.path) ? 'text-(--kryos-text-high)' : ''"
+              :aria-current="link.active(route.path) ? 'page' : undefined"
+            >
+              {{ link.label }}
+            </NuxtLink>
+            <NuxtLink
+              to="/systems"
+              @click="closeMenu"
+              class="text-lg text-(--kryos-text-mid) hover:text-(--kryos-text-high) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)"
+              :class="route.path.startsWith('/systems') ? 'text-(--kryos-text-high)' : ''"
+            >
+              Systems
+            </NuxtLink>
+          </nav>
+        </template>
+      </KryosSidePanel>
+    </Transition>
   </header>
-  <KryosToggleMenu :is-mobile="isMobile" @toggle-menu="toggleMenu" />
-  <Transition name="panel-fade">
-    <KryosSidePanel v-if="sideMenuDisplaying" @close="closeMenu">
-      <template #main>
-        <NuxtLink
-          to="/"
-          @click="closeMenu"
-          class="kryos-bracket nav-link"
-          :class="route.path === '/' ? 'text-(--kryos-text-high)' : ''"
-        >
-          Home
-        </NuxtLink>
-
-        <NuxtLink
-          to="/products"
-          @click="closeMenu"
-          class="kryos-bracket nav-link"
-          :class="
-            route.path.startsWith('/products') ? 'text-(--kryos-text-high)' : ''
-          "
-        >
-          Products
-        </NuxtLink>
-
-        <NuxtLink
-          to="/about"
-          @click="closeMenu"
-          class="kryos-bracket nav-link"
-          :class="
-            route.path.startsWith('/about') ? 'text-(--kryos-text-high)' : ''
-          "
-        >
-          About
-        </NuxtLink>
-
-        <NuxtLink
-          to="/systems"
-          @click="closeMenu"
-          class="kryos-bracket nav-link"
-          :class="
-            route.path.startsWith('/systems') ? 'text-(--kryos-text-high)' : ''
-          "
-        >
-          Systems
-        </NuxtLink>
-      </template>
-    </KryosSidePanel>
-  </Transition>
 </template>
