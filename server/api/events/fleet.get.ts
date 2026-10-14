@@ -3,8 +3,9 @@ import {
   formatFleetEvent,
   subscribeToFleetEvents,
 } from "../../utils/fleet-events";
+import { HEARTBEAT_MS_DEFAULT } from "./constants/fleet";
 
-const HEARTBEAT_MS = 25_000;
+
 
 export default defineEventHandler(async (event) => {
   const response = event.node.res;
@@ -17,7 +18,7 @@ export default defineEventHandler(async (event) => {
 
   await new Promise<void>((resolve) => {
     let closed = false;
-    let unsubscribe = () => {};
+    let unsubscribe = () => { };
     const cleanup = () => {
       if (closed) return;
       closed = true;
@@ -40,7 +41,7 @@ export default defineEventHandler(async (event) => {
       }
     };
 
-    const heartbeat = setInterval(() => write(": keepalive\n\n"), HEARTBEAT_MS);
+    const heartbeat = setInterval(() => write(": keepalive\n\n"), HEARTBEAT_MS_DEFAULT);
     response.once("close", cleanup);
     response.once("error", fail);
     unsubscribe = subscribeToFleetEvents((fleetEvent) =>

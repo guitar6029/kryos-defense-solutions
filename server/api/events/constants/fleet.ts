@@ -1,0 +1,1 @@
+export const HEARTBEAT_MS_DEFAULT = 25_000;
