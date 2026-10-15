@@ -13,7 +13,7 @@ export const DEFAULT_SIMULATOR_CONFIG = {
   assignmentChangeProbability: 0.04,
 };
 
-export type SimulatorConfig = Partial<typeof DEFAULT_SIMULATOR_CONFIG> & {
+export type SimulatorConfig = Omit<Partial<typeof DEFAULT_SIMULATOR_CONFIG>, "fleetSize" | "telemetryIntervalMs" | "seed"> & {
   fleetSize?: number;
   telemetryIntervalMs?: number;
   seed?: number | string;
