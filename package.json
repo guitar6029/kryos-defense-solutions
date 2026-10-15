@@ -7,6 +7,7 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
+    "simulator:run": "tsx scripts/run-device-simulator.ts",
     "postinstall": "nuxt prepare",
     "db:generate": "prisma generate",
     "db:migrate:dev": "prisma migrate dev",
