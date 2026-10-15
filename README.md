@@ -60,6 +60,36 @@ DB_ENV=dev npm run db:seed:dev    # Seed the guarded dev dataset
 
 Only run database commands when you understand their effect and have verified the target environment. `npm run db:migrate:dev` invokes Prisma's development migration workflow; review migration guidance and the selected database before using it.
 
+### Local Docker Compose environment
+
+Docker Compose runs the Nuxt development server and a local PostgreSQL 16 database. This is a development environment only; it is not production-ready and does not include the future simulator or any message broker.
+
+Prerequisites: Docker Engine with Compose v2, the Doppler CLI, and access to the `kryos-defense-solutions` project and `dev` config. The Doppler config must provide `POSTGRES_DB`, `POSTGRES_USER`, and `POSTGRES_PASSWORD`. `POSTGRES_PORT` and `APP_PORT` are optional and default to `5432` and `3000`.
+
+```bash
+npm run doppler -- docker compose -f compose.yaml -f compose.dev.yaml up --build -d
+npm run doppler -- docker compose -f compose.yaml -f compose.dev.yaml run --rm app npx prisma migrate deploy
+```
+
+The first command builds the app image and starts PostgreSQL plus Nuxt in development mode. `compose.dev.yaml` bind-mounts the source tree, keeps container-owned dependency and generated-output volumes, and enables polling for reliable file watching from supported host filesystems. Ordinary source edits do not require a rebuild or container restart. The wrapper supplies `DB_ENV=dev` explicitly. The app container also derives URL-encoded local Prisma URLs from `POSTGRES_DB`, `POSTGRES_USER`, and `POSTGRES_PASSWORD`. It connects through `db:5432`; host port overrides do not change that internal connection. Doppler's existing Neon URL values are not used by the local container. Run migrations after the database is healthy.
+
+The base Compose file starts the production-style Nuxt server from the image's built `.output` directory. Use it when you want to validate the built container rather than hot reload:
+
+```bash
+npm run doppler -- docker compose up --build -d
+npm run doppler -- docker compose run --rm app npx prisma migrate deploy
+```
+
+Use the development override for daily coding and the base file for production-style container checks. A Dockerfile, dependency, or lockfile change requires `--build`; ordinary source changes do not.
+
+Open <http://localhost:3000>. The database is reachable from the host at `localhost:${POSTGRES_PORT:-5432}`. Use the existing Doppler wrapper for any separately authorized host-side development command, keeping `DB_ENV=dev` explicit.
+
+Use the same `-f compose.yaml -f compose.dev.yaml` flags for development status and logs. `docker compose stop` stops containers while preserving the named database volume. To remove the local database data, use `docker compose down -v` only when that deletion is intentional; it does not affect hosted databases.
+
+The app waits for PostgreSQL's health check, but the health check does not apply Prisma migrations. If PostgreSQL was initialized earlier with a different `POSTGRES_PASSWORD`, changing the Doppler value will not update the existing named volume; stop and inspect the local volume before considering any recovery action. Do not remove the volume unless deleting its local data is intentional. The current guarded `db:seed:dev` command is for the Neon development database and must not be used against this local Compose database; after migration, `/api/fleet` is expected to return an empty fleet until local fixture support is added. If the app cannot connect, inspect the resolved Compose configuration and service logs without printing credentials.
+
+`.env.sample` remains as a placeholder reference for the supported non-Docker host workflow and does not need to be copied for Doppler-backed Docker development.
+
 ## Engineering approach
 
 Kryos is being developed incrementally, with an emphasis on explicit API contracts, clear feature boundaries, automated verification, and avoiding premature infrastructure.

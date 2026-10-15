@@ -1,0 +1,14 @@
+.dockerignore
+.env
+.env.*
+!.env.sample
+.git
+.gitignore
+.nuxt
+.nitro
+.output
+dist
+generated/prisma
+node_modules
+*.log
+logs

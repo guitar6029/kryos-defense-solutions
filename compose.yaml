@@ -1,0 +1,43 @@
+services:
+  db:
+    image: postgres:16.6-bookworm
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:?Set POSTGRES_DB through Doppler}
+      POSTGRES_USER: ${POSTGRES_USER:?Set POSTGRES_USER through Doppler}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD through Doppler}
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - kryos-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 5s
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /workspace
+    environment:
+      DB_ENV: dev
+      NODE_ENV: production
+      POSTGRES_DB: ${POSTGRES_DB:?Set POSTGRES_DB through Doppler}
+      POSTGRES_USER: ${POSTGRES_USER:?Set POSTGRES_USER through Doppler}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD through Doppler}
+      # Doppler also provides Neon URLs with these names. Keep them blank here;
+      # the container entrypoint replaces them with URL-encoded local db URLs.
+      DATABASE_URL_DEV: ""
+      DIRECT_URL_DEV: ""
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:${APP_PORT:-3000}:3000"
+    entrypoint: ["node", "/workspace/scripts/docker-app-entrypoint.mjs"]
+    command: node .output/server/index.mjs
+
+volumes:
+  kryos-postgres-data:
