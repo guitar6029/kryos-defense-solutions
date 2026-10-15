@@ -1,0 +1,17 @@
+services:
+  app:
+    environment:
+      NODE_ENV: development
+      CHOKIDAR_USEPOLLING: "true"
+      CHOKIDAR_INTERVAL: "100"
+    volumes:
+      - .:/workspace
+      - kryos-node-modules:/workspace/node_modules
+      - kryos-nuxt:/workspace/.nuxt
+      - kryos-generated-prisma:/workspace/generated/prisma
+    command: npm run dev -- --host 0.0.0.0
+
+volumes:
+  kryos-node-modules:
+  kryos-nuxt:
+  kryos-generated-prisma:
