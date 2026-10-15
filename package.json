@@ -14,7 +14,13 @@
     "db:seed:dev": "tsx prisma/seed-dev.ts",
     "test": "vitest run",
     "doppler": "bash scripts/with-doppler.sh",
-    "dev:doppler": "bash scripts/with-doppler.sh npm run dev"
+    "dev:doppler": "bash scripts/with-doppler.sh npm run dev",
+    "docker:doppler-up": "bash scripts/with-doppler.sh docker compose -f compose.yaml -f compose.dev.yaml up --build -d",
+    "docker:doppler-down": "bash scripts/with-doppler.sh docker compose -f compose.yaml -f compose.dev.yaml down",
+    "docker:doppler-stop": "bash scripts/with-doppler.sh docker compose -f compose.yaml -f compose.dev.yaml stop",
+    "docker:doppler-logs": "bash scripts/with-doppler.sh docker compose -f compose.yaml -f compose.dev.yaml logs -f app",
+    "docker:doppler-ps": "bash scripts/with-doppler.sh docker compose -f compose.yaml -f compose.dev.yaml ps",
+    "docker:doppler-migrate": "bash scripts/with-doppler.sh docker compose -f compose.yaml -f compose.dev.yaml run --rm app npx prisma migrate deploy"
   },
   "dependencies": {
     "@nuxt/fonts": "^0.14.0",
