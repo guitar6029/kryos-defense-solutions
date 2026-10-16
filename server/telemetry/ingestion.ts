@@ -11,7 +11,8 @@ export type TelemetryProjection = {
   powerPct: number;
   linkStatus: "STABLE" | "WEAK" | "LOST";
   signalQuality: number;
-  lastPingAt: Date;
+  occurredAt: Date;
+  receivedAt: Date;
   health: "HEALTHY" | "FAULTED";
   availability: "AVAILABLE" | "ASSIGNED";
   charging: "NOT_CHARGING" | "CHARGING";
@@ -30,6 +31,8 @@ export type TelemetryPersistenceResult =
 export type TelemetryPersistence = {
   persist: (projection: TelemetryProjection) => Promise<TelemetryPersistenceResult>;
 };
+
+export type TelemetryReceiptClock = { now: () => Date };
 
 export type TelemetryIngestionResult = {
   outcome: "persisted" | "duplicate" | "stale" | "rejected" | "failed";
@@ -110,7 +113,8 @@ export function validateTelemetryEnvelope(value: unknown): value is TelemetryEnv
   );
 }
 
-export function toTelemetryProjection(telemetry: TelemetryEnvelope): TelemetryProjection {
+export function toTelemetryProjection(telemetry: TelemetryEnvelope, receivedAt: Date = new Date()): TelemetryProjection {
+  if (Number.isNaN(receivedAt.getTime())) throw new RangeError("receivedAt must be a valid Date");
   return {
     unitId: telemetry.deviceId,
     platform: telemetry.deviceType,
@@ -118,7 +122,8 @@ export function toTelemetryProjection(telemetry: TelemetryEnvelope): TelemetryPr
     powerPct: Math.round(telemetry.measurements.batteryPct),
     linkStatus: CONNECTIVITY_TO_LINK_STATUS[telemetry.measurements.connectivity],
     signalQuality: telemetry.measurements.signalQuality,
-    lastPingAt: new Date(telemetry.occurredAt),
+    occurredAt: new Date(telemetry.occurredAt),
+    receivedAt: new Date(receivedAt.getTime()),
     health: telemetry.measurements.health,
     availability: telemetry.measurements.availability,
     charging: telemetry.measurements.charging,
@@ -165,7 +170,8 @@ export function createPrismaTelemetryPersistence(prisma: PrismaClient = getPrism
           powerPct: projection.powerPct,
           linkStatus: projection.linkStatus,
           signalQuality: projection.signalQuality,
-          lastPingAt: projection.lastPingAt,
+          lastPingAt: projection.receivedAt,
+          lastTelemetryOccurredAt: projection.occurredAt,
           health: projection.health,
           availability: projection.availability,
           charging: projection.charging,
@@ -186,10 +192,15 @@ export function createPrismaTelemetryPersistence(prisma: PrismaClient = getPrism
 
 export class TelemetryIngestionService {
   private readonly persistence: TelemetryPersistence;
+  private readonly clock: TelemetryReceiptClock;
   private counters: TelemetryIngestionCounters = { accepted: 0, rejected: 0, persisted: 0, failed: 0 };
 
-  constructor(persistence: TelemetryPersistence = createPrismaTelemetryPersistence()) {
+  constructor(
+    persistence: TelemetryPersistence = createPrismaTelemetryPersistence(),
+    options: { clock?: TelemetryReceiptClock } = {},
+  ) {
     this.persistence = persistence;
+    this.clock = options.clock ?? { now: () => new Date() };
   }
 
   getCounters(): TelemetryIngestionCounters {
@@ -202,7 +213,7 @@ export class TelemetryIngestionService {
       return { outcome: "rejected", accepted: false, rejected: true, persisted: false, reason: "invalid-telemetry" };
     }
 
-    const projection = toTelemetryProjection(telemetry);
+    const projection = toTelemetryProjection(telemetry, this.clock.now());
     let result: TelemetryPersistenceResult;
     try {
       result = await this.persistence.persist(projection);
@@ -248,6 +259,9 @@ function toFleetEventPayload(device: Device) {
   };
 }
 
-export function createTelemetryIngestionService(persistence?: TelemetryPersistence): TelemetryIngestionService {
-  return new TelemetryIngestionService(persistence);
+export function createTelemetryIngestionService(
+  persistence?: TelemetryPersistence,
+  options: { clock?: TelemetryReceiptClock } = {},
+): TelemetryIngestionService {
+  return new TelemetryIngestionService(persistence, options);
 }

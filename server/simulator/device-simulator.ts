@@ -19,6 +19,7 @@ export type SimulatorConfig = Omit<Partial<typeof DEFAULT_SIMULATOR_CONFIG>, "fl
   fleetSize?: number;
   telemetryIntervalMs?: number;
   seed?: number | string;
+  deviceIds?: string[];
 };
 
 export type SimulatorClock = { now: () => Date };
@@ -97,8 +98,9 @@ export type SimulatorCounters = {
   operationalEventsGenerated: number;
 };
 
-type ResolvedConfig = Omit<Required<SimulatorConfig>, "seed"> & {
+type ResolvedConfig = Omit<Required<SimulatorConfig>, "seed" | "deviceIds"> & {
   seed: string;
+  deviceIds?: string[];
 };
 
 const PLATFORMS = ["MK", "EX"] as const;
@@ -139,6 +141,17 @@ function validateConfig(input: SimulatorConfig): ResolvedConfig {
   if (config.fleetSize > 100_000) throw new RangeError("fleetSize is too large");
   if (typeof config.seed !== "number" && typeof config.seed !== "string") {
     throw new TypeError("seed must be a number or string");
+  }
+  if (config.deviceIds !== undefined) {
+    if (config.deviceIds.length === 0 || config.deviceIds.some((id) => typeof id !== "string" || !id.trim())) {
+      throw new RangeError("deviceIds must contain at least one non-empty ID");
+    }
+    if (new Set(config.deviceIds).size !== config.deviceIds.length) {
+      throw new RangeError("deviceIds must not contain duplicates");
+    }
+    if (config.deviceIds.length !== config.fleetSize) {
+      throw new RangeError("deviceIds length must match fleetSize");
+    }
   }
   const boundedFields = [
     "lowBatteryThreshold",
@@ -182,6 +195,12 @@ function statusFor(device: Pick<SimulatedDevice, "connectivity" | "health">): De
   if (device.connectivity === "DISCONNECTED") return "OFFLINE";
   if (device.connectivity === "DEGRADED" || device.health === "FAULTED") return "DEGRADED";
   return "ONLINE";
+}
+
+function platformFor(unitId: string, index: number): SimulatedDevice["platform"] {
+  const seededPlatform = /^DEV-(MK|EX)-/i.exec(unitId)?.[1]?.toUpperCase();
+  if (seededPlatform === "MK" || seededPlatform === "EX") return seededPlatform;
+  return PLATFORMS[index % PLATFORMS.length] ?? "MK";
 }
 
 export class DeviceSimulator {
@@ -260,8 +279,8 @@ export class DeviceSimulator {
     const availability: AvailabilityState = mixed === 5 ? "ASSIGNED" : "AVAILABLE";
     const batteryPct = mixed === 4 ? 38 : 45 + Math.floor(this.random.next() * 51);
     const device: SimulatedDevice = {
-      unitId: `SIM-${String(index + 1).padStart(4, "0")}`,
-      platform: PLATFORMS[index % PLATFORMS.length] ?? 'MK',
+      unitId: this.config.deviceIds?.[index] ?? `SIM-${String(index + 1).padStart(4, "0")}`,
+      platform: platformFor(this.config.deviceIds?.[index] ?? `SIM-${String(index + 1).padStart(4, "0")}`, index),
       role: ROLES[index % ROLES.length] ?? 'SCOUT',
       zone: ZONES[index % ZONES.length] ?? 'CHARLIE',
       status: "ONLINE",

@@ -35,9 +35,16 @@ describe("device simulator runner", () => {
       telemetryIntervalMs: 250,
       seed: "test",
     });
+    expect(parseSimulatorRunnerConfig({ SIMULATOR_TARGET_DEVICE_IDS: " DEV-MK-01, DEV-EX-01 " })).toEqual({
+      fleetSize: 2,
+      telemetryIntervalMs: 5000,
+      seed: 1,
+      targetDeviceIds: ["DEV-MK-01", "DEV-EX-01"],
+    });
     expect(() => parseSimulatorRunnerConfig({ SIMULATOR_FLEET_SIZE: "0" })).toThrow(/SIMULATOR_FLEET_SIZE/);
     expect(() => parseSimulatorRunnerConfig({ SIMULATOR_TELEMETRY_INTERVAL_MS: "1.5" })).toThrow(/SIMULATOR_TELEMETRY_INTERVAL_MS/);
     expect(() => parseSimulatorRunnerConfig({ SIMULATOR_FLEET_SIZE: "100001" })).toThrow(/too large/);
+    expect(() => parseSimulatorRunnerConfig({ SIMULATOR_TARGET_DEVICE_IDS: "DEV-MK-01,,DEV-EX-01" })).toThrow(/SIMULATOR_TARGET_DEVICE_IDS/);
   });
 
   it("starts, processes aggregate batches, and stops without scheduling more ticks", async () => {
@@ -132,5 +139,22 @@ describe("device simulator runner", () => {
     expect(emittedGeneration).toBe(27);
     await runner.stop();
     expect(calls.at(-1)).toBe("stop:registered-run");
+  });
+
+  it("registers explicitly configured inventory identities", async () => {
+    const config = parseSimulatorRunnerConfig({ SIMULATOR_TARGET_DEVICE_IDS: "DEV-MK-01,DEV-EX-01" });
+    const timer = makeTimer();
+    let registeredIds: string[] = [];
+    const runner = new DeviceSimulatorRunner(config, {
+      timer: timer.timer,
+      registerRun: async (_runId, targetIds) => {
+        registeredIds = targetIds;
+        return 1;
+      },
+    });
+
+    await runner.start();
+    expect(registeredIds).toEqual(["DEV-MK-01", "DEV-EX-01"]);
+    await runner.stop();
   });
 });

@@ -6,6 +6,7 @@ export type SimulatorRunnerConfig = {
   fleetSize: number;
   telemetryIntervalMs: number;
   seed: number | string;
+  targetDeviceIds?: string[];
 };
 
 export type SimulatorRunnerOutput = (message: string) => void;
@@ -41,6 +42,14 @@ function parsePositiveInteger(name: string, value: string | undefined, fallback:
   return Number(value);
 }
 
+function parseTargetDeviceIds(value: string | undefined): string[] | undefined {
+  if (value === undefined || value.trim() === "") return undefined;
+  const targetDeviceIds = value.split(",").map((id) => id.trim());
+  if (targetDeviceIds.some((id) => !id)) throw new RangeError("SIMULATOR_TARGET_DEVICE_IDS must be a comma-separated list of non-empty device IDs");
+  if (new Set(targetDeviceIds).size !== targetDeviceIds.length) throw new RangeError("SIMULATOR_TARGET_DEVICE_IDS must not contain duplicates");
+  return targetDeviceIds;
+}
+
 export function parseSimulatorRunnerConfig(env: SimulatorRunnerEnvironment = process.env): SimulatorRunnerConfig {
   const fleetSize = parsePositiveInteger(
     "SIMULATOR_FLEET_SIZE",
@@ -53,14 +62,21 @@ export function parseSimulatorRunnerConfig(env: SimulatorRunnerEnvironment = pro
     DEFAULT_SIMULATOR_CONFIG.telemetryIntervalMs,
   );
   const seed = env.SIMULATOR_SEED ?? DEFAULT_SIMULATOR_CONFIG.seed;
+  const targetDeviceIds = parseTargetDeviceIds(env.SIMULATOR_TARGET_DEVICE_IDS);
+  const resolvedFleetSize = targetDeviceIds?.length ?? fleetSize;
 
   try {
-    createDeviceSimulator({ fleetSize, telemetryIntervalMs, seed });
+    createDeviceSimulator({ fleetSize: resolvedFleetSize, telemetryIntervalMs, seed, deviceIds: targetDeviceIds });
   } catch (error) {
     throw new RangeError(`Invalid simulator configuration: ${error instanceof Error ? error.message : String(error)}`);
   }
 
-  return { fleetSize, telemetryIntervalMs, seed };
+  return {
+    fleetSize: resolvedFleetSize,
+    telemetryIntervalMs,
+    seed,
+    ...(targetDeviceIds ? { targetDeviceIds } : {}),
+  };
 }
 
 export class DeviceSimulatorRunner {
@@ -80,7 +96,12 @@ export class DeviceSimulatorRunner {
 
   constructor(config: SimulatorRunnerConfig, options: SimulatorRunnerOptions = {}) {
     this.config = config;
-    this.simulator = options.simulator ?? createDeviceSimulator(config, { runId: options.runId });
+    this.simulator = options.simulator ?? createDeviceSimulator({
+      fleetSize: config.fleetSize,
+      telemetryIntervalMs: config.telemetryIntervalMs,
+      seed: config.seed,
+      deviceIds: config.targetDeviceIds,
+    }, { runId: options.runId });
     this.processTick = options.processTick ?? (() => undefined);
     this.output = options.output ?? console.log;
     this.timer = options.timer ?? defaultTimer;

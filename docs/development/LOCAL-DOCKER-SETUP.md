@@ -225,6 +225,14 @@ The app and database share a Compose network. From inside `app`, `localhost` mea
 
 The app depends on PostgreSQL health, but health checks do not apply migrations. PostgreSQL data persists in the named volume `kryos-defense-solutions_kryos-postgres-data` under the default project name.
 
+The guarded development seed workflow targets the separate Neon development database and is not available inside this local Compose setup. For a seeded host-development database, run the simulator with explicit existing IDs, for example:
+
+```bash
+DB_ENV=dev SIMULATOR_TARGET_DEVICE_IDS=DEV-MK-01,DEV-EX-01 npm run simulator:run
+```
+
+The simulator otherwise generates `SIM-0001`-style IDs. If a configured target is absent, registration fails before telemetry starts with an actionable target-identity error. Do not use the seeded Neon command against the local Docker database or alter database volumes to make the identities match.
+
 Compose passes local `POSTGRES_*` values and blanks `DATABASE_URL_DEV`/`DIRECT_URL_DEV`. The entrypoint sets `DB_ENV=dev`, assigns credentials through Node's URL API so special characters are encoded safely, sets both local URLs, and starts Nuxt or Prisma. The Dockerfile's build-time URLs are dummy values used only for `prisma generate`; they are not runtime connections.
 
 ## Daily workflow

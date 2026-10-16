@@ -12,6 +12,7 @@ const expectedColumns = [
   ["link_status", "text"],
   ["signal_quality", "smallint"],
   ["last_ping_at", "timestamp with time zone"],
+  ["last_telemetry_occurred_at", "timestamp with time zone"],
   ["role", "text"],
   ["health", "text"],
   ["availability", "text"],
@@ -117,7 +118,7 @@ function assertColumns(columns) {
     dataType,
     isNullable,
   ]);
-  const nullableColumns = new Set(["assignment_id", "fault_code", "last_message_id", "last_simulator_run_id", "authority_run_id", "authority_generation"]);
+  const nullableColumns = new Set(["last_telemetry_occurred_at", "assignment_id", "fault_code", "last_message_id", "last_simulator_run_id", "authority_run_id", "authority_generation"]);
   const expected = expectedColumns.map(([columnName, dataType]) => [
     columnName,
     dataType,

@@ -4,6 +4,7 @@ import { createDeviceSimulator } from "../server/simulator";
 import {
   createTelemetryIngestionService,
   toTelemetryProjection,
+  type TelemetryProjection,
   type TelemetryPersistence,
 } from "../server/telemetry/ingestion";
 import { processSimulationTick } from "../server/telemetry/runner-boundary";
@@ -18,6 +19,7 @@ function makeDevice(overrides: Partial<Device> = {}): Device {
     linkStatus: "STABLE",
     signalQuality: 90,
     lastPingAt: new Date("2026-10-15T12:00:00.000Z"),
+    lastTelemetryOccurredAt: null,
     role: "SCOUT",
     health: "HEALTHY",
     availability: "AVAILABLE",
@@ -44,6 +46,7 @@ function makeTelemetry() {
 describe("telemetry ingestion", () => {
   it("maps simulator telemetry to the fleet projection and operational state", () => {
     const telemetry = makeTelemetry();
+    const receivedAt = new Date("2026-10-15T12:05:00.000Z");
     const projection = toTelemetryProjection({
       ...telemetry,
       measurements: {
@@ -56,10 +59,12 @@ describe("telemetry ingestion", () => {
         assignmentId: "assignment-1",
         faultCode: "SENSOR_DEGRADED",
       },
-    });
+    }, receivedAt);
     expect(projection).toMatchObject({
       unitId: "SIM-0001",
       platform: "MK",
+      occurredAt: new Date(telemetry.occurredAt),
+      receivedAt,
       powerPct: 82,
       linkStatus: "LOST",
       health: "FAULTED",
@@ -68,6 +73,24 @@ describe("telemetry ingestion", () => {
       assignmentId: "assignment-1",
       faultCode: "SENSOR_DEGRADED",
       simulatorRunId: "run-a",
+    });
+  });
+
+  it("uses the injected receipt clock for liveness while preserving producer time", async () => {
+    let captured: TelemetryProjection | undefined;
+    const service = createTelemetryIngestionService({
+      persist: async (projection) => {
+        captured = projection;
+        return { kind: "persisted" as const, device: makeDevice() };
+      },
+    }, { clock: { now: () => new Date("2026-10-15T12:05:00.000Z") } });
+
+    const telemetry = makeTelemetry();
+    await service.ingest(telemetry);
+
+    expect(captured).toMatchObject({
+      occurredAt: new Date(telemetry.occurredAt),
+      receivedAt: new Date("2026-10-15T12:05:00.000Z"),
     });
   });
 

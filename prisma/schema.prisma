@@ -16,6 +16,7 @@ model Device {
   linkStatus    String   @map("link_status") @db.Text
   signalQuality Int      @map("signal_quality") @db.SmallInt
   lastPingAt    DateTime @map("last_ping_at") @db.Timestamptz(6)
+  lastTelemetryOccurredAt DateTime? @map("last_telemetry_occurred_at") @db.Timestamptz(6)
   role          String   @db.Text
   health        String   @default("HEALTHY") @db.Text
   availability  String   @default("AVAILABLE") @db.Text
