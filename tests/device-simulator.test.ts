@@ -23,6 +23,12 @@ describe("device simulator kernel", () => {
     ]);
   });
 
+  it("supports explicit target identities for an existing inventory", () => {
+    const simulator = createDeviceSimulator({ fleetSize: 3, deviceIds: ["DEV-MK-01", "DEV-MK-02", "DEV-EX-01"] });
+    expect(simulator.getDevices().map(({ unitId }) => unitId)).toEqual(["DEV-MK-01", "DEV-MK-02", "DEV-EX-01"]);
+    expect(simulator.getDevices().map(({ platform }) => platform)).toEqual(["MK", "MK", "EX"]);
+  });
+
   it("starts with mixed operational dimensions", () => {
     const devices = createDeviceSimulator({ fleetSize: 500 }).getDevices();
     expect(new Set(devices.map((device) => device.connectivity)).size).toBeGreaterThan(1);
@@ -67,7 +73,7 @@ describe("device simulator kernel", () => {
   it("is reproducible with a fixed seed and simulated clock", () => {
     const run = () => {
       const clock = makeClock();
-      const simulator = createDeviceSimulator({ fleetSize: 8, seed: 99 }, { clock });
+      const simulator = createDeviceSimulator({ fleetSize: 8, seed: 99 }, { clock, runId: "deterministic-test-run" });
       const ticks = [simulator.tick()];
       clock.advance(5000);
       ticks.push(simulator.tick());

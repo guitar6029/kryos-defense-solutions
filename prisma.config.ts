@@ -1,6 +1,6 @@
 import "dotenv/config";
 import { defineConfig } from "prisma/config";
-import { resolveDatabaseEnvironment } from "./server/utils/database-environment.mjs";
+import { resolveDatabaseEnvironment } from "./server/utils/database-environment.js";
 
 const { directUrl } = resolveDatabaseEnvironment();
 

@@ -56,9 +56,12 @@ npm run build            # Create a production build
 npm run db:generate      # Generate the Prisma client
 DB_ENV=dev npm run db:verify:dev  # Read-only verification of the dev database
 DB_ENV=dev npm run db:seed:dev    # Seed the guarded dev dataset
+DB_ENV=dev SIMULATOR_TARGET_DEVICE_IDS=DEV-MK-01,DEV-EX-01 npm run simulator:run
 ```
 
 Only run database commands when you understand their effect and have verified the target environment. `npm run db:migrate:dev` invokes Prisma's development migration workflow; review migration guidance and the selected database before using it.
+
+The simulator defaults to generated `SIM-0001`-style identities. To run it against the guarded development seed inventory, set `SIMULATOR_TARGET_DEVICE_IDS` to a comma-separated list of existing IDs; the simulator emits telemetry for those exact IDs and uses the list size as its fleet size. Registration fails before telemetry starts if any configured target does not exist.
 
 ### Local Docker Compose environment
 

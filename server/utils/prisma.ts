@@ -1,6 +1,6 @@
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "../../generated/prisma/client.js";
-import { resolveDatabaseEnvironment } from "./database-environment.mjs";
+import { resolveDatabaseEnvironment } from "./database-environment.js";
 
 let prisma: PrismaClient | undefined;
 

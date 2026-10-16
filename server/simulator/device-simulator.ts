@@ -1,3 +1,5 @@
+import { randomUUID } from "node:crypto";
+
 export const DEFAULT_SIMULATOR_CONFIG = {
   fleetSize: 500,
   telemetryIntervalMs: 5_000,
@@ -17,6 +19,7 @@ export type SimulatorConfig = Omit<Partial<typeof DEFAULT_SIMULATOR_CONFIG>, "fl
   fleetSize?: number;
   telemetryIntervalMs?: number;
   seed?: number | string;
+  deviceIds?: string[];
 };
 
 export type SimulatorClock = { now: () => Date };
@@ -64,7 +67,7 @@ export type TelemetryEnvelope = {
     assignmentId: string | null;
     faultCode: string | null;
   };
-  simulator: { seed: string; runId: string };
+  simulator: { seed: string; runId: string; generation: number };
 };
 
 export type OperationalEventType =
@@ -95,8 +98,9 @@ export type SimulatorCounters = {
   operationalEventsGenerated: number;
 };
 
-type ResolvedConfig = Omit<Required<SimulatorConfig>, "seed"> & {
+type ResolvedConfig = Omit<Required<SimulatorConfig>, "seed" | "deviceIds"> & {
   seed: string;
+  deviceIds?: string[];
 };
 
 const PLATFORMS = ["MK", "EX"] as const;
@@ -137,6 +141,17 @@ function validateConfig(input: SimulatorConfig): ResolvedConfig {
   if (config.fleetSize > 100_000) throw new RangeError("fleetSize is too large");
   if (typeof config.seed !== "number" && typeof config.seed !== "string") {
     throw new TypeError("seed must be a number or string");
+  }
+  if (config.deviceIds !== undefined) {
+    if (config.deviceIds.length === 0 || config.deviceIds.some((id) => typeof id !== "string" || !id.trim())) {
+      throw new RangeError("deviceIds must contain at least one non-empty ID");
+    }
+    if (new Set(config.deviceIds).size !== config.deviceIds.length) {
+      throw new RangeError("deviceIds must not contain duplicates");
+    }
+    if (config.deviceIds.length !== config.fleetSize) {
+      throw new RangeError("deviceIds length must match fleetSize");
+    }
   }
   const boundedFields = [
     "lowBatteryThreshold",
@@ -182,11 +197,18 @@ function statusFor(device: Pick<SimulatedDevice, "connectivity" | "health">): De
   return "ONLINE";
 }
 
+function platformFor(unitId: string, index: number): SimulatedDevice["platform"] {
+  const seededPlatform = /^DEV-(MK|EX)-/i.exec(unitId)?.[1]?.toUpperCase();
+  if (seededPlatform === "MK" || seededPlatform === "EX") return seededPlatform;
+  return PLATFORMS[index % PLATFORMS.length] ?? "MK";
+}
+
 export class DeviceSimulator {
   readonly config: ResolvedConfig;
   private readonly random: RandomSource;
   private readonly clock: SimulatorClock;
   private readonly runId: string;
+  private generation = 1;
   private readonly devices: SimulatedDevice[];
   private previousTickAt: number | null = null;
   private counters: SimulatorCounters = {
@@ -195,12 +217,12 @@ export class DeviceSimulator {
     operationalEventsGenerated: 0,
   };
 
-  constructor(config: SimulatorConfig = {}, dependencies: { clock?: SimulatorClock; random?: RandomSource } = {}) {
+  constructor(config: SimulatorConfig = {}, dependencies: { clock?: SimulatorClock; random?: RandomSource; runId?: string } = {}) {
     this.config = validateConfig(config);
     this.clock = dependencies.clock ?? { now: () => new Date() };
     this.random = dependencies.random ?? seededRandom(this.config.seed);
     iso(this.clock.now());
-    this.runId = `seed-${this.config.seed}`;
+    this.runId = dependencies.runId ?? `run-${randomUUID()}`;
     this.devices = Array.from({ length: this.config.fleetSize }, (_, index) =>
       this.createDevice(index),
     );
@@ -208,6 +230,15 @@ export class DeviceSimulator {
 
   getDevices(): SimulatedDevice[] {
     return this.devices.map((device) => ({ ...device }));
+  }
+
+  getRunId(): string {
+    return this.runId;
+  }
+
+  setGeneration(generation: number): void {
+    if (!Number.isSafeInteger(generation) || generation <= 0) throw new RangeError("generation must be a positive safe integer");
+    this.generation = generation;
   }
 
   getCounters(): SimulatorCounters {
@@ -248,8 +279,8 @@ export class DeviceSimulator {
     const availability: AvailabilityState = mixed === 5 ? "ASSIGNED" : "AVAILABLE";
     const batteryPct = mixed === 4 ? 38 : 45 + Math.floor(this.random.next() * 51);
     const device: SimulatedDevice = {
-      unitId: `SIM-${String(index + 1).padStart(4, "0")}`,
-      platform: PLATFORMS[index % PLATFORMS.length] ?? 'MK',
+      unitId: this.config.deviceIds?.[index] ?? `SIM-${String(index + 1).padStart(4, "0")}`,
+      platform: platformFor(this.config.deviceIds?.[index] ?? `SIM-${String(index + 1).padStart(4, "0")}`, index),
       role: ROLES[index % ROLES.length] ?? 'SCOUT',
       zone: ZONES[index % ZONES.length] ?? 'CHARLIE',
       status: "ONLINE",
@@ -345,12 +376,12 @@ export class DeviceSimulator {
         assignmentId: device.assignmentId,
         faultCode: device.faultCode,
       },
-      simulator: { seed: this.config.seed, runId: this.runId },
+      simulator: { seed: this.config.seed, runId: this.runId, generation: this.generation },
     };
   }
 }
 
-export function createDeviceSimulator(config?: SimulatorConfig, dependencies?: { clock?: SimulatorClock; random?: RandomSource }): DeviceSimulator {
+export function createDeviceSimulator(config?: SimulatorConfig, dependencies?: { clock?: SimulatorClock; random?: RandomSource; runId?: string }): DeviceSimulator {
   return new DeviceSimulator(config, dependencies);
 }
 
