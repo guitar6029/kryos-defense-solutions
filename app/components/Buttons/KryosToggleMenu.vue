@@ -1,6 +1,11 @@
 <script lang="ts" setup>
+defineProps<{
+  expanded: boolean;
+  controls: string;
+}>();
+
 const emit = defineEmits<{
-  (e: "toggle-menu"): void;
+  (e: "toggle-menu", trigger: HTMLElement): void;
 }>();
 
 </script>
@@ -11,7 +16,9 @@ const emit = defineEmits<{
     <button
       type="button"
       aria-label="Toggle navigation menu"
-      @click="emit('toggle-menu')"
+      :aria-expanded="expanded"
+      :aria-controls="controls"
+      @click="emit('toggle-menu', $event.currentTarget as HTMLElement)"
     >
       <Icon
         class="trns hover:text-(--kryos-text-high)"

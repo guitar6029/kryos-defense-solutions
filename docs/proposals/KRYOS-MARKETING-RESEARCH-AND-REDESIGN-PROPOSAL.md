@@ -28,7 +28,7 @@ The implementation is recorded in commits 9bbab9f and f2a7dde. This proposal pre
 
 ### Exclusions
 
-`/systems`, its components, and its functionality were excluded. No redesign recommendations are made for that section. To classify the software concept without opening that route, I read only selected non-`/systems` contracts and data-flow files (`app/composables/useKryosFleet.ts`, `useKryosFleetCriteria.ts`, `app/stores/kryosFleet.ts`, fleet types, `server/api/fleet.get.ts`, and its query/response helpers). These were read-only inspections; no fleet behavior, API, database, SSE, authentication, or application code was changed. The shared navigation's Systems destination is mentioned only as a boundary, not evaluated.
+`/systems`, its components, and its functionality were excluded. No redesign recommendations are made for that section. To classify the software concept without opening that route, I read only selected non-`/systems` contracts and data-flow files (`app/composables/useKryosFleet.ts`, `useKryosFleetCriteria.ts`, `app/stores/kryosFleet.ts`, fleet types, `server/api/fleet.get.ts`, and its query/response helpers). These were read-only inspections; no fleet behavior, API, database, SSE, authentication, or application code was changed. The removed `/systems` destination is mentioned only as a boundary; current marketing navigation contains no Systems link, and no removed Systems implementation was inspected.
 
 ### Evidence labels
 
@@ -173,7 +173,7 @@ The page recommendations and routes below are implemented. For detailed page con
 - **Products (/products):** Platform primary, Multirotor flagship concept, MK-I future direction, EX-1 deferred.
 - **Multirotor detail (/products/kryos-multirotor):** approved working label, approved master image, concept disclosure, no approved specifications, and explicit planned/not-implemented integration status.
 - **About (/about):** fictional portfolio framing and a distinction between the implemented software prototype and conceptual hardware.
-- **Shared navigation/footer:** short, valid in-scope marketing links and fictional-project disclosure. Preserve the existing Systems link without reviewing or changing its destination or functionality.
+- **Shared navigation/footer:** short, valid in-scope marketing links and fictional-project disclosure. The removed Systems link is not restored; `/systems` remains outside this work and was not inspected.
 
 ### Copy and claim boundaries
 
@@ -193,6 +193,168 @@ Remaining follow-up is owner review of the implementation and these strategy doc
 
 The external scan was performed 2026-10-13 using public company pages. Page availability and extracted content may change. The direct reference links are in the research table above. Relevant product detail pages inspected include Shield AI V-BAT, Saronic Vessels, Epirus Leonidas, and Helsing HX-2. Anduril and Palantir yielded insufficient readable content; Rheinmetall redirected to German; some Northrop modules were still loading. No substitutions were made for those cases.
 
+## Consolidated marketing research brief — 2026-10-16
+
+This section consolidates the existing competitor scan, the current implementation plan, and the current source/asset review into an actionable marketing brief. It does not replace the detailed observations above. The four evidence labels used here are important:
+
+- **Verified Kryos fact:** supported by the current repository and approved implementation direction.
+- **Verified external observation:** visible in the linked company page during the public-page scan; it describes that company’s presentation, not its independently verified performance.
+- **Kryos hypothesis:** a reasonable audience or positioning assumption that still needs owner/user validation.
+- **Recommendation:** a proposed marketing decision, not a current capability.
+
+### 1. Competitor positioning and recurring messaging patterns
+
+The external set clusters into five recurring positioning families:
+
+| Pattern | External evidence | What the pattern does | Kryos implication |
+|---|---|---|---|
+| **Specific job before technology** | [ARX](https://www.arx-defense.com/) sequences a problem, protection layer, mechanism, system qualities, examples, and a briefing path. [Flyability](https://www.flyability.com/) ties a confined-space inspection problem to the aircraft, software, training, and inspection evidence. | Gives an unfamiliar system a reason to exist before introducing architecture or AI. | Lead with the Platform workflow and the Multirotor’s proposed role, not “autonomous combat robotics” or a broad defense-company claim. |
+| **Distinct products with short roles** | [Shield AI](https://shield.ai/) and [Helsing](https://www.helsing.ai/) give named systems concise role descriptions. [Saronic](https://www.saronic.com/vessels) uses consistent vessel/product fields. | Helps a visitor form a portfolio mental model quickly. | Maintain one primary Platform, one flagship Multirotor concept, MK-I as future, and EX-1 deferred. Do not create aerial/ground/sea/digital families without matching products. |
+| **Hardware + software as one system** | [Skydio](https://www.skydio.com/) separates flying robots, software, integrations, support, and stories while showing their relationship. [Percepto](https://percepto.co/) presents aircraft, dock, autonomy, and remote operations together. | Makes the product ecosystem understandable without pretending every layer is the same product. | Show the Platform as the implemented primary product and the Multirotor as a planned/conceptual companion. Label the relationship “not implemented” beside the diagram. |
+| **Proof-shaped product pages** | [Skydio X10](https://www.skydio.com/x10) moves from product and measurable facts to sensors, autonomy, software, attachments, and ruggedization. [Shield AI V-BAT](https://shield.ai/v-bat/) groups performance, safety, features, evidence, approvals, payloads, and specifications. | Places evidence near the claim instead of asking the reader to trust atmosphere. | Use approved workflow facts for the Platform. For the Multirotor, replace missing specs with concept status, design intent, open questions, and an explicit “not established” list. |
+| **Operational journey over isolated object** | [Zipline technology](https://www.zipline.com/technology) explains charger → flight → delivery. [Wingtra](https://wingtra.com/) connects aircraft, capture, processing, and mapping output. [Gecko Robotics](https://www.geckorobotics.com/) connects robot, inspection data, and maintenance decisions. | Converts a machine into an understandable service or workflow. | The safest Kryos journey is Platform record retrieval/search/filter/summary → conceptual relationship to Multirotor. Do not draw live telemetry or control flows. |
+| **Engineering process as credibility** | [Relativity Space](https://www.relativityspace.com/home) makes manufacturing and iteration part of the product story. [ANYbotics](https://www.anybotics.com/about-us/) connects robot design to industrial deployment context and safety outcomes. | Gives technical credibility without relying only on adjectives. | Add engineering/design notes only when Kryos has approved source material. Do not invent facilities, tests, customers, or manufacturing scale. |
+| **Mission and responsibility language** | [Helsing](https://www.helsing.ai/) combines defense technology with responsibility language. [Boston Dynamics](https://bostondynamics.com/faq/) publishes a clear position on general-purpose robot use. | Clarifies the role of people, responsibility, and product boundaries. | State the project’s fictional/concept status and human decision boundary plainly. Avoid implying operational authority, safety certification, or ethical policy that has not been authored and approved. |
+| **Single next action** | ARX and Epirus use a clear briefing/contact path; [Formant](https://formant.io/) makes the product platform and contact path prominent. | Reduces conversion ambiguity. | Use “Explore the Platform” and “Explore Kryos Multirotor” as the current valid actions. Add Contact/Request information only after a real destination exists. |
+
+**Recurring language to avoid:** “battlefield proven,” “mission-ready,” “trusted by,” “global facilities,” “active deployments,” “tier-1 contractor,” “secure/encrypted” without a defined implementation or certification basis, and performance numbers without a source and measurement context. These phrases are common in the category, but category convention is not evidence for Kryos.
+
+**Interpretation:** The strongest competitors are not persuasive because they use darker colors or more motion. They are persuasive because the page makes the product’s job, system boundary, proof, and next action easy to understand. This is a design inference from the observed page structures, not a measured conversion result.
+
+### 2. Relevant audiences and likely needs
+
+Kryos is a fictional portfolio, so these are audience hypotheses for a marketing/design review—not validated customer segments or a go-to-market plan.
+
+| Audience hypothesis | Likely question | What the current site can safely answer | Needed evidence or improvement |
+|---|---|---|---|
+| **Portfolio/design evaluator** | Is this a coherent, intentional product and brand system? | Yes: current routes establish a Platform prototype, Multirotor concept, and fictional-project disclosure. | Make the hierarchy and visual system more distinctive; show design rationale without legacy sci-fi decoration. |
+| **Technical/product reviewer** | What is implemented, what is conceptual, and where are the boundaries? | The Platform supports sample record retrieval, search/filters, pagination, and derived summaries; hardware is conceptual. | Put status labels and “not established” information next to each relevant claim; link to the Platform prototype. |
+| **Robotics/defense-tech design peer** | Does the concept understand hardware/software relationships and operational context? | The intended Platform/Multirotor relationship is documented as planned/conceptual, not implemented. | Add a simple boundary diagram and a short design-intent narrative; do not fake telemetry, field deployment, or system integration. |
+| **Prospective collaborator or reviewer** *(hypothesis)* | What could I discuss or evaluate next? | Product concepts and the Platform prototype are clear entry points. | Provide one valid, owner-approved inquiry path or explicitly keep the site exploratory with no contact CTA. |
+| **Accessibility/performance-conscious visitor** | Can I read and navigate the site reliably? | Source shows some useful alt text, semantic sections, visible focus styles on many links, and a concise current shell. | Runtime validation is still required for mobile menu behavior, focus order, contrast, reduced motion, video controls, and image weight. |
+
+**Audience conclusion:** The site should optimize for comprehension and credibility among reviewers, collaborators, and design/engineering peers—not imply an enterprise defense sales funnel that the project cannot substantiate. This is a hypothesis based on the repository’s fictional portfolio context and current content; owner/user interviews would be needed to validate it.
+
+### 3. Website credibility signals and conversion patterns
+
+#### Credibility signals observed in stronger external sites
+
+1. **A concrete proposition:** what the system is for appears before a large feature list.
+2. **Product-role clarity:** each product has a short role, status, and destination.
+3. **Evidence adjacency:** facts, diagrams, demos, customer stories, or dated updates sit beside the claim they support.
+4. **Consistent comparison grammar:** products use comparable fields and section order, making differences legible.
+5. **Realistic media:** product scale, operator context, component detail, and software views are shown without relying only on abstract CGI.
+6. **Visible boundaries:** capabilities, limitations, safety/responsibility language, and availability are qualified.
+7. **A valid next step:** the CTA leads to a working product detail, documentation, demo, briefing, or contact path.
+8. **Operational polish:** predictable navigation, accessible controls, readable type, captions, and performance-aware media support the message.
+
+#### Current Kryos signals
+
+**Verified positive signals:**
+
+- The current homepage leads with the Platform and its sample-data workflow.
+- The current pages label the software as a prototype and the Multirotor as conceptual/not fielded.
+- The current Multirotor page explicitly says no approved specifications, testing, availability, deployment, range, endurance, payload, sensors, communications, autonomy, or performance information is available.
+- The current footer describes the project as a fictional engineering portfolio and hardware concepts as not fielded products.
+- The current product route uses one approved Multirotor hero master consistently.
+
+**Observed risks:**
+
+- The older strategy documents and legacy components still contain claims and patterns that are easy to reintroduce: deployment stats, company/facility language, leadership profiles, legacy product families, placeholder links, bracket/frame effects, and unsupported specifications.
+- The current global CSS still exposes Orbitron/Exo 2/Rajdhani layering, bracket interactions, and a dark industrial token system. The current routes are more restrained, but the legacy component inventory can pull future work back toward a template-driven sci-fi look.
+- The approved Multirotor master is approximately 2.09 MB. The implementation plan correctly defers optimization until measured page weight justifies it.
+- Mobile, keyboard, contrast, reduced-motion, video, and runtime image behavior have not been verified in this documentation pass.
+
+#### Conversion recommendation
+
+Use a two-step conversion path:
+
+`Understand the primary product → inspect the flagship concept → choose a valid next action`
+
+For the current iteration, the valid actions are:
+
+- **Primary:** `Explore the Platform` → `/platform`.
+- **Secondary:** `Explore Kryos Multirotor` → `/products/kryos-multirotor`.
+- **Portfolio:** `View product concepts` → `/products`.
+- **Contact:** do not add until a real, owner-approved destination exists.
+
+This is a recommendation, not evidence that any CTA will convert. Measure click-through and comprehension only after an instrumented, owner-approved implementation exists.
+
+### 4. Opportunities for Kryos to differentiate
+
+| Opportunity | Evidence basis | Differentiation move |
+|---|---|---|
+| **Truthful concept status as a brand asset** | Many category pages use confident product/mission language; the current Kryos repo explicitly distinguishes prototype, concept, future, and deferred work. | Make status a designed component, not a disclaimer buried in copy: `Prototype · sample data`, `Concept · not fielded`, `Future · under review`, `Deferred`. |
+| **Platform-first hardware relationship** | External sites show hardware/software pairings, but Kryos can be unusually clear that the relationship is planned rather than live. | Explain the Platform’s verified workflow first, then show where the Multirotor concept could fit—using a dotted labeled relationship, never a live-looking data arrow. |
+| **Field engineering without militaristic theater** | Boston Dynamics, ANYbotics, Flyability, and Helsing show that technical seriousness can come from object/context/proof rather than tactical decoration. | Use graphite/stone surfaces, product form, technical notes, and restrained amber; avoid targeting reticles, neon glows, weapons, simulated battlefield scenes, and invented insignia. |
+| **A compact, comparable portfolio** | Larger defense sites use extensive taxonomies; Kryos currently has only one primary product and one flagship concept in active scope. | Keep navigation and product architecture small. The absence of unsupported categories becomes a sign of discipline. |
+| **Design questions instead of fabricated specifications** | Strong detail pages place evidence near specifications; Kryos lacks approved hardware facts. | Replace empty spec tables with clearly labeled design intent and open questions. This gives visitors something substantive to read without making claims. |
+| **A concept page that respects the viewer’s time** | Zipline, Wingtra, and Gecko make a physical system understandable through a short journey. | Use a short `workflow → concept → boundary → next action` narrative. Do not make visitors decode a dashboard, dossier, or ornamental interface. |
+
+### 5. Claims that require evidence versus claims safe to make today
+
+| Claim class | Safe today? | Evidence requirement before publishing as fact | Current handling |
+|---|---:|---|---|
+| Kryos is a fictional engineering portfolio/UI concept | **Yes** | Repository `AGENTS.md`, README, current About/footer copy. | Safe; keep visible. |
+| Kryos Platform is an implemented software prototype using sample data | **Yes** | Current source: fleet query/API, filters, pagination, derived summaries; implementation plan. | Safe with “prototype” and “sample data” qualifiers. |
+| Platform supports record retrieval, search/available filters, pagination, sample status fields, and derived summaries | **Yes** | Current code and implementation plan. | Safe; do not imply live equipment or production readiness. |
+| Platform receives live telemetry, uses geospatial maps, streams real-time events, includes AI, or controls equipment | **No** | Implemented code, runtime verification, approved product documentation, and security/operational review would be required. | Keep planned/unverified; do not market as available. |
+| Kryos Multirotor is a conceptual compact aircraft design intended to complement the Platform | **Yes, qualified** | Current approved direction and route copy. | Safe with `conceptual`, `not fielded`, and `integration planned/not implemented`. |
+| Multirotor has a particular range, endurance, payload, sensor suite, encrypted link, autonomy level, certification, safety behavior, or deployment record | **No** | Approved specification sheet plus test/qualification context and owner/legal review. | Do not publish as a fact. |
+| MK-I is an active product or has defined performance/roles | **No** | Owner-approved product definition and evidence. | Future concept under review only. |
+| EX-1 is an active product | **No** | Explicit owner decision to un-defer it plus approved product definition. | Deferred; omit from active product marketing. |
+| Kryos has customers, partners, government work, facilities, deployments, leadership credentials, certifications, or “tier-1” status | **No** | Dated, attributable primary evidence and owner/legal approval for each claim. | Remove; no current evidence. |
+| A visual is a real product photograph, operational scene, facility, or live software screen | **No, unless sourced** | Asset provenance, license/consent, and content review. | Use the approved Multirotor render with concept caption; label any future illustration/mockup. |
+
+**Rule:** an external competitor’s claim, visual style, metric, certification, or customer story is not evidence for Kryos. External pages support design observations only.
+
+### 6. Prioritized recommendations for the next marketing iteration
+
+#### P0 — protect truth and clarify the conversion path
+
+1. **Freeze the content truth table.** Maintain the current hierarchy: Platform primary; Multirotor flagship hardware concept; MK-I future; EX-1 deferred. Review all marketing copy and legacy components against it.
+2. **Make the home proposition more specific.** Keep the Platform first, but shorten the opening to: what the prototype lets a visitor inspect, what sample data means, and where the Multirotor concept fits.
+3. **Keep one valid action per intent.** Platform, Multirotor, product catalog, and About are valid current destinations. Do not add contact, briefing, procurement, partner, careers, or news actions without real destinations and approved content.
+4. **Remove claim-shaped legacy content.** Do not reintroduce deployment/facility stats, contractor language, leadership profiles, unsupported specifications, fictional announcements, or active MK-I/EX-1 language.
+
+#### P1 — increase distinctiveness and comprehension
+
+5. **Create a shared status system.** Use consistent badges/captions for prototype, concept, future, deferred, sample data, and not implemented.
+6. **Refine the Multirotor page around design intent.** Keep the approved master; add a concise “why this form factor?” section, a Platform relationship diagram, and a “not established” list rather than invented specifications.
+7. **Replace decorative repetition with an editorial rhythm.** Use one object-led hero, one workflow/explanation section, one evidence/status band, and one close. Retire generic circuit textures, frame-heavy panels, and repeated cards from marketing paths.
+8. **Make the Platform visual honest and useful.** Use the neutral workflow diagram or an explicitly approved prototype screenshot. Do not expose `/systems` imagery or imply live telemetry in marketing.
+
+#### P2 — validate quality before broader redesign
+
+9. **Run a real responsive/accessibility pass.** Test mobile menu semantics, focus/escape behavior, keyboard navigation, contrast, zoom/reflow, reduced motion, captions, image alt text, and reading order.
+10. **Measure media cost.** Confirm whether the 2.09 MB approved PNG materially affects the homepage before deriving a delivery format; preserve the approved master.
+11. **Validate audience hypotheses.** Ask a design evaluator, technical reviewer, and non-specialist to explain what is implemented, what is conceptual, and what action they would take next. Treat results as research, not as conversion proof.
+12. **Only then consider motion or new assets.** Motion should explain orientation, workflow, or state. New images require provenance/status labels and must not imply real facilities or operations.
+
+### 7. Source register and verification notes
+
+| Source | Finding used in this brief | Evidence status |
+|---|---|---|
+| [ARX](https://www.arx-defense.com/) | Numbered problem → mechanism → system → briefing sequence. | Verified external observation from the prior scan; claims not independently validated. |
+| [Shield AI V-BAT](https://shield.ai/v-bat/) | Product detail order that places role, performance, safety, evidence, payloads, and specifications in one page. | Verified external page structure; product claims belong to Shield AI. |
+| [Saronic Vessels](https://www.saronic.com/vessels) | Comparable product cards and separation of hardware/software qualities. | Verified external page structure; metrics not transferred to Kryos. |
+| [Epirus Leonidas](https://www.epirusinc.com/platforms/hpm-leonidas) | Plain-language problem/solution sequence and product links. | Verified external page structure; claims not independently validated. |
+| [Helsing](https://www.helsing.ai/) and [HX-2](https://www.helsing.ai/hx-2) | Short product roles, responsibility language, and explicit product detail structure. | Verified external page structure/text in prior scan; claims not transferred. |
+| [Skydio X10](https://www.skydio.com/x10) | Hardware → sensors → autonomy → software → modular attachments sequence. | Verified external page structure/text; product claims not transferred. |
+| [Flyability](https://www.flyability.com/) | Confined inspection problem, product, software, training, and evidence connected. | Verified external site pattern; claims not independently validated. |
+| [Zipline technology](https://www.zipline.com/technology) | End-to-end operational journey. | Verified external page structure/text; no conversion metric inferred. |
+| [Gecko Robotics](https://www.geckorobotics.com/) | Robot-to-data-to-maintenance outcome framing. | Verified external site pattern; claims not transferred. |
+| [ANYbotics](https://www.anybotics.com/about-us/) | Industrial robotics, safety, and deployment-context framing. | Verified external page structure/text; claims not transferred. |
+| [Boston Dynamics](https://bostondynamics.com/) and [FAQ](https://bostondynamics.com/faq/) | Real robot media, product roles, and published responsibility boundary. | Verified external page/text observation; no endorsement implied. |
+| [Formant](https://formant.io/) | Robotics operations software as a distinct product layer. | Verified external page structure; no Kryos capability inference. |
+| [Relativity Space](https://www.relativityspace.com/home) | Manufacturing/process as part of hardware credibility. | Verified external page structure/text; no Kryos manufacturing inference. |
+| [Current Marketing Implementation Plan](./KRYOS-MARKETING-IMPLEMENTATION-PLAN.md) | Approved hierarchy, status boundaries, asset rules, and validation record. | Verified repository source. |
+| [Current marketing routes](/home/josh/Development/kryos-defense-solutions/app/pages/index.vue) | Platform-first page, Multirotor placement, status copy, and valid current CTAs. | Verified repository source. |
+| [Current Multirotor route](/home/josh/Development/kryos-defense-solutions/app/pages/products/kryos-multirotor.vue) | Concept disclosure, planned/not-implemented integration, and absence of approved specs. | Verified repository source. |
+| [Current global styling](/home/josh/Development/kryos-defense-solutions/app/assets/css/global.css) | Existing dark graphite/amber tokens and legacy technical typography/effects. | Verified repository source; visual runtime behavior not re-tested here. |
+
+**Not verified in this brief:** competitor conversion rates, audience sizes, competitor accessibility scores, competitor performance metrics, Kryos user preference, or any external company’s operational/technical claims. Those require analytics, user research, or direct technical testing.
+
 ## Research and implementation status
 
-The 20-site competitor research, source/access limitations, repository-grounded capability matrix, and design rationale are retained. The approved marketing implementation is complete and is documented in the linked implementation plan. The earlier audit sections are historical baseline material, not a statement that routes or implementation remain pending. The /systems implementation was not inspected or changed.
+The 20-site competitor research, this consolidated marketing brief, source/access limitations, repository-grounded capability matrix, and design rationale are retained. The approved marketing implementation is complete and is documented in the linked implementation plan. The earlier audit sections are historical baseline material, not a statement that routes or implementation remain pending. The /systems implementation was not inspected or changed.

@@ -82,8 +82,8 @@ useHead({
           </h2>
           <p class="leading-relaxed">
             A conceptual compact multirotor design for remote observation and
-            situational context in defense planning. Its design and final
-            product name remain subject to approval.
+            situational context in defense planning. Its design remains
+            conceptual; Kryos Multirotor is the approved working label.
           </p>
           <p class="text-sm text-(--kryos-text-high)">
             Intended to complement the Platform · integration planned, not implemented
