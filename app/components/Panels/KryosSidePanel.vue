@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 const props = withDefaults(
   defineProps<{
+    id?: string;
     headerTitle?: string;
     headerSubheader?: string;
   }>(),
@@ -17,6 +18,7 @@ const emit = defineEmits<{
 
 <template>
   <aside
+    :id="props.id"
     class="fixed flex flex-col items-center justify-center top-0 right-0 w-75 h-screen bg-linear-90 bg-(--kryos-bg) z-100 border-l-2 border-l-(--kryos-accent)"
   >
     <div

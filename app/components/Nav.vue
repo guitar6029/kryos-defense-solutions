@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { nextTick, onBeforeUnmount, onMounted, ref } from "vue";
 import KryosSidePanel from "./Panels/KryosSidePanel.vue";
 import KryosToggleMenu from "./Buttons/KryosToggleMenu.vue";
 import { DESKTOP_NAV_MIN_WIDTH } from "#imports";
@@ -6,6 +7,33 @@ import { DESKTOP_NAV_MIN_WIDTH } from "#imports";
 const route = useRoute();
 const { sideMenuDisplaying, toggleMenu, closeMenu } =
   useKryosMobileMenu(DESKTOP_NAV_MIN_WIDTH);
+const mobileMenuId = "kryos-mobile-menu";
+const menuTrigger = ref<HTMLElement | null>(null);
+
+const handleToggleMenu = (trigger: HTMLElement) => {
+  menuTrigger.value = trigger;
+  toggleMenu();
+};
+
+const handleCloseMenu = async () => {
+  closeMenu();
+  await nextTick();
+  menuTrigger.value?.focus();
+};
+
+const handleKeydown = (event: KeyboardEvent) => {
+  if (event.key === "Escape" && sideMenuDisplaying.value) {
+    void handleCloseMenu();
+  }
+};
+
+onMounted(() => {
+  document.addEventListener("keydown", handleKeydown);
+});
+
+onBeforeUnmount(() => {
+  document.removeEventListener("keydown", handleKeydown);
+});
 
 const marketingLinks = [
   { label: "Home", to: "/", active: (path: string) => path === "/" },
@@ -36,16 +64,24 @@ const marketingLinks = [
       </NuxtLink>
     </nav>
 
-    <KryosToggleMenu @toggle-menu="toggleMenu" />
+    <KryosToggleMenu
+      :expanded="sideMenuDisplaying"
+      :controls="mobileMenuId"
+      @toggle-menu="handleToggleMenu"
+    />
     <Transition name="panel-fade">
-      <KryosSidePanel v-if="sideMenuDisplaying" @close="closeMenu">
+      <KryosSidePanel
+        v-if="sideMenuDisplaying"
+        :id="mobileMenuId"
+        @close="handleCloseMenu"
+      >
         <template #main>
           <nav aria-label="Mobile main navigation" class="flex flex-col items-center gap-5">
             <NuxtLink
               v-for="link in marketingLinks"
               :key="link.to"
               :to="link.to"
-              @click="closeMenu"
+              @click="handleCloseMenu"
               class="text-lg text-(--kryos-text-mid) hover:text-(--kryos-text-high) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)"
               :class="link.active(route.path) ? 'text-(--kryos-text-high)' : ''"
               :aria-current="link.active(route.path) ? 'page' : undefined"

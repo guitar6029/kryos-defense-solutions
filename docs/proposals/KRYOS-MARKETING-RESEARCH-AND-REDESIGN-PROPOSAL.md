@@ -28,7 +28,7 @@ The implementation is recorded in commits 9bbab9f and f2a7dde. This proposal pre
 
 ### Exclusions
 
-`/systems`, its components, and its functionality were excluded. No redesign recommendations are made for that section. To classify the software concept without opening that route, I read only selected non-`/systems` contracts and data-flow files (`app/composables/useKryosFleet.ts`, `useKryosFleetCriteria.ts`, `app/stores/kryosFleet.ts`, fleet types, `server/api/fleet.get.ts`, and its query/response helpers). These were read-only inspections; no fleet behavior, API, database, SSE, authentication, or application code was changed. The shared navigation's Systems destination is mentioned only as a boundary, not evaluated.
+`/systems`, its components, and its functionality were excluded. No redesign recommendations are made for that section. To classify the software concept without opening that route, I read only selected non-`/systems` contracts and data-flow files (`app/composables/useKryosFleet.ts`, `useKryosFleetCriteria.ts`, `app/stores/kryosFleet.ts`, fleet types, `server/api/fleet.get.ts`, and its query/response helpers). These were read-only inspections; no fleet behavior, API, database, SSE, authentication, or application code was changed. The removed `/systems` destination is mentioned only as a boundary; current marketing navigation contains no Systems link, and no removed Systems implementation was inspected.
 
 ### Evidence labels
 
@@ -173,7 +173,7 @@ The page recommendations and routes below are implemented. For detailed page con
 - **Products (/products):** Platform primary, Multirotor flagship concept, MK-I future direction, EX-1 deferred.
 - **Multirotor detail (/products/kryos-multirotor):** approved working label, approved master image, concept disclosure, no approved specifications, and explicit planned/not-implemented integration status.
 - **About (/about):** fictional portfolio framing and a distinction between the implemented software prototype and conceptual hardware.
-- **Shared navigation/footer:** short, valid in-scope marketing links and fictional-project disclosure. Preserve the existing Systems link without reviewing or changing its destination or functionality.
+- **Shared navigation/footer:** short, valid in-scope marketing links and fictional-project disclosure. The removed Systems link is not restored; `/systems` remains outside this work and was not inspected.
 
 ### Copy and claim boundaries
 

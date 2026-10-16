@@ -17,7 +17,7 @@ This document records the approved implementation and the remaining review/follo
 - /products presents the Platform first, the Multirotor second as flagship hardware concept, MK-I as a future direction, and EX-1 as deferred.
 - /products/kryos-multirotor presents the approved working label **Kryos Multirotor**, the conceptual hardware status, the planned/not-implemented Platform relationship, and the absence of approved technical specifications.
 - /about describes the fictional portfolio and separates the software prototype from conceptual hardware.
-- Shared navigation and footer provide in-scope marketing destinations and a concise fictional-project disclosure. The existing Systems destination is preserved; /systems and its functionality remain outside this work.
+- Shared navigation and footer provide the in-scope Home, Platform, Products, and About destinations plus a concise fictional-project disclosure. The removed `/systems` destination remains outside this work; no removed Systems implementation is restored or inspected.
 
 The committed implementation is recorded in 9bbab9f (feat(marketing): add platform and multirotor product pages) and f2a7dde (feat(marketing): refresh shared navigation and footer).
 
