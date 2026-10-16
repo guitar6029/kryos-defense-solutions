@@ -60,6 +60,44 @@ describe("device simulator kernel", () => {
     expect(simulator.getDevices()[0].charging).toBe("CHARGING");
   });
 
+  it("does not start charging a device that faults at low battery", () => {
+    const clock = makeClock();
+    const simulator = createDeviceSimulator({
+      fleetSize: 1,
+      seed: 2,
+      batteryDrainPerSecond: 20,
+      lowBatteryThreshold: 25,
+      faultProbability: 1,
+      faultRecoveryProbability: 0,
+    }, { clock });
+    simulator.tick();
+    clock.advance(5000);
+    const tick = simulator.tick();
+    const device = simulator.getDevices()[0];
+
+    expect(tick?.events.map((event) => event.type)).toEqual(expect.arrayContaining(["fault.opened"]));
+    expect(tick?.events.some((event) => event.type === "charging.started")).toBe(false);
+    expect(device).toMatchObject({ health: "FAULTED", charging: "NOT_CHARGING" });
+  });
+
+  it("stops charging and clears assignment when a charging device faults", () => {
+    const clock = makeClock();
+    const simulator = createDeviceSimulator({
+      fleetSize: 5,
+      faultProbability: 1,
+      faultRecoveryProbability: 0,
+    }, { clock });
+    simulator.tick();
+    expect(simulator.getDevices()[4]).toMatchObject({ charging: "CHARGING", availability: "AVAILABLE", assignmentId: null });
+
+    clock.advance(5000);
+    const tick = simulator.tick();
+    const device = simulator.getDevices()[4];
+
+    expect(tick?.events.map((event) => event.type)).toEqual(expect.arrayContaining(["fault.opened", "charging.stopped"]));
+    expect(device).toMatchObject({ health: "FAULTED", charging: "NOT_CHARGING", availability: "AVAILABLE", assignmentId: null });
+  });
+
   it("supports deterministic connectivity and fault transitions", () => {
     const clock = makeClock();
     const simulator = createDeviceSimulator({ fleetSize: 1, seed: 3, connectivityLossProbability: 1, faultProbability: 1 }, { clock });
