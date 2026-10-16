@@ -1,5 +1,21 @@
 # KRYOS Agent Instructions
 
+## Mandatory repository and Git safety checks
+
+Before performing any work:
+
+1. Read the repository's root `AGENTS.md` and any applicable nested agent instructions.
+2. Run `git status --short --branch` and `git branch --show-current`.
+3. Confirm the current branch and worktree.
+4. **Never implement changes or create commits directly on `main`.**
+5. If currently on `main`, create or switch to an appropriate feature branch before editing files.
+6. If there are existing uncommitted changes, preserve them. Do not switch branches, reset, stash, or overwrite work without assessing the consequences.
+7. If a safe feature branch cannot be established, stop and report the issue.
+
+Follow the repository instructions throughout the task.
+
+Do not merge into `main` or push changes unless explicitly authorized.
+
 ## Task Routing and Clarification
 
 - Before starting a task, analyze its objective, scope, acceptance criteria, and risks.

@@ -44,7 +44,7 @@ const marketingLinks = [
 </script>
 
 <template>
-  <header class="sticky top-0 z-50 border-b border-white/10 bg-(--kryos-bg-alt)/95 backdrop-blur">
+  <header class="sticky top-0 z-50 border-b border-(--kryos-accent-dark-3) bg-(--kryos-bg-alt)/95 backdrop-blur">
     <nav
       aria-label="Main navigation"
       class="mx-auto flex min-h-18 w-full max-w-7xl items-center gap-8 px-6 md:px-10 max-[750px]:hidden"

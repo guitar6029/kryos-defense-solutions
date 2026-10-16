@@ -34,7 +34,7 @@ useHead({
     </header>
 
     <section class="grid gap-6 md:grid-cols-2">
-      <div class="rounded-xl border border-white/10 bg-(--kryos-bg-alt) p-7">
+      <div class="rounded-xl border border-(--kryos-accent-dark-3) bg-(--kryos-bg-alt) p-7">
         <p class="text-sm font-semibold uppercase tracking-wider text-(--kryos-warn)">
           Implemented prototype
         </p>
@@ -50,7 +50,7 @@ useHead({
           Explore the Platform
         </NuxtLink>
       </div>
-      <div class="rounded-xl border border-white/10 bg-(--kryos-bg-alt) p-7">
+      <div class="rounded-xl border border-(--kryos-accent-dark-3) bg-(--kryos-bg-alt) p-7">
         <p class="text-sm font-semibold uppercase tracking-wider text-(--kryos-warn)">
           Conceptual hardware
         </p>

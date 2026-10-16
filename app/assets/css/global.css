@@ -10,10 +10,10 @@
      ========================================================================== */
 
   /* Primary page background (black steel) */
-  --kryos-bg: #0c0d0e;
+  --kryos-bg: #0b0e10;
 
   /* Secondary background (graphite panels, nav, cards) */
-  --kryos-bg-alt: #131416;
+  --kryos-bg-alt: #1b2125;
 
   /* ==========================================================================
      PRIMARY ACCENTS (Cold Industrial Blue)
@@ -21,22 +21,22 @@
      ========================================================================== */
 
   /* Core accent blue (muted, metallic) */
-  --kryos-accent: #4c5d6c;
+  --kryos-accent: #7b878d;
 
   /* Darker variations */
-  --kryos-accent-dark-1: #3b4a58; /* darker steel blue — subtle, industrial */
-  --kryos-accent-dark-2: #2e3944; /* graphite blue-black — tactical, stealth */
-  --kryos-accent-dark-3: #343a40; /* neutral gunmetal — armor plating feel */
-  --kryos-accent-dark-4: #1f2429; /* obsidian tactical — deep shadow accent */
+  --kryos-accent-dark-1: #343e44; /* gunmetal surface */
+  --kryos-accent-dark-2: #273035; /* recessed graphite */
+  --kryos-accent-dark-3: #343e44; /* gunmetal rule and surface */
+  --kryos-accent-dark-4: #0b0e10; /* obsidian structural shadow */
 
   /* Recommended for background panel strokes */
-  --kryos-accent-shadow: #2e3944; /* pairs with primary for depth layering */
+  --kryos-accent-shadow: #343e44; /* pairs with primary for depth layering */
 
   /* Brightest blue highlight (use sparingly) */
-  --kryos-accent-bright: #79a1c8;
+  --kryos-accent-bright: #aeb7ba;
 
   /* Low-contrast line color (grids, borders) */
-  --kryos-line: #20262d;
+  --kryos-line: #343e44;
 
   /* ==========================================================================
      WARNING PALETTE (Hazard Amber)
@@ -45,12 +45,12 @@
 
   /* High visibility “Caution / Warning” amber */
 
-  --kryos-circuit-path: #f0b847;
+  --kryos-circuit-path: #c39a52;
 
-  --kryos-warn: #d7a429;
+  --kryos-warn: #c39a52;
 
   /* Subtle amber (low-emphasis hazard stripes, muted labels) */
-  --kryos-warn-faint: #9a7b32;
+  --kryos-warn-faint: #8e6a30;
 
   /* ==========================================================================
      DANGER PALETTE (Red / Critical)
@@ -69,13 +69,13 @@
      ========================================================================== */
 
   /* Matte gunmetal */
-  --kryos-metal-light: #2b2f33;
+  --kryos-metal-light: #343e44;
 
   /* Steel midtone (good for surfaces, cards) */
-  --kryos-metal-mid: #1f2326;
+  --kryos-metal-mid: #1b2125;
 
   /* Blackened alloy (deep structural elements) */
-  --kryos-metal-dark: #181a1c;
+  --kryos-metal-dark: #0b0e10;
 
   /* ==========================================================================
      TEXT SYSTEM (Cold military corp typography)
@@ -83,13 +83,13 @@
      ========================================================================== */
 
   /* Crisp cool white */
-  --kryos-text-high: #e5e8ea;
+  --kryos-text-high: #e9e5dc;
 
   /* Main readable gray */
-  --kryos-text-mid: #adb4b9;
+  --kryos-text-mid: #aeb7ba;
 
   /* Low-emphasis UI labels, secondary info */
-  --kryos-text-low: #6d7479;
+  --kryos-text-low: #7b878d;
 
   --kryos-mk-bg: #536573;
 

@@ -38,7 +38,7 @@ useHead({
       </p>
     </header>
 
-    <section aria-labelledby="platform-card-title" class="grid gap-8 rounded-xl border border-white/10 bg-(--kryos-bg-alt) p-7 md:grid-cols-[1fr_auto] md:items-center md:p-10">
+    <section aria-labelledby="platform-card-title" class="grid gap-8 rounded-xl border border-(--kryos-accent-dark-3) bg-(--kryos-bg-alt) p-7 md:grid-cols-[1fr_auto] md:items-center md:p-10">
       <div>
         <p class="text-sm font-semibold uppercase tracking-wider text-(--kryos-warn)">
           Primary product · software prototype · sample data
@@ -60,9 +60,9 @@ useHead({
       </NuxtLink>
     </section>
 
-    <section aria-labelledby="multirotor-card-title" class="overflow-hidden rounded-xl border border-white/10 bg-(--kryos-bg-alt)">
+    <section aria-labelledby="multirotor-card-title" class="overflow-hidden rounded-xl border border-(--kryos-accent-dark-3) bg-(--kryos-bg-alt)">
       <div class="grid lg:grid-cols-[1.2fr_0.8fr]">
-        <div class="aspect-video w-full self-start overflow-hidden bg-black">
+        <div class="aspect-video w-full self-start overflow-hidden bg-(--kryos-bg)">
           <img
             :src="multirotorHero"
             alt="Illustrative concept rendering of the Kryos Multirotor compact aircraft."
@@ -90,7 +90,7 @@ useHead({
           </p>
           <NuxtLink
             to="/products/kryos-multirotor"
-            class="inline-flex min-h-12 items-center rounded-md border border-(--kryos-warn) px-6 py-3 font-semibold text-(--kryos-text-high) hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)"
+            class="inline-flex min-h-12 items-center rounded-md border border-(--kryos-warn) px-6 py-3 font-semibold text-(--kryos-text-high) hover:bg-(--kryos-accent-dark-3) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)"
           >
             Explore Kryos Multirotor
           </NuxtLink>
@@ -98,7 +98,7 @@ useHead({
       </div>
     </section>
 
-    <section aria-labelledby="future-title" class="border-t border-white/10 pt-8">
+    <section aria-labelledby="future-title" class="border-t border-(--kryos-accent-dark-3) pt-8">
       <p class="text-sm uppercase tracking-wider text-(--kryos-text-low)">
         Future direction · under review
       </p>

@@ -1,5 +1,5 @@
 <template>
-  <footer class="border-t border-white/10 bg-(--kryos-bg-alt)">
+  <footer class="border-t border-(--kryos-accent-dark-3) bg-(--kryos-bg-alt)">
     <div class="mx-auto flex w-full max-w-7xl flex-col gap-6 px-6 py-10 md:flex-row md:items-center md:justify-between md:px-10">
       <div>
         <p class="font-semibold tracking-[0.12em] text-(--kryos-text-high)">
