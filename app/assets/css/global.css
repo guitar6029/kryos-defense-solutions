@@ -120,10 +120,6 @@
   .trns-color {
     @apply transition-colors duration-150 ease-linear;
   }
-  .trns-slow {
-    @apply transition ease-in duration-800;
-  }
-
   .kryos-border {
     border-color: var(--kryos-accent);
     @apply border;
@@ -190,25 +186,6 @@ body {
   background: var(--kryos-bg);
 }
 
-.font-tech {
-  font-family: "Rajdhani", sans-serif;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
 .font-orbitron {
   font-family: "Orbitron", sans-serif;
-}
-
-.font-body {
-  font-family: "Exo 2", sans-serif;
-  font-weight: 400;
-}
-
-.hv-text:hover {
-  color: var(--kryos-text-high);
-}
-
-.footer-section-title {
-  font-size: 25px;
 }

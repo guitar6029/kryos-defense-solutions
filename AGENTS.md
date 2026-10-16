@@ -39,6 +39,21 @@ These instructions are the shared baseline for AI coding agents working in this 
 - Use `npm run dev` for local development, `npm test` for the test script, `npm run build` for a production build, and `npm run generate` for static generation.
 - The UI, state-management patterns, and simulated command flows are implemented in varying degrees. Roadmap items in the README are proposed work. Do not describe AI, database, geospatial, event-driven, or real-world command capabilities as implemented unless the code confirms them.
 
+### Node.js / npm environment troubleshooting
+
+- Local development uses Node.js `22.23.3`.
+- Before concluding that `npm` is unavailable, inspect the environment with:
+  ```bash
+  node --version
+  command -v node
+  command -v npm
+  command -v nvm
+  ```
+- If `nvm` is available, select the project runtime with `nvm use 22.23.3`. If that version is not installed, inspect `.nvmrc` and the project documentation before installing anything; do not silently substitute another version.
+- Verify the selected toolchain with `node --version` and `npm --version`, then install dependencies with `npm ci` before running requested checks such as `npm test`, `npm run build`, and `npm run generate`.
+- If `nvm` is unavailable, inspect available Node runtimes before attempting workarounds. Do not download a standalone npm CLI or change `package.json` or `package-lock.json` to work around a PATH issue.
+- Apply this troubleshooting sequence to the current marketing cleanup work and future KRYOS tasks. If the environment prevents verification, report the exact blocker and stop rather than claiming checks passed.
+
 ### Established local workflows
 
 - Use `npm test`, `npm run build`, and `npm run generate` for the repository's configured checks. Report passed, failed, and skipped tests separately.

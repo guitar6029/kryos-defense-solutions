@@ -1,20 +1,3 @@
-.animate-move-x {
-  --dx: 300px;
-  --dur: 10s;
-  --tf: ease-in-out;
-  animation: move-x var(--dur) var(--tf) alternate-reverse infinite;
-}
-
-
-@keyframes move-x {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(var(--dx));
-  }
-}
-
 .rotate {
   animation: rotate var(--duration, 120s) linear infinite;
 }
