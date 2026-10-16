@@ -2,7 +2,7 @@ import type { Device } from "../../generated/prisma/client.js";
 import type { PrismaClient } from "../../generated/prisma/client.js";
 import { getPrismaClient } from "../utils/prisma";
 import { publishDeviceUpdated } from "../utils/fleet-events";
-import type { TelemetryEnvelope } from "../simulator/device-simulator";
+import { createTelemetryMessageId, type TelemetryEnvelope } from "../simulator/device-simulator";
 
 export type TelemetryProjection = {
   unitId: string;
@@ -87,6 +87,16 @@ function isNullableString(value: unknown, maxLength: number): value is string | 
   return value === null || (typeof value === "string" && value.length <= maxLength);
 }
 
+function hasConsistentOperationalState(measurements: Record<string, unknown>): boolean {
+  const assignmentId = measurements.assignmentId;
+  const availability = measurements.availability;
+  const charging = measurements.charging;
+  if (availability === "AVAILABLE" && assignmentId !== null) return false;
+  if (availability === "ASSIGNED" && assignmentId === null) return false;
+  if (charging === "CHARGING" && assignmentId !== null) return false;
+  return true;
+}
+
 export function validateTelemetryEnvelope(value: unknown): value is TelemetryEnvelope {
   if (!isRecord(value) || value.schemaVersion !== 1) return false;
   if (!boundedString(value.messageId, 256) || !boundedString(value.deviceId, 128)) return false;
@@ -107,9 +117,11 @@ export function validateTelemetryEnvelope(value: unknown): value is TelemetryEnv
     typeof measurements.status === "string" && STATUSES.has(measurements.status) &&
     isNullableString(measurements.assignmentId, 256) &&
     isNullableString(measurements.faultCode, 128) &&
+    hasConsistentOperationalState(measurements) &&
     boundedString(simulator.seed, 128) &&
     boundedString(simulator.runId, 128) &&
-    typeof simulator.generation === "number" && Number.isSafeInteger(simulator.generation) && simulator.generation > 0
+    typeof simulator.generation === "number" && Number.isSafeInteger(simulator.generation) && simulator.generation > 0 &&
+    value.messageId === createTelemetryMessageId(simulator.runId, value.deviceId, value.sequence)
   );
 }
 
