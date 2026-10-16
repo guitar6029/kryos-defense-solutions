@@ -2,7 +2,7 @@
 
 This guide runs the Kryos Nuxt application and a local PostgreSQL database with Docker Compose. It uses the existing Doppler project and `dev` config while keeping the local database separate from the Neon database used by host-based development.
 
-Run these commands from the repository root on `feat/local-dev-docker-compose`.
+Run these commands from the repository root on the current task branch. Inspect `git status` first and preserve existing work; see [`AGENTS.md`](../../AGENTS.md) for repository-wide agent and safety guidance.
 
 ## What this setup provides
 
@@ -13,7 +13,7 @@ Run these commands from the repository root on `feat/local-dev-docker-compose`.
 - Compose service-to-service access at `db:5432`.
 - Host access at `http://localhost:3000` and, by default, `localhost:5432`.
 
-This is local development infrastructure. It is not production infrastructure, does not seed sample devices, and does not connect the Dockerized app to Neon.
+This is local development infrastructure. It is not production infrastructure, does not seed sample devices, does not include a simulator service or message broker, and does not connect the Dockerized app to Neon.
 
 ## Prerequisites
 
@@ -42,6 +42,7 @@ It injects the configured variables and explicitly sets `DB_ENV=dev`; it does no
 | --- | --- | --- | --- |
 | Local Docker | Compose PostgreSQL at `db:5432` inside `app` | Derived from `POSTGRES_*` | Does not access Neon |
 | Host development | Existing selected host database, normally Neon dev | `DATABASE_URL_DEV`, `DIRECT_URL_DEV` | Use only after verifying the target |
+| Host integration tests | Local PostgreSQL at `localhost:${POSTGRES_PORT:-5432}`, logical database `kryos_test` | `TEST_DATABASE_URL`, `KRYOS_ALLOW_LOCAL_TEST_DATABASE` | Local only; never Neon/staging/production |
 | Staging/production | Hosted environments | Environment-specific URL pairs | Out of scope here |
 
 Do not overwrite `DATABASE_URL_DEV` or `DIRECT_URL_DEV` to run Docker. Compose explicitly blanks those fields in the app container, passes local `POSTGRES_DB`, `POSTGRES_USER`, and `POSTGRES_PASSWORD`, and lets `scripts/docker-app-entrypoint.mjs` derive URL-encoded local values.
@@ -62,6 +63,10 @@ The local Docker workflow requires:
 `POSTGRES_PORT` and `APP_PORT` are optional and default to host ports 5432 and 3000. They do not change the app's internal target of `db:5432`.
 
 Host Prisma configuration loads `DIRECT_URL_<ENV>` through `resolveDatabaseEnvironment()`; the runtime client loads `DATABASE_URL_<ENV>`. In Docker, the entrypoint replaces the `dev` pair with local URLs before Prisma or Nuxt starts.
+
+The Compose database named by `POSTGRES_DB` is the local development database. `kryos_test` is a separate logical database in the same local PostgreSQL instance when it is provisioned for integration tests; migrations and data in one database do not apply to the other.
+
+The integration-test guard in [`tests/local-test-database.ts`](../../tests/local-test-database.ts) requires `TEST_DATABASE_URL` to use PostgreSQL, target `localhost`, `127.0.0.1`, or `::1`, and name the database `kryos_test`, plus `KRYOS_ALLOW_LOCAL_TEST_DATABASE=true`. A missing URL intentionally skips the guarded suite; an unsafe supplied URL is rejected before database access. Report skipped tests separately and never count them as passing integration coverage.
 
 ### Verify access without displaying values
 
@@ -96,7 +101,7 @@ pwd
 git branch --show-current
 ```
 
-Confirm the path is the repository root and the branch is `feat/local-dev-docker-compose`. Preserve any existing work before switching branches or changing files.
+Confirm the path is the repository root and inspect the current branch. Preserve existing work before switching branches or changing files.
 
 ### 2. Validate Doppler and Compose
 
@@ -137,8 +142,8 @@ The temporary JSON contains resolved environment data. Do not display or commit 
 ### 3. Build and start
 
 ```bash
-npm run doppler -- docker compose -f compose.yaml -f compose.dev.yaml up --build -d
-npm run doppler -- docker compose -f compose.yaml -f compose.dev.yaml ps
+npm run docker:doppler-up
+npm run docker:doppler-ps
 ```
 
 Wait until `db` reports `healthy` and `app` reports `running`. Compose waits for the PostgreSQL health check before starting the app.
@@ -160,10 +165,17 @@ This mode does not hot reload. Rebuild after source or dependency changes, then 
 ### 4. Apply migrations
 
 ```bash
-npm run doppler -- docker compose -f compose.yaml -f compose.dev.yaml run --rm app npx prisma migrate deploy
+npm run docker:doppler-migrate
 ```
 
-This applies committed migrations under `prisma/migrations`; it does not create a new migration. The current migration creates the `devices` table and its constraints.
+This applies the committed migrations under `prisma/migrations` to the local development database named by `POSTGRES_DB`; it does not create a new migration. The four current migrations are:
+
+- `20261010000000_create_devices`: creates `devices` and its base constraints.
+- `20261015000000_add_device_operational_state`: adds health, availability, charging, assignment, fault, message, run, and sequence projection fields and constraints.
+- `20261015010000_add_simulator_run_authority`: adds the generation allocator, `simulator_runs`, device authority fields, constraints, and the authority index.
+- `20261016000000_add_telemetry_occurred_at`: adds `devices.last_telemetry_occurred_at` for producer event time.
+
+This development-database command does not migrate `kryos_test`. Verify the effective datasource before any migration command.
 
 ### 5. Verify services
 
