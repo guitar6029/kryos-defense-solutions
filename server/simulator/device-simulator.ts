@@ -1,4 +1,4 @@
-import { randomUUID } from "node:crypto";
+import { createHash, randomUUID } from "node:crypto";
 
 export const DEFAULT_SIMULATOR_CONFIG = {
   fleetSize: 500,
@@ -77,7 +77,8 @@ export type OperationalEventType =
   | "assignment.changed"
   | "assignment.completed"
   | "charging.started"
-  | "charging.completed";
+  | "charging.completed"
+  | "charging.stopped";
 
 export type OperationalEvent = {
   type: OperationalEventType;
@@ -197,6 +198,18 @@ function statusFor(device: Pick<SimulatedDevice, "connectivity" | "health">): De
   return "ONLINE";
 }
 
+/**
+ * Derive an opaque, canonical identity for one simulator sample.
+ *
+ * The individual identity fields remain first-class envelope fields; the
+ * digest only binds them together without requiring consumers to parse a
+ * delimiter-separated identifier.
+ */
+export function createTelemetryMessageId(runId: string, deviceId: string, sequence: number): string {
+  const identity = JSON.stringify([runId, deviceId, sequence]);
+  return `telemetry-v1-${createHash("sha256").update(identity).digest("hex")}`;
+}
+
 function platformFor(unitId: string, index: number): SimulatedDevice["platform"] {
   const seededPlatform = /^DEV-(MK|EX)-/i.exec(unitId)?.[1]?.toUpperCase();
   if (seededPlatform === "MK" || seededPlatform === "EX") return seededPlatform;
@@ -305,22 +318,6 @@ export class DeviceSimulator {
     const beforeFault = device.health;
     const beforeAssignment = device.assignmentId;
     const beforeCharging = device.charging;
-    if (device.charging === "CHARGING") {
-      device.batteryPct = Math.min(100, device.batteryPct + this.config.batteryChargePerSecond * elapsedSeconds);
-      if (device.batteryPct >= this.config.chargeCompleteThreshold) {
-        device.charging = "NOT_CHARGING";
-        events.push({ type: "charging.completed", deviceId: device.unitId, occurredAt, details: { batteryPct: device.batteryPct } });
-      }
-    } else {
-      const drainMultiplier = device.availability === "ASSIGNED" ? 1.5 : 1;
-      device.batteryPct = Math.max(0, device.batteryPct - this.config.batteryDrainPerSecond * elapsedSeconds * drainMultiplier);
-      if (device.batteryPct <= this.config.lowBatteryThreshold && device.health === "HEALTHY") {
-        device.charging = "CHARGING";
-        device.availability = "AVAILABLE";
-        device.assignmentId = null;
-        events.push({ type: "charging.started", deviceId: device.unitId, occurredAt, details: { batteryPct: device.batteryPct } });
-      }
-    }
     if (device.connectivity === "DISCONNECTED") {
       if (this.random.next() < this.config.connectivityRecoveryProbability) device.connectivity = "CONNECTED";
     } else if (this.random.next() < this.config.connectivityLossProbability) {
@@ -337,6 +334,32 @@ export class DeviceSimulator {
       device.health = "FAULTED";
       device.faultCode = FAULT_CODES[Math.floor(this.random.next() * FAULT_CODES.length)] ?? null;
     }
+
+    if (device.health === "FAULTED") {
+      if (device.charging === "CHARGING") {
+        device.charging = "NOT_CHARGING";
+        device.availability = "AVAILABLE";
+        device.assignmentId = null;
+        events.push({ type: "charging.stopped", deviceId: device.unitId, occurredAt, details: { reason: "faulted", batteryPct: device.batteryPct } });
+      }
+      const drainMultiplier = device.availability === "ASSIGNED" ? 1.5 : 1;
+      device.batteryPct = Math.max(0, device.batteryPct - this.config.batteryDrainPerSecond * elapsedSeconds * drainMultiplier);
+    } else if (device.charging === "CHARGING") {
+      device.batteryPct = Math.min(100, device.batteryPct + this.config.batteryChargePerSecond * elapsedSeconds);
+      if (device.batteryPct >= this.config.chargeCompleteThreshold) {
+        device.charging = "NOT_CHARGING";
+        events.push({ type: "charging.completed", deviceId: device.unitId, occurredAt, details: { batteryPct: device.batteryPct } });
+      }
+    } else {
+      const drainMultiplier = device.availability === "ASSIGNED" ? 1.5 : 1;
+      device.batteryPct = Math.max(0, device.batteryPct - this.config.batteryDrainPerSecond * elapsedSeconds * drainMultiplier);
+      if (device.batteryPct <= this.config.lowBatteryThreshold) {
+        device.charging = "CHARGING";
+        device.availability = "AVAILABLE";
+        device.assignmentId = null;
+        events.push({ type: "charging.started", deviceId: device.unitId, occurredAt, details: { batteryPct: device.batteryPct } });
+      }
+    }
     if (device.charging !== "CHARGING" && device.health === "HEALTHY" && device.connectivity !== "DISCONNECTED" && this.random.next() < this.config.assignmentChangeProbability) {
       if (device.assignmentId) {
         events.push({ type: "assignment.completed", deviceId: device.unitId, occurredAt, details: { assignmentId: device.assignmentId } });
@@ -350,8 +373,8 @@ export class DeviceSimulator {
     if (beforeConnectivity !== device.connectivity) events.push({ type: "connectivity.changed", deviceId: device.unitId, occurredAt, details: { from: beforeConnectivity, to: device.connectivity } });
     if (beforeFault !== device.health) events.push({ type: device.health === "FAULTED" ? "fault.opened" : "fault.cleared", deviceId: device.unitId, occurredAt, details: { faultCode: device.faultCode } });
     if (beforeAssignment !== device.assignmentId) events.push({ type: "assignment.changed", deviceId: device.unitId, occurredAt, details: { from: beforeAssignment, to: device.assignmentId } });
-    if (beforeCharging !== device.charging && !events.some((event) => event.deviceId === device.unitId && event.type === (device.charging === "CHARGING" ? "charging.started" : "charging.completed"))) {
-      events.push({ type: device.charging === "CHARGING" ? "charging.started" : "charging.completed", deviceId: device.unitId, occurredAt, details: { batteryPct: device.batteryPct } });
+    if (beforeCharging !== device.charging && !events.some((event) => event.deviceId === device.unitId && event.type.startsWith("charging."))) {
+      events.push({ type: device.charging === "CHARGING" ? "charging.started" : "charging.stopped", deviceId: device.unitId, occurredAt, details: { batteryPct: device.batteryPct } });
     }
     device.signalQuality = device.connectivity === "CONNECTED" ? 90 : device.connectivity === "DEGRADED" ? 55 : 0;
     device.status = statusFor(device);
@@ -360,7 +383,7 @@ export class DeviceSimulator {
   private toTelemetry(device: SimulatedDevice, occurredAt: string): TelemetryEnvelope {
     return {
       schemaVersion: 1,
-      messageId: `${this.runId}/${device.unitId}/${String(device.sequence).padStart(6, "0")}`,
+      messageId: createTelemetryMessageId(this.runId, device.unitId, device.sequence),
       deviceId: device.unitId,
       deviceType: device.platform,
       sequence: device.sequence,
