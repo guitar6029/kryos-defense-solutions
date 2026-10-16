@@ -2,7 +2,7 @@ import { PrismaPg } from "@prisma/adapter-pg";
 import { randomUUID } from "node:crypto";
 import { PrismaClient } from "../generated/prisma/client.js";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
-import { createDeviceSimulator, type SimulatorClock } from "../server/simulator";
+import { createDeviceSimulator, createTelemetryMessageId, type SimulatorClock } from "../server/simulator";
 import { createPrismaTelemetryPersistence, createTelemetryIngestionService } from "../server/telemetry/ingestion";
 import { registerSimulatorRun, stopSimulatorRun } from "../server/telemetry/run-authority";
 import { resolvePermittedLocalTestDatabaseUrl } from "./local-test-database";
@@ -61,7 +61,7 @@ async function assertReplacementTelemetryIsFenced(
   ).tick()!.telemetry[deviceIndex]!;
   oldTelemetry.simulator.generation = generationA;
   oldTelemetry.sequence = 2;
-  oldTelemetry.messageId = `${runA}/${deviceId}/000002`;
+  oldTelemetry.messageId = createTelemetryMessageId(runA, deviceId, 2);
   receiptAt = new Date("2026-10-15T12:11:00.000Z");
   expect((await service.ingest(oldTelemetry)).reason).toBe("stopped");
 
@@ -150,7 +150,7 @@ suite("telemetry persistence (local PostgreSQL)", () => {
     expect(afterRestart.lastPingAt.toISOString()).toBe("2026-10-15T12:03:00.000Z");
     expect(afterRestart.lastTelemetryOccurredAt?.toISOString()).toBe("2026-10-15T11:59:00.000Z");
     const delayedOldRun = { ...first, occurredAt: "2030-01-01T00:00:00.000Z", sequence: 2 };
-    delayedOldRun.messageId = `${runOne}/SIM-0001/000002`;
+    delayedOldRun.messageId = createTelemetryMessageId(runOne, "SIM-0001", 2);
     receiptAt = new Date("2026-10-15T12:04:00.000Z");
     expect((await service.ingest(delayedOldRun)).reason).toBe("superseded");
 
@@ -181,8 +181,8 @@ suite("telemetry persistence (local PostgreSQL)", () => {
     const firstTick = simulator.tick()!;
     const telemetry = firstTick.telemetry[1]!;
     telemetry.simulator.generation = winner.generation;
-    const sequenceTwo = { ...telemetry, sequence: 2, messageId: `${winner.runId}/SIM-0002/000002`, occurredAt: "2026-10-15T12:00:05.000Z" };
-    const sequenceThree = { ...telemetry, sequence: 3, messageId: `${winner.runId}/SIM-0002/000003`, occurredAt: "2026-10-15T12:00:10.000Z" };
+    const sequenceTwo = { ...telemetry, sequence: 2, messageId: createTelemetryMessageId(winner.runId, "SIM-0002", 2), occurredAt: "2026-10-15T12:00:05.000Z" };
+    const sequenceThree = { ...telemetry, sequence: 3, messageId: createTelemetryMessageId(winner.runId, "SIM-0002", 3), occurredAt: "2026-10-15T12:00:10.000Z" };
     const service = createTelemetryIngestionService(createPrismaTelemetryPersistence(prisma));
     const outcomes = await Promise.all([service.ingest(sequenceTwo), service.ingest(sequenceThree)]);
     expect(outcomes.filter(({ persisted }) => persisted).length).toBeGreaterThanOrEqual(1);
@@ -193,7 +193,7 @@ suite("telemetry persistence (local PostgreSQL)", () => {
 
     const contenderRunId = `race-replacement-${randomUUID()}`;
     const contenderTick = createDeviceSimulator({ fleetSize: 2, seed: 4 }, { clock: fixedClock("2026-10-15T12:01:00.000Z"), runId: winner.runId }).tick()!;
-    const racingOldMessage = { ...contenderTick.telemetry[1]!, sequence: 4, messageId: `${winner.runId}/SIM-0002/000004` };
+    const racingOldMessage = { ...contenderTick.telemetry[1]!, sequence: 4, messageId: createTelemetryMessageId(winner.runId, "SIM-0002", 4) };
     racingOldMessage.simulator.generation = winner.generation;
     const [raceResult, replacement] = await Promise.all([
       service.ingest(racingOldMessage),
