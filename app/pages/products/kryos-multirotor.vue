@@ -38,7 +38,7 @@ useHead({
           Approved concept render · working product label
         </p>
       </div>
-      <figure class="overflow-hidden rounded-xl border border-white/10 bg-black">
+      <figure class="overflow-hidden rounded-xl border border-(--kryos-accent-dark-3) bg-(--kryos-bg)">
         <img
           :src="multirotorHero"
           alt="Illustrative concept rendering of the Kryos Multirotor compact aircraft, shown from the front three-quarter view."
@@ -54,7 +54,7 @@ useHead({
       </figure>
     </header>
 
-    <section class="grid gap-8 border-y border-white/10 py-10 md:grid-cols-2">
+    <section class="grid gap-8 border-y border-(--kryos-accent-dark-3) py-10 md:grid-cols-2">
       <div>
         <p class="text-sm font-semibold uppercase tracking-wider text-(--kryos-warn)">
           Proposed design intent
@@ -93,7 +93,7 @@ useHead({
       </p>
     </section>
 
-    <nav aria-label="Product navigation" class="flex flex-wrap gap-5 border-t border-white/10 pt-7">
+    <nav aria-label="Product navigation" class="flex flex-wrap gap-5 border-t border-(--kryos-accent-dark-3) pt-7">
       <NuxtLink to="/platform" class="text-(--kryos-text-high) underline underline-offset-4 hover:text-(--kryos-warn) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)">
         Explore the Kryos Platform
       </NuxtLink>

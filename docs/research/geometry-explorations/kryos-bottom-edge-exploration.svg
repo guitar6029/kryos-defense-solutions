@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title description">
+  <title id="title">Kryos bottom-edge geometric composition exploration</title>
+  <desc id="description">A dark industrial geometric composition rising from the lower edge, with interlocking stepped layers, cutouts, parallel technical lines, and restrained amber accents. The upper area remains open for website content.</desc>
+
+  <rect width="1600" height="900" fill="#0B0E10"/>
+
+  <!-- Content-safe field: structural geometry stays below this horizon. -->
+  <path d="M0 676H174L220 630H438L476 590H714L755 550H1010L1054 508H1320L1372 466H1600V900H0Z" fill="#1B2125"/>
+
+  <!-- Rear structural layer with stepped changes of direction. -->
+  <path d="M0 738H118L166 690H340L392 638H566L608 596H820L864 552H1112L1150 514H1412L1458 472H1600V900H0Z" fill="#343E44"/>
+
+  <!-- Interlocking obsidian return creates a broken, engineered silhouette. -->
+  <path d="M0 798H154L202 750H414L454 708H672L716 664H922L966 620H1198L1248 570H1450L1492 528H1600V900H0Z" fill="#0B0E10"/>
+
+  <!-- Foreground plate, intentionally offset from the rear layer. -->
+  <path d="M0 850H226L270 806H490L534 762H748L792 718H1014L1060 674H1286L1332 630H1518L1560 588H1600V900H0Z" fill="#1B2125"/>
+
+  <!-- Negative-space cutouts. -->
+  <path d="M84 738H188L226 700H320L282 738L246 772H140Z" fill="#0B0E10"/>
+  <path d="M548 638H662L704 596H770L728 638L690 676H584Z" fill="#0B0E10"/>
+  <path d="M1014 738H1124L1168 694H1244L1196 742L1154 782H1058Z" fill="#0B0E10"/>
+  <path d="M1328 850H1438L1480 808H1554L1510 850L1468 888H1370Z" fill="#0B0E10"/>
+
+  <!-- Selected contour lines, kept parallel only where they clarify structure. -->
+  <g fill="none" stroke="#7B878D" stroke-width="2" opacity="0.72">
+    <path d="M24 708H150L198 660H374L420 614H596L638 572H846L888 530H1136L1176 490H1436L1478 450H1584"/>
+    <path d="M18 724H158L206 676H382L428 630H604L646 588H854L896 546H1144L1184 506H1444L1486 466H1590"/>
+    <path d="M248 824H478L522 780H736L780 736H1002L1048 692H1274L1320 648H1506L1552 602"/>
+  </g>
+
+  <!-- Sparse amber registration marks. -->
+  <g fill="none" stroke="#C39A52" stroke-width="3">
+    <path d="M398 638H452L486 604"/>
+    <path d="M1210 570H1254L1290 534"/>
+    <path d="M742 718H786L816 688"/>
+  </g>
+
+  <!-- Small technical notches, not a repeating pattern. -->
+  <g fill="#7B878D" opacity="0.8">
+    <path d="M96 690H132L118 704H82Z"/>
+    <path d="M876 552H912L898 566H862Z"/>
+    <path d="M1420 474H1456L1442 488H1406Z"/>
+  </g>
+
+  <!-- Fine line terminating in open negative space. -->
+  <path d="M640 846H940L986 800H1128" fill="none" stroke="#343E44" stroke-width="1"/>
+</svg>

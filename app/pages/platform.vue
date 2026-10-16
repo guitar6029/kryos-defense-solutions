@@ -67,7 +67,7 @@ const workflow = [
         <li
           v-for="(step, index) in workflow"
           :key="step.number"
-          class="relative rounded-xl border border-white/10 bg-(--kryos-bg-alt) p-6"
+          class="relative rounded-xl border border-(--kryos-accent-dark-3) bg-(--kryos-bg-alt) p-6"
         >
           <span class="text-sm font-semibold tracking-wider text-(--kryos-warn)">
             {{ step.number }} · {{ index === 0 ? "INPUT" : index === 1 ? "QUERY" : "SUMMARY" }}
@@ -90,7 +90,7 @@ const workflow = [
       </p>
     </section>
 
-    <section class="grid gap-8 border-y border-white/10 py-10 md:grid-cols-2">
+    <section class="grid gap-8 border-y border-(--kryos-accent-dark-3) py-10 md:grid-cols-2">
       <div>
         <p class="text-sm uppercase tracking-wider text-(--kryos-warn)">
           Implemented prototype
@@ -134,13 +134,13 @@ const workflow = [
       <div class="mt-6 flex flex-wrap gap-3">
         <NuxtLink
           to="/app"
-          class="inline-flex min-h-12 items-center rounded-md border border-(--kryos-warn) px-5 py-3 font-semibold text-(--kryos-text-high) hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)"
+          class="inline-flex min-h-12 items-center rounded-md border border-(--kryos-warn) px-5 py-3 font-semibold text-(--kryos-text-high) hover:bg-(--kryos-accent-dark-3) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)"
         >
           Open sample/development workspace
         </NuxtLink>
         <NuxtLink
           to="/products/kryos-multirotor"
-          class="inline-flex min-h-12 items-center rounded-md border border-(--kryos-accent) px-5 py-3 font-semibold text-(--kryos-text-high) hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)"
+          class="inline-flex min-h-12 items-center rounded-md border border-(--kryos-accent) px-5 py-3 font-semibold text-(--kryos-text-high) hover:bg-(--kryos-accent-dark-3) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)"
         >
           Explore Kryos Multirotor
         </NuxtLink>

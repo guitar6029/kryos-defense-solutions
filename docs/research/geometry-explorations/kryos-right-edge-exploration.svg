@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title description">
+  <title id="title">Kryos right-edge geometric composition exploration</title>
+  <desc id="description">A dark industrial composition wrapping around the right side of an open content field, using interlocking angular plates, stepped contours, negative-space channels, parallel lines, and restrained amber highlights.</desc>
+
+  <rect width="1600" height="900" fill="#0B0E10"/>
+
+  <!-- Open content field remains clear on the left. -->
+  <path d="M1040 0H1600V900H980L1030 846L988 792L1040 736L994 682L1048 624L1004 570L1058 514L1016 460L1072 402L1030 348L1088 286L1046 230L1104 170L1060 112Z" fill="#1B2125"/>
+
+  <!-- Outer interlocking armor plate. -->
+  <path d="M1194 0H1600V900H1120L1168 846L1128 802L1174 750L1134 706L1182 650L1142 602L1190 548L1152 500L1200 446L1160 398L1208 344L1170 296L1218 242L1180 194L1228 140L1190 92Z" fill="#343E44"/>
+
+  <!-- Obsidian channels cut through the layered mass. -->
+  <path d="M1300 0H1362L1316 54L1356 100L1310 154L1350 202L1304 256L1344 304L1298 358L1338 406L1292 460L1332 508L1286 562L1326 610L1280 664L1320 712L1274 766L1314 814L1268 900H1196L1242 846L1202 798L1248 744L1208 696L1254 642L1214 594L1260 540L1220 492L1266 438L1226 390L1272 336L1232 288L1278 234L1238 186L1284 132L1244 84Z" fill="#0B0E10"/>
+
+  <!-- Inner wrap: an irregular contour that turns toward the content field. -->
+  <path d="M1514 0H1600V900H1390L1432 848L1396 804L1438 756L1402 710L1444 662L1408 616L1450 568L1414 522L1456 474L1420 428L1462 380L1426 334L1468 286L1432 240L1474 194L1438 148L1480 102L1444 56Z" fill="#1B2125"/>
+
+  <!-- Cutout windows open the right mass back to the page field. -->
+  <path d="M1096 124H1174L1208 84L1170 132L1136 172H1062Z" fill="#0B0E10"/>
+  <path d="M1068 408H1152L1186 368L1148 416L1114 456H1036Z" fill="#0B0E10"/>
+  <path d="M1052 686H1130L1164 646L1126 694L1092 734H1020Z" fill="#0B0E10"/>
+
+  <!-- Parallel contour paths follow only the principal angular turns. -->
+  <g fill="none" stroke="#7B878D" stroke-width="2" opacity="0.74">
+    <path d="M1134 0L1086 112L1128 168L1076 228L1118 286L1064 348L1106 406L1052 468L1094 524L1040 586L1082 642L1028 704L1070 760L1018 824"/>
+    <path d="M1152 0L1104 112L1146 168L1094 228L1136 286L1082 348L1124 406L1070 468L1112 524L1058 586L1100 642L1046 704L1088 760L1036 824"/>
+    <path d="M1418 0L1372 92L1410 140L1364 194L1402 242L1356 296L1394 344L1348 398L1386 446L1340 500L1378 548L1332 602L1370 650L1324 704L1362 752L1316 812"/>
+  </g>
+
+  <!-- Restrained amber highlights establish a controlled hierarchy. -->
+  <g fill="none" stroke="#C39A52" stroke-width="3">
+    <path d="M1104 228H1140L1168 196"/>
+    <path d="M1068 586H1104L1132 554"/>
+    <path d="M1370 650H1406L1434 618"/>
+  </g>
+
+  <!-- Sparse registration bars and a quiet outer boundary. -->
+  <g fill="#7B878D" opacity="0.78">
+    <path d="M1188 300H1220L1208 312H1176Z"/>
+    <path d="M1148 742H1180L1168 754H1136Z"/>
+    <path d="M1462 430H1494L1482 442H1450Z"/>
+  </g>
+  <path d="M1236 34H1572V864H1278" fill="none" stroke="#343E44" stroke-width="1"/>
+</svg>
