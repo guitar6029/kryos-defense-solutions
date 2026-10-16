@@ -177,10 +177,36 @@ This applies the committed migrations under `prisma/migrations` to the local dev
 
 This development-database command does not migrate `kryos_test`. Verify the effective datasource before any migration command.
 
+### Local PostgreSQL integration tests
+
+The guarded integration suite uses a separate logical database named `kryos_test`. It may live in the same local PostgreSQL instance as the Compose development database, but it must not share that database's data. Provision `kryos_test` only inside the existing local PostgreSQL service if it is absent; never drop or recreate `POSTGRES_DB`, reset the instance, or delete the named volume.
+
+Use a temporary shell environment for the test database. The URL must target local `localhost`, `127.0.0.1`, or `::1` and the database name must be exactly `kryos_test`; do not print or persist the URL:
+
+```bash
+export TEST_DATABASE_URL='<local PostgreSQL URL targeting kryos_test>'
+export KRYOS_ALLOW_LOCAL_TEST_DATABASE=true
+```
+
+Before applying migrations, point both Prisma URLs at that same temporary local target and run migration status. Confirm the output names `kryos_test` and the local host, then deploy the committed migrations:
+
+```bash
+DB_ENV=dev DATABASE_URL_DEV="$TEST_DATABASE_URL" DIRECT_URL_DEV="$TEST_DATABASE_URL" npx prisma migrate status
+DB_ENV=dev DATABASE_URL_DEV="$TEST_DATABASE_URL" DIRECT_URL_DEV="$TEST_DATABASE_URL" npx prisma migrate deploy
+```
+
+Run the guarded integration file without resetting or deleting data:
+
+```bash
+npm test -- tests/telemetry-persistence.integration.test.ts
+```
+
+If `TEST_DATABASE_URL` is missing, the integration tests intentionally skip. If it is supplied but lacks the explicit opt-in or fails the local-host/database-name checks, test collection fails before database access. Report skipped tests separately from passed tests.
+
 ### 5. Verify services
 
 ```bash
-npm run doppler -- docker compose -f compose.yaml -f compose.dev.yaml ps
+npm run docker:doppler-ps
 npm run doppler -- docker compose -f compose.yaml -f compose.dev.yaml exec -T db pg_isready
 curl --silent --show-error --output /dev/null --write-out '%{http_code}\n' http://127.0.0.1:3000
 curl --silent --show-error --output /dev/null --write-out '%{http_code}\n' http://127.0.0.1:3000/api/fleet
@@ -252,14 +278,14 @@ Compose passes local `POSTGRES_*` values and blanks `DATABASE_URL_DEV`/`DIRECT_U
 Start or restart:
 
 ```bash
-npm run doppler -- docker compose -f compose.yaml -f compose.dev.yaml up --build -d
+npm run docker:doppler-up
 ```
 
 Status and logs:
 
 ```bash
-npm run doppler -- docker compose -f compose.yaml -f compose.dev.yaml ps
-npm run doppler -- docker compose -f compose.yaml -f compose.dev.yaml logs -f app
+npm run docker:doppler-ps
+npm run docker:doppler-logs
 npm run doppler -- docker compose -f compose.yaml -f compose.dev.yaml logs -f db
 ```
 
@@ -267,13 +293,13 @@ Run local Prisma commands through the app entrypoint:
 
 ```bash
 npm run doppler -- docker compose -f compose.yaml -f compose.dev.yaml run --rm app npx prisma migrate status
-npm run doppler -- docker compose -f compose.yaml -f compose.dev.yaml run --rm app npx prisma migrate deploy
+npm run docker:doppler-migrate
 ```
 
 Stop while preserving data:
 
 ```bash
-npm run doppler -- docker compose -f compose.yaml -f compose.dev.yaml stop
+npm run docker:doppler-stop
 ```
 
 After a reboot, run the normal `up` command again. Do not use host-side Neon commands when intending to modify local PostgreSQL.
