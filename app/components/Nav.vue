@@ -34,13 +34,6 @@ const marketingLinks = [
       >
         {{ link.label }}
       </NuxtLink>
-      <NuxtLink
-        to="/systems"
-        class="rounded-sm py-2 text-sm font-medium text-(--kryos-text-mid) hover:text-(--kryos-text-high) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)"
-        :class="route.path.startsWith('/systems') ? 'text-(--kryos-text-high)' : ''"
-      >
-        Systems
-      </NuxtLink>
     </nav>
 
     <KryosToggleMenu @toggle-menu="toggleMenu" />
@@ -58,14 +51,6 @@ const marketingLinks = [
               :aria-current="link.active(route.path) ? 'page' : undefined"
             >
               {{ link.label }}
-            </NuxtLink>
-            <NuxtLink
-              to="/systems"
-              @click="closeMenu"
-              class="text-lg text-(--kryos-text-mid) hover:text-(--kryos-text-high) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)"
-              :class="route.path.startsWith('/systems') ? 'text-(--kryos-text-high)' : ''"
-            >
-              Systems
             </NuxtLink>
           </nav>
         </template>
