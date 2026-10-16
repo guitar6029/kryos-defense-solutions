@@ -1,7 +1,7 @@
 import "dotenv/config";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "../generated/prisma/client.js";
-import { resolveDatabaseEnvironment } from "../server/utils/database-environment.mjs";
+import { resolveDatabaseEnvironment } from "../server/utils/database-environment.js";
 
 const expectedColumns = [
   ["unit_id", "text"],
@@ -13,6 +13,16 @@ const expectedColumns = [
   ["signal_quality", "smallint"],
   ["last_ping_at", "timestamp with time zone"],
   ["role", "text"],
+  ["health", "text"],
+  ["availability", "text"],
+  ["charging", "text"],
+  ["assignment_id", "text"],
+  ["fault_code", "text"],
+  ["last_message_id", "text"],
+  ["last_simulator_run_id", "text"],
+  ["last_telemetry_sequence", "integer"],
+  ["authority_run_id", "text"],
+  ["authority_generation", "bigint"],
 ];
 
 const expectedChecks = {
@@ -21,6 +31,9 @@ const expectedChecks = {
   devices_zone_check: ["'ALPHA'", "'BRAVO'", "'CHARLIE'", "'DELTA'"],
   devices_link_status_check: ["'STABLE'", "'WEAK'", "'LOST'"],
   devices_role_check: ["'SCOUT'", "'SUPPORT'", "'GUARD'", "'HAUL'"],
+  devices_health_check: ["'HEALTHY'", "'FAULTED'"],
+  devices_availability_check: ["'AVAILABLE'", "'ASSIGNED'"],
+  devices_charging_check: ["'NOT_CHARGING'", "'CHARGING'"],
 };
 
 const pingAgeMinutesById = new Map();
@@ -104,10 +117,11 @@ function assertColumns(columns) {
     dataType,
     isNullable,
   ]);
+  const nullableColumns = new Set(["assignment_id", "fault_code", "last_message_id", "last_simulator_run_id", "authority_run_id", "authority_generation"]);
   const expected = expectedColumns.map(([columnName, dataType]) => [
     columnName,
     dataType,
-    "NO",
+    nullableColumns.has(columnName) ? "YES" : "NO",
   ]);
   if (JSON.stringify(actual) !== JSON.stringify(expected)) {
     throw new SeedSafetyError("public.devices columns differ from the expected Prisma Device schema.");
@@ -142,7 +156,7 @@ function assertChecks(checks) {
     }
   }
 
-  if (checks.length !== 7) {
+  if (!byName.has("devices_authority_pair_check") || checks.length !== 12) {
     throw new SeedSafetyError("public.devices has an unexpected set of CHECK constraints.");
   }
 }

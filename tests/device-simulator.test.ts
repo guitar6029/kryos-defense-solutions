@@ -67,7 +67,7 @@ describe("device simulator kernel", () => {
   it("is reproducible with a fixed seed and simulated clock", () => {
     const run = () => {
       const clock = makeClock();
-      const simulator = createDeviceSimulator({ fleetSize: 8, seed: 99 }, { clock });
+      const simulator = createDeviceSimulator({ fleetSize: 8, seed: 99 }, { clock, runId: "deterministic-test-run" });
       const ticks = [simulator.tick()];
       clock.advance(5000);
       ticks.push(simulator.tick());

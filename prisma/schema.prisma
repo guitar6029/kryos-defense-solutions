@@ -17,6 +17,37 @@ model Device {
   signalQuality Int      @map("signal_quality") @db.SmallInt
   lastPingAt    DateTime @map("last_ping_at") @db.Timestamptz(6)
   role          String   @db.Text
+  health        String   @default("HEALTHY") @db.Text
+  availability  String   @default("AVAILABLE") @db.Text
+  charging      String   @default("NOT_CHARGING") @map("charging") @db.Text
+  assignmentId  String?  @map("assignment_id") @db.Text
+  faultCode     String?  @map("fault_code") @db.Text
+  lastMessageId String?  @map("last_message_id") @db.Text
+  lastSimulatorRunId String? @map("last_simulator_run_id") @db.Text
+  lastTelemetrySequence Int @default(0) @map("last_telemetry_sequence") @db.Integer
+  authorityRunId String? @map("authority_run_id") @db.Text
+  authorityGeneration BigInt? @map("authority_generation") @db.BigInt
+  authorityRun SimulatorRun? @relation(fields: [authorityRunId], references: [runId], onDelete: Restrict, onUpdate: Cascade)
 
   @@map("devices")
+}
+
+model SimulatorRun {
+  runId           String    @id @map("run_id") @db.Text
+  generation      BigInt    @unique @db.BigInt
+  status          String    @db.Text
+  targetDeviceIds String[]  @map("target_device_ids") @db.Text
+  targetHash      String    @map("target_hash") @db.Text
+  startedAt       DateTime  @default(now()) @map("started_at") @db.Timestamptz(6)
+  stoppedAt       DateTime? @map("stopped_at") @db.Timestamptz(6)
+  authoritativeDevices Device[]
+
+  @@map("simulator_runs")
+}
+
+model SimulatorGenerationAllocator {
+  singleton         Boolean @id @default(true)
+  currentGeneration BigInt  @default(0) @map("current_generation") @db.BigInt
+
+  @@map("simulator_generation_allocator")
 }

@@ -1,3 +1,5 @@
+import { randomUUID } from "node:crypto";
+
 export const DEFAULT_SIMULATOR_CONFIG = {
   fleetSize: 500,
   telemetryIntervalMs: 5_000,
@@ -64,7 +66,7 @@ export type TelemetryEnvelope = {
     assignmentId: string | null;
     faultCode: string | null;
   };
-  simulator: { seed: string; runId: string };
+  simulator: { seed: string; runId: string; generation: number };
 };
 
 export type OperationalEventType =
@@ -187,6 +189,7 @@ export class DeviceSimulator {
   private readonly random: RandomSource;
   private readonly clock: SimulatorClock;
   private readonly runId: string;
+  private generation = 1;
   private readonly devices: SimulatedDevice[];
   private previousTickAt: number | null = null;
   private counters: SimulatorCounters = {
@@ -195,12 +198,12 @@ export class DeviceSimulator {
     operationalEventsGenerated: 0,
   };
 
-  constructor(config: SimulatorConfig = {}, dependencies: { clock?: SimulatorClock; random?: RandomSource } = {}) {
+  constructor(config: SimulatorConfig = {}, dependencies: { clock?: SimulatorClock; random?: RandomSource; runId?: string } = {}) {
     this.config = validateConfig(config);
     this.clock = dependencies.clock ?? { now: () => new Date() };
     this.random = dependencies.random ?? seededRandom(this.config.seed);
     iso(this.clock.now());
-    this.runId = `seed-${this.config.seed}`;
+    this.runId = dependencies.runId ?? `run-${randomUUID()}`;
     this.devices = Array.from({ length: this.config.fleetSize }, (_, index) =>
       this.createDevice(index),
     );
@@ -208,6 +211,15 @@ export class DeviceSimulator {
 
   getDevices(): SimulatedDevice[] {
     return this.devices.map((device) => ({ ...device }));
+  }
+
+  getRunId(): string {
+    return this.runId;
+  }
+
+  setGeneration(generation: number): void {
+    if (!Number.isSafeInteger(generation) || generation <= 0) throw new RangeError("generation must be a positive safe integer");
+    this.generation = generation;
   }
 
   getCounters(): SimulatorCounters {
@@ -345,12 +357,12 @@ export class DeviceSimulator {
         assignmentId: device.assignmentId,
         faultCode: device.faultCode,
       },
-      simulator: { seed: this.config.seed, runId: this.runId },
+      simulator: { seed: this.config.seed, runId: this.runId, generation: this.generation },
     };
   }
 }
 
-export function createDeviceSimulator(config?: SimulatorConfig, dependencies?: { clock?: SimulatorClock; random?: RandomSource }): DeviceSimulator {
+export function createDeviceSimulator(config?: SimulatorConfig, dependencies?: { clock?: SimulatorClock; random?: RandomSource; runId?: string }): DeviceSimulator {
   return new DeviceSimulator(config, dependencies);
 }
 

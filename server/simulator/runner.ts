@@ -23,6 +23,9 @@ export type SimulatorRunnerOptions = {
   output?: SimulatorRunnerOutput;
   timer?: SimulatorRunnerTimer;
   now?: () => Date;
+  runId?: string;
+  registerRun?: (runId: string, targetDeviceIds: string[]) => Promise<number>;
+  stopRun?: (runId: string) => Promise<void>;
 };
 
 const defaultTimer: SimulatorRunnerTimer = {
@@ -67,6 +70,9 @@ export class DeviceSimulatorRunner {
   private readonly output: SimulatorRunnerOutput;
   private readonly timer: SimulatorRunnerTimer;
   private readonly now: () => Date;
+  private readonly registerRun?: SimulatorRunnerOptions["registerRun"];
+  private readonly stopRun?: SimulatorRunnerOptions["stopRun"];
+  private starting: Promise<void> | null = null;
   private scheduledHandle: SimulatorTimerHandle | null = null;
   private currentTick: Promise<void> | null = null;
   private started = false;
@@ -74,16 +80,38 @@ export class DeviceSimulatorRunner {
 
   constructor(config: SimulatorRunnerConfig, options: SimulatorRunnerOptions = {}) {
     this.config = config;
-    this.simulator = options.simulator ?? createDeviceSimulator(config);
+    this.simulator = options.simulator ?? createDeviceSimulator(config, { runId: options.runId });
     this.processTick = options.processTick ?? (() => undefined);
     this.output = options.output ?? console.log;
     this.timer = options.timer ?? defaultTimer;
     this.now = options.now ?? (() => new Date());
+    this.registerRun = options.registerRun;
+    this.stopRun = options.stopRun;
   }
 
-  start(): void {
+  async start(): Promise<void> {
     if (this.started) throw new Error("simulator runner has already started");
     this.started = true;
+    this.starting = this.registerAndSchedule();
+    try {
+      await this.starting;
+    } catch (error) {
+      this.started = false;
+      throw error;
+    } finally {
+      this.starting = null;
+    }
+  }
+
+  private async registerAndSchedule(): Promise<void> {
+    if (this.registerRun) {
+      const generation = await this.registerRun(
+        this.simulator.getRunId(),
+        this.simulator.getDevices().map(({ unitId }) => unitId),
+      );
+      this.simulator.setGeneration(generation);
+    }
+    if (this.stopping) return;
     this.output(
       `[simulator] started fleet=${this.config.fleetSize} interval=${this.config.telemetryIntervalMs}ms seed=${this.config.seed}`,
     );
@@ -96,13 +124,25 @@ export class DeviceSimulatorRunner {
       return;
     }
     this.stopping = true;
+    const starting = this.starting;
+    if (starting) {
+      try {
+        await starting;
+      } catch {
+        // Registration may have committed before a response failure; stop is idempotent.
+      }
+    }
     const scheduledHandle = this.scheduledHandle;
     if (scheduledHandle !== null) {
       this.timer.clearTimeout(scheduledHandle);
       this.scheduledHandle = null;
     }
     const currentTick = this.currentTick;
-    if (currentTick) await currentTick;
+    try {
+      if (currentTick) await currentTick;
+    } finally {
+      if (this.stopRun) await this.stopRun(this.simulator.getRunId());
+    }
     this.output("[simulator] stopped");
   }
 
@@ -130,6 +170,8 @@ export class DeviceSimulatorRunner {
           `rates telemetry=${telemetryRate.toFixed(2)}/s events=${eventRate.toFixed(2)}/s ` +
           `cumulative telemetry=${counters.telemetryGenerated} events=${counters.operationalEventsGenerated}`,
       );
+    }, (error: unknown) => {
+      this.output(`[simulator] tick processing failed: ${error instanceof Error ? error.message : "unknown error"}`);
     }).finally(() => {
       this.currentTick = null;
       this.schedule(this.config.telemetryIntervalMs);

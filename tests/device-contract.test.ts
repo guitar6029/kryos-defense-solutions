@@ -14,6 +14,16 @@ const device: Device = {
   signalQuality: 92,
   lastPingAt: new Date("2026-10-10T12:00:00.123Z"),
   role: "SCOUT",
+  health: "HEALTHY",
+  availability: "AVAILABLE",
+  charging: "NOT_CHARGING",
+  assignmentId: null,
+  faultCode: null,
+  lastMessageId: null,
+  lastSimulatorRunId: null,
+  lastTelemetrySequence: 0,
+  authorityRunId: null,
+  authorityGeneration: null,
 };
 
 describe("persisted device contract", () => {
