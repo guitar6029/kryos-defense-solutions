@@ -1,8 +1,9 @@
 import { describe, expect, it, vi } from "vitest";
 import type { Device } from "../generated/prisma/client.js";
-import { createDeviceSimulator } from "../server/simulator";
+import { createDeviceSimulator, createTelemetryMessageId } from "../server/simulator";
 import {
   createTelemetryIngestionService,
+  validateTelemetryEnvelope,
   toTelemetryProjection,
   type TelemetryProjection,
   type TelemetryPersistence,
@@ -76,6 +77,37 @@ describe("telemetry ingestion", () => {
     });
   });
 
+  it("accepts only cross-field operational states that can be represented consistently", () => {
+    const telemetry = makeTelemetry();
+    expect(validateTelemetryEnvelope(telemetry)).toBe(true);
+    expect(validateTelemetryEnvelope({
+      ...telemetry,
+      measurements: { ...telemetry.measurements, availability: "AVAILABLE", assignmentId: "assignment-1" },
+    })).toBe(false);
+    expect(validateTelemetryEnvelope({
+      ...telemetry,
+      measurements: { ...telemetry.measurements, availability: "ASSIGNED", assignmentId: null },
+    })).toBe(false);
+    expect(validateTelemetryEnvelope({
+      ...telemetry,
+      measurements: { ...telemetry.measurements, charging: "CHARGING", assignmentId: "assignment-1" },
+    })).toBe(false);
+  });
+
+  it("rejects messages whose canonical identity does not match their envelope fields", async () => {
+    const service = createTelemetryIngestionService({ persist: vi.fn() });
+    const telemetry = makeTelemetry();
+
+    for (const malformed of [
+      { ...telemetry, messageId: "telemetry-v1-invalid" },
+      { ...telemetry, deviceId: "SIM-9999" },
+      { ...telemetry, sequence: telemetry.sequence + 1 },
+      { ...telemetry, simulator: { ...telemetry.simulator, runId: "other-run" } },
+    ]) {
+      expect((await service.ingest(malformed)).reason).toBe("invalid-telemetry");
+    }
+  });
+
   it("uses the injected receipt clock for liveness while preserving producer time", async () => {
     let captured: TelemetryProjection | undefined;
     const service = createTelemetryIngestionService({
@@ -105,7 +137,11 @@ describe("telemetry ingestion", () => {
     const service = createTelemetryIngestionService(persistence);
     const valid = makeTelemetry();
     expect((await service.ingest(valid)).outcome).toBe("persisted");
-    expect((await service.ingest({ ...valid, deviceId: "UNKNOWN" })).reason).toBe("unknown");
+    expect((await service.ingest({
+      ...valid,
+      deviceId: "UNKNOWN",
+      messageId: createTelemetryMessageId(valid.simulator.runId, "UNKNOWN", valid.sequence),
+    })).reason).toBe("unknown");
     expect((await service.ingest({ ...valid, sequence: 0 })).reason).toBe("invalid-telemetry");
     expect(service.getCounters()).toEqual({ accepted: 2, rejected: 2, persisted: 1, failed: 0 });
   });
@@ -121,7 +157,11 @@ describe("telemetry ingestion", () => {
     const telemetry = makeTelemetry();
     expect((await service.ingest(telemetry)).persisted).toBe(true);
     expect((await service.ingest(telemetry)).outcome).toBe("duplicate");
-    expect((await service.ingest({ ...telemetry, sequence: 2 })).outcome).toBe("stale");
+    expect((await service.ingest({
+      ...telemetry,
+      sequence: 2,
+      messageId: createTelemetryMessageId(telemetry.simulator.runId, telemetry.deviceId, 2),
+    })).outcome).toBe("stale");
     expect(service.getCounters()).toMatchObject({ accepted: 3, persisted: 1, rejected: 2 });
   });
 
@@ -146,5 +186,24 @@ describe("telemetry ingestion", () => {
     const tick = createDeviceSimulator({ fleetSize: 2 }, { runId: "batch-test" }).tick()!;
     const result = await processSimulationTick(tick, service);
     expect(result).toMatchObject({ generated: 2, accepted: 2, rejected: 0, persisted: 2, failed: 0 });
+  });
+
+  it("forwards telemetry while leaving generated operational events outside persistence", async () => {
+    const persist = vi.fn(async () => ({ kind: "persisted" as const, device: makeDevice() }));
+    const service = createTelemetryIngestionService({ persist });
+    const telemetry = makeTelemetry();
+    const result = await processSimulationTick({
+      occurredAt: telemetry.occurredAt,
+      telemetry: [telemetry],
+      events: [{
+        type: "fault.opened",
+        deviceId: telemetry.deviceId,
+        occurredAt: telemetry.occurredAt,
+        details: { faultCode: "SENSOR_DEGRADED" },
+      }],
+    }, service);
+
+    expect(result).toMatchObject({ generated: 1, persisted: 1, failed: 0 });
+    expect(persist).toHaveBeenCalledTimes(1);
   });
 });
