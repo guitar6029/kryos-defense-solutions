@@ -89,7 +89,38 @@ Open <http://localhost:3000>. The database is reachable from the host at `localh
 
 Use the same `-f compose.yaml -f compose.dev.yaml` flags for development status and logs. `docker compose stop` stops containers while preserving the named database volume. To remove the local database data, use `docker compose down -v` only when that deletion is intentional; it does not affect hosted databases.
 
-The app waits for PostgreSQL's health check, but the health check does not apply Prisma migrations. If PostgreSQL was initialized earlier with a different `POSTGRES_PASSWORD`, changing the Doppler value will not update the existing named volume; stop and inspect the local volume before considering any recovery action. Do not remove the volume unless deleting its local data is intentional. The current guarded `db:seed:dev` command is for the Neon development database and must not be used against this local Compose database; after migration, `/api/fleet` is expected to return an empty fleet until local fixture support is added. If the app cannot connect, inspect the resolved Compose configuration and service logs without printing credentials.
+The app waits for PostgreSQL's health check, but the health check does not apply Prisma migrations. If PostgreSQL was initialized earlier with a different `POSTGRES_PASSWORD`, changing the Doppler value will not update the existing named volume; stop and inspect the local volume before considering any recovery action. Do not remove the volume unless deleting its local data is intentional. The guarded `db:seed:dev` command is only for the Neon development database and must not be used against this local Compose database. If the app cannot connect, inspect the resolved Compose configuration and service logs without printing credentials.
+
+### Local demo fixtures
+
+After starting Compose and applying migrations, create an explicit simulator-compatible local fixture set:
+
+```bash
+npm run docker:doppler-up
+npm run docker:doppler-migrate
+npm run docker:doppler-fixtures -- 20   # initial test set
+# or
+npm run docker:doppler-fixtures -- 500  # full demo set
+```
+
+The command runs inside the Compose app container and requires the local `db` service. It rejects missing opt-in, non-`dev` environments, Neon, remote hosts, invalid URLs, and pooled/direct URLs that do not name the same local database. The Compose-only `db` hostname is accepted only when the container sets `KRYOS_LOCAL_DOCKER=true`; otherwise only loopback PostgreSQL targets are accepted. It creates only absent deterministic IDs (`DEV-MK-LOCAL-001`, `DEV-EX-LOCAL-001`, and so on), uses `createMany(..., skipDuplicates: true)`, and never updates or deletes an existing device. Re-running the same size is therefore idempotent; running `500` after `20` creates only the remaining 480 IDs. Fixture records remain in the local named database volume until an intentionally authorized database cleanup; this workflow has no cleanup command.
+
+After fixture creation, verify REST pagination and filtering against the same local app:
+
+```bash
+curl 'http://localhost:3000/api/fleet?page=1&pageSize=5'
+curl 'http://localhost:3000/api/fleet?page=0&pageSize=5&search=DEV-MK-LOCAL&platform=MK'
+```
+
+To drive those records, run the simulator as a separate, explicit action from inside the local app container:
+
+```bash
+npm run docker:doppler-simulator -- 20
+# or
+npm run docker:doppler-simulator -- 500
+```
+
+The wrapper derives the matching deterministic `SIMULATOR_TARGET_DEVICE_IDS` list only after the same local-only database safety checks pass. Simulator startup remains manual and is never started by fixture creation. The fixture command does not change SSE, ingestion, REST behavior, or dashboard behavior.
 
 `.env.sample` remains as a placeholder reference for the supported non-Docker host workflow and does not need to be copied for Doppler-backed Docker development.
 

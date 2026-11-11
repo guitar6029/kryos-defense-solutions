@@ -8,11 +8,13 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "simulator:run": "tsx scripts/run-device-simulator.ts",
+    "simulator:local-demo": "tsx scripts/run-local-demo-simulator.ts",
     "postinstall": "nuxt prepare",
     "db:generate": "prisma generate",
     "db:migrate:dev": "prisma migrate dev",
     "db:verify:dev": "tsx prisma/seed-dev.ts --verify-only",
     "db:seed:dev": "tsx prisma/seed-dev.ts",
+    "db:fixtures:local": "tsx scripts/create-local-demo-fixtures.ts",
     "test": "vitest run",
     "doppler": "bash scripts/with-doppler.sh",
     "dev:doppler": "bash scripts/with-doppler.sh npm run dev",
@@ -21,7 +23,9 @@
     "docker:doppler-stop": "bash scripts/with-doppler.sh docker compose -f compose.yaml -f compose.dev.yaml stop",
     "docker:doppler-logs": "bash scripts/with-doppler.sh docker compose -f compose.yaml -f compose.dev.yaml logs -f app",
     "docker:doppler-ps": "bash scripts/with-doppler.sh docker compose -f compose.yaml -f compose.dev.yaml ps",
-    "docker:doppler-migrate": "bash scripts/with-doppler.sh docker compose -f compose.yaml -f compose.dev.yaml run --rm app npx prisma migrate deploy"
+    "docker:doppler-migrate": "bash scripts/with-doppler.sh docker compose -f compose.yaml -f compose.dev.yaml run --rm app npx prisma migrate deploy",
+    "docker:doppler-fixtures": "bash scripts/with-doppler.sh docker compose -f compose.yaml -f compose.dev.yaml run --rm -e KRYOS_ALLOW_LOCAL_DEMO_FIXTURES=true app npm run db:fixtures:local --",
+    "docker:doppler-simulator": "bash scripts/with-doppler.sh docker compose -f compose.yaml -f compose.dev.yaml run --rm -e KRYOS_ALLOW_LOCAL_DEMO_FIXTURES=true app npm run simulator:local-demo --"
   },
   "dependencies": {
     "@nuxt/fonts": "^0.14.0",
