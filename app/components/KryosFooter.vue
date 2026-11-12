@@ -22,7 +22,7 @@
           KRYOS DEFENSE SOLUTIONS
         </p>
         <p class="mt-2 max-w-xl text-sm leading-relaxed">
-          Fictional engineering portfolio · software prototype uses sample data · hardware concepts are not fielded products.
+          Autonomous systems · Fleet intelligence · Advanced engineering
         </p>
       </div>
       <nav aria-label="Footer navigation" class="flex flex-wrap gap-x-6 gap-y-3 text-sm">
