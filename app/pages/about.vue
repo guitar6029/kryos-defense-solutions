@@ -138,7 +138,7 @@ useHead({
 
     <div class="relative z-10 mx-auto flex w-full max-w-7xl flex-col justify-center px-6 py-20 md:px-10 lg:py-24">
       <p
-        class="mb-7 max-w-88 font-kryos-2077-display text-[0.65rem] font-bold uppercase leading-relaxed tracking-[0.28em] text-kryos-2077-accent sm:max-w-none sm:text-xs">
+        class="mb-7 max-w-88 font-kryos-2077-display text-[0.65rem] font-bold uppercase leading-relaxed tracking-[0.28em] text-kryos-2077-text-supporting sm:max-w-none sm:text-xs">
         KRYOS DEFENSE SOLUTIONS / CORPORATE OVERVIEW
       </p>
       <div aria-hidden="true" class="hero-diagonal-stripes mb-5" />
@@ -147,7 +147,7 @@ useHead({
         The Future Does Not Wait.
       </h1>
       <p
-        class="mt-10 max-w-xl border-l border-kryos-2077-accent pl-5 text-base leading-relaxed text-kryos-2077-text sm:mt-12 sm:pl-6 md:text-lg">
+        class="mt-10 max-w-xl border-l border-kryos-2077-text-supporting pl-5 text-base leading-relaxed text-kryos-2077-text sm:mt-12 sm:pl-6 md:text-lg">
         Engineering the next generation of autonomous systems, strategic intelligence, and defense technology.
       </p>
     </div>
@@ -159,7 +159,7 @@ useHead({
       class="mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16 xl:gap-24">
       <div>
         <p
-          class="mb-7 max-w-88 font-kryos-2077-display text-[0.65rem] font-bold uppercase leading-relaxed tracking-[0.28em] text-kryos-2077-accent sm:max-w-none sm:text-xs">
+          class="mb-7 max-w-88 font-kryos-2077-display text-[0.65rem] font-bold uppercase leading-relaxed tracking-[0.28em] text-kryos-2077-text-supporting sm:max-w-none sm:text-xs">
           INSIDE KRYOS / STRATEGIC OPERATIONS
         </p>
         <div aria-hidden="true" class="hero-diagonal-stripes mb-5" />
@@ -168,7 +168,7 @@ useHead({
           Power Is Directed, Not Displayed.
         </h2>
         <p
-          class="mt-8 max-w-lg border-l border-kryos-2077-accent pl-5 text-base leading-relaxed text-kryos-2077-muted sm:pl-6 md:text-lg">
+          class="mt-8 max-w-lg border-l border-kryos-2077-text-supporting pl-5 text-base leading-relaxed text-kryos-2077-muted sm:pl-6 md:text-lg">
           Kryos operates at the convergence of autonomous systems, intelligence infrastructure, and strategic command.
           Behind every platform is a network of engineers, analysts, and decision-makers working to shape the next
           generation of operational capability.
@@ -189,7 +189,7 @@ useHead({
     <div class="mx-auto w-full max-w-7xl">
       <header class="max-w-3xl">
         <p
-          class="mb-7 max-w-88 font-kryos-2077-display text-[0.65rem] font-bold uppercase leading-relaxed tracking-[0.28em] text-kryos-2077-accent sm:max-w-none sm:text-xs">
+          class="mb-7 max-w-88 font-kryos-2077-display text-[0.65rem] font-bold uppercase leading-relaxed tracking-[0.28em] text-kryos-2077-text-supporting sm:max-w-none sm:text-xs">
           KRYOS / CORPORATE LEADERSHIP
         </p>
         <div aria-hidden="true" class="hero-diagonal-stripes mb-5" />
@@ -198,7 +198,7 @@ useHead({
           The People Behind the Vision.
         </h2>
         <p
-          class="mt-8 max-w-2xl border-l border-kryos-2077-accent pl-5 text-base leading-relaxed text-kryos-2077-muted sm:pl-6 md:text-lg">
+          class="mt-8 max-w-2xl border-l border-kryos-2077-text-supporting pl-5 text-base leading-relaxed text-kryos-2077-muted sm:pl-6 md:text-lg">
           Leadership across strategy, engineering, operations, and advanced defense programs.
         </p>
       </header>
