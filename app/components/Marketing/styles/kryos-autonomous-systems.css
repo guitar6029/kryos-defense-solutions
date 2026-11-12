@@ -1,15 +1,278 @@
-.showcase{overflow:hidden;background:var(--kryos-2077-page-background);color:var(--kryos-2077-text-primary)}
-.intro,.systems{width:min(100%,90rem);margin:auto;padding-inline:clamp(1.5rem,5vw,4rem)}
-.intro{padding-block:clamp(5rem,11vw,10rem) clamp(4rem,8vw,7rem)}
-.eyebrow,.code,.art figcaption{font-family:var(--kryos-2077-font-ui);font-weight:600;letter-spacing:.18em;text-transform:uppercase}
-.eyebrow,.code,.info span{color:var(--kryos-2077-brand-accent)}
-.eyebrow,.code{font-size:.75rem}.intro-heading{display:block;margin-top:1.5rem}
-.intro h2,.title h3{font-family:var(--kryos-2077-font-heading);font-weight:700;line-height:.88;letter-spacing:-.055em}
-.intro h2{max-width:13ch;font-size:clamp(3rem,7vw,7.5rem)}.intro-heading>p{max-width:24rem;margin-top:1.5rem;color:var(--kryos-2077-text-secondary);font-family:var(--kryos-2077-font-ui);font-weight:600;letter-spacing:.1em;line-height:1.35}
-.intro-copy{max-width:38rem;margin-top:2rem;color:var(--kryos-2077-text-secondary);font-size:clamp(1rem,1.4vw,1.2rem);line-height:1.7}
-.systems{display:grid;gap:clamp(4rem,10vw,10rem);padding-bottom:clamp(5rem,12vw,11rem)}.system{display:grid;gap:2.5rem;align-items:center}.info{position:relative;z-index:2}.title{position:relative;display:flex;align-items:center;width:min(100%,25rem);margin-top:1rem}.title::after{position:absolute;width:4.25rem;height:1.5rem;content:"";pointer-events:none;background:var(--kryos-2077-text-secondary);mask:url("/assets/accents/chevron-arrows.svg") center/contain no-repeat;-webkit-mask:url("/assets/accents/chevron-arrows.svg") center/contain no-repeat;opacity:.7}
-.rails,.frame{position:absolute;pointer-events:none;user-select:none}.title h3{font-size:clamp(3.5rem,8vw,7.5rem)}.system--air .title{margin-top:2.75rem}.system--air .title::after{left:0;top:-1.85rem}.system--land .title::after{left:-.5rem;top:-1.1rem;background:var(--kryos-2077-subtle-accent);opacity:.85}.system--sea .title::after{right:1rem;top:-1.25rem;width:3.25rem;height:1.15rem}.info>p:not(.code){max-width:18rem;margin-top:1.5rem;color:var(--kryos-2077-text-secondary);font-size:1.05rem;line-height:1.55}.info span{display:block;margin-top:2rem;font-family:var(--kryos-2077-font-decorative);letter-spacing:.35em}
-.art{position:relative;min-width:0;min-height:17rem;isolation:isolate}.product{position:relative;z-index:1;display:block;width:100%;max-width:48rem;height:auto;margin:auto;object-fit:contain;transition:transform .22s ease-out}.rails,.frame{z-index:0;width:104%;height:104%;opacity:.7;transition:opacity .22s ease-out}.rails{inset:-3% auto auto -2%}.frame{inset:7% auto auto 3%;width:94%;height:92%;opacity:.35}.art figcaption{position:absolute;z-index:2;right:0;bottom:0;padding:.5rem .75rem;background:var(--kryos-2077-page-background);color:var(--kryos-2077-text-secondary);font-size:.625rem}.system:hover .product{transform:translateY(-.35rem)}.system:hover .rails{opacity:.9}.system--land .rails{transform:scaleX(-1)}.system--land .frame{transform:translate(-2%,3%) scaleX(-1)}.system--sea .art{min-height:14rem}.system--sea .product{max-width:56rem}
-@media(min-width:48rem){.system{grid-template-columns:minmax(13rem,.7fr) minmax(0,1.3fr)}.system--land{grid-template-columns:minmax(0,1.3fr) minmax(13rem,.7fr)}.system--land .info{grid-column:2;grid-row:1}.system--land .art{grid-column:1;grid-row:1}.system--land .title{margin-left:auto}.system--sea{grid-template-columns:minmax(15rem,.55fr) minmax(0,1.45fr)}}
-@media(min-width:64rem){.system--air .art{transform:translate(2rem,2rem)}.system--land .art{transform:translate(-2rem,-1rem)}.system--sea .art{transform:translate(1rem,1rem)}}
-@media(prefers-reduced-motion:reduce){.product,.rails,.frame{transition:none}.system:hover .product{transform:none}}
+.showcase {
+  overflow:hidden;
+  background:var(--kryos-2077-page-background);
+  color:var(--kryos-2077-text-primary)
+}
+
+.intro,.systems {
+  width:min(100%,90rem);
+  margin:auto;
+  padding-inline:clamp(1.5rem,5vw,4rem)
+}
+
+.intro {
+  padding-block:clamp(5rem,11vw,10rem) clamp(4rem,8vw,7rem)
+}
+
+.eyebrow,.code,.art figcaption {
+  font-family:var(--kryos-2077-font-ui);
+  font-weight:600;
+  letter-spacing:.18em;
+  text-transform:uppercase
+}
+
+.eyebrow,.code,.info span {
+  color:var(--kryos-2077-brand-accent)
+}
+
+.eyebrow,.code {
+  font-size:.75rem
+}
+
+.intro-heading {
+  display:block;
+  margin-top:1.5rem
+}
+
+.intro h2,.title h3 {
+  font-family:var(--kryos-2077-font-heading);
+  font-weight:700;
+  line-height:.88;
+  letter-spacing:-.055em
+}
+
+.intro h2 {
+  max-width:13ch;
+  font-size:clamp(3rem,7vw,7.5rem)
+}
+
+.intro-heading>p {
+  max-width:24rem;
+  margin-top:1.5rem;
+  color:var(--kryos-2077-text-secondary);
+  font-family:var(--kryos-2077-font-ui);
+  font-weight:600;
+  letter-spacing:.1em;
+  line-height:1.35
+}
+
+.intro-copy {
+  max-width:38rem;
+  margin-top:2rem;
+  color:var(--kryos-2077-text-secondary);
+  font-size:clamp(1rem,1.4vw,1.2rem);
+  line-height:1.7
+}
+
+.systems {
+  display:grid;
+  gap:clamp(4rem,10vw,10rem);
+  padding-bottom:clamp(5rem,12vw,11rem)
+}
+
+.system {
+  display:grid;
+  gap:2.5rem;
+  align-items:center
+}
+
+.info {
+  position:relative;
+  z-index:2
+}
+
+.title {
+  position:relative;
+  display:flex;
+  align-items:center;
+  width:min(100%,25rem);
+  margin-top:1rem
+}
+
+.title::after {
+  position:absolute;
+  width:4.25rem;
+  height:1.5rem;
+  content:"";
+  pointer-events:none;
+  background:var(--kryos-2077-text-secondary);
+  mask:url("/assets/accents/chevron-arrows.svg") center/contain no-repeat;
+  -webkit-mask:url("/assets/accents/chevron-arrows.svg") center/contain no-repeat;
+  opacity:.7
+}
+
+.rails,.frame {
+  position:absolute;
+  pointer-events:none;
+  user-select:none
+}
+
+.title h3 {
+  font-size:clamp(3.5rem,8vw,7.5rem)
+}
+
+.system--air .title {
+  margin-top:2.75rem
+}
+
+.system--air .title::after {
+  left:0;
+  top:-1.85rem
+}
+
+.system--land .title::after {
+  left:-.5rem;
+  top:-1.1rem;
+  background:var(--kryos-2077-subtle-accent);
+  opacity:.85
+}
+
+.system--sea .title::after {
+  right:1rem;
+  top:-1.25rem;
+  width:3.25rem;
+  height:1.15rem
+}
+
+.info>p:not(.code) {
+  max-width:18rem;
+  margin-top:1.5rem;
+  color:var(--kryos-2077-text-secondary);
+  font-size:1.05rem;
+  line-height:1.55
+}
+
+.info span {
+  display:block;
+  margin-top:2rem;
+  font-family:var(--kryos-2077-font-decorative);
+  letter-spacing:.35em
+}
+
+.art {
+  position:relative;
+  min-width:0;
+  min-height:17rem;
+  isolation:isolate
+}
+
+.product {
+  position:relative;
+  z-index:1;
+  display:block;
+  width:100%;
+  max-width:48rem;
+  height:auto;
+  margin:auto;
+  object-fit:contain;
+  transition:transform .22s ease-out
+}
+
+.rails,.frame {
+  z-index:0;
+  width:104%;
+  height:104%;
+  opacity:.7;
+  transition:opacity .22s ease-out
+}
+
+.rails {
+  inset:-3% auto auto -2%
+}
+
+.frame {
+  inset:7% auto auto 3%;
+  width:94%;
+  height:92%;
+  opacity:.35
+}
+
+.art figcaption {
+  position:absolute;
+  z-index:2;
+  right:0;
+  bottom:0;
+  padding:.5rem .75rem;
+  background:var(--kryos-2077-page-background);
+  color:var(--kryos-2077-text-secondary);
+  font-size:.625rem
+}
+
+.system:hover .product {
+  transform:translateY(-.35rem)
+}
+
+.system:hover .rails {
+  opacity:.9
+}
+
+.system--land .rails {
+  transform:scaleX(-1)
+}
+
+.system--land .frame {
+  transform:translate(-2%,3%) scaleX(-1)
+}
+
+.system--sea .art {
+  min-height:14rem
+}
+
+.system--sea .product {
+  max-width:56rem
+}
+
+@media(min-width:48rem) {
+  .system {
+    grid-template-columns:minmax(13rem,.7fr) minmax(0,1.3fr)
+  }
+
+  .system--land {
+    grid-template-columns:minmax(0,1.3fr) minmax(13rem,.7fr)
+  }
+
+  .system--land .info {
+    grid-column:2;
+    grid-row:1
+  }
+
+  .system--land .art {
+    grid-column:1;
+    grid-row:1
+  }
+
+  .system--land .title {
+    margin-left:auto
+  }
+
+  .system--sea {
+    grid-template-columns:minmax(15rem,.55fr) minmax(0,1.45fr)
+  }
+
+}
+
+@media(min-width:64rem) {
+  .system--air .art {
+    transform:translate(2rem,2rem)
+  }
+
+  .system--land .art {
+    transform:translate(-2rem,-1rem)
+  }
+
+  .system--sea .art {
+    transform:translate(1rem,1rem)
+  }
+
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .product,.rails,.frame {
+    transition:none
+  }
+
+  .system:hover .product {
+    transform:none
+  }
+
+}
