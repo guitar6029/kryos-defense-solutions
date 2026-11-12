@@ -1,4 +1,95 @@
 <script setup lang="ts">
+interface LeadershipExecutive {
+  name: string;
+  title: string;
+  biography: string;
+  portrait: string;
+  portraitAlt: string;
+}
+
+const leadership: LeadershipExecutive[] = [
+  {
+    name: "Lucien de Vaucelles",
+    title: "Chief Executive Officer",
+    biography:
+      "Guides Kryos's long-term corporate strategy, international partnerships, and global expansion. His leadership combines decades of institutional experience with an uncompromising vision for autonomous defense technology.",
+    portrait: "/assets/images/organization/lucien-de-vaucelles-ceo.png",
+    portraitAlt: "Pixel-art portrait of Lucien de Vaucelles, Chief Executive Officer.",
+  },
+  {
+    name: "Isabelle Van Aelst",
+    title: "Chief Financial Officer",
+    biography:
+      "Oversees corporate finance, investment strategy, and capital allocation across Kryos's international operations. Her disciplined approach supports the corporation's acquisitions and long-term technological investments.",
+    portrait: "/assets/images/organization/isabelle-van-aelst-cfo.png",
+    portraitAlt: "Pixel-art portrait of Isabelle Van Aelst, Chief Financial Officer.",
+  },
+  {
+    name: "Dr. Elena Kade",
+    title: "Chief Technology Officer",
+    biography:
+      "Directs technological strategy across autonomous systems, software architecture, and fleet intelligence. Her engineering leadership connects advanced research with operational capability.",
+    portrait: "/assets/images/organization/dr-elena-kade-cto.png",
+    portraitAlt: "Pixel-art portrait of Dr. Elena Kade, Chief Technology Officer.",
+  },
+  {
+    name: "Daniel Mercer",
+    title: "Chief Operating Officer",
+    biography:
+      "Oversees global manufacturing, logistics, infrastructure, and operational execution. He is responsible for translating Kryos's strategic objectives into reliable industrial capability.",
+    portrait: "/assets/images/organization/daniel-mercer-coo.png",
+    portraitAlt: "Pixel-art portrait of Daniel Mercer, Chief Operating Officer.",
+  },
+  {
+    name: "General Marcus Rourke (Ret.)",
+    title: "Senior Strategic Defense Advisor",
+    biography:
+      "Provides strategic guidance informed by decades of military leadership and operational experience. His expertise supports the development and deployment of next-generation defense systems.",
+    portrait: "/assets/images/organization/marcus-rourke-defense-advisor.png",
+    portraitAlt: "Pixel-art portrait of General Marcus Rourke, Senior Strategic Defense Advisor.",
+  },
+  {
+    name: "Dr. Viktor Soren",
+    title: "Director of Advanced Research",
+    biography:
+      "Leads experimental robotics, emerging autonomous technologies, and advanced engineering initiatives. His research division explores the boundaries of current technological capability.",
+    portrait: "/assets/images/organization/viktor-soren-rnd-director.png",
+    portraitAlt: "Pixel-art portrait of Dr. Viktor Soren, Director of Advanced Research.",
+  },
+  {
+    name: "Director Nyx",
+    title: "Director of Special Programs",
+    biography:
+      "Oversees selected advanced programs and strategic initiatives requiring specialized coordination. Additional professional information is not publicly disclosed.",
+    portrait: "/assets/images/organization/director-nyx-special-programs.png",
+    portraitAlt: "Pixel-art portrait of Director Nyx, Director of Special Programs.",
+  },
+  {
+    name: "Commander Elias Ward",
+    title: "Chief Security Officer",
+    biography:
+      "Directs corporate security, intelligence protection, and facility security operations. He oversees the protection of Kryos personnel, infrastructure, and sensitive programs.",
+    portrait: "/assets/images/organization/elias-ward-chief-security-officer.png",
+    portraitAlt: "Pixel-art portrait of Commander Elias Ward, Chief Security Officer.",
+  },
+  {
+    name: "Anika Rao",
+    title: "Chief Legal & Compliance Officer",
+    biography:
+      "Leads corporate governance, regulatory compliance, and international legal affairs. She advises Kryos on the complex legal frameworks governing emerging technologies and defense partnerships.",
+    portrait: "/assets/images/organization/anika-rao-chief-legal-compliance-officer.png",
+    portraitAlt: "Pixel-art portrait of Anika Rao, Chief Legal and Compliance Officer.",
+  },
+  {
+    name: "Rafael Montenegro",
+    title: "Chief Strategy Officer",
+    biography:
+      "Oversees strategic development, international expansion, acquisitions, and institutional partnerships. His work supports Kryos's long-term competitive position.",
+    portrait: "/assets/images/organization/rafael-montenegro-chief-strategy-officer.png",
+    portraitAlt: "Pixel-art portrait of Rafael Montenegro, Chief Strategy Officer.",
+  },
+];
+
 useHead({
   title: "Kryos Defense Solutions | Corporate Overview",
   meta: [
@@ -81,6 +172,37 @@ useHead({
           class="block h-auto w-full"
         >
       </figure>
+    </div>
+  </section>
+
+  <section
+    aria-labelledby="leadership-title"
+    class="bg-kryos-2077-page px-6 py-24 text-kryos-2077-text md:px-10 md:py-32 lg:py-40"
+  >
+    <div class="mx-auto w-full max-w-7xl">
+      <header class="max-w-3xl">
+        <p class="mb-7 max-w-[22rem] font-kryos-2077-display text-[0.65rem] font-bold uppercase leading-relaxed tracking-[0.28em] text-kryos-2077-accent sm:max-w-none sm:text-xs">
+          KRYOS / CORPORATE LEADERSHIP
+        </p>
+        <div aria-hidden="true" class="hero-diagonal-stripes mb-5" />
+        <h2
+          id="leadership-title"
+          class="hero-headline max-w-3xl text-[clamp(2.75rem,5.5vw,6.25rem)] font-bold leading-[0.86] tracking-[-0.06em] text-kryos-2077-text"
+        >
+          The People Behind the Vision.
+        </h2>
+        <p class="mt-8 max-w-2xl border-l border-kryos-2077-accent pl-5 text-base leading-relaxed text-kryos-2077-muted sm:pl-6 md:text-lg">
+          Leadership across strategy, engineering, operations, and advanced defense programs.
+        </p>
+      </header>
+
+      <div class="mt-16 grid gap-6 lg:grid-cols-2 lg:gap-8">
+        <MarketingLeadershipCard
+          v-for="executive in leadership"
+          :key="executive.name"
+          v-bind="executive"
+        />
+      </div>
     </div>
   </section>
 </template>
