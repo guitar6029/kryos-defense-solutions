@@ -18,7 +18,7 @@ defineProps<{
 </script>
 
 <template>
-  <article class="relative isolate grid h-full grid-cols-[minmax(6.75rem,30%)_minmax(0,1fr)] border border-kryos-2077-border bg-kryos-2077-surface sm:grid-cols-[minmax(8rem,30%)_minmax(0,1fr)]">
+  <article class="relative isolate grid h-full grid-cols-[minmax(6.75rem,30%)_minmax(0,1fr)] border border-kryos-2077-border bg-kryos-2077-surface transition-colors duration-[220ms] ease-in-out hover:bg-kryos-2077-surface-hover motion-reduce:transition-none sm:grid-cols-[minmax(8rem,30%)_minmax(0,1fr)]">
     <svg
       v-if="frame.top"
       aria-hidden="true"

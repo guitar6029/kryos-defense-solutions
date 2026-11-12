@@ -7,6 +7,7 @@
 @theme inline {
   --color-kryos-2077-page: var(--kryos-2077-page-background);
   --color-kryos-2077-surface: var(--kryos-2077-surface-background);
+  --color-kryos-2077-surface-hover: var(--kryos-2077-surface-hover);
   --color-kryos-2077-elevated: var(--kryos-2077-elevated-surface);
   --color-kryos-2077-text: var(--kryos-2077-text-primary);
   --color-kryos-2077-muted: var(--kryos-2077-text-secondary);
@@ -26,6 +27,7 @@
   /* KRYOS 2077 marketing tokens. Namespaced for incremental use outside the dashboard. */
   --kryos-2077-page-background: #0b0e10;
   --kryos-2077-surface-background: #1b2125;
+  --kryos-2077-surface-hover: #22292e;
   --kryos-2077-elevated-surface: #273035;
   --kryos-2077-text-primary: #f3f0e8;
   --kryos-2077-text-secondary: #aeb7ba;
