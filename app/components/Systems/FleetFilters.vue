@@ -9,6 +9,7 @@ import { LINK_STATUSES, isLinkStatus } from "~/types/LinkState";
 const props = defineProps<
   FleetSearchCriteria & {
     hasCriteria: boolean;
+    disabled?: boolean;
   }
 >();
 
@@ -80,6 +81,7 @@ function updateLinkStatus(value: string) {
         type="search"
         placeholder="Search by unit ID"
         aria-label="Search by unit ID"
+        :disabled="props.disabled"
         class="rounded border border-(--kryos-text-low)/50 bg-(--kryos-bg) px-3 py-2 text-(--kryos-text-high) placeholder:text-(--kryos-text-low)"
         @input="emit('update:search', ($event.target as HTMLInputElement).value)"
       />
@@ -90,6 +92,7 @@ function updateLinkStatus(value: string) {
         :model-value="props.status ?? ALL_FILTERS"
         :items="statusOptions"
         aria-label="Filter by status"
+        :disabled="props.disabled"
         class="w-full rounded border border-(--kryos-text-low)/50 bg-(--kryos-bg) px-3 py-2 text-(--kryos-text-high)"
         @update:model-value="updateStatus"
       />
@@ -100,6 +103,7 @@ function updateLinkStatus(value: string) {
         :model-value="props.platform ?? ALL_FILTERS"
         :items="platformOptions"
         aria-label="Filter by platform"
+        :disabled="props.disabled"
         class="w-full rounded border border-(--kryos-text-low)/50 bg-(--kryos-bg) px-3 py-2 text-(--kryos-text-high)"
         @update:model-value="updatePlatform"
       />
@@ -110,6 +114,7 @@ function updateLinkStatus(value: string) {
         :model-value="props.zone ?? ALL_FILTERS"
         :items="zoneOptions"
         aria-label="Filter by zone"
+        :disabled="props.disabled"
         class="w-full rounded border border-(--kryos-text-low)/50 bg-(--kryos-bg) px-3 py-2 text-(--kryos-text-high)"
         @update:model-value="updateZone"
       />
@@ -120,6 +125,7 @@ function updateLinkStatus(value: string) {
         :model-value="props.role ?? ALL_FILTERS"
         :items="roleOptions"
         aria-label="Filter by role"
+        :disabled="props.disabled"
         class="w-full rounded border border-(--kryos-text-low)/50 bg-(--kryos-bg) px-3 py-2 text-(--kryos-text-high)"
         @update:model-value="updateRole"
       />
@@ -130,6 +136,7 @@ function updateLinkStatus(value: string) {
         :model-value="props.linkStatus ?? ALL_FILTERS"
         :items="linkStatusOptions"
         aria-label="Filter by link status"
+        :disabled="props.disabled"
         class="w-full rounded border border-(--kryos-text-low)/50 bg-(--kryos-bg) px-3 py-2 text-(--kryos-text-high)"
         @update:model-value="updateLinkStatus"
       />
@@ -137,7 +144,7 @@ function updateLinkStatus(value: string) {
     <div class="flex items-end sm:col-span-2 lg:col-span-4">
       <button
         type="button"
-        :disabled="!props.hasCriteria"
+        :disabled="!props.hasCriteria || props.disabled"
         class="rounded border border-(--kryos-text-low)/50 px-3 py-2 text-sm disabled:cursor-not-allowed disabled:opacity-40"
         @click="emit('clear')"
       >

@@ -15,6 +15,7 @@ const props = defineProps<{
   isLoading: boolean;
   isError: boolean;
   isEmpty: boolean;
+  disabled?: boolean;
 }>();
 
 const emit = defineEmits<{
@@ -24,7 +25,7 @@ const emit = defineEmits<{
 
 const totalPages = computed(() => getFleetTotalPages(props.total, props.pageSize));
 const controlsDisabled = computed(
-  () => props.isLoading || props.isError,
+  () => props.isLoading || props.isError || props.disabled,
 );
 
 function changePageSize(event: Event) {
