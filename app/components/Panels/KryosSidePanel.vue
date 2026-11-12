@@ -23,23 +23,16 @@ const emit = defineEmits<{
 </script>
 
 <template>
-  <aside
-    :id="props.id"
-    :class="{ 'marketing-mobile-panel': props.marketingTelemetry }"
-    class="fixed flex flex-col items-center justify-center top-0 right-0 w-75 h-screen bg-linear-90 bg-(--kryos-bg) z-100 border-l-2 border-l-(--kryos-accent)"
-  >
-    <div
-      v-if="props.showHeader"
-      class="trns kryos-text hover:text-(--kryos-text-high) absolute top-5 left-5 flex flex-col gap-1 uppercase"
-    >
+  <aside :id="props.id" :class="{ 'marketing-mobile-panel': props.marketingTelemetry }"
+    class="fixed flex flex-col items-center justify-center top-0 right-0 w-75 h-screen bg-linear-90 bg-(--kryos-bg) z-100 border-l-2 border-l-(--kryos-accent)">
+    <div v-if="props.showHeader"
+      class="trns kryos-text hover:text-(--kryos-text-high) absolute top-5 left-5 flex flex-col gap-1 uppercase">
       <span>{{ headerTitle }}</span>
       <span class="text-(--kryos-warn)">{{ headerSubheader }}</span>
     </div>
-    <button v-if="props.showCloseButton" type="button" aria-label="Close navigation menu" @click="emit('close')">
-      <Icon
-        class="trns hover:text-(--kryos-text-high) absolute top-5 right-5"
-        name="material-symbols:close"
-      />
+    <button v-if="props.showCloseButton" type="button" class="cursor-pointer" aria-label="Close navigation menu"
+      @click="emit('close')">
+      <Icon class="trns hover:text-(--kryos-text-high) absolute top-5 right-5" name="material-symbols:close" />
     </button>
     <div v-if="$slots.main" class="flex flex-col items-center gap-4 max-w-50">
       <slot name="main" />
@@ -67,14 +60,33 @@ const emit = defineEmits<{
 }
 
 @keyframes marketing-mobile-signal {
-  0% { top: 0; opacity: 0; }
-  0.5% { opacity: 0.8; }
-  98.5% { opacity: 0.8; }
-  99.5% { top: calc(100% - 12px); opacity: 0; }
-  100% { top: 0; opacity: 0; }
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+
+  0.5% {
+    opacity: 0.8;
+  }
+
+  98.5% {
+    opacity: 0.8;
+  }
+
+  99.5% {
+    top: calc(100% - 12px);
+    opacity: 0;
+  }
+
+  100% {
+    top: 0;
+    opacity: 0;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .marketing-mobile-panel::after { display: none; }
+  .marketing-mobile-panel::after {
+    display: none;
+  }
 }
 </style>
