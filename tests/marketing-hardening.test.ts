@@ -111,11 +111,15 @@ describe("marketing hardening", () => {
     expect(panel).toContain(":id=\"props.id\"");
   });
 
-  it("uses only the approved Multirotor master in active marketing routes", () => {
-    const approvedMaster =
-      "~/assets/img/products/kryos-multirotor/kryos-multirotor-hero-master.png";
-
-    expect(read("app/pages/products/index.vue")).toContain(approvedMaster);
-    expect(read("app/pages/products/kryos-multirotor.vue")).toContain(approvedMaster);
+  it("does not reference retired Multirotor image assets", () => {
+    for (const route of [
+      "app/pages/products/index.vue",
+      "app/pages/products/kryos-multirotor.vue",
+    ]) {
+      const source = read(route);
+      expect(source).not.toContain("kryos-multirotor-hero-master.png");
+      expect(source).not.toContain("multirotorHero");
+      expect(source).toContain("3D visualization in development");
+    }
   });
 });

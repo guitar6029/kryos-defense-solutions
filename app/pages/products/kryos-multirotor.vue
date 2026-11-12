@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import multirotorHero from "~/assets/img/products/kryos-multirotor/kryos-multirotor-hero-master.png";
-
 useHead({
   title: "Kryos Multirotor | Flagship Hardware Concept",
   meta: [
@@ -35,23 +33,14 @@ useHead({
           situational context in defense planning.
         </p>
         <p class="text-sm text-(--kryos-text-mid)">
-          Approved concept render · working product label
+          Concept visualization in development · working product label
         </p>
       </div>
-      <figure class="overflow-hidden rounded-xl border border-(--kryos-accent-dark-3) bg-(--kryos-bg)">
-        <img
-          :src="multirotorHero"
-          alt="Illustrative concept rendering of the Kryos Multirotor compact aircraft, shown from the front three-quarter view."
-          class="block h-auto w-full object-contain"
-          width="1672"
-          height="941"
-          fetchpriority="high"
-          decoding="async"
-        />
-        <figcaption class="px-4 py-3 text-sm text-(--kryos-text-mid)">
-          Illustrative concept rendering · no operational aircraft is represented
-        </figcaption>
-      </figure>
+      <div class="flex min-h-72 flex-col items-center justify-center gap-4 rounded-xl border border-(--kryos-accent-dark-3) bg-(--kryos-bg) p-8 text-center" aria-label="Kryos Multirotor concept visualization placeholder">
+        <span aria-hidden="true" class="font-kryos-2077-heading text-6xl tracking-[0.12em] text-(--kryos-warn)">K//M</span>
+        <p class="text-sm font-semibold uppercase tracking-[0.18em] text-(--kryos-text-high)">Multirotor concept</p>
+        <p class="text-sm text-(--kryos-text-mid)">3D visualization in development · no operational aircraft is represented</p>
+      </div>
     </header>
 
     <section class="grid gap-8 border-y border-(--kryos-accent-dark-3) py-10 md:grid-cols-2">
