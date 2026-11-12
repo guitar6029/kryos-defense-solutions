@@ -1,3 +1,38 @@
+/* Quiet telemetry trace running along the marketing navigation's bottom edge. */
+.marketing-nav-telemetry::before,
+.marketing-nav-telemetry::after {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  pointer-events: none;
+  content: "";
+}
+
+.marketing-nav-telemetry::before {
+  width: 100%;
+  height: 1px;
+  background: color-mix(in srgb, var(--kryos-2077-brand-accent) 28%, transparent);
+}
+
+.marketing-nav-telemetry::after {
+  width: 12px;
+  height: 2px;
+  background: var(--kryos-2077-brand-accent);
+  animation: marketing-nav-signal 180s linear infinite;
+}
+
+@keyframes marketing-nav-signal {
+  0% { transform: translateX(0); opacity: 0; }
+  0.5% { opacity: 0.8; }
+  98.5% { opacity: 0.8; }
+  99.5% { transform: translateX(calc(100vw - 12px)); opacity: 0; }
+  100% { transform: translateX(0); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marketing-nav-telemetry::after { animation: none; display: none; }
+}
+
 .marketing-nav-link {
   position: relative;
   display: inline-flex;
