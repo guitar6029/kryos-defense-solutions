@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 176" fill="none" color="#7b878d">
+  <path class="accent-base" d="M24 24H248V56H296V68M296 116V120H272V152H152" stroke="currentColor" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"/>
+  <path class="accent-highlight" d="M296 68V104" stroke="#df3d35" stroke-width="3" stroke-linecap="square"/>
+</svg>

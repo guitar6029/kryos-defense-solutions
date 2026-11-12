@@ -50,8 +50,9 @@ describe("marketing hardening", () => {
     expect(read("app/pages/products/index.vue")).toContain('to="/products/kryos-multirotor"');
     expect(read("app/pages/products/kryos-multirotor.vue")).toContain('to="/platform"');
     expect(read("app/pages/products/kryos-multirotor.vue")).toContain('to="/products"');
-    expect(read("app/pages/about.vue")).toContain('to="/platform"');
-    expect(read("app/pages/about.vue")).toContain('to="/products"');
+    expect(read("app/pages/about.vue")).toContain("The Future Does Not Wait.");
+    expect(read("app/pages/about.vue")).not.toContain("Implemented prototype");
+    expect(read("app/pages/about.vue")).not.toContain("Conceptual hardware");
     expect(activeMarketingSource).not.toContain('to="#"');
   });
 
