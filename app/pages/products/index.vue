@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import multirotorHero from "~/assets/img/products/kryos-multirotor/kryos-multirotor-hero-master.png";
-
 useHead({
   title: "Products | Kryos Platform and Concepts",
   meta: [
@@ -62,16 +60,10 @@ useHead({
 
     <section aria-labelledby="multirotor-card-title" class="overflow-hidden rounded-xl border border-(--kryos-accent-dark-3) bg-(--kryos-bg-alt)">
       <div class="grid lg:grid-cols-[1.2fr_0.8fr]">
-        <div class="aspect-video w-full self-start overflow-hidden bg-(--kryos-bg)">
-          <img
-            :src="multirotorHero"
-            alt="Illustrative concept rendering of the Kryos Multirotor compact aircraft."
-            class="block h-full w-full object-contain"
-            width="1672"
-            height="941"
-            loading="lazy"
-            decoding="async"
-          />
+        <div class="flex aspect-video w-full flex-col items-center justify-center gap-3 border-b border-(--kryos-accent-dark-3) bg-(--kryos-bg) p-8 text-center lg:border-b-0 lg:border-r">
+          <span aria-hidden="true" class="font-kryos-2077-heading text-5xl tracking-[0.12em] text-(--kryos-warn)">K//M</span>
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-(--kryos-text-high)">Multirotor concept</p>
+          <p class="text-xs uppercase tracking-[0.12em] text-(--kryos-text-mid)">3D visualization in development</p>
         </div>
         <div class="flex flex-col items-start justify-center gap-5 p-7 md:p-10">
           <p class="text-sm font-semibold uppercase tracking-wider text-(--kryos-warn)">
