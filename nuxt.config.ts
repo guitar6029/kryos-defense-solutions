@@ -6,6 +6,17 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   css: ["~/assets/css/global.css"],
   devtools: { enabled: false },
+  app: {
+    head: {
+      link: [
+        {
+          rel: "icon",
+          type: "image/png",
+          href: "/assets/images/kryos-symbol.png",
+        },
+      ],
+    },
+  },
 
   vite: {
     plugins: [tailwindcss()],
