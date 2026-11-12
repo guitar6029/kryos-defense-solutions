@@ -11,6 +11,7 @@
   --color-kryos-2077-elevated: var(--kryos-2077-elevated-surface);
   --color-kryos-2077-text: var(--kryos-2077-text-primary);
   --color-kryos-2077-muted: var(--kryos-2077-text-secondary);
+  --color-kryos-2077-text-supporting: var(--kryos-2077-text-supporting);
   --color-kryos-2077-accent: var(--kryos-2077-brand-accent);
   --color-kryos-2077-accent-subtle: var(--kryos-2077-subtle-accent);
   --color-kryos-2077-border: var(--kryos-2077-border);
@@ -31,6 +32,7 @@
   --kryos-2077-elevated-surface: #273035;
   --kryos-2077-text-primary: #f3f0e8;
   --kryos-2077-text-secondary: #aeb7ba;
+  --kryos-2077-text-supporting: #899198;
   --kryos-2077-brand-accent: #df3d35;
   --kryos-2077-subtle-accent: #7e302c;
   --kryos-2077-border: #343e44;
