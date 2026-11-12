@@ -49,14 +49,14 @@ const marketingLinks = [
       aria-label="Main navigation"
       class="mx-auto flex min-h-18 w-full max-w-7xl items-center gap-8 px-6 md:px-10 max-[750px]:hidden"
     >
-      <NuxtLink to="/" class="mr-auto text-lg font-semibold tracking-[0.12em] text-(--kryos-text-high) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)">
+      <NuxtLink to="/" class="font-kryos-2077-ui mr-auto text-lg tracking-[0.12em] text-(--kryos-text-high) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)">
         KRYOS
       </NuxtLink>
       <NuxtLink
         v-for="link in marketingLinks"
         :key="link.to"
         :to="link.to"
-        class="rounded-sm py-2 text-sm font-medium text-(--kryos-text-mid) hover:text-(--kryos-text-high) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)"
+        class="font-kryos-2077-ui rounded-sm py-2 text-sm text-(--kryos-text-mid) hover:text-(--kryos-text-high) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)"
         :class="link.active(route.path) ? 'text-(--kryos-text-high)' : ''"
         :aria-current="link.active(route.path) ? 'page' : undefined"
       >
@@ -82,7 +82,7 @@ const marketingLinks = [
               :key="link.to"
               :to="link.to"
               @click="handleCloseMenu"
-              class="text-lg text-(--kryos-text-mid) hover:text-(--kryos-text-high) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)"
+              class="font-kryos-2077-ui text-lg text-(--kryos-text-mid) hover:text-(--kryos-text-high) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)"
               :class="link.active(route.path) ? 'text-(--kryos-text-high)' : ''"
               :aria-current="link.active(route.path) ? 'page' : undefined"
             >

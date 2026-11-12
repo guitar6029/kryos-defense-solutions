@@ -26,7 +26,7 @@ useHead({
       <p class="text-sm font-semibold uppercase tracking-[0.16em] text-(--kryos-warn)">
         Defense-first engineering concept
       </p>
-      <h1 class="text-4xl font-semibold text-(--kryos-text-high) md:text-6xl">
+      <h1 class="font-kryos-2077-heading text-4xl text-(--kryos-text-high) md:text-6xl">
         Kryos Platform and product concepts
       </h1>
       <p class="text-xl leading-relaxed">
@@ -43,7 +43,7 @@ useHead({
         <p class="text-sm font-semibold uppercase tracking-wider text-(--kryos-warn)">
           Primary product · software prototype · sample data
         </p>
-        <h2 id="platform-card-title" class="mt-3 text-3xl font-semibold text-(--kryos-text-high)">
+        <h2 id="platform-card-title" class="font-kryos-2077-heading mt-3 text-3xl text-(--kryos-text-high)">
           Kryos Platform
         </h2>
         <p class="mt-4 max-w-3xl leading-relaxed">
@@ -54,7 +54,7 @@ useHead({
       </div>
       <NuxtLink
         to="/platform"
-        class="inline-flex min-h-12 items-center justify-center rounded-md bg-(--kryos-warn) px-6 py-3 font-semibold text-(--kryos-bg) hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)"
+        class="font-kryos-2077-ui inline-flex min-h-12 items-center justify-center rounded-md bg-(--kryos-warn) px-6 py-3 text-(--kryos-bg) hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)"
       >
         Explore the Platform
       </NuxtLink>
@@ -77,7 +77,7 @@ useHead({
           <p class="text-sm font-semibold uppercase tracking-wider text-(--kryos-warn)">
             Flagship hardware concept · not fielded
           </p>
-          <h2 id="multirotor-card-title" class="text-3xl font-semibold text-(--kryos-text-high)">
+          <h2 id="multirotor-card-title" class="font-kryos-2077-heading text-3xl text-(--kryos-text-high)">
             Kryos Multirotor
           </h2>
           <p class="leading-relaxed">
@@ -90,7 +90,7 @@ useHead({
           </p>
           <NuxtLink
             to="/products/kryos-multirotor"
-            class="inline-flex min-h-12 items-center rounded-md border border-(--kryos-warn) px-6 py-3 font-semibold text-(--kryos-text-high) hover:bg-(--kryos-accent-dark-3) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)"
+            class="font-kryos-2077-ui inline-flex min-h-12 items-center rounded-md border border-(--kryos-warn) px-6 py-3 text-(--kryos-text-high) hover:bg-(--kryos-accent-dark-3) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)"
           >
             Explore Kryos Multirotor
           </NuxtLink>
@@ -102,7 +102,7 @@ useHead({
       <p class="text-sm uppercase tracking-wider text-(--kryos-text-low)">
         Future direction · under review
       </p>
-      <h2 id="future-title" class="mt-3 text-2xl font-semibold text-(--kryos-text-high)">
+      <h2 id="future-title" class="font-kryos-2077-heading mt-3 text-2xl text-(--kryos-text-high)">
         MK-I ground-vehicle concept
       </h2>
       <p class="mt-3 max-w-3xl leading-relaxed">

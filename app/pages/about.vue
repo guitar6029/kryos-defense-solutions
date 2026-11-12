@@ -24,7 +24,7 @@ useHead({
       <p class="text-sm font-semibold uppercase tracking-[0.16em] text-(--kryos-warn)">
         About the concept
       </p>
-      <h1 class="text-4xl font-semibold leading-tight text-(--kryos-text-high) md:text-6xl">
+      <h1 class="font-kryos-2077-heading text-4xl leading-tight text-(--kryos-text-high) md:text-6xl">
         A defense robotics engineering portfolio
       </h1>
       <p class="text-xl leading-relaxed text-(--kryos-text-high)">
@@ -38,7 +38,7 @@ useHead({
         <p class="text-sm font-semibold uppercase tracking-wider text-(--kryos-warn)">
           Implemented prototype
         </p>
-        <h2 class="mt-3 text-2xl font-semibold text-(--kryos-text-high)">
+        <h2 class="font-kryos-2077-heading mt-3 text-2xl text-(--kryos-text-high)">
           Kryos Platform
         </h2>
         <p class="mt-3 leading-relaxed">
@@ -46,7 +46,7 @@ useHead({
           search and filters, pagination, and derived status summaries. It is
           not a production service or live operational system.
         </p>
-        <NuxtLink to="/platform" class="mt-5 inline-block text-(--kryos-text-high) underline underline-offset-4 hover:text-(--kryos-warn)">
+        <NuxtLink to="/platform" class="font-kryos-2077-ui mt-5 inline-block text-(--kryos-text-high) underline underline-offset-4 hover:text-(--kryos-warn)">
           Explore the Platform
         </NuxtLink>
       </div>
@@ -54,7 +54,7 @@ useHead({
         <p class="text-sm font-semibold uppercase tracking-wider text-(--kryos-warn)">
           Conceptual hardware
         </p>
-        <h2 class="mt-3 text-2xl font-semibold text-(--kryos-text-high)">
+        <h2 class="font-kryos-2077-heading mt-3 text-2xl text-(--kryos-text-high)">
           Kryos Multirotor
         </h2>
         <p class="mt-3 leading-relaxed">
@@ -62,7 +62,7 @@ useHead({
           the Platform. Integration is planned and not implemented. MK-I is a
           future concept under review; EX-1 is deferred.
         </p>
-        <NuxtLink to="/products" class="mt-5 inline-block text-(--kryos-text-high) underline underline-offset-4 hover:text-(--kryos-warn)">
+        <NuxtLink to="/products" class="font-kryos-2077-ui mt-5 inline-block text-(--kryos-text-high) underline underline-offset-4 hover:text-(--kryos-warn)">
           View product concepts
         </NuxtLink>
       </div>
