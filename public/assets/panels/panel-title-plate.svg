@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 210" fill="none" aria-hidden="true">
+  <title>Kryos offset title plate</title>
+  <!-- Translucent steel housing with protruding top and stepped base; central region reserved for HTML title -->
+  <path d="M24 62 H130 L163 22 H480 L505 8 H670 L705 42 V143 L680 174 H430 L405 196 H60 L17 159 V98 Z" fill="var(--kryos-panel-fill, #222a31)" fill-opacity=".96"/>
+  <path d="M24 62 H130 L163 22 H480 L505 8 H670 L705 42 V143 L680 174 H430 L405 196 H60 L17 159 V98 Z" stroke="var(--kryos-panel-edge, #58636d)" stroke-width="8"/>
+  <path d="M27 110 V68 H134 L169 28 H476 M505 14 H665 L696 46" stroke="var(--kryos-panel-highlight, #929da7)" stroke-width="3"/>
+  <path d="M60 186 H399 L429 164 H506" stroke="var(--kryos-panel-metal, #333d46)" stroke-width="11"/>
+  <path d="M578 174 H654 L680 146" stroke="var(--kryos-panel-highlight, #929da7)" stroke-width="3"/>
+  <path d="M545 12 L573 40 M563 12 L591 40 M581 12 L609 40 M599 12 L627 40" stroke="var(--kryos-panel-detail, #414c56)" stroke-width="7"/>
+  <path d="M43 144 H74 M90 144 H109 M640 156 H666" stroke="var(--kryos-panel-highlight, #929da7)" stroke-width="4"/>
+  <path d="M17 104 V146" stroke="var(--kryos-panel-accent, #788590)" stroke-width="6"/>
+</svg>
