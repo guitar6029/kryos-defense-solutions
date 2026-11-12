@@ -18,7 +18,7 @@ defineProps<{
 </script>
 
 <template>
-  <article class="relative isolate grid h-full grid-cols-[6rem_minmax(0,1fr)] items-start gap-5 border border-kryos-2077-border bg-kryos-2077-surface p-5 sm:grid-cols-[7.5rem_minmax(0,1fr)] sm:gap-6 sm:p-6">
+  <article class="relative isolate grid h-full grid-cols-[minmax(6.75rem,30%)_minmax(0,1fr)] border border-kryos-2077-border bg-kryos-2077-surface sm:grid-cols-[minmax(8rem,30%)_minmax(0,1fr)]">
     <svg
       v-if="frame.top"
       aria-hidden="true"
@@ -65,16 +65,18 @@ defineProps<{
       <path d="M0 0H16V48H0" fill="none" stroke="var(--kryos-2077-border)" stroke-width="2" vector-effect="non-scaling-stroke" />
       <path d="M16 20V36" fill="none" stroke="var(--kryos-2077-brand-accent)" stroke-width="3" vector-effect="non-scaling-stroke" />
     </svg>
-    <img
-      :src="portrait"
-      :alt="portraitAlt"
-      width="512"
-      height="512"
-      loading="lazy"
-      decoding="async"
-      class="aspect-square w-full border border-kryos-2077-border object-cover"
-    >
-    <div class="min-w-0">
+    <div class="relative min-h-full self-stretch overflow-hidden border-r border-kryos-2077-border">
+      <img
+        :src="portrait"
+        :alt="portraitAlt"
+        width="512"
+        height="512"
+        loading="lazy"
+        decoding="async"
+        class="block h-full w-full object-cover object-top"
+      >
+    </div>
+    <div class="min-w-0 p-5 sm:p-6">
       <h3 class="font-kryos-2077-heading text-xl leading-tight text-kryos-2077-text sm:text-2xl">
         {{ name }}
       </h3>
