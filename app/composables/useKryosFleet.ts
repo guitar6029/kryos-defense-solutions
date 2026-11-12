@@ -10,6 +10,7 @@ export const useKryosFleet = (
   page: Readonly<Ref<number>>,
   pageSize: Readonly<Ref<FleetPageSize>>,
   criteria: Readonly<Ref<FleetSearchCriteria>>,
+  enabled: Readonly<Ref<boolean>> = computed(() => true),
 ) => {
   const normalizedCriteria = computed<FleetSearchCriteria>(() => {
     const search = criteria.value.search?.trim();
@@ -39,5 +40,6 @@ export const useKryosFleet = (
       }),
     staleTime: 60_000,
     refetchOnWindowFocus: false,
+    enabled,
   });
 };
