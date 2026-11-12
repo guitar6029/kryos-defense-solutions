@@ -1,5 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 48" fill="none">
-  <path d="M4 14H100L116 6H180L196 14H284L300 6H396" stroke="currentColor" stroke-width="4" stroke-linecap="square" stroke-linejoin="miter"/>
-  <path d="M4 34H76L92 42H164L180 34H268L284 42H396" stroke="currentColor" stroke-width="4" stroke-linecap="square" stroke-linejoin="miter"/>
-  <path d="M208 14H244M208 34H244" stroke="currentColor" stroke-width="4" stroke-linecap="square"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 144" fill="none" color="#7b878d">
+  <path class="accent-base" d="M24 40H112L144 16H240L272 40H360M24 104H112L144 128H240L272 104H360" stroke="currentColor" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"/>
+  <path class="accent-highlight" d="M168 16H216M168 128H216" stroke="#df3d35" stroke-width="6" stroke-linecap="square"/>
 </svg>

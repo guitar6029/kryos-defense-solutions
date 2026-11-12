@@ -1,5 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 32" fill="none">
-  <path d="M4 16H136M264 16H396" stroke="currentColor" stroke-width="4" stroke-linecap="square"/>
-  <path d="M136 16H152V8H248V16H264" stroke="currentColor" stroke-width="4" stroke-linecap="square" stroke-linejoin="miter"/>
-  <path d="M176 24H224" stroke="currentColor" stroke-width="4" stroke-linecap="square"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 112" fill="none" color="#7b878d">
+  <path class="accent-base" d="M24 80H112L144 48H240L272 80H360" stroke="currentColor" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"/>
+  <path class="accent-highlight" d="M168 48H216" stroke="#df3d35" stroke-width="6" stroke-linecap="square"/>
 </svg>
