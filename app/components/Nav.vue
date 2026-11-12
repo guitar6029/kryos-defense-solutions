@@ -49,20 +49,26 @@ const marketingLinks = [
       aria-label="Main navigation"
       class="mx-auto flex min-h-18 w-full max-w-7xl items-center gap-8 px-6 md:px-10 max-[750px]:hidden"
     >
-      <NuxtLink to="/" class="font-kryos-2077-ui mr-auto text-lg tracking-[0.12em] text-(--kryos-text-high) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)">
-        KRYOS
+      <NuxtLink to="/" aria-label="Kryos home" class="mr-auto inline-flex min-h-11 items-center rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-2077-focus)">
+        <img src="/assets/images/kryos-symbol.png" alt="" width="1341" height="1173" class="h-10 w-auto" />
       </NuxtLink>
       <NuxtLink
         v-for="link in marketingLinks"
         :key="link.to"
         :to="link.to"
-        class="font-kryos-2077-ui rounded-sm py-2 text-sm text-(--kryos-text-mid) hover:text-(--kryos-text-high) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)"
-        :class="link.active(route.path) ? 'text-(--kryos-text-high)' : ''"
+        class="marketing-nav-link font-kryos-2077-ui"
+        :class="{ 'marketing-nav-link--active': link.active(route.path) }"
         :aria-current="link.active(route.path) ? 'page' : undefined"
       >
-        {{ link.label }}
+        <span class="relative z-10">{{ link.label }}</span>
       </NuxtLink>
     </nav>
+
+    <div class="flex min-h-18 items-center px-6 min-[751px]:hidden">
+      <NuxtLink to="/" aria-label="Kryos home" class="inline-flex min-h-11 items-center rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-2077-focus)">
+        <img src="/assets/images/kryos-symbol.png" alt="" width="1341" height="1173" class="h-9 w-auto" />
+      </NuxtLink>
+    </div>
 
     <KryosToggleMenu
       :expanded="sideMenuDisplaying"
@@ -82,11 +88,11 @@ const marketingLinks = [
               :key="link.to"
               :to="link.to"
               @click="handleCloseMenu"
-              class="font-kryos-2077-ui text-lg text-(--kryos-text-mid) hover:text-(--kryos-text-high) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)"
-              :class="link.active(route.path) ? 'text-(--kryos-text-high)' : ''"
+              class="marketing-nav-link font-kryos-2077-ui text-lg"
+              :class="{ 'marketing-nav-link--active': link.active(route.path) }"
               :aria-current="link.active(route.path) ? 'page' : undefined"
             >
-              {{ link.label }}
+              <span class="relative z-10">{{ link.label }}</span>
             </NuxtLink>
           </nav>
         </template>
@@ -94,3 +100,74 @@ const marketingLinks = [
     </Transition>
   </header>
 </template>
+
+<style scoped>
+.marketing-nav-link {
+  position: relative;
+  display: inline-flex;
+  min-width: 6.5rem;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.75rem;
+  color: var(--kryos-2077-text-secondary);
+  font-size: 0.8125rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color 160ms ease;
+}
+
+.marketing-nav-link::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6.5rem;
+  height: 4.5rem;
+  content: "";
+  pointer-events: none;
+  background-color: var(--kryos-2077-brand-accent);
+  mask: url("/assets/accents/corner-brackets.svg") center / contain no-repeat;
+  -webkit-mask: url("/assets/accents/corner-brackets.svg") center / contain no-repeat;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.96);
+  transform-origin: center;
+  transition: opacity 220ms ease-out, transform 220ms ease-out;
+}
+
+.marketing-nav-link:hover,
+.marketing-nav-link:focus-visible {
+  color: var(--kryos-2077-text-primary);
+}
+
+.marketing-nav-link:hover::before,
+.marketing-nav-link:focus-visible::before {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  transition-timing-function: cubic-bezier(0.42, 0, 1, 1);
+}
+
+.marketing-nav-link:focus-visible {
+  outline: 2px solid var(--kryos-2077-focus);
+  outline-offset: 3px;
+}
+
+.marketing-nav-link--active {
+  color: var(--kryos-2077-text-primary);
+}
+
+.marketing-nav-link--active::before {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marketing-nav-link,
+  .marketing-nav-link::before {
+    transition: none;
+  }
+
+  .marketing-nav-link::before {
+    transform: translate(-50%, -50%);
+  }
+}
+</style>
