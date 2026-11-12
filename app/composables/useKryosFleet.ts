@@ -1,5 +1,5 @@
 import { computed, type Ref } from "vue";
-import { useQuery } from "#imports";
+import { useAsyncData } from "#imports";
 import type {
   FleetPageResponse,
   FleetPageSize,
@@ -26,20 +26,38 @@ export const useKryosFleet = (
     };
   });
 
-  return useQuery({
-    queryKey: computed(
-      () => ["fleet", page.value, pageSize.value, normalizedCriteria.value] as const,
-    ),
-    queryFn: ({ queryKey }) =>
-      $fetch<FleetPageResponse>("/api/fleet", {
+  const request = computed(() => ({
+    page: page.value,
+    pageSize: pageSize.value,
+    criteria: normalizedCriteria.value,
+  }));
+  const key = computed(() => `fleet:${JSON.stringify(request.value)}`);
+  const query = useAsyncData(
+    key,
+    (_nuxtApp, { signal }) => {
+      const currentRequest = request.value;
+      return $fetch<FleetPageResponse>("/api/fleet", {
         query: {
-          page: queryKey[1],
-          pageSize: queryKey[2],
-          ...queryKey[3],
+          page: currentRequest.page,
+          pageSize: currentRequest.pageSize,
+          ...currentRequest.criteria,
         },
-      }),
-    staleTime: 60_000,
-    refetchOnWindowFocus: false,
-    enabled,
-  });
+        signal,
+      });
+    },
+    {
+      dedupe: "cancel",
+      enabled,
+    },
+  );
+
+  return {
+    data: query.data,
+    isLoading: computed(
+      () => query.status.value === "pending" && query.data.value === undefined,
+    ),
+    isFetching: query.pending,
+    isError: computed(() => query.status.value === "error"),
+    refetch: () => query.refresh({ dedupe: "cancel" }),
+  };
 };
