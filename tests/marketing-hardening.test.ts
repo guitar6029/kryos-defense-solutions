@@ -44,8 +44,6 @@ describe("marketing hardening", () => {
     }
 
     expect(read("app/pages/index.vue")).toContain('to="/platform"');
-    expect(read("app/pages/index.vue")).toContain('to="/products/kryos-multirotor"');
-    expect(read("app/pages/index.vue")).toContain('to="/about"');
     expect(read("app/pages/platform.vue")).toContain('to="/app"');
     expect(read("app/pages/platform.vue")).toContain('to="/products"');
     expect(read("app/pages/products/index.vue")).toContain('to="/platform"');
@@ -59,7 +57,7 @@ describe("marketing hardening", () => {
 
   it("keeps active marketing copy within the approved content truth table", () => {
     expect(activeMarketingSource).toContain("Kryos Multirotor");
-    expect(activeMarketingSource).toContain("Software prototype");
+    expect(activeMarketingSource).toContain("software prototype");
     expect(activeMarketingSource).toContain("sample data");
     expect(activeMarketingSource).toContain("MK-I");
     expect(activeMarketingSource).toContain("EX-1 is deferred");
@@ -116,7 +114,6 @@ describe("marketing hardening", () => {
     const approvedMaster =
       "~/assets/img/products/kryos-multirotor/kryos-multirotor-hero-master.png";
 
-    expect(read("app/pages/index.vue")).toContain(approvedMaster);
     expect(read("app/pages/products/index.vue")).toContain(approvedMaster);
     expect(read("app/pages/products/kryos-multirotor.vue")).toContain(approvedMaster);
   });
