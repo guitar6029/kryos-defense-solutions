@@ -1,17 +1,17 @@
 <script setup lang="ts">
 useHead({
-  title: "About the Kryos Concept",
+  title: "Kryos Defense Solutions | Corporate Overview",
   meta: [
     {
       name: "description",
       content:
-        "Kryos Defense Solutions is a fictional engineering portfolio exploring a fleet-operations software prototype and future robotics concepts.",
+        "Kryos Defense Solutions engineers autonomous systems, strategic intelligence, and defense technology.",
     },
-    { property: "og:title", content: "About the Kryos Concept" },
+    { property: "og:title", content: "Kryos Defense Solutions" },
     {
       property: "og:description",
       content:
-        "A fictional engineering portfolio with a sample-data software prototype and conceptual hardware.",
+        "Engineering the next generation of autonomous systems, strategic intelligence, and defense technology.",
     },
     { property: "og:type", content: "website" },
   ],
@@ -19,53 +19,33 @@ useHead({
 </script>
 
 <template>
-  <article class="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 py-16 md:px-10 md:py-24">
-    <header class="flex max-w-4xl flex-col items-start gap-6">
-      <p class="text-sm font-semibold uppercase tracking-[0.16em] text-(--kryos-warn)">
-        About the concept
-      </p>
-      <h1 class="font-kryos-2077-heading text-4xl leading-tight text-(--kryos-text-high) md:text-6xl">
-        A defense robotics engineering portfolio
-      </h1>
-      <p class="text-xl leading-relaxed text-(--kryos-text-high)">
-        Kryos Defense Solutions is a fictional portfolio project exploring a
-        fleet-operations software prototype and future uncrewed systems.
-      </p>
-    </header>
+  <section
+    aria-labelledby="about-title"
+    class="relative isolate flex min-h-[82svh] overflow-hidden bg-kryos-2077-page bg-[url('/assets/images/headquarters.png')] bg-[position:68%_center] bg-cover bg-no-repeat text-kryos-2077-text md:min-h-[88svh] md:bg-[position:72%_center]"
+  >
+    <div
+      aria-hidden="true"
+      class="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,7,9,0.88)_0%,rgba(5,7,9,0.72)_38%,rgba(5,7,9,0.32)_68%,rgba(5,7,9,0.12)_100%)]"
+    />
+    <div
+      aria-hidden="true"
+      class="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,7,9,0.06)_0%,rgba(5,7,9,0.42)_100%)]"
+    />
 
-    <section class="grid gap-6 md:grid-cols-2">
-      <div class="rounded-xl border border-(--kryos-accent-dark-3) bg-(--kryos-bg-alt) p-7">
-        <p class="text-sm font-semibold uppercase tracking-wider text-(--kryos-warn)">
-          Implemented prototype
-        </p>
-        <h2 class="font-kryos-2077-heading mt-3 text-2xl text-(--kryos-text-high)">
-          Kryos Platform
-        </h2>
-        <p class="mt-3 leading-relaxed">
-          The software prototype supports sample fleet/device record retrieval,
-          search and filters, pagination, and derived status summaries. It is
-          not a production service or live operational system.
-        </p>
-        <NuxtLink to="/platform" class="font-kryos-2077-ui mt-5 inline-block text-(--kryos-text-high) underline underline-offset-4 hover:text-(--kryos-warn)">
-          Explore the Platform
-        </NuxtLink>
-      </div>
-      <div class="rounded-xl border border-(--kryos-accent-dark-3) bg-(--kryos-bg-alt) p-7">
-        <p class="text-sm font-semibold uppercase tracking-wider text-(--kryos-warn)">
-          Conceptual hardware
-        </p>
-        <h2 class="font-kryos-2077-heading mt-3 text-2xl text-(--kryos-text-high)">
-          Kryos Multirotor
-        </h2>
-        <p class="mt-3 leading-relaxed">
-          The compact multirotor is a conceptual design intended to complement
-          the Platform. Integration is planned and not implemented. MK-I is a
-          future concept under review; EX-1 is deferred.
-        </p>
-        <NuxtLink to="/products" class="font-kryos-2077-ui mt-5 inline-block text-(--kryos-text-high) underline underline-offset-4 hover:text-(--kryos-warn)">
-          View product concepts
-        </NuxtLink>
-      </div>
-    </section>
-  </article>
+    <div class="relative z-10 mx-auto flex w-full max-w-7xl flex-col justify-center px-6 py-20 md:px-10 lg:py-24">
+      <p class="mb-7 max-w-[22rem] font-kryos-2077-display text-[0.65rem] font-bold uppercase leading-relaxed tracking-[0.28em] text-kryos-2077-accent sm:max-w-none sm:text-xs">
+        KRYOS DEFENSE SOLUTIONS / CORPORATE OVERVIEW
+      </p>
+      <div aria-hidden="true" class="hero-diagonal-stripes mb-5" />
+      <h1
+        id="about-title"
+        class="hero-headline max-w-5xl text-[clamp(3rem,8vw,8.5rem)] font-bold leading-[0.82] tracking-[-0.06em] text-kryos-2077-text"
+      >
+        The Future Does Not Wait.
+      </h1>
+      <p class="mt-10 max-w-xl border-l border-kryos-2077-accent pl-5 text-base leading-relaxed text-kryos-2077-text sm:mt-12 sm:pl-6 md:text-lg">
+        Engineering the next generation of autonomous systems, strategic intelligence, and defense technology.
+      </p>
+    </div>
+  </section>
 </template>
