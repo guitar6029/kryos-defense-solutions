@@ -48,4 +48,39 @@ useHead({
       </p>
     </div>
   </section>
+
+  <section
+    aria-labelledby="strategic-operations-title"
+    class="bg-kryos-2077-page px-6 py-24 text-kryos-2077-text md:px-10 md:py-32 lg:py-40"
+  >
+    <div class="mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16 xl:gap-24">
+      <div>
+        <p class="mb-7 max-w-[22rem] font-kryos-2077-display text-[0.65rem] font-bold uppercase leading-relaxed tracking-[0.28em] text-kryos-2077-accent sm:max-w-none sm:text-xs">
+          INSIDE KRYOS / STRATEGIC OPERATIONS
+        </p>
+        <div aria-hidden="true" class="hero-diagonal-stripes mb-5" />
+        <h2
+          id="strategic-operations-title"
+          class="hero-headline max-w-xl text-[clamp(2.75rem,5.5vw,6.25rem)] font-bold leading-[0.86] tracking-[-0.06em] text-kryos-2077-text"
+        >
+          Power Is Directed, Not Displayed.
+        </h2>
+        <p class="mt-8 max-w-lg border-l border-kryos-2077-accent pl-5 text-base leading-relaxed text-kryos-2077-muted sm:pl-6 md:text-lg">
+          Kryos operates at the convergence of autonomous systems, intelligence infrastructure, and strategic command. Behind every platform is a network of engineers, analysts, and decision-makers working to shape the next generation of operational capability.
+        </p>
+      </div>
+
+      <figure class="relative isolate overflow-visible border border-kryos-2077-border bg-kryos-2077-surface before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:translate-x-3 before:translate-y-3 before:border before:border-kryos-2077-border before:bg-[linear-gradient(135deg,var(--kryos-2077-elevated-surface),var(--kryos-2077-surface-background))]">
+        <img
+          src="/assets/images/meeting-room.png"
+          alt="Shadowed Kryos analysts and executives gathered around a tactical table beneath a red holographic world map."
+          width="1774"
+          height="887"
+          loading="lazy"
+          decoding="async"
+          class="block h-auto w-full"
+        >
+      </figure>
+    </div>
+  </section>
 </template>
