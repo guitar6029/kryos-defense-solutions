@@ -85,14 +85,14 @@ onBeforeUnmount(() => {
           <span class="block min-h-[0.88em]">{{ typedBeforeYou }}</span>
           <span class="block min-h-[0.88em] text-kryos-2077-accent" :class="{ 'opacity-0': isTyping && !showDo }">DO.</span>
         </h1>
-        <div class="mt-10 flex max-w-xl flex-col gap-6 border-l border-kryos-2077-accent pl-5 sm:mt-12 sm:pl-6">
+        <div class="mt-10 flex max-w-xl flex-col gap-6 border-l border-kryos-2077-text-supporting pl-5 sm:mt-12 sm:pl-6">
           <p class="text-base leading-relaxed text-kryos-2077-text md:text-lg">
             For over three decades, we've defined the limits of autonomous defense. Then we eliminated them.
           </p>
           <div>
             <NuxtLink
               to="/platform"
-              class="font-kryos-2077-ui inline-flex min-h-12 items-center border-b-2 border-kryos-2077-accent pb-2 text-kryos-2077-text transition-colors hover:border-kryos-2077-text focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-kryos-2077-focus"
+              class="font-kryos-2077-ui inline-flex min-h-12 items-center border-b-2 border-kryos-2077-text-supporting pb-2 text-kryos-2077-text transition-colors hover:border-kryos-2077-text focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-kryos-2077-focus"
             >
               EXPLORE OUR SYSTEMS <span aria-hidden="true" class="ml-3">↗</span>
             </NuxtLink>
