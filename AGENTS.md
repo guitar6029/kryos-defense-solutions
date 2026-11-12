@@ -8,7 +8,7 @@ Before performing any work:
 2. Run `git status --short --branch` and `git branch --show-current`.
 3. Confirm the current branch and worktree.
 4. **Never implement changes or create commits directly on `main`.**
-5. If currently on `main`, create or switch to an appropriate feature branch before editing files.
+5. If currently on `main`, do not edit files there. Use an already-authorized feature branch/worktree, or obtain authorization before creating a branch or worktree.
 6. If there are existing uncommitted changes, preserve them. Do not switch branches, reset, stash, or overwrite work without assessing the consequences.
 7. If a safe feature branch cannot be established, stop and report the issue.
 
@@ -108,6 +108,38 @@ These instructions are the shared baseline for AI coding agents working in this 
 - Do not commit, push, merge, or create pull requests unless explicitly authorized.
 - Authorization applies only to the operation explicitly approved. Permission to implement a task does not automatically authorize committing, pushing, merging, deploying, or modifying production resources.
 - Never rewrite shared Git history or force-push without explicit authorization.
+
+### Mandatory preflight before any write operation
+
+- Confirm the absolute repository path, current branch, worktree, `git status --porcelain=v1`, and `git worktree list --porcelain`. Identify the user's active checkout and its uncommitted work.
+- Inspect local refs, configured remotes, and available remote tracking refs for the proposed feature branch. Fetch only when network access and the task permit it; a fetch updates remote-tracking refs, not the working tree. If the remote state cannot be verified, do not assume a branch name is unused.
+- State the intended worktree directory, branch name, base ref, and files or directories to be changed. Reuse an existing task worktree when safe; do not create a duplicate branch or checkout merely for convenience.
+- Before changing any file, verify the selected checkout is not `main` and does not contain unrelated uncommitted changes that could be affected. If it does, stop and request an approved isolation plan.
+
+### Worktree ownership and location
+
+- Treat every existing worktree as potentially user-owned. Never relocate, prune, remove, detach, or overwrite one without separate, explicit authorization.
+- For a **new, explicitly authorized** Kryos feature worktree, use the persistent sibling-worktree convention `~/Development/kryos-worktrees/<short-feature-name>/`. Verify the real absolute path and parent directory exist and are writable; do not silently choose a substitute location.
+- Never create feature worktrees in `/tmp`, `/var/tmp`, a system cache, or another disposable directory. A temporary test directory is not a feature worktree and must not contain deliverable changes.
+- Do not relocate a created worktree to work around filesystem boundaries or tooling errors. Stop and present the exact problem and a safe plan.
+- Avoid parallel agents writing to the same branch or worktree. Each task must have a clearly identified working directory and branch owner.
+- If the designated location is occupied, the branch already exists, or another worktree has the branch checked out, stop and report the options; do not invent new branch names or remove existing checkouts.
+
+### Permission gates and prohibited auto-recovery
+
+- **Inspect** is read-only (including `git status`, `git log`, diff, and listing worktrees); `git fetch` is allowed only when needed for inspection and available network access permits it.
+- **Implement** permits only task-scoped file edits and non-destructive checks within the authorized branch/worktree. It does **not** grant authority to create or move worktrees, create commits, push, create PRs, or modify other branches.
+- **Publish** requires explicit authorization for each operation: commit, push, open PR, and merge are separate approvals. A request to "prepare a PR" is not a request to publish it unless explicitly stated.
+- Never use `git reset --hard`, `git clean -fd`, forced checkout, forced push, destructive branch deletion, or history rewriting as an automatic recovery action. Even with authorization, explain the impact and verify the affected refs and files first.
+- If a branch is behind/diverged from its remote, a push is rejected, a merge conflict occurs, an authentication check fails, or the repository state unexpectedly changes: **stop**. Report current refs, affected worktrees, work preserved, and a recommended recovery plan. No speculative pull/merge/rebase, repeated push attempts, credential changes, or branch recreation.
+- Do not update Git credentials, change remotes, alter Git configuration, or use alternate accounts to bypass an error without separate authorization.
+- After any explicitly approved branch/worktree operation, verify `git worktree list --porcelain`, branch identity, expected commit ancestry, clean or known-dirty status, and preservation of unrelated changes.
+
+### Scope and completion reporting
+
+- Keep each PR limited to the approved change. Do not include accidental generated assets, unrelated formatting, dependency changes, or work from another branch.
+- Before requesting publish approval, report: absolute working directory, branch and base, changed files, test/check results, uncommitted changes, and any blockers. Never state that an operation succeeded unless verified.
+- If the task is blocked, preserve the existing state and stop after one useful diagnostic report. Do not launch an unrequested repair project.
 
 ## 4. Security and Permissions
 
