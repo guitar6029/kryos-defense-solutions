@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" fill="none" aria-hidden="true">
+  <title>Kryos minimal mechanical corner rails</title>
+  <!-- Open rather than boxed; usable as an overlay around any product illustration. -->
+  <path d="M37 219 V112 L89 59 H292 L321 31 H467" stroke="var(--kryos-panel-edge, #58636d)" stroke-width="11"/>
+  <path d="M52 199 V119 L97 74 H281 L310 47 H420" stroke="var(--kryos-panel-highlight, #929da7)" stroke-width="3"/>
+  <path d="M715 47 H885 L955 109 V229" stroke="var(--kryos-panel-edge, #58636d)" stroke-width="11"/>
+  <path d="M747 62 H880 L939 117 V184" stroke="var(--kryos-panel-highlight, #929da7)" stroke-width="3"/>
+  <path d="M957 394 V521 L892 577 H682" stroke="var(--kryos-panel-edge, #58636d)" stroke-width="11"/>
+  <path d="M943 436 V512 L887 562 H744" stroke="var(--kryos-panel-highlight, #929da7)" stroke-width="3"/>
+  <path d="M304 575 H105 L41 514 V401" stroke="var(--kryos-panel-edge, #58636d)" stroke-width="11"/>
+  <path d="M260 560 H113 L56 507 V442" stroke="var(--kryos-panel-highlight, #929da7)" stroke-width="3"/>
+  <path d="M55 107 L102 61" stroke="var(--kryos-panel-metal, #333d46)" stroke-width="19"/>
+  <path d="M843 47 L906 47 L955 91" stroke="var(--kryos-panel-metal, #333d46)" stroke-width="17"/>
+  <path d="M40 463 V505 L102 575" stroke="var(--kryos-panel-metal, #333d46)" stroke-width="17"/>
+  <path d="M954 463 V517 L913 554" stroke="var(--kryos-panel-metal, #333d46)" stroke-width="17"/>
+  <path d="M145 59 H175 M188 59 H199 M810 578 H838" stroke="var(--kryos-panel-highlight, #929da7)" stroke-width="5"/>
+  <path d="M939 136 V172 M43 451 V483" stroke="var(--kryos-panel-accent, #788590)" stroke-width="6"/>
+</svg>

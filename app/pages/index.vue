@@ -123,7 +123,9 @@ const workflow = [
       </div>
     </section>
 
-    <section aria-labelledby="workflow-title" class="bg-[#0B0E10] text-[#F3F0E8]">
+    <MarketingKryosAutonomousSystems />
+
+    <section v-if="false" aria-labelledby="workflow-title" class="bg-[#0B0E10] text-[#F3F0E8]">
       <div class="mx-auto grid w-full max-w-7xl gap-12 px-6 py-16 md:px-10 md:py-24 lg:grid-cols-12 lg:gap-8">
         <div class="lg:col-span-4">
           <p class="text-xs font-semibold uppercase tracking-[0.18em] text-[#C39A52]">
@@ -165,7 +167,7 @@ const workflow = [
       </div>
     </section>
 
-    <section aria-labelledby="home-multirotor-title" class="border-y border-[#343E44] bg-[#1B2125] text-[#F3F0E8]">
+    <section v-if="false" aria-labelledby="home-multirotor-title" class="border-y border-[#343E44] bg-[#1B2125] text-[#F3F0E8]">
       <div class="mx-auto grid w-full max-w-[1440px] gap-0 lg:grid-cols-12">
         <figure
           class="relative bg-[#0B0E10] lg:col-span-8"
@@ -210,7 +212,7 @@ const workflow = [
       </div>
     </section>
 
-    <section aria-labelledby="product-status-title" class="relative isolate overflow-hidden bg-[#1B2125] text-[#F3F0E8]">
+    <section v-if="false" aria-labelledby="product-status-title" class="relative isolate overflow-hidden bg-[#1B2125] text-[#F3F0E8]">
       <div class="mx-auto w-full max-w-7xl px-6 py-16 md:px-10 md:py-24">
         <div class="grid gap-12 lg:grid-cols-12 lg:gap-8">
           <div class="lg:col-span-4">

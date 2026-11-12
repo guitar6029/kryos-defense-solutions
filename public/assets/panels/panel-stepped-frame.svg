@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" fill="none" aria-hidden="true">
+  <title>Kryos stepped industrial image frame</title>
+  <g stroke-linejoin="miter">
+    <!-- A thin structural frame with deliberately asymmetrical cut corners; center remains transparent. -->
+    <path d="M52 57 H296 L324 29 H826 L850 51 H944 V154 L967 177 V532 L931 567 H647 L622 591 H76 L32 545 V124 Z" stroke="var(--kryos-panel-edge, #58636d)" stroke-width="9"/>
+    <path d="M68 121 V77 H300 L330 47 H819 M950 193 V522 L922 550 H652 L620 574 H81 L49 540" stroke="var(--kryos-panel-highlight, #929da7)" stroke-width="3"/>
+    <path d="M32 196 V124 L52 57 H174" stroke="var(--kryos-panel-metal, #333d46)" stroke-width="24"/>
+    <path d="M944 154 L967 177 V308" stroke="var(--kryos-panel-metal, #333d46)" stroke-width="18"/>
+    <path d="M76 591 H268 L297 570 H441" stroke="var(--kryos-panel-metal, #333d46)" stroke-width="17"/>
+    <path d="M755 29 H826 L850 51 H944 V105" stroke="var(--kryos-panel-metal, #333d46)" stroke-width="15"/>
+    <!-- Mechanical slots, rivets and hashed bands -->
+    <path d="M118 61 H224 M258 61 H281 M671 32 H713 M744 32 H764" stroke="var(--kryos-panel-highlight, #929da7)" stroke-width="5"/>
+    <path d="M827 61 L858 95 M844 61 L875 95 M861 61 L892 95 M878 61 L909 95" stroke="var(--kryos-panel-detail, #414c56)" stroke-width="7"/>
+    <path d="M100 566 H137 M151 566 H170 M852 552 H907" stroke="var(--kryos-panel-highlight, #929da7)" stroke-width="4"/>
+    <path d="M965 352 V397 M965 418 V444" stroke="var(--kryos-panel-highlight, #929da7)" stroke-width="4"/>
+    <path d="M782 566 H828" stroke="var(--kryos-panel-accent, #788590)" stroke-width="7"/>
+  </g>
+</svg>
