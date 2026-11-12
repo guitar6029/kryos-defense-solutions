@@ -79,6 +79,9 @@ const marketingLinks = [
       <KryosSidePanel
         v-if="sideMenuDisplaying"
         :id="mobileMenuId"
+        :marketing-telemetry="true"
+        :show-close-button="false"
+        :show-header="false"
         @close="handleCloseMenu"
       >
         <template #main>
