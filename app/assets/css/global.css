@@ -3,7 +3,37 @@
 @import "@nuxt/ui";
 @import "./animations.css";
 @import "./transitions.css";
+
+@theme inline {
+  --color-kryos-2077-page: var(--kryos-2077-page-background);
+  --color-kryos-2077-surface: var(--kryos-2077-surface-background);
+  --color-kryos-2077-elevated: var(--kryos-2077-elevated-surface);
+  --color-kryos-2077-text: var(--kryos-2077-text-primary);
+  --color-kryos-2077-muted: var(--kryos-2077-text-secondary);
+  --color-kryos-2077-accent: var(--kryos-2077-brand-accent);
+  --color-kryos-2077-accent-subtle: var(--kryos-2077-subtle-accent);
+  --color-kryos-2077-border: var(--kryos-2077-border);
+  --color-kryos-2077-focus: var(--kryos-2077-focus);
+  --font-kryos-2077-display: var(--kryos-2077-font-display);
+  --font-kryos-2077-heading: var(--kryos-2077-font-heading);
+  --font-kryos-2077-body: var(--kryos-2077-font-body);
+}
+
 :root {
+  /* KRYOS 2077 marketing tokens. Namespaced for incremental use outside the dashboard. */
+  --kryos-2077-page-background: #0b0e10;
+  --kryos-2077-surface-background: #1b2125;
+  --kryos-2077-elevated-surface: #273035;
+  --kryos-2077-text-primary: #f3f0e8;
+  --kryos-2077-text-secondary: #aeb7ba;
+  --kryos-2077-brand-accent: #df3d35;
+  --kryos-2077-subtle-accent: #7e302c;
+  --kryos-2077-border: #343e44;
+  --kryos-2077-focus: #f3f0e8;
+  --kryos-2077-font-display: "Orbitron", sans-serif;
+  --kryos-2077-font-heading: "Rajdhani", sans-serif;
+  --kryos-2077-font-body: "Exo 2", sans-serif;
+
   /* ==========================================================================
      BASE BACKGROUND LAYERS
      These define the overall atmosphere: dark, cold, industrial.
@@ -181,11 +211,43 @@ html {
 }
 
 body {
-  font-family: "Exo 2", sans-serif;
+  font-family: var(--kryos-2077-font-body);
   color: var(--kryos-text-mid);
   background: var(--kryos-bg);
 }
 
 .font-orbitron {
   font-family: "Orbitron", sans-serif;
+}
+
+.font-rajdhani {
+  font-family: "Rajdhani", sans-serif;
+}
+
+.hero-megastructure {
+  background-image: url("/assets/images/kyos-megastructure.png");
+  background-position: 66% center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hero-diagonal-stripes {
+  display: block;
+  width: clamp(7rem, 16vw, 11rem);
+  height: clamp(1.6rem, 3.65vw, 2.5rem);
+  background-color: var(--kryos-2077-brand-accent);
+  mask: url("/assets/accents/diagonal-stripes.svg") center / contain no-repeat;
+  -webkit-mask: url("/assets/accents/diagonal-stripes.svg") center / contain no-repeat;
+}
+
+@media (max-width: 767px) {
+  .hero-megastructure {
+    background-position: 63% center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
