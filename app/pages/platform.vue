@@ -42,7 +42,7 @@ const workflow = [
       <p class="text-sm font-semibold uppercase tracking-[0.16em] text-(--kryos-warn)">
         Primary product · software prototype
       </p>
-      <h1 class="text-4xl font-semibold leading-tight text-(--kryos-text-high) md:text-6xl">
+      <h1 class="font-kryos-2077-heading text-4xl leading-tight text-(--kryos-text-high) md:text-6xl">
         Kryos Platform
       </h1>
       <p class="text-2xl leading-relaxed text-(--kryos-text-high)">
@@ -59,7 +59,7 @@ const workflow = [
         <p class="text-sm uppercase tracking-wider text-(--kryos-text-low)">
           Verified prototype workflow
         </p>
-        <h2 id="workflow-title" class="mt-2 text-3xl font-semibold text-(--kryos-text-high)">
+        <h2 id="workflow-title" class="font-kryos-2077-heading mt-2 text-3xl text-(--kryos-text-high)">
           From sample records to a concise summary
         </h2>
       </div>
@@ -72,7 +72,7 @@ const workflow = [
           <span class="text-sm font-semibold tracking-wider text-(--kryos-warn)">
             {{ step.number }} · {{ index === 0 ? "INPUT" : index === 1 ? "QUERY" : "SUMMARY" }}
           </span>
-          <h3 class="mt-4 text-xl font-semibold text-(--kryos-text-high)">
+          <h3 class="font-kryos-2077-heading mt-4 text-xl text-(--kryos-text-high)">
             {{ step.title }}
           </h3>
           <p class="mt-3 leading-relaxed">{{ step.text }}</p>
@@ -95,7 +95,7 @@ const workflow = [
         <p class="text-sm uppercase tracking-wider text-(--kryos-warn)">
           Implemented prototype
         </p>
-        <h2 class="mt-3 text-2xl font-semibold text-(--kryos-text-high)">
+        <h2 class="font-kryos-2077-heading mt-3 text-2xl text-(--kryos-text-high)">
           Record workflows
         </h2>
         <p class="mt-3 leading-relaxed">
@@ -109,7 +109,7 @@ const workflow = [
         <p class="text-sm uppercase tracking-wider text-(--kryos-text-low)">
           Planned / unverified
         </p>
-        <h2 class="mt-3 text-2xl font-semibold text-(--kryos-text-high)">
+        <h2 class="font-kryos-2077-heading mt-3 text-2xl text-(--kryos-text-high)">
           Future directions
         </h2>
         <p class="mt-3 leading-relaxed">
@@ -123,7 +123,7 @@ const workflow = [
       <p class="text-sm font-semibold uppercase tracking-[0.14em] text-(--kryos-warn)">
         Planned / conceptual relationship · not implemented
       </p>
-      <h2 class="mt-3 text-2xl font-semibold text-(--kryos-text-high)">
+      <h2 class="font-kryos-2077-heading mt-3 text-2xl text-(--kryos-text-high)">
         Intended to complement the Platform
       </h2>
       <p class="mt-3 max-w-4xl leading-relaxed">
@@ -134,19 +134,19 @@ const workflow = [
       <div class="mt-6 flex flex-wrap gap-3">
         <NuxtLink
           to="/app"
-          class="inline-flex min-h-12 items-center rounded-md border border-(--kryos-warn) px-5 py-3 font-semibold text-(--kryos-text-high) hover:bg-(--kryos-accent-dark-3) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)"
+          class="font-kryos-2077-ui inline-flex min-h-12 items-center rounded-md border border-(--kryos-warn) px-5 py-3 text-(--kryos-text-high) hover:bg-(--kryos-accent-dark-3) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)"
         >
           Open sample/development workspace
         </NuxtLink>
         <NuxtLink
           to="/products/kryos-multirotor"
-          class="inline-flex min-h-12 items-center rounded-md border border-(--kryos-accent) px-5 py-3 font-semibold text-(--kryos-text-high) hover:bg-(--kryos-accent-dark-3) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)"
+          class="font-kryos-2077-ui inline-flex min-h-12 items-center rounded-md border border-(--kryos-accent) px-5 py-3 text-(--kryos-text-high) hover:bg-(--kryos-accent-dark-3) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)"
         >
           Explore Kryos Multirotor
         </NuxtLink>
         <NuxtLink
           to="/products"
-          class="inline-flex min-h-12 items-center px-5 py-3 font-semibold text-(--kryos-text-high) underline underline-offset-4 hover:text-(--kryos-warn) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)"
+          class="font-kryos-2077-ui inline-flex min-h-12 items-center px-5 py-3 text-(--kryos-text-high) underline underline-offset-4 hover:text-(--kryos-warn) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)"
         >
           View products
         </NuxtLink>

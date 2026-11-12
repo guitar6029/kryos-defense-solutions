@@ -27,7 +27,7 @@ useHead({
         <p class="text-sm font-semibold uppercase tracking-[0.16em] text-(--kryos-warn)">
           Flagship hardware concept · not fielded or available
         </p>
-        <h1 class="text-4xl font-semibold leading-tight text-(--kryos-text-high) md:text-6xl">
+        <h1 class="font-kryos-2077-heading text-4xl leading-tight text-(--kryos-text-high) md:text-6xl">
           Kryos Multirotor
         </h1>
         <p class="text-xl leading-relaxed text-(--kryos-text-high)">
@@ -59,7 +59,7 @@ useHead({
         <p class="text-sm font-semibold uppercase tracking-wider text-(--kryos-warn)">
           Proposed design intent
         </p>
-        <h2 class="mt-3 text-2xl font-semibold text-(--kryos-text-high)">
+        <h2 class="font-kryos-2077-heading mt-3 text-2xl text-(--kryos-text-high)">
           A concept alongside the Platform
         </h2>
         <p class="mt-3 leading-relaxed">
@@ -83,7 +83,7 @@ useHead({
       <p class="text-sm uppercase tracking-wider text-(--kryos-text-low)">
         Concept status
       </p>
-      <h2 id="unknowns-title" class="mt-3 text-2xl font-semibold text-(--kryos-text-high)">
+      <h2 id="unknowns-title" class="font-kryos-2077-heading mt-3 text-2xl text-(--kryos-text-high)">
         Technical details have not been established
       </h2>
       <p class="mt-3 leading-relaxed">
@@ -94,10 +94,10 @@ useHead({
     </section>
 
     <nav aria-label="Product navigation" class="flex flex-wrap gap-5 border-t border-(--kryos-accent-dark-3) pt-7">
-      <NuxtLink to="/platform" class="text-(--kryos-text-high) underline underline-offset-4 hover:text-(--kryos-warn) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)">
+      <NuxtLink to="/platform" class="font-kryos-2077-ui text-(--kryos-text-high) underline underline-offset-4 hover:text-(--kryos-warn) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)">
         Explore the Kryos Platform
       </NuxtLink>
-      <NuxtLink to="/products" class="text-(--kryos-text-high) underline underline-offset-4 hover:text-(--kryos-warn) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)">
+      <NuxtLink to="/products" class="font-kryos-2077-ui text-(--kryos-text-high) underline underline-offset-4 hover:text-(--kryos-warn) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--kryos-warn)">
         All products
       </NuxtLink>
     </nav>

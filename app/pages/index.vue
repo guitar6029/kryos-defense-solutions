@@ -102,7 +102,7 @@ const workflow = [
           KRYOS // EST. 2049 // GLOBAL DEFENSE NETWORK
         </p>
         <div aria-hidden="true" class="hero-diagonal-stripes mb-5" />
-        <h1 id="home-platform-title" class="font-kryos-2077-display max-w-5xl text-[clamp(3rem,8vw,8.5rem)] font-bold leading-[0.82] tracking-[-0.06em] text-kryos-2077-text">
+        <h1 id="home-platform-title" class="hero-headline max-w-5xl text-[clamp(3rem,8vw,8.5rem)] font-bold leading-[0.82] tracking-[-0.06em] text-kryos-2077-text">
           <span class="block min-h-[0.88em]">{{ typedWeKnow }}</span>
           <span class="block min-h-[0.88em]">{{ typedBeforeYou }}</span>
           <span class="block min-h-[0.88em] text-kryos-2077-accent" :class="{ 'opacity-0': isTyping && !showDo }">DO.</span>
@@ -114,7 +114,7 @@ const workflow = [
           <div>
             <NuxtLink
               to="/platform"
-              class="inline-flex min-h-12 items-center border-b-2 border-kryos-2077-accent pb-2 font-semibold text-kryos-2077-text transition-colors hover:border-kryos-2077-text focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-kryos-2077-focus"
+              class="font-kryos-2077-ui inline-flex min-h-12 items-center border-b-2 border-kryos-2077-accent pb-2 text-kryos-2077-text transition-colors hover:border-kryos-2077-text focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-kryos-2077-focus"
             >
               EXPLORE OUR SYSTEMS <span aria-hidden="true" class="ml-3">↗</span>
             </NuxtLink>
@@ -129,7 +129,7 @@ const workflow = [
           <p class="text-xs font-semibold uppercase tracking-[0.18em] text-[#C39A52]">
             Field note / 01
           </p>
-          <h2 id="workflow-title" class="font-rajdhani mt-6 max-w-sm text-4xl font-bold leading-tight tracking-[-0.03em] md:text-5xl">
+          <h2 id="workflow-title" class="font-kryos-2077-heading mt-6 max-w-sm text-4xl leading-tight tracking-[-0.03em] md:text-5xl">
             From sample records to a concise summary.
           </h2>
           <p class="mt-6 max-w-sm leading-relaxed text-[#AEB7BA]">
@@ -153,7 +153,7 @@ const workflow = [
               <p class="text-xs font-semibold uppercase tracking-[0.16em] text-[#7B878D]">
                 {{ step.label }}
               </p>
-              <h3 class="font-rajdhani mt-2 text-2xl font-bold text-[#F3F0E8]">
+              <h3 class="font-kryos-2077-heading mt-2 text-2xl text-[#F3F0E8]">
                 {{ step.title }}
               </h3>
               <p class="mt-3 max-w-xl leading-relaxed text-[#AEB7BA]">
@@ -189,7 +189,7 @@ const workflow = [
           <p class="text-xs font-semibold uppercase tracking-[0.18em] text-[#C39A52]">
             Flagship hardware concept
           </p>
-          <h2 id="home-multirotor-title" class="font-rajdhani mt-6 text-4xl font-bold leading-tight tracking-[-0.03em] md:text-5xl">
+          <h2 id="home-multirotor-title" class="font-kryos-2077-heading mt-6 text-4xl leading-tight tracking-[-0.03em] md:text-5xl">
             Kryos Multirotor
           </h2>
           <p class="mt-6 leading-relaxed text-[#AEB7BA]">
@@ -217,7 +217,7 @@ const workflow = [
             <p class="text-xs font-semibold uppercase tracking-[0.18em] text-[#7B878D]">
               Portfolio status
             </p>
-            <h2 id="product-status-title" class="font-rajdhani mt-5 max-w-sm text-3xl font-bold leading-tight tracking-[-0.03em] md:text-4xl">
+            <h2 id="product-status-title" class="font-kryos-2077-heading mt-5 max-w-sm text-3xl leading-tight tracking-[-0.03em] md:text-4xl">
               One implemented product.
               <span class="block text-[#C39A52]">One flagship concept.</span>
             </h2>
@@ -237,7 +237,7 @@ const workflow = [
                   Primary product
                 </p>
                 <div>
-                  <h3 class="font-rajdhani text-2xl font-bold">Kryos Platform <span aria-hidden="true" class="text-[#C39A52] transition-transform group-hover:translate-x-1">↗</span></h3>
+                  <h3 class="font-kryos-2077-heading text-2xl">Kryos Platform <span aria-hidden="true" class="text-[#C39A52] transition-transform group-hover:translate-x-1">↗</span></h3>
                   <p class="mt-3 leading-relaxed text-[#AEB7BA]">Software prototype · sample data</p>
                 </div>
               </NuxtLink>
@@ -249,7 +249,7 @@ const workflow = [
                   Flagship hardware concept
                 </p>
                 <div>
-                  <h3 class="font-rajdhani text-2xl font-bold">Kryos Multirotor <span aria-hidden="true" class="text-[#C39A52] transition-transform group-hover:translate-x-1">↗</span></h3>
+                  <h3 class="font-kryos-2077-heading text-2xl">Kryos Multirotor <span aria-hidden="true" class="text-[#C39A52] transition-transform group-hover:translate-x-1">↗</span></h3>
                   <p class="mt-3 leading-relaxed text-[#AEB7BA]">Conceptual design · integration not implemented</p>
                 </div>
               </NuxtLink>
