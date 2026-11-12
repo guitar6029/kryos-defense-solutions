@@ -50,6 +50,18 @@ describe("useKryosFleet", () => {
     ]);
   });
 
+  it("exposes a mode-aware enabled state for pausing future live updates", () => {
+    const liveUpdatesEnabled = ref(true);
+
+    useKryosFleet(ref(0), ref<FleetPageSize>(25), ref({}), liveUpdatesEnabled);
+
+    const options = useQueryMock.mock.calls[0][0];
+    expect(options.enabled.value).toBe(true);
+
+    liveUpdatesEnabled.value = false;
+    expect(options.enabled.value).toBe(false);
+  });
+
   it("requests the page and size represented by the query key", async () => {
     const response: FleetPageResponse = {
       devices: [],

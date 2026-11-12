@@ -35,7 +35,7 @@ describe("fleet view mode", () => {
     const liveData = ref(page());
     const state = useFleetViewMode(liveData, vi.fn(), () => 72_000);
 
-    state.captureSnapshot();
+    expect(state.captureSnapshot()).toBe(true);
     liveData.value = page("MK-I-002");
 
     expect(state.mode.value).toBe("snapshot");
@@ -43,10 +43,21 @@ describe("fleet view mode", () => {
     expect(state.displayedData.value?.devices[0].unitId).toBe("MK-I-001");
   });
 
-  it("formats absolute capture ages in a human-friendly form", () => {
+  it("does not enter Snapshot mode when no displayed page is available", () => {
+    const state = useFleetViewMode(ref(), vi.fn(), () => 72_000);
+
+    expect(state.captureSnapshot()).toBe(false);
+    expect(state.mode.value).toBe("live");
+  });
+
+  it("formats capture ages through minutes, hours, days, and weeks", () => {
     expect(formatSnapshotAge(1_000, 1_000)).toBe("less than a minute ago");
+    expect(formatSnapshotAge(1_000, 61_000)).toBe("1 minute ago");
     expect(formatSnapshotAge(1_000, 12 * 60_000 + 1_000)).toBe("12 minutes ago");
     expect(formatSnapshotAge(1_000, 61 * 60_000 + 1_000)).toBe("1 hour ago");
+    expect(formatSnapshotAge(1_000, 2 * 24 * 60 * 60_000 + 1_000)).toBe("2 days ago");
+    expect(formatSnapshotAge(1_000, 7 * 24 * 60 * 60_000 + 1_000)).toBe("1 week ago");
+    expect(formatSnapshotAge(1_000, 14 * 24 * 60 * 60_000 + 1_000)).toBe("2 weeks ago");
   });
 
   it("resumes Live mode and immediately requests fresh data", () => {

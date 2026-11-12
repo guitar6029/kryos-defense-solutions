@@ -1,6 +1,13 @@
-import { computed, onMounted, onUnmounted, ref, type Ref } from "vue";
+import {
+  computed,
+  getCurrentInstance,
+  onMounted,
+  onUnmounted,
+  ref,
+  type Ref,
+} from "vue";
 import type { FleetPageResponse } from "~/types/FleetPage";
-import { formatSnapshotAge } from "~/utils/fleetSnapshot";
+import { formatSnapshotAge } from "../utils/fleetSnapshot";
 
 export type FleetViewMode = "live" | "snapshot";
 
@@ -37,7 +44,7 @@ export function useFleetViewMode(
   );
 
   function captureSnapshot() {
-    if (!liveData.value) return;
+    if (!liveData.value) return false;
 
     snapshot.value = {
       data: cloneFleetPage(liveData.value),
@@ -45,6 +52,7 @@ export function useFleetViewMode(
     };
     now.value = snapshot.value.capturedAt;
     mode.value = "snapshot";
+    return true;
   }
 
   function resumeLive() {
@@ -53,15 +61,17 @@ export function useFleetViewMode(
     return refetch();
   }
 
-  onMounted(() => {
-    interval = setInterval(() => {
-      if (mode.value === "snapshot") now.value = getNow();
-    }, 60_000);
-  });
+  if (getCurrentInstance()) {
+    onMounted(() => {
+      interval = setInterval(() => {
+        if (mode.value === "snapshot") now.value = getNow();
+      }, 60_000);
+    });
 
-  onUnmounted(() => {
-    if (interval) clearInterval(interval);
-  });
+    onUnmounted(() => {
+      if (interval) clearInterval(interval);
+    });
+  }
 
   return {
     mode,
