@@ -88,6 +88,19 @@ These instructions are the shared baseline for AI coding agents working in this 
 - Consider security, maintainability, correctness, and failure handling.
 - Keep unrelated refactoring out of the task.
 
+### Vue Component Style Extraction
+
+- When a Vue component's `<style>` block exceeds 50 non-empty CSS lines, extract the styles into a dedicated stylesheet.
+- Count CSS declarations, selectors, comments, and other non-empty lines; exclude blank lines.
+- Prefer keeping extracted styles close to the component or within an appropriate component-specific styles directory.
+- Keep global design tokens, resets, and genuinely reusable utilities in the existing global CSS architecture.
+- Preserve Vue scoped-style behavior when extracting styles.
+- Do not create global selector leakage.
+- Do not extract styles into the global stylesheet merely to satisfy the line-count rule.
+- Avoid unnecessary fragmentation for very small stylesheets.
+- New components and modifications to existing components must follow this convention.
+- Prefer consistency with established project naming and import conventions.
+
 ## 3. Git and Change Management
 
 - Never work directly on `main` without explicit authorization. Continue on the current task branch when appropriate; create or switch branches only when requested or required by the task.
