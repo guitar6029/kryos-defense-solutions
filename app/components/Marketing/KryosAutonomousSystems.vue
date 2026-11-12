@@ -1,9 +1,9 @@
 <script setup lang="ts">
 const panels = { rails: "/assets/panels/panel-corner-rails.svg", stepped: "/assets/panels/panel-stepped-frame.svg" };
 const systems = [
-  { code: "01 // AIR", name: "AEROS", text: "Autonomous aerial systems.", image: "/assets/images/drones/quadrotor-drone.png", alt: "Pixel-art autonomous quadrotor aircraft.", variant: "air" },
-  { code: "02 // LAND", name: "TERRA", text: "Autonomous ground systems.", image: "/assets/images/land/armored-apc.png", alt: "Pixel-art armored autonomous ground vehicle.", variant: "land" },
-  { code: "03 // SEA", name: "ABYSS", text: "Autonomous maritime systems.", image: "/assets/images/sea/patrol-trimaran.png", alt: "Pixel-art autonomous patrol trimaran vessel.", variant: "sea" },
+  { code: "01 // AIR", name: "AEROS", text: "Autonomous aerial systems.", image: "/assets/images/drones/kryos-armored-drone.png", alt: "Kryos armored autonomous aerial drone.", variant: "air" },
+  { code: "02 // LAND", name: "TERRA", text: "Autonomous ground systems.", image: "/assets/images/land/kryos-armored-reconnaissance-vehicle.png", alt: "Kryos armored autonomous reconnaissance vehicle.", variant: "land" },
+  { code: "03 // SEA", name: "ABYSS", text: "Autonomous maritime systems.", image: "/assets/images/sea/kryos-stealth-catamaran-warship.png", alt: "Kryos autonomous stealth catamaran warship.", variant: "sea" },
 ];
 </script>
 
